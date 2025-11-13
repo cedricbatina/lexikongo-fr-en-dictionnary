@@ -1,0 +1,141 @@
+Journal de développement — Lexikongo (migration SSR / Nuxt 4)
+
+Date : 2025-11-13 (Europe/Paris)
+Contexte : Migration du site Lexikongo (Netlify, SSG) vers Nuxt 4 en SSR et déploiement futur sur Vercel. On travaille fichier par fichier en respectant la logique et le design existants.
+
+1) Initialisation & installation
+
+Création d’un nouveau projet Nuxt 4 (SSR).
+
+Choix JavaScript pur (pas de TypeScript).
+
+Scripts package.json normalisés (SSR) :
+
+dev, build, start, preview, postinstall (nuxt prepare)
+
+generate retiré (on ne fait plus de SSG complet).
+
+Dépendances installées :
+
+Core : nuxt@latest, @pinia/nuxt, pinia, @nuxtjs/sitemap@6, @nuxtjs/robots, @vite-pwa/nuxt
+
+UI/UX : bootstrap, @fortawesome/fontawesome-free, vue-toastification@^2.0.0-rc.5, vue3-carousel, vue3-carousel-nuxt, chart.js
+
+Auth & utilitaires : bcrypt, jsonwebtoken, jwt-decode
+
+Data & mail : mysql2, nodemailer, sib-api-v3-sdk
+
+Paiement : stripe, @stripe/stripe-js
+
+Vuetify exclu (choix confirmé).
+
+Remarque Windows :
+
+Commandes d’install en une seule ligne (pas de \).
+
+Correction d’un conflit vue-toastification v1 (Vue 2) → v2.
+
+2) Configuration Nuxt
+
+Fichier nuxt.config.js (ESM) :
+
+ssr: true
+
+nitro: { preset: 'vercel' } (cible déploiement Vercel)
+
+modules: @pinia/nuxt, @nuxtjs/sitemap, @nuxtjs/robots, @vite-pwa/nuxt
+
+css: Bootstrap, Font Awesome, Toastification
+
+runtimeConfig (placeholders) : jwtSecret, mysqlHost, mysqlUser, mysqlPassword, mysqlDatabase, public.siteUrl
+
+Option TS : désactivation possible du type-check (typescript: { typeCheck: false }) pour rester 100% JS
+
+Ajout optionnel plugins/bootstrap.client.js pour le JS Bootstrap (lazy import côté client).
+
+3) Problèmes rencontrés & correctifs
+
+npm ENOENT (pas de package.json) → initialisation du projet avant l’install.
+
+Conflits de peer deps : vue-toastification v1 → migration vers v2 compatible Vue 3.
+
+CSS parser error (PostCSS) :
+
+Cause : balise <style> trouvée dans un fichier serveur .js (server/routes/events/[slug]/overrides.patch.js).
+
+Fix : suppression du bloc <style> du fichier serveur et déplacement des styles vers app.vue ou assets/css/global.css.
+
+Port HMR occupé (24678) :
+
+Solution : tuer le process HMR, ou changer le port via vite.server.hmr.port.
+
+@nuxtjs/robots → dépend nuxt-site-config :
+
+Fix : npm i nuxt-site-config (ou commenter temporairement le module).
+
+nuxt.config extension :
+
+Accepté en .js ou .mjs avec "type": "module". On retient nuxt.config.js.
+
+4) Démarrage & pages de test
+
+Serveur dev OK sur http://localhost:3000.
+
+app.vue minimal :
+
+<template>
+  <div>
+    <NuxtRouteAnnouncer />
+    <NuxtPage />
+  </div>
+</template>
+
+
+pages/index.vue de test affichant “Lexikongo — Nuxt 4 SSR OK ✅”.
+
+5) Base de données — Users & Roles (snapshot structure)
+
+users
+
+user_id (PK, AI), username, email (UNIQUE), password, created_at (timestamp, default current),
+
+email_verified (tinyint(1), default 0), verification_token (nullable), token_expiry (datetime, nullable)
+
+roles
+
+role_id (PK, AI), role_name (varchar(50))
+
+user_roles
+
+user_id (PK), role_id (PK) — table de liaison user ⇄ role
+
+(Aucune modification de schéma effectuée. On respecte strictement ces champs/relations.)
+
+6) Décisions de sécurité (déjà actées, à implémenter dans les patchs “user”)
+
+Auth en cookies HttpOnly (SameSite=Lax, Secure) pour le JWT.
+
+Middleware serveur (Nitro/H3) pour hydrater event.context.user à partir du cookie.
+
+Endpoints POST protégés (CSRF header simple si besoin ; à définir après lecture du code user existant).
+
+Pas de cache sur routes server/api/** sensibles.
+
+7) Prochaines tâches (user — lecture du code existant avant modifs)
+
+Partager & lire les fichiers actuels “user” :
+
+lib/db.js, utils/authSession.js
+
+server/api/auth/* : login.post.js, register.post.js, logout.post.js, me.get.js (+ autres)
+
+stores/* (Pinia user/auth), pages/login.vue, pages/register.vue, pages/profile.vue
+
+éventuels server/middleware/*.js (auth/roles)
+
+Proposer patchs ciblés (SSR, cookies HttpOnly, sécurité) sans changer la logique ni les champs.
+
+Tests manuels : login/register/logout/me, rôles (admin/contributor/user), flux de vérification e-mail si présent.
+
+✅ État actuel : serveur Nuxt 4 SSR OK, base du projet propre, erreurs initiales résolues, structure DB “users/roles” consignée.
+▶️ Action suivante : fournir les fichiers “user” existants pour patch SSR ciblé.
