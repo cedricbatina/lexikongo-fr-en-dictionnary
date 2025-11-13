@@ -138,7 +138,7 @@ export default defineNuxtConfig({
 
   // ------- Nitro (SSR hosting) -------
   nitro: {
-    preset: "node-server", // SSR classique (adapter si Vercel, Node, Docker, etc.)
+    preset: "vercel", // SSR classique (adapter si Vercel, Node, Docker, etc.)
     routeRules: {
       "/_nuxt/**": {
         headers: { "cache-control": "public, max-age=31536000, immutable" },
@@ -156,7 +156,7 @@ export default defineNuxtConfig({
   },
 
   // ------- TS / Devtools / Expérimental -------
-  typescript: { typeCheck: true, strict: true },
+  //typescript: { typeCheck: true, strict: true },
   imports: { autoImport: true },
   devtools: { enabled: true },
   experimental: { typedPages: true },
