@@ -11,13 +11,20 @@ export default defineNuxtConfig({
     "@nuxtjs/sitemap",
     "@nuxtjs/robots",
     "@vite-pwa/nuxt",
+    "@nuxtjs/i18n",
   ],
 
   css: [
     "bootstrap/dist/css/bootstrap.css",
     "@fortawesome/fontawesome-free/css/all.css",
     "vue-toastification/dist/index.css",
+    // '~/assets/css/data-style.css',
+    "~/assets/css/global.css",
+    "~/assets/css/main.css",
+    "~/assets/css/button-styles.css",
+    "~/assets/css/footer-style.css",
   ],
+
 
   app: {
     head: {
@@ -70,11 +77,33 @@ export default defineNuxtConfig({
       adminEmail: process.env.ADMIN_EMAIL || "",
     },
   },
-
+  i18n: {
+    locales: [
+      { code: "fr", iso: "fr-FR", name: "Français", file: "fr.json" },
+      { code: "en", iso: "en-US", name: "English", file: "en.json" },
+      { code: "it", iso: "it-IT", name: "Italiano", file: "it.json" },
+      { code: "pt", iso: "pt-PT", name: "Português", file: "pt.json" },
+      { code: "ru", iso: "ru-RU", name: "Русский", file: "ru.json" },
+      { code: "zh", iso: "zh-CN", name: "中文", file: "zh.json" },
+      { code: "es", iso: "es-ES", name: "Español", file: "es.json" },
+    ],
+    defaultLocale: "fr",
+    strategy: "prefix_except_default",
+    lazy: true,
+    // ⬇️ on pointe vers "locales" DANS le dossier i18n
+    langDir: "locales",
+    detectBrowserLanguage: {
+      useCookie: true,
+      cookieKey: "i18n_locale",
+      redirectOn: "root",
+      alwaysRedirect: false,
+      fallbackLocale: "fr",
+    },
+    seo: true,
+  },
   // ------- Sitemap / Robots -------
   sitemap: {
-    siteUrl:
-      process.env.NUXT_PUBLIC_SITE_URL || "https://lexikongo.example.com",
+    siteUrl: process.env.NUXT_PUBLIC_SITE_URL || "https://lexikongo.fr",
     autoLastmod: true,
     xsl: true,
     defaults: { changefreq: "weekly", priority: 0.7 },
@@ -83,7 +112,7 @@ export default defineNuxtConfig({
   robots: {
     rules: [{ userAgent: "*", allow: "/" }],
     sitemap: [
-      (process.env.NUXT_PUBLIC_SITE_URL || "https://lexikongo.example.com") +
+      (process.env.NUXT_PUBLIC_SITE_URL || "https://lexikongo.fr") +
         "/sitemap.xml",
     ],
   },

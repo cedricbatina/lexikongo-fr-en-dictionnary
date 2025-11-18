@@ -1,0 +1,675 @@
+Résumé complet du projet Lexikongo
+Contexte du projet : Le projet Lexikongo est une plateforme destinée à la gestion d'un dictionnaire multilingue avec des fonctionnalités d'ajout et de gestion des mots et des verbes, en particulier dans la langue Kikongo, avec des traductions en français et en anglais. Le projet inclut un système de gestion des rôles pour différencier les administrateurs, les contributeurs et les utilisateurs, ainsi qu'un processus de validation des soumissions pour les contributeurs.
+
+Fonctionnalités existantes :
+1. Gestion des utilisateurs :
+Rôles d'utilisateurs :
+Admin : a accès à toutes les fonctionnalités, y compris la gestion des mots, des verbes, des utilisateurs, et des soumissions en attente.
+Contributeur : peut proposer de nouveaux mots et verbes. Ses soumissions doivent être validées par un admin.
+Utilisateur : rôle basique qui peut consulter le contenu du dictionnaire, mais ne peut pas faire de modifications.
+2. Authentification :
+Login avec token JWT stocké dans un cookie sécurisé.
+Middleware d'authentification globale : vérifie si l'utilisateur est connecté et redirige en conséquence.
+Gestion des rôles dans l'interface : différents boutons et options de navigation en fonction du rôle (admin, contributeur, utilisateur).
+3. Gestion des contenus :
+Ajout de mots et de verbes :
+Admin : peut ajouter directement des mots et des verbes qui apparaissent immédiatement dans la base de données et sont accessibles publiquement.
+Contributeur : peut soumettre des mots et des verbes qui sont placés dans une table pending_submissions pour être validés par un admin.
+4. Gestion des slugs :
+Un système de slugs est en place pour les mots et les verbes afin de générer des URLs lisibles pour les utilisateurs.
+Les slugs sont stockés dans une table séparée pour améliorer la gestion des contenus.
+5. Tables de la base de données :
+Tables principales :
+users : Gère les utilisateurs avec leurs rôles.
+words : Contient les mots du dictionnaire avec leurs traductions et les relations avec les classes nominales.
+verbs : Contient les verbes du dictionnaire avec leurs traductions et d'autres informations comme la racine et le suffixe.
+slugs : Contient les slugs uniques générés pour les mots et les verbes.
+pending_submissions : Table où sont stockées les soumissions des contributeurs en attente de validation.
+6. Système de soumission et validation des contenus :
+Contributeurs :
+
+Les contributeurs peuvent ajouter des mots et des verbes, mais ceux-ci ne sont pas publiés directement. Ils sont enregistrés dans la table pending_submissions.
+Un admin valide ou rejette les soumissions via une interface de gestion des soumissions.
+Admins :
+
+Les admins peuvent accéder à une interface de gestion des soumissions et valider ou rejeter les propositions des contributeurs.
+Une fois validée, une soumission est déplacée dans les tables words ou verbs, et la ligne correspondante est supprimée de pending_submissions.
+7. Composants clés :
+a) AdminButtons :
+Boutons réservés aux admins pour la gestion rapide du contenu :
+Ajouter un mot.
+Ajouter un verbe.
+Ajouter un utilisateur.
+b) ContributorButtons :
+Boutons réservés aux contributeurs pour soumettre de nouveaux mots et verbes :
+Ajouter un mot.
+Ajouter un verbe.
+Retour à l'accueil.
+Accès au tableau de bord des contributeurs.
+c) NavButtons :
+Boutons de navigation pour les utilisateurs (accessibles à tous les rôles) :
+Retour à l'accueil.
+Liste des mots.
+Liste des verbes.
+d) ManageSubmissions :
+Composant permettant à un admin de consulter les soumissions en attente, de les valider ou de les rejeter.
+Filtrage par type (mots ou verbes) et actions directes sur les soumissions.
+8. Améliorations récentes :
+a) Validation des soumissions :
+Nous avons ajouté un système de soumission pour les contributeurs, avec un processus de validation par les admins.
+Gestion de la table pending_submissions :
+Chaque soumission est enregistrée avec son type (mot ou verbe) et son état (pending, approved, rejected).
+Les soumissions sont retirées de la liste après validation.
+b) Gestion des boutons et de l'interface :
+Amélioration des styles des boutons pour qu'ils soient cohérents et responsifs sur les petits écrans.
+Utilisation de couleurs plus ludiques pour rendre l'interface plus attractive, notamment pour attirer un public jeune.
+9. Améliorations futures à implémenter :
+a) Ajout de nouvelles langues :
+Intégrer la possibilité de traduire les mots et verbes dans d'autres langues en plus du français et de l'anglais.
+b) Optimisation des performances :
+Améliorer le système de cache pour optimiser les performances de l'application, en particulier pour les requêtes fréquentes.
+c) Interface utilisateur (UX) :
+Simplifier davantage l'interface pour les contributeurs et les utilisateurs afin d'offrir une expérience plus fluide.
+d) Ajout de notifications :
+Mettre en place un système de notification pour informer les admins et les contributeurs lorsqu'une soumission est validée ou rejetée.
+Conclusion :
+Le projet Lexikongo a évolué avec des fonctionnalités robustes pour gérer les utilisateurs, les soumissions et les contenus de manière efficace. Les prochaines étapes visent à améliorer l'interface utilisateur, à intégrer d'autres langues et à optimiser les performances. Nous avons posé les bases pour que le projet soit extensible et évolue en fonction des besoins futurs.   //// Résumé Complet du Projet Lexikongo : Structure, Fonctionnalités et Améliorations
+Objectif : Lexikongo est une plateforme collaborative pour la création d’un dictionnaire multilingue (Kikongo, Français, Anglais). Le projet vise à rassembler des mots et verbes en Kikongo et leurs traductions, avec une interface attrayante pour un public jeune, offrant des fonctionnalités avancées de gestion de contenu et de validation.
+
+1. Structure de la Base de Données
+La base de données de Lexikongo comprend 11 tables principales, chacune dédiée à des aspects spécifiques du contenu et de la gestion des utilisateurs. Voici un aperçu détaillé de chaque table et son rôle dans l’application :
+
+a) users
+Description : Stocke les informations utilisateur, y compris leur rôle (admin, contributeur, utilisateur).
+Champs clés : user_id, email, role, password.
+Relation : Chaque utilisateur est associé à un rôle via la table roles.
+b) roles
+Description : Définit les différents niveaux d’accès (admin, contributeur, utilisateur).
+Champs clés : role_id, role_name.
+Fonctionnalité : Les rôles conditionnent l’accès aux fonctionnalités (gestion des soumissions, ajout direct de contenu, etc.).
+c) words
+Description : Contient les mots du dictionnaire avec leurs formes singulières et plurielles.
+Champs clés : word_id, singular, plural, phonetic, class_id.
+Relation : Chaque mot est associé à une classe nominale via class_id (voir nominal_classes) et dispose de traductions via word_meanings.
+d) verbs
+Description : Enregistre les verbes avec leurs racines, suffixes et traductions associées.
+Champs clés : verb_id, name, root, suffix, phonetic, derived_verb_type_id.
+Relation : Les verbes sont associés à des types de verbes dérivés via derived_verb_types et possèdent des traductions dans verb_meanings.
+e) slugs
+Description : Gère les slugs uniques pour les mots et verbes, facilitant leur référencement et accès via des URLs lisibles.
+Champs clés : slug_id, slug, word_id, verb_id.
+Fonctionnalité : Assure que chaque mot et verbe a un slug unique et identifiable dans les URL.
+f) pending_submissions
+Description : Stocke les mots et verbes soumis par les contributeurs en attente de validation.
+Champs clés : submission_id, content_type, status, user_id, admin_id, reason, word_id, verb_id.
+Fonctionnalité : Les admins peuvent approuver ou rejeter ces soumissions, avec des options pour justifier les rejets.
+g) word_meanings et verb_meanings
+Description : Enregistre les traductions des mots et des verbes dans différentes langues.
+Champs clés : word_id, verb_id, language_code, meaning.
+Relation : Relié aux tables words et verbs, avec des langues définies dans languages.
+h) languages
+Description : Définit les langues de traduction disponibles (actuellement Kikongo, Français, Anglais).
+Champs clés : language_id, language_code, language_name.
+Fonctionnalité : Assure l’extensibilité pour ajouter d’autres langues dans le futur.
+i) nominal_classes
+Description : Regroupe les mots en classes nominales pour le Kikongo.
+Champs clés : class_id, class_name.
+Relation : Chaque mot peut être associé à une classe nominale, influençant ses traductions et déclinaisons.
+j) derived_verb_types
+Description : Définit les types de verbes dérivés en Kikongo.
+Champs clés : derived_verb_type_id, type_name.
+Relation : Associé aux verbes pour capturer leurs variations de forme.
+2. Fonctionnalités Actuelles
+a) Authentification et Gestion des Rôles
+Système de Connexion : Authentification par token JWT sécurisé, stocké dans des cookies.
+Middleware d’accès : Accès conditionnel aux pages et fonctionnalités selon le rôle utilisateur.
+Visibilité Dynamique : Boutons, liens et actions sont affichés ou masqués selon le rôle (admin, contributeur, utilisateur).
+b) Gestion des Contenus (Mots et Verbes)
+Ajout de Mots et Verbes :
+Admins : Peuvent ajouter directement des mots et verbes dans la base de données.
+Contributeurs : Soumettent leurs ajouts dans pending_submissions, où ils sont en attente de validation.
+Slugs : Générés automatiquement et stockés dans slugs pour chaque mot et verbe.
+c) Gestion des Soumissions
+Processus de Validation :
+Admin : Peut approuver ou rejeter les soumissions, avec une justification possible en cas de rejet.
+Enregistrement Final : Si une soumission est approuvée, le mot ou verbe est déplacé dans les tables words ou verbs.
+Affichage Conditionnel : Les soumissions validées apparaissent dans la liste des mots et verbes ; les autres restent en attente dans pending_submissions.
+3. Composants et Interface Utilisateur (UI)
+a) Tableau de Bord Admin
+Cartes de Navigation : Accès rapide aux sections de gestion des mots, verbes, utilisateurs, et soumissions.
+Statistiques : Affichage du nombre total d’utilisateurs, mots, et verbes.
+Graphique : Représentation visuelle des données pour un aperçu statistique.
+b) Formulaires d’Ajout
+AdminAddWord et AdminAddVerb : Formulaires d’ajout direct pour les admins.
+ContributorAddWord et ContributorAddVerb : Versions pour les contributeurs, soumettant les contenus pour validation.
+c) Composants de Boutons
+AdminButtons : Boutons d’actions spécifiques pour l’admin.
+ContributorButtons : Boutons pour les contributeurs (ex. ajouter un mot, un verbe).
+NavButtons : Boutons pour la navigation générale du site.
+Design Responsive : Optimisés pour le mobile et les petits écrans, avec un style coloré et interactif pour le jeune public cible.
+4. Fonctionnalités d’Administration et Gestion des Soumissions
+a) Composant ManageSubmissions
+Fonctionnalité : Permet aux admins de consulter, valider ou rejeter les soumissions en attente.
+Vue Filtrée : Les admins peuvent filtrer les soumissions par type (mot ou verbe).
+Actions de Validation :
+Validation : Si approuvé, le contenu est ajouté aux tables words ou verbs et retiré de pending_submissions.
+Rejet : Si rejeté, la raison du rejet est enregistrée.
+b) Séparation du Système de Soumission
+Table pending_submissions : Toutes les contributions des utilisateurs sont initialement enregistrées ici avec un statut pending.
+Suppression après validation : Une fois la soumission validée, elle est déplacée dans la table finale et retirée de pending_submissions.
+5. Améliorations Réalisées Récemment
+a) UI et UX
+Amélioration des Boutons : Style plus ludique et coloré pour mieux attirer les jeunes utilisateurs.
+Responsivité : Les principaux composants s’adaptent maintenant mieux aux petits écrans, assurant une bonne expérience utilisateur mobile.
+b) Sécurisation et Accès
+Vérification des Rôles dans les Composants : Tous les composants sont maintenant conditionnés pour afficher ou masquer les boutons et sections selon les permissions utilisateur.
+Isolation des Contenus Validés : Les contributions non validées par l’admin restent invisibles aux autres utilisateurs jusqu’à approbation.
+6. Améliorations Futures
+a) Extension Linguistique
+Nouvelles langues de traduction : Ajouter des options de traduction pour d’autres langues en plus de l’anglais et du français.
+b) Notifications Utilisateur
+Système de Notification : Informer les contributeurs de l’état de leurs soumissions (approuvé, rejeté).
+c) Cache et Optimisation de Performances
+Réduction des Requêtes : Mettre en place un cache pour optimiser les requêtes répétitives et accélérer l’affichage des contenus fréquemment consultés.
+d) Accessibilité et Convivialité
+Amélioration des Formulaires de Soumission : Simplifier les formulaires pour faciliter l’ajout de contenu par les jeunes contributeurs.
+Conclusion :
+Le projet Lexikongo a bien progressé, avec des fonctionnalités solides pour la gestion des contenus et des utilisateurs. La priorité reste l’amélioration de l’expérience utilisateur, notamment pour les contributeurs, et l’extension des fonctionnalités linguistiques et de notification pour un dictionnaire complet, collaboratif et interactif.
+
+
+Résumé du Projet Lexikongo : Lexique Trilingue Kikongo-Français-Anglais
+Objectif et Contexte
+Le projet Lexikongo est une plateforme de lexique et dictionnaire trilingue conçu pour faciliter l'apprentissage du Kikongo, notamment dans le cadre du cours Apprenez les bases du Kikongo classique. À travers une approche collaborative, ce projet permet de conserver, enrichir, et partager le vocabulaire du Kikongo, tout en favorisant les traductions vers le Français et l’Anglais, et inversement.
+
+L'objectif principal est de soutenir les apprenants du Kikongo et les locuteurs natifs en offrant un outil de consultation et de soumission de nouveaux termes, accessible et extensible à d'autres langues et dialectes dans le futur.
+
+Fonctionnalités Clés
+Soumissions de Contenus Trilingues
+
+Contributeurs : Les utilisateurs enregistrés soumettent des mots ou des verbes avec des détails linguistiques spécifiques :
+Singulier et pluriel
+Classe nominale (déclinaison pour les noms)
+Phonétique pour l’aide à la prononciation
+Traduction en Français et Anglais
+Stockage : Les soumissions sont stockées dans des tables spécifiques :
+pending_words_submissions et pending_verbs_submissions pour les soumissions en attente.
+Des tables pour les traductions (pending_words_translations, pending_verbs_translations) et des slugs (pending_words_slugs, pending_verbs_slugs) permettent de lier chaque terme soumis avec ses traductions et ses informations spécifiques.
+Gestion des Soumissions
+
+Vue Administrateur (ManageSubmissions.vue) : Un espace centralisé où les soumissions de mots et de verbes sont présentées en liste avec leurs informations linguistiques, leur statut, et les options de modération.
+Modération : Les administrateurs peuvent approuver, rejeter, ou modifier chaque soumission.
+Approbation : La soumission passe dans la base de données principale (words ou verbs), rendant ainsi le contenu public et accessible.
+Rejet : La soumission est marquée comme rejetée dans la base de données, avec une option de modification avant nouvelle évaluation.
+Archivage des Soumissions
+
+Historique de 90 jours : Les soumissions traitées (approuvées ou rejetées) sont automatiquement archivées dans archived_submissions pour une durée de 90 jours avant suppression.
+Script d'archivage : Gère le déplacement des données des tables de soumission temporaire vers les archives tout en enregistrant l’état final de chaque entrée.
+Consultation par les Contributeurs
+
+Suivi des Soumissions : Les contributeurs peuvent consulter leurs soumissions et leur état (en attente, approuvé, rejeté) grâce à l'interface utilisateur (ContributorSubmissions.vue), qui récupère les informations via l’API get-submissions-by-user/[id].js.
+Filtrage : Les soumissions sont filtrées par l'utilisateur et affichent leurs traductions en Français et Anglais, avec des détails comme la classe nominale, la phonétique, et le statut.
+Consultation et Recherche
+
+Utilisateurs Finaux : Toute personne intéressée par le Kikongo peut consulter le lexique pour enrichir ses connaissances linguistiques ou compléter ses recherches.
+Potentiel d’Évolution : Le lexique est pensé pour intégrer facilement d'autres langues, dialectes et nouvelles fonctionnalités de recherche.
+Base de Données et Structures Principales
+La structure de la base de données est conçue pour gérer la modularité linguistique et permettre l’intégration d’autres langues :
+
+Tables de Soumission : pending_words_submissions, pending_verbs_submissions pour stocker les mots et verbes soumis en attente de modération.
+Tables de Traduction : pending_words_translations, pending_verbs_translations, avec le code de langue (français, anglais, kikongo) et la signification de chaque mot/verbe.
+Tables Finales : words et verbs, pour les termes approuvés.
+Archives : archived_submissions, pour un stockage temporaire de 90 jours des soumissions traitées.
+Gestion des Classes et Slugs :
+nominal_classes : Conserve les classes nominales du Kikongo.
+pending_words_slugs, pending_verbs_slugs : Génèrent des identifiants uniques pour chaque mot/verbe soumis.
+Fonctionnalités Techniques et Améliorations
+Optimisation de l'Interface et des Retours Utilisateur
+
+Remplacement des alertes JavaScript par des messages d’alerte et de confirmation intégrés dans l’interface, améliorant la clarté et la convivialité des retours d'information pour l'utilisateur.
+Interface responsive et ergonomique adaptée à l'affichage sur différents appareils.
+Archivage Automatique et Filtrage des Soumissions
+
+L’archivage automatique conserve les soumissions pour 90 jours après modération, avec suppression des entrées archivées à l’issue de cette période.
+API de Filtrage : Les soumissions peuvent être filtrées pour un contributeur donné via l’API get-submissions-by-user/[id].js, en fournissant une vue structurée de l'historique.
+Intégration de la Gestion des Slugs
+
+Génération de slugs uniques pour chaque soumission, permettant de gérer les duplications et de faciliter la recherche des termes et leur affichage.
+Consultation Trilingue et Prise en Compte de la Classe Nominale
+
+Classes nominales : L’API de soumission récupère les informations sur les classes nominales pour les mots en Kikongo.
+Traductions : Chaque soumission peut être traduite en Français et en Anglais, offrant un lexique trilingue fonctionnel.
+Améliorations Futures et Extensions Potentielles
+Tableau de Bord des Statistiques
+
+Fournir des statistiques de contribution, comme le nombre de mots/verbres soumis, le taux d'approbation, et les délais moyens de traitement.
+Notifications pour les Contributeurs
+
+Informer les contributeurs de l’évolution de leurs soumissions via des notifications ou un tableau de bord dédié.
+Système de Validation Plus Flexible
+
+Permettre une validation des soumissions par plusieurs modérateurs et ajouter un champ de commentaire pour chaque décision.
+Expansion Linguistique
+
+Évoluer vers un lexique multilingue en ajoutant de nouvelles langues à la plateforme, et rendre les contenus accessibles et pertinents pour des locuteurs de différentes langues et dialectes.
+Conclusion
+Lexikongo est un outil de préservation linguistique, qui combine les fonctionnalités d’un dictionnaire trilingue et d’une plateforme de soumission collaborative. Ce projet est conçu pour soutenir l’apprentissage du Kikongo, promouvoir la langue auprès d'un public plus large et servir de base pour un dictionnaire numérique multilingue. La structure technique permet une modération efficace, un archivage automatisé, et une future extension vers d'autres langues.
+
+Avec des améliorations progressives, Lexikongo pourra évoluer en tant que ressource linguistique complète, soutenant l’enseignement du Kikongo et, potentiellement, d’autres langues.
+Documentation Complète : Gestion des Soumissions et Traductions dans Lexikongo-App
+Vue d'ensemble de l'Application
+Lexikongo-App permet aux contributeurs de soumettre des mots et des verbes accompagnés de leurs traductions pour enrichir une base de données linguistique. Les soumissions en attente sont d'abord examinées et peuvent être approuvées, rejetées ou mises à jour par un administrateur. L'application gère ces actions via un système de tables temporaires et définitives, ainsi que des APIs conçues pour offrir des interactions flexibles et sûres avec la base de données.
+
+Tables Principales de la Base de Données
+Table	Description
+pending_words_submissions	Stocke les mots soumis par les utilisateurs en attente d'approbation.
+pending_verbs_submissions	Stocke les verbes soumis par les utilisateurs en attente d'approbation.
+pending_words_translations	Stocke les traductions des mots en attente d'approbation.
+pending_verbs_translations	Stocke les traductions des verbes en attente d'approbation.
+words	Table principale des mots approuvés.
+verbs	Table principale des verbes approuvés.
+word_meanings	Table des traductions approuvées pour les mots.
+verb_meanings	Table des traductions approuvées pour les verbes.
+slugs	Gère les slugs uniques pour les mots et verbes approuvés, facilitant leur identification par un URL unique.
+pending_words_slugs	Gère les slugs pour les mots en attente de validation.
+pending_verbs_slugs	Gère les slugs pour les verbes en attente de validation.
+archived_submissions	Stocke les soumissions rejetées ou archivées pour référence future.
+Flux de Soumission de Contenu
+1. Soumission par les Contributeurs
+Les contributeurs (utilisateurs) peuvent soumettre des mots et des verbes via des formulaires dédiés. Les soumissions sont stockées dans des tables temporaires (pending_words_submissions, pending_verbs_submissions), où chaque soumission peut inclure :
+
+Attributs principaux :
+Pour les mots : singulier, pluriel, phonétique, classe nominale (identifiée par class_id).
+Pour les verbes : nom, racine, suffixe, phonétique, type dérivé et état actif.
+Traductions : Les contributeurs peuvent ajouter plusieurs traductions en différentes langues (par ex., fr pour français, en pour anglais), chaque traduction pouvant contenir plusieurs significations séparées par des points-virgules (;).
+Les informations de chaque soumission sont sauvegardées avec un slug unique, facilitant leur identification et gestion.
+
+2. Actions sur les Soumissions
+Approver une Soumission
+Lorsqu'une soumission est approuvée par un administrateur :
+
+Elle est transférée vers les tables principales (words et verbs) avec ses traductions associées (word_meanings et verb_meanings).
+Le slug associé est transféré dans la table slugs.
+La soumission est archivée dans la table archived_submissions avec le statut approved pour référence future.
+Suppression des données temporaires : Les données sont retirées des tables pending_* après approbation.
+Rejeter une Soumission
+Lorsque l'administrateur rejette une soumission :
+
+La soumission est déplacée vers la table archived_submissions avec un motif de rejet fourni par l'administrateur.
+Les traductions et slugs en attente associés à la soumission sont également archivés ou supprimés.
+Mettre à jour une Soumission
+Les soumissions en attente peuvent être modifiées avant approbation ou rejet :
+
+Les utilisateurs peuvent ajuster les informations du mot ou verbe, y compris les traductions.
+Les traductions peuvent être ajoutées, modifiées ou supprimées via des champs dynamiques, offrant une gestion complète du contenu en attente.
+Gestion des Traductions
+1. Tables de Traductions
+Table	Usage
+pending_words_translations	Stocke les traductions pour les mots en attente d'approbation.
+pending_verbs_translations	Stocke les traductions pour les verbes en attente d'approbation.
+word_meanings	Table des traductions finales pour les mots approuvés.
+verb_meanings	Table des traductions finales pour les verbes approuvés.
+Chaque traduction est liée au mot ou verbe correspondant via un identifiant (word_id ou verb_id). Les traductions finales sont accessibles à la recherche et visualisation publiques, tandis que les traductions en attente sont privées jusqu'à approbation.
+
+2. Gestion Flexible des Traductions
+L'API add-translation.js permet de :
+
+Ajouter des traductions : Une traduction peut être ajoutée pour des mots ou verbes en attente ou déjà approuvés.
+Modifier des traductions : Les traductions existantes peuvent être mises à jour sans perte d’information.
+Supprimer des traductions : Une traduction associée peut être retirée d'une soumission ou d'un mot/verbe approuvé.
+La gestion dynamique permet l'ajout de traductions multiples et de significations multiples au sein d'une même langue, séparées par des points-virgules (;).
+
+Améliorations Récentes
+Les récentes améliorations se concentrent sur :
+
+Gestion des traductions en attente : L'API a été améliorée pour permettre la manipulation flexible des traductions (ajout, modification et suppression) dans les tables pending_*.
+Gestion des slugs : Avant l'approbation, les slugs pour les mots et verbes sont créés dans les tables pending_words_slugs et pending_verbs_slugs. Après approbation, les slugs sont transférés dans slugs pour une gestion centralisée.
+Contrôle des dépendances : Les erreurs de clé étrangère lors des suppressions en cascade ont été résolues, garantissant une suppression fluide des données en attente après approbation.
+À Compléter
+Certaines fonctionnalités de l'application peuvent encore être optimisées, notamment :
+
+Mécanisme de validation de l'entrée : Assurer que tous les champs requis pour chaque action sont correctement fournis et valides.
+Automatisation des notifications : Prévoir l’ajout de notifications pour les contributeurs en cas d’approbation ou de rejet de leurs soumissions.
+Journalisation des actions : Ajouter un suivi des actions d’approbation et de rejet pour un historique plus détaillé et transparent des décisions administratives.
+Annexes
+Exemple de Processus d'Approbation d'un Verbe
+
+javascript
+Copier le code
+async function approveVerb(connection, verbSubmission, admin_id, submission_id) {
+  const { name, root, suffix, phonetic, user_id } = verbSubmission;
+
+  if (!name || !user_id) {
+    return { error: "Certains paramètres requis pour l'approbation sont manquants." };
+  }
+
+  const slug = await generateUniqueSlug(connection, name);
+  const [result] = await connection.execute(`
+    INSERT INTO verbs (name, root, suffix, phonetic, user_id, is_approved)
+    VALUES (?, ?, ?, ?, ?, 1)`,
+    [name, root, suffix, phonetic, user_id]
+  );
+
+  const approvedVerbId = result.insertId;
+  await connection.execute(`INSERT INTO slugs (slug, verb_id) VALUES (?, ?)`, [slug, approvedVerbId]);
+  await connection.execute(`
+    INSERT INTO verb_meanings (verb_id, language_code, meaning)
+    SELECT ?, language_code, meaning FROM pending_verbs_translations WHERE submission_id = ?`,
+    [approvedVerbId, submission_id]
+  );
+
+  await archiveVerb(connection, verbSubmission, "approved", admin_id, approvedVerbId);
+  await connection.execute(`DELETE FROM pending_verbs_submissions WHERE submission_id = ?`, [submission_id]);
+  await connection.execute(`DELETE FROM pending_verbs_translations WHERE submission_id = ?`, [submission_id]);
+}
+Ce document offre une compréhension complète pour les développeurs, administrateurs, et contributeurs sur les processus et la logique de Lexikongo-App, assurant une gestion cohérente et structurée du contenu soumis.
+Documentation Complète : Lexikongo
+1. Objectif et Contexte du Projet
+Lexikongo est une plateforme multilingue de lexique collaboratif qui a pour objectif de préserver, promouvoir et faciliter l’apprentissage de la langue Kikongo en permettant aux utilisateurs de consulter et d’enrichir un dictionnaire numérique. Cette application permet de soumettre et de valider des mots et verbes en Kikongo, avec des traductions en français et anglais. Elle s’adresse à un public varié, comprenant des locuteurs natifs, des linguistes, des étudiants, et un public jeune, grâce à une interface accessible et responsive.
+
+Contexte spécifique :
+Le projet a une vocation éducative et culturelle et ambitionne de rendre la langue Kikongo plus accessible et de contribuer à sa préservation.
+L’architecture de l’application est conçue pour être extensible, facilitant l’ajout de nouvelles langues et de fonctionnalités au fil du temps.
+Approche collaborative : Lexikongo mise sur l’engagement des utilisateurs pour enrichir son contenu, avec un système de rôles et de permissions permettant de modérer les contributions pour garantir la qualité du dictionnaire.
+2. Architecture de la Base de Données
+Lexikongo utilise une base de données structurée pour gérer l’information linguistique et les rôles des utilisateurs. Voici une explication détaillée des tables principales et de leurs relations :
+
+Tables de gestion des utilisateurs :
+
+users : Contient les informations des utilisateurs (ID, email, rôle, mot de passe) et leur rôle dans l'application (admin, contributeur, utilisateur).
+roles : Définit les niveaux d'accès (admin, contributeur, utilisateur). Les rôles déterminent les permissions et fonctionnalités accessibles à chaque type d'utilisateur.
+Tables des mots et verbes :
+
+words et verbs : Enregistre les mots et verbes approuvés et validés par les administrateurs. Les mots contiennent des informations comme la forme singulière, plurielle, la phonétique, et la classe nominale pour les noms. Les verbes incluent la racine, le suffixe, et la phonétique.
+word_meanings et verb_meanings : Gère les traductions des mots et verbes en Kikongo, français, et anglais. Ces tables relient les mots et verbes avec leurs significations linguistiques.
+Tables de soumission :
+
+pending_words_submissions et pending_verbs_submissions : Stockent les mots et verbes soumis par les contributeurs en attente de validation par les administrateurs.
+pending_words_translations et pending_verbs_translations : Contiennent les traductions en attente d'approbation pour les soumissions.
+pending_words_slugs et pending_verbs_slugs : Gèrent les slugs pour les mots et verbes en attente, assurant que chaque contenu soumis dispose d'un identifiant unique.
+Tables auxiliaires :
+
+slugs : Contient les slugs uniques pour les mots et verbes validés. Ces slugs facilitent l'identification et l'accès par URL unique, contribuant à l’optimisation pour les moteurs de recherche (SEO).
+nominal_classes : Classe chaque mot dans une catégorie nominale, facilitant l’analyse linguistique et les déclinaisons en Kikongo.
+derived_verb_types : Enregistre les variations des types de verbes, fournissant des informations linguistiques supplémentaires pour les verbes dérivés en Kikongo.
+Tables d’archivage et de suivi :
+
+archived_submissions : Archive les soumissions approuvées ou rejetées pendant une durée de 90 jours, permettant de suivre l'historique des décisions administratives.
+languages : Liste les langues disponibles pour les traductions (actuellement Kikongo, français et anglais) et facilite l’extension vers d'autres langues.
+3. Rôles Utilisateurs et Permissions
+L’application propose des fonctionnalités adaptées selon le rôle de l’utilisateur, avec une gestion dynamique des permissions et de la visibilité des boutons dans l’interface.
+
+Admin : Accès complet à toutes les fonctionnalités. L’admin peut gérer les soumissions, approuver ou rejeter les contributions, archiver les soumissions, et accéder aux paramètres de gestion des utilisateurs.
+Contributeur : Peut soumettre de nouveaux mots et verbes. Les soumissions sont soumises à validation avant d’être publiées.
+Utilisateur : Dispose d’un accès en lecture seule au dictionnaire, permettant la consultation sans possibilité de contribution ou de modification du contenu.
+4. Processus de Soumission et de Validation
+Le flux de travail pour ajouter des contenus suit les étapes suivantes :
+
+Soumission de Contenu : Les contributeurs peuvent soumettre des mots ou des verbes via des formulaires dédiés. Les soumissions contiennent :
+
+Formes singulière et plurielle, classe nominale et phonétique pour les mots.
+Racine, suffixe, phonétique et type dérivé pour les verbes.
+Traductions en Kikongo, français, et anglais.
+Les soumissions sont sauvegardées dans les tables temporaires (pending_words_submissions, pending_verbs_submissions) avec un slug unique pour chaque entrée.
+
+Processus de Validation :
+
+Validation : L’admin approuve la soumission, qui est alors transférée dans les tables finales (words, verbs) et devient publique. Les traductions sont également transférées dans word_meanings ou verb_meanings.
+Rejet : Si rejetée, la soumission est déplacée dans archived_submissions avec la possibilité pour l’admin d’ajouter un motif de rejet pour informer le contributeur.
+Archivage : Une fois traitées, les soumissions sont archivées pour 90 jours, permettant aux admins de consulter l’historique.
+Gestion des Traductions : Les traductions de chaque soumission peuvent être ajoutées, modifiées, ou supprimées grâce à une interface utilisateur permettant de gérer chaque langue séparément.
+
+5. Structure de l'Interface Utilisateur et Navigation
+L'interface de Lexikongo est intuitive et responsive, offrant une expérience adaptée à chaque type d’utilisateur. Voici les éléments clés de l’interface :
+
+Tableau de Bord Admin : Accessible uniquement aux administrateurs, il affiche des statistiques sur le nombre de mots et verbes, le nombre d’utilisateurs et de soumissions en attente, ainsi qu'un graphique d’évolution. Il inclut des boutons d'accès rapide aux sections de gestion.
+
+Composants de Formulaires :
+
+AdminAddWord et AdminAddVerb : Permettent à l’admin d’ajouter directement des mots ou des verbes.
+ContributorAddWord et ContributorAddVerb : Permettent aux contributeurs de soumettre de nouveaux contenus pour validation.
+Navigation : Des boutons de navigation sont adaptés pour chaque type d’utilisateur et incluent l’accès à l’accueil, la liste des mots, et la liste des verbes.
+
+6. Gestion des Slugs et SEO
+Pour chaque mot et verbe, un slug unique est généré afin de rendre les URLs de l’application lisibles et optimisées pour le référencement. Les slugs sont d’abord enregistrés dans des tables temporaires pendant la période de validation, puis déplacés dans la table slugs après l’approbation, garantissant ainsi leur unicité.
+
+7. Améliorations Réalisées et Futures
+Améliorations récentes
+UI/UX : Design plus attractif et responsive, notamment pour attirer un public jeune. Les boutons et les styles sont désormais optimisés pour le mobile et les petits écrans.
+Archivage Automatique : Archivage des soumissions approuvées ou rejetées dans archived_submissions, avec suppression automatique après 90 jours.
+Sécurisation et Contrôle d’Accès : Les boutons et composants de gestion sont conditionnés pour n’apparaître que si l’utilisateur dispose des permissions nécessaires.
+Améliorations futures
+Ajout de nouvelles langues : Permettra de traduire les mots et verbes dans davantage de langues pour enrichir le lexique et toucher un public plus large.
+Système de notifications : Notifier les contributeurs de l’état de leurs soumissions (validation ou rejet).
+Cache et optimisation de performance : Mise en cache des requêtes fréquentes pour optimiser les performances.
+Accessibilité et Convivialité : Simplification des formulaires de soumission pour faciliter l’ajout de contenu.
+8. Détails Techniques et API
+Gestion des API
+L’application utilise une API sécurisée et un système d'authentification JWT pour gérer l'accès des utilisateurs. Quelques exemples d’API et leurs fonctionnalités :
+
+API de soumission : Enregistre les mots et verbes soumis dans les tables temporaires (pending_words_submissions, pending_verbs_submissions).
+API de validation/rejet : Assure le transfert des soumissions vers les tables finales ou leur archivage, selon leur statut final.
+API de gestion des traductions : Gère les traductions de chaque soumission en permettant l’ajout, la modification, ou la suppression.
+9. Exemples de Flux de Données et Journalisation des Actions
+Les actions d'approbation et de rejet sont loggées pour chaque soumission, fournissant une traçabilité complète. Voici un exemple d’un flux d’approbation pour un verbe en utilisant une fonction JavaScript de transfert :
+
+javascript
+Copier le code
+async function approveVerb(connection, verbSubmission, admin_id, submission_id) {
+  const { name, root, suffix, phonetic, user_id } = verbSubmission;
+  const slug = await generateUniqueSlug(connection, name);
+  
+  const [result] = await connection.execute(`
+    INSERT INTO verbs (name, root, suffix, phonetic, user_id, is_approved)
+    VALUES (?, ?, ?, ?, ?, 1)`,
+    [name, root, suffix, phonetic, user_id]
+  );
+
+  const approvedVerbId = result.insertId;
+  await connection.execute(`INSERT INTO slugs (slug, verb_id) VALUES (?, ?)`, [slug, approvedVerbId]);
+  await connection.execute(`
+    INSERT INTO verb_meanings (verb_id, language_code, meaning)
+    SELECT ?, language_code, meaning FROM pending_verbs_translations WHERE submission_id = ?`,
+    [approvedVerbId, submission_id]
+  );
+
+  await archiveVerb(connection, verbSubmission, "approved", admin_id, approvedVerbId);
+  await connection.execute(`DELETE FROM pending_verbs_submissions WHERE submission_id = ?`, [submission_id]);
+  await connection.execute(`DELETE FROM pending_verbs_translations WHERE submission_id = ?`, [submission_id]);
+}
+Conclusion
+Lexikongo se positionne comme un outil de préservation linguistique et d'apprentissage, permettant une contribution collaborative de mots et verbes pour construire un lexique complet et multilingue. Sa structure permet de maintenir un équilibre entre la qualité et la rapidité de validation des contributions, tout en garantissant une expérience utilisateur optimisée. Avec les améliorations prévues, la plateforme pourra répondre à un public encore plus large et diversifié.
+
+Résumé complet et détaillé de votre projet avec des instructions reproductibles pour les développeurs
+Contexte général
+Vous développez un projet appelé Lexikongo, qui est une application en Nuxt 3 combinée avec une base de données MySQL pour gérer un dictionnaire en ligne du kikongo avec des traductions en français et anglais. Le projet a pour but de centraliser des données linguistiques et d'offrir des fonctionnalités d’ajout, de modification et de gestion des mots et verbes.
+
+Le système est organisé autour des rôles (admin, contributor, user), des composants réutilisables pour les vues, et d’une architecture soignée pour les API, le design et le SEO.
+
+Structure de la base de données
+1. Tables principales
+users : Gère les utilisateurs inscrits.
+
+user_id (PK, auto-incrément)
+username (varchar, UNIQUE)
+email (varchar, UNIQUE)
+password (hashé)
+email_verified (booléen, 0 par défaut)
+verification_token (varchar)
+created_at (timestamp)
+roles : Définit les rôles possibles.
+
+role_id (PK, auto-incrément)
+role_name (varchar, valeurs possibles : "admin", "contributor", "user")
+user_roles : Associe les utilisateurs à leurs rôles (relation N
+).
+
+user_role_id (PK, auto-incrément)
+user_id (FK vers users)
+role_id (FK vers roles)
+words : Gère les mots du dictionnaire.
+
+word_id (PK, auto-incrément)
+singular (varchar)
+plural (varchar, nullable)
+phonetic (varchar, nullable)
+class_id (FK vers nominal_classes, nullable)
+user_id (FK vers users)
+created_at (timestamp)
+slug (varchar, UNIQUE)
+verbs : Gère les verbes du dictionnaire.
+
+verb_id (PK, auto-incrément)
+name (varchar)
+phonetic (varchar, nullable)
+user_id (FK vers users)
+created_at (timestamp)
+slug (varchar, UNIQUE)
+nominal_classes : Référence les classes nominales (linguistiques).
+
+class_id (PK, auto-incrément)
+class_name (varchar)
+2. Tables de traductions
+word_meanings : Traductions des mots.
+
+meaning_id (PK, auto-incrément)
+word_id (FK vers words)
+language_code (varchar, ex : 'fr', 'en')
+meaning (text)
+verb_meanings : Traductions des verbes.
+
+meaning_id (PK, auto-incrément)
+verb_id (FK vers verbs)
+language_code (varchar)
+meaning (text)
+API
+1. API Register
+Permet d’enregistrer un utilisateur.
+Valide les doublons sur email et username.
+Hash le mot de passe avec bcrypt.
+Envoie un email de vérification avec un token unique.
+Stocke verification_token dans la base de données.
+2. API Login
+Authentifie un utilisateur via email et password.
+Vérifie si l’email est confirmé.
+Génère un JWT avec user_id et roles en payload.
+Définit un cookie sécurisé contenant le JWT.
+3. API Details
+Renvoie les détails d’un mot ou d’un verbe en fonction d’un slug.
+Les résultats incluent les traductions, phonétiques, et informations d'auteur.
+4. API Post/Put
+POST : Ajoute un mot ou un verbe en attente de validation (pour les contributeurs) ou directement (pour les admins).
+PUT : Met à jour les détails d’un mot ou d’un verbe existant.
+Composants principaux
+1. Navbar
+S’adapte dynamiquement selon le rôle de l’utilisateur connecté (admin, contributor, ou user).
+Inclut des liens vers :
+Admin Panel (visible uniquement pour les admins)
+Pages de recherche
+Connexion / Déconnexion
+2. WordSearchResults & VerbSearchResults
+Affichent les résultats de recherche sous forme de tableau paginé.
+Colonnes principales : Singulier, Pluriel, Phonétique, Traductions (FR/EN).
+Utilise un composant Pagination pour la navigation.
+3. Details
+Affiche les détails d’un mot ou d’un verbe.
+Inclut les métadonnées SEO dynamiques pour les moteurs de recherche.
+Bouton Modifier visible uniquement pour les admins.
+4. SearchingResults
+Composant central pour afficher des mots et verbes sous forme de tableau.
+Réutilisable avec des props dynamiques (pagination, données, etc.).
+5. Pagination
+Navigue entre les pages des résultats paginés.
+Utilise des props pour le nombre total de pages et la page actuelle.
+Design & Responsivité
+1. CSS global
+Couleurs définies dans le fichier main.css :
+Primary : #007bff
+Secondary : #a52a2a
+Highlight : #28a745
+Text default : #03080d
+2. Styles des tableaux
+Uniformisation via des classes globales.
+Responsivité gérée avec des règles CSS et des @media queries.
+3. Cards
+Utilisées pour afficher des détails de mots/verbes.
+Slots permettent de personnaliser leur contenu si nécessaire.
+Optimisation SEO
+Utilisation de vue-meta pour les balises meta dynamiques.
+Génération automatique des balises og:title, og:description et twitter:card.
+Schema.org JSON-LD inclus pour améliorer la visibilité des données linguistiques dans les moteurs de recherche.
+Slots et réutilisabilité
+Pourquoi les slots ?
+Permettent de centraliser les composants comme les tables et cards tout en gardant la flexibilité.
+Exemples :
+Le tableau générique peut être configuré pour afficher différents types de données (mots, verbes, traductions).
+Checklist pour les développeurs
+Base de données :
+
+Assurez-vous que les tables et relations sont bien configurées.
+Vérifiez les indices UNIQUE sur email, username, et slug.
+Configuration environnementale :
+
+Ajoutez les variables dans .env :
+makefile
+Copier le code
+JWT_SECRET=your_secret
+SMTP_HOST=smtp.example.com
+SMTP_PORT=587
+SMTP_USER=your_email
+SMTP_PASS=your_password
+EMAIL_FROM=your_email@example.com
+API :
+
+Testez chaque endpoint avec des cas valides et invalides.
+Vérifiez que les rôles sont bien respectés dans les accès.
+UI :
+
+Assurez-vous que les tables, pagination, et cards sont cohérentes sur toutes les pages.
+Testez la responsivité sur différentes tailles d’écran.
+Email :
+
+Vérifiez que l’envoi des emails fonctionne correctement via nodemailer.
+Testez les liens générés (vérification d’email).
+Ce résumé complet couvre tous les aspects de votre projet pour permettre à d'autres développeurs de comprendre, contribuer et maintenir votre code.
+
+
+
+///
+## 2025-11-18 — Intégration i18n + nettoyage config Nuxt 4
+
+- Ajout et configuration du module `@nuxtjs/i18n` (v10.2.1) dans `nuxt.config.js` :
+  - `modules`: suppression de `"nuxtjs/i18n"` (sans `@`) qui cassait le chargement, conservation de `"@nuxtjs/i18n"`.
+  - Définition des locales : `fr`, `en`, `it`, `pt`, `ru`, `zh`, `es` avec `defaultLocale: "fr"`.
+  - Activation du mode lazy + fichiers : `lazy: true`, `langDir: "i18n/locales"`.
+  - Pour chaque locale : ajout de la propriété `file` (`fr.json`, `en.json`, `it.json`, `pt.json`, `ru.json`, `zh.json`, `es.json`), obligatoire en v10 quand `langDir` est utilisé.
+
+- Création de la structure i18n :
+  - Dossier : `i18n/locales/`.
+  - Fichiers JSON :
+    - `fr.json` : rempli avec les clés pour les pages principales :
+      - `home.*` (page d’accueil),
+      - `verbs.index.*`, `verbs.detail.*` (pages `/verbs/index`, `/verb/[slug]`),
+      - `words.index.*`, `words.detail.*` (pages `/words/index`, `/word/[slug]`),
+      - `expressions.index.*`,
+      - `login.*`, `register.*`, `profile.*`,
+      - plus quelques clés layout/navigation (`nav.*`, `layout.contact.*`).
+    - `en.json`, `it.json`, `pt.json`, `ru.json`, `zh.json`, `es.json` : initialisés avec du JSON valide (au minimum `{}`) pour éviter les erreurs `[plugin json] Could not parse JSON file`.
+
+- Résolution des erreurs de build successives :
+  - `Could not load nuxtjs/i18n` → corrigé en supprimant l’entrée erronée `"nuxtjs/i18n"` dans `modules`.
+  - `All locales must have the file or files property set when using langDir` → ajout de `file: "xx.json"` pour chaque locale.
+  - `Could not parse JSON file` sur les locales vides → ajout d’un contenu JSON valide dans tous les fichiers `*.json`.
+
+- Résultat :
+  - Le serveur Nuxt 4 SSR démarre proprement (`npm run dev` OK).
+  - L’infrastructure i18n est en place pour la refonte SSR de Lexikongo (prête à être utilisée avec `useI18n()` et `useSeoMeta()` dans les pages).
+
+### Prochaines étapes
+
+- Brancher i18n + SEO sur les pages principales :
+  - `pages/index.vue`
+  - `pages/verbs/index.vue`, `pages/verb/[slug].vue`
+  - `pages/words/index.vue`, `pages/word/[slug].vue`
+  - `pages/expressions/index.vue`
+- Continuer la refonte mobile-first / multi-thèmes (CSS déjà préparé) et brancher `useAuthStore` sur les vues `login/register/profile`.
+

@@ -1,0 +1,46 @@
+{
+  "app.name": "Lexikongo — Dictionnaire Kikongo",
+  "app.tagline": "Kikongo · Français · Anglais · Phonétique",
+
+  "home.title": "Lexikongo — Dictionnaire Kikongo",
+  "home.description": "Dictionnaire Kikongo en ligne : mots, verbes, expressions, traductions en français et en anglais, avec prononciation et phonétique.",
+  "home.keywords": "lexikongo, dictionnaire kikongo, kikongo français, kikongo anglais, lexique kikongo, phonétique kikongo",
+
+  "layout.contact.phone": "Téléphone",
+  "layout.contact.email": "E-mail",
+
+  "nav.home": "Accueil",
+  "nav.verbs": "Verbes",
+  "nav.words": "Mots",
+  "nav.expressions": "Expressions",
+  "nav.login": "Connexion",
+  "nav.logout": "Déconnexion",
+  "nav.profile": "Mon profil",
+
+  "verbs.index.title": "Verbes en kikongo",
+  "verbs.index.description": "Liste des verbes kikongo avec leur traduction en français, en anglais et la phonétique.",
+  "verbs.index.keywords": "verbes kikongo, conjugaison kikongo, dictionnaire de verbes",
+
+  "verbs.detail.title": "Verbe kikongo : {verb}",
+  "verbs.detail.description": "Définition, exemples et traductions du verbe kikongo « {verb} » en français et en anglais.",
+  "verbs.detail.keywords": "verbe kikongo {verb}, dictionnaire kikongo, conjugaison kikongo",
+
+  "words.index.title": "Mots en kikongo",
+  "words.index.description": "Lexique kikongo : mots, sens, traductions en français et en anglais, et phonétique.",
+  "words.index.keywords": "mots kikongo, vocabulaire kikongo, lexique kikongo",
+
+  "words.detail.title": "Mot kikongo : {word}",
+  "words.detail.description": "Définition et traductions du mot kikongo « {word} » en français et en anglais.",
+  "words.detail.keywords": "mot kikongo {word}, dictionnaire kikongo, vocabulaire kikongo",
+
+  "expressions.index.title": "Expressions en kikongo",
+  "expressions.index.description": "Expressions idiomatiques et phrases utiles en kikongo avec traduction en français et en anglais.",
+  "expressions.index.keywords": "expressions kikongo, phrases kikongo, conversation kikongo",
+
+  "login.title": "Connexion",
+  "login.description": "Connectez-vous pour gérer votre profil et contribuer au dictionnaire.",
+  "register.title": "Inscription",
+  "register.description": "Créez un compte pour contribuer au dictionnaire Lexikongo.",
+  "profile.title": "Mon profil",
+  "profile.description": "Consultez et mettez à jour les informations de votre compte Lexikongo."
+}
