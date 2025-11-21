@@ -1,157 +1,207 @@
-<!-- pages/words/index.vue -->
 <template>
-  <main class="page words-page">
-    <!-- HERO -->
-    <section class="words-hero">
-      <div class="words-hero__content">
-        <h1 class="words-hero__title">
-          <span class="words-hero__icon" aria-hidden="true">
-            <i class="fas fa-spell-check"></i>
+  <main
+    class="lk-page lk-page--words"
+    aria-labelledby="words-page-title"
+  >
+    <!-- Hero / introduction -->
+    <section class="lk-hero">
+      <div class="lk-hero__content">
+        <h1 id="words-page-title" class="lk-hero__title">
+          <span class="lk-hero__kicker">
+            Lexikongo · Dictionnaire en ligne
           </span>
-          <span>{{ t('words.index.title') }}</span>
+          <span class="lk-hero__main">
+            Découvrir les mots en Kikongo
+          </span>
         </h1>
-        <p class="words-hero__subtitle">
-          {{ t('words.index.description') }}
+
+        <p class="lk-hero__subtitle">
+          Parcourez le lexique Kikongo avec leurs pluriels, transcriptions
+          phonétiques et traductions en français et en anglais. Construit
+          et enrichi par la communauté.
         </p>
-        <div class="words-hero__meta">
-          <LogoSlogan />
+
+        <div class="lk-hero__actions">
+          <NuxtLink
+            to="/search"
+            class="lk-btn lk-btn--primary"
+          >
+            <i class="fas fa-search" aria-hidden="true"></i>
+            <span>Commencer une recherche</span>
+          </NuxtLink>
+
+          <NuxtLink
+            to="/documentation/for-contributors"
+            class="lk-btn lk-btn--ghost"
+          >
+            <i class="fas fa-hands-helping" aria-hidden="true"></i>
+            <span>Contribuer au dictionnaire</span>
+          </NuxtLink>
         </div>
-      </div>
 
-      <aside class="words-hero__side" aria-label="Actions rapides">
-        <SearchButtons />
-        <ContributorButtons />
-        <AdminButtons />
-      </aside>
-    </section>
-
-    <!-- CONTENU PRINCIPAL -->
-    <section class="words-main" aria-labelledby="words-list-heading">
-      <header class="words-main__header">
-        <h2 id="words-list-heading" class="words-main__title">
-          {{ t('words.index.listTitle') }}
-        </h2>
-        <p class="words-main__hint">
-          {{ t('words.index.listHint') }}
+        <p class="lk-hero__meta">
+          <i class="fas fa-language" aria-hidden="true"></i>
+          <span>Kikongo · Français · Anglais · Phonétique</span>
         </p>
-      </header>
+      </div>
 
-      <!-- Ici, pour l’instant, on continue d’utiliser WordList tel quel.
-           Quand tu m’auras collé son code, on le refondra pour consommer wordStore. -->
-      <WordList />
-
-      <div class="words-main__footer">
-        <LastExpressionsCount />
+      <div class="lk-hero__side">
+        <LogoSlogan class="lk-hero__logo" />
+        <SearchButtons class="lk-hero__quick-search" />
       </div>
     </section>
 
-    <!-- CTA CONTRIBUTION -->
-    <section class="words-cta" aria-labelledby="contribute-section">
-      <div class="words-cta__card">
-        <div class="words-cta__text">
-          <h2 id="contribute-section" class="words-cta__title">
-            {{ t('words.index.contributeTitle') }}
+    <!-- Bloc principal : liste + stats -->
+    <section class="lk-page__section lk-page__section--words">
+      <header class="lk-section-header">
+        <div>
+          <h2 class="lk-section-header__title">
+            <i class="fas fa-spell-check" aria-hidden="true"></i>
+            <span>Liste des mots</span>
           </h2>
-          <p class="words-cta__description">
-            {{ t('words.index.contributeText') }}
+          <p class="lk-section-header__subtitle">
+            Toutes les entrées de type <strong>mot</strong> actuellement disponibles
+            dans la base Lexikongo.
           </p>
         </div>
 
-        <div class="words-cta__actions">
-          <NuxtLink
-            to="/documentation/for-contributors"
-            class="btn-solid"
-            aria-label="Rejoignez les contributeurs pour enrichir le lexique"
-          >
-            <i class="fas fa-hands-helping" aria-hidden="true"></i>
-            <span>{{ t('words.index.contributeButton') }}</span>
-          </NuxtLink>
-
-          <NuxtLink
-            to="/contact"
-            class="btn-ghost"
-            aria-label="Contactez-nous pour toute assistance ou suggestion"
-          >
-            <i class="fas fa-envelope" aria-hidden="true"></i>
-            <span>{{ t('words.index.contactButton') }}</span>
-          </NuxtLink>
+        <div class="lk-section-header__meta">
+          <LastExpressionsCount />
         </div>
-      </div>
+      </header>
+
+      <!-- Liste des mots (grid + cartes) -->
+      <WordList />
     </section>
 
-    <!-- SEARCH BUTTONS EN BAS POUR MOBILE -->
-    <section class="words-bottom-actions">
-      <SearchButtons />
+    <!-- Appel à contribution -->
+    <section
+      class="lk-page__section lk-page__section--cta"
+      aria-labelledby="words-contribute-title"
+    >
+      <div class="lk-cta">
+        <div class="lk-cta__text">
+          <h2
+            id="words-contribute-title"
+            class="lk-cta__title"
+          >
+            Vous ne trouvez pas un mot dans le lexique ?
+          </h2>
+          <p class="lk-cta__subtitle">
+            Lexikongo est un dictionnaire vivant. Proposez de nouveaux mots,
+            expressions ou verbes pour enrichir la langue Kikongo en ligne.
+          </p>
+        </div>
+
+        <div class="lk-cta__actions">
+          <ContributorButtons />
+          <AdminButtons />
+        </div>
+      </div>
     </section>
   </main>
 </template>
 
 <script setup>
-import { useSeoMeta, useHead } from '#imports';
-import { useI18n } from 'vue-i18n';
-import WordList from '@/components/WordList.vue';
+import { useHead } from "#app";
+import { useI18n } from "vue-i18n";
+
+import WordList from "@/components/WordList.vue";
+import LogoSlogan from "@/components/LogoSlogan.vue";
+import SearchButtons from "@/components/SearchButtons.vue";
+import ContributorButtons from "@/components/ContributorButtons.vue";
+import AdminButtons from "@/components/AdminButtons.vue";
+import LastExpressionsCount from "@/components/LastExpressionsCount.vue";
 
 const { t } = useI18n();
 
-// SEO + i18n
-useSeoMeta({
-  title: () => t('words.index.title'),
-  description: () => t('words.index.description'),
-  keywords: () => t('words.index.keywords'),
-  ogTitle: () => t('words.index.title'),
-  ogDescription: () => t('words.index.ogDescription') || t('words.index.description'),
-  ogType: 'website',
-  twitterCard: 'summary_large_image',
-  twitterTitle: () => t('words.index.title'),
-  twitterDescription: () => t('words.index.description'),
-});
+// On prépare des clés i18n (fallback = texte FR si non traduites)
+const seoTitle =
+  t("words.meta.title") ||
+  "Lexikongo - Découvrez et explorez les mots en Kikongo";
+const seoDescription =
+  t("words.meta.description") ||
+  "Explorez le lexique des mots en Kikongo avec leurs pluriels, transcriptions phonétiques et traductions en français et en anglais.";
 
-// JSON-LD (adapté à ta nouvelle base SSR, mais même esprit que ton code actuel)
+// JSON-LD (adapté de ta version précédente)
 const jsonLd = {
-  '@context': 'https://schema.org',
-  '@type': 'WebPage',
-  name: 'Liste des Mots en Kikongo | Lexikongo',
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  name: "Liste des mots en Kikongo | Lexikongo",
   description:
-    "Explorez la liste des mots en Kikongo, enrichie de traductions en français et en anglais, avec leur phonétique.",
-  url: 'https://www.lexikongo.fr/words',
-  image: 'https://www.lexikongo.fr/images/text_logo@1x.webp',
-  inLanguage: 'fr',
+    "Explorez la liste des mots en Kikongo avec leurs traductions en français et en anglais, ainsi que leur phonétique.",
+  url: "https://www.lexikongo.fr/words",
+  inLanguage: "fr",
+  image: "https://www.lexikongo.fr/images/text_logo@1x.webp",
   publisher: {
-    '@type': 'Organization',
-    name: 'Lexikongo',
-    url: 'https://www.lexikongo.fr',
+    "@type": "Organization",
+    name: "Lexikongo",
+    url: "https://www.lexikongo.fr",
     logo: {
-      '@type': 'ImageObject',
-      url: 'https://www.lexikongo.fr/images/text_logo@1x.webp',
+      "@type": "ImageObject",
+      url: "https://www.lexikongo.fr/images/text_logo@1x.webp",
       width: 200,
       height: 200,
     },
   },
   about: {
-    '@type': 'Thing',
-    name: 'Kikongo Language',
+    "@type": "Thing",
+    name: "Kikongo Language",
     sameAs: [
-      'https://en.wikipedia.org/wiki/Kikongo',
-      'https://fr.wikipedia.org/wiki/Kikongo',
+      "https://en.wikipedia.org/wiki/Kikongo",
+      "https://fr.wikipedia.org/wiki/Kikongo",
     ],
   },
   potentialAction: {
-    '@type': 'SearchAction',
-    target: 'https://www.lexikongo.fr/search?q={search_term_string}',
-    'query-input': 'required name=search_term_string',
+    "@type": "SearchAction",
+    target: "https://www.lexikongo.fr/search?q={search_term_string}",
+    "query-input": "required name=search_term_string",
   },
 };
 
 useHead({
-  link: [
+  title: seoTitle,
+  meta: [
     {
-      rel: 'canonical',
-      href: 'https://www.lexikongo.fr/words',
+      name: "description",
+      content: seoDescription,
+    },
+    {
+      name: "keywords",
+      content:
+        "Kikongo, dictionnaire Kikongo, mots en Kikongo, traduction Kikongo, langue africaine, lexique, Congo, culture africaine, étymologie Kikongo, mots, verbes, linguistique, traduction, français, anglais, patrimoine linguistique",
+    },
+    { name: "author", content: "Lexikongo" },
+    { name: "robots", content: "index, follow" },
+
+    // Open Graph
+    { property: "og:title", content: seoTitle },
+    { property: "og:description", content: seoDescription },
+    {
+      property: "og:image",
+      content: "https://www.lexikongo.fr/images/text_logo@1x.webp",
+    },
+    { property: "og:url", content: "https://www.lexikongo.fr/words" },
+    { property: "og:type", content: "website" },
+
+    // Twitter
+    { name: "twitter:card", content: "summary_large_image" },
+    { name: "twitter:title", content: seoTitle },
+    { name: "twitter:description", content: seoDescription },
+    {
+      name: "twitter:image",
+      content: "https://www.lexikongo.fr/images/text_logo@1x.webp",
+    },
+
+    // Canonical
+    {
+      rel: "canonical",
+      href: "https://www.lexikongo.fr/words",
     },
   ],
   script: [
     {
-      type: 'application/ld+json',
+      type: "application/ld+json",
       children: JSON.stringify(jsonLd),
     },
   ],
@@ -159,162 +209,239 @@ useHead({
 </script>
 
 <style scoped>
-.page.words-page {
+.lk-page {
   max-width: 1120px;
   margin: 0 auto;
   padding: 1.5rem 1.25rem 2.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
 }
 
 /* HERO */
-.words-hero {
+.lk-hero {
   display: grid;
-  grid-template-columns: minmax(0, 2fr);
-  gap: 1.5rem;
-  margin-top: 1rem;
-  margin-bottom: 2.5rem;
-}
-
-.words-hero__title {
-  display: flex;
+  grid-template-columns: minmax(0, 2fr) minmax(0, 1.4fr);
+  gap: 1.75rem;
   align-items: center;
-  gap: .75rem;
-  font-size: clamp(1.8rem, 4vw, 2.4rem);
-  font-weight: 700;
-  color: var(--primary, #0d6efd);
 }
 
-.words-hero__icon {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 2.5rem;
-  height: 2.5rem;
-  border-radius: .75rem;
-  background: rgba(13, 110, 253, .08);
-}
-
-.words-hero__subtitle {
-  margin-top: .75rem;
-  color: var(--muted-text, #6c757d);
-  line-height: 1.6;
-}
-
-.words-hero__meta {
-  margin-top: 1rem;
-}
-
-.words-hero__side {
-  display: flex;
-  flex-direction: column;
-  gap: .75rem;
-}
-
-@media (min-width: 768px) {
-  .words-hero {
-    grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
-    align-items: center;
-  }
-}
-
-/* SECTION PRINCIPALE */
-.words-main {
-  padding: 1.5rem;
-  border-radius: 1.2rem;
-  background: var(--surface-elevated, #ffffff);
-  box-shadow: 0 18px 45px rgba(15, 23, 42, .08);
-  margin-bottom: 2.5rem;
-}
-
-.words-main__header {
-  margin-bottom: 1.25rem;
-}
-
-.words-main__title {
-  font-size: 1.25rem;
-  font-weight: 600;
-}
-
-.words-main__hint {
-  margin-top: .4rem;
-  color: var(--muted-text, #6c757d);
-  font-size: .95rem;
-}
-
-.words-main__footer {
-  margin-top: 1.5rem;
-}
-
-/* CTA CONTRIBUTION */
-.words-cta {
-  margin-bottom: 2rem;
-}
-
-.words-cta__card {
+.lk-hero__content {
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  padding: 1.5rem;
-  border-radius: 1.25rem;
-  background: linear-gradient(135deg, rgba(13,110,253,0.06), rgba(13,110,253,0.02));
-  border: 1px solid rgba(13, 110, 253, 0.16);
 }
 
-.words-cta__title {
-  font-size: 1.15rem;
-  font-weight: 600;
+.lk-hero__title {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
 }
 
-.words-cta__description {
-  margin-top: .35rem;
-  color: var(--muted-text, #6c757d);
+.lk-hero__kicker {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: #6b7280;
 }
 
-.words-cta__actions {
+.lk-hero__main {
+  font-size: 1.8rem;
+  line-height: 1.2;
+  font-weight: 700;
+  color: #111827;
+}
+
+.lk-hero__subtitle {
+  margin: 0;
+  font-size: 0.98rem;
+  color: #4b5563;
+}
+
+.lk-hero__actions {
   display: flex;
   flex-wrap: wrap;
-  gap: .75rem;
+  gap: 0.65rem;
+  margin-top: 0.25rem;
 }
 
-/* Boutons premium */
-.btn-solid,
-.btn-ghost {
+.lk-btn {
+  border-radius: 999px;
+  border: 1px solid transparent;
+  padding: 0.5rem 1rem;
+  font-size: 0.9rem;
+  font-weight: 500;
   display: inline-flex;
   align-items: center;
-  gap: .5rem;
-  padding: .65rem 1.1rem;
-  border-radius: 999px;
-  font-size: .95rem;
-  font-weight: 500;
+  gap: 0.4rem;
   text-decoration: none;
-  border: 1px solid transparent;
   cursor: pointer;
-  transition: transform .12s ease, box-shadow .12s ease, background .12s ease, border-color .12s ease;
+  transition:
+    background-color 0.15s ease,
+    color 0.15s ease,
+    border-color 0.15s ease,
+    box-shadow 0.15s ease,
+    transform 0.1s ease;
 }
 
-.btn-solid {
-  background: var(--primary, #0d6efd);
-  color: #fff;
-  box-shadow: 0 10px 24px rgba(13, 110, 253, 0.35);
+.lk-btn--primary {
+  background: #0d6efd;
+  color: #ffffff;
+  border-color: #0d6efd;
 }
 
-.btn-ghost {
-  background: transparent;
-  color: var(--primary, #0d6efd);
-  border-color: rgba(13, 110, 253, 0.4);
-}
-
-.btn-solid:hover,
-.btn-solid:focus-visible,
-.btn-ghost:hover,
-.btn-ghost:focus-visible {
+.lk-btn--primary:hover,
+.lk-btn--primary:focus-visible {
   transform: translateY(-1px);
-  box-shadow: 0 14px 30px rgba(15, 23, 42, 0.12);
+  box-shadow: 0 10px 24px rgba(13, 110, 253, 0.4);
 }
 
-/* SECTION BASSE (search buttons) */
-.words-bottom-actions {
-  margin-top: 1rem;
+.lk-btn--ghost {
+  background: #ffffff;
+  color: #111827;
+  border-color: rgba(148, 163, 184, 0.7);
+}
+
+.lk-btn--ghost:hover,
+.lk-btn--ghost:focus-visible {
+  border-color: #0d6efd;
+  color: #0d6efd;
+  box-shadow: 0 10px 24px rgba(15, 23, 42, 0.12);
+}
+
+.lk-hero__meta {
+  margin: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.85rem;
+  color: #6b7280;
+}
+
+.lk-hero__meta i {
+  color: #0d6efd;
+}
+
+/* Colonne droite du hero */
+.lk-hero__side {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: flex-end;
+}
+
+.lk-hero__logo {
+  max-width: 220px;
+  width: 100%;
+}
+
+.lk-hero__quick-search {
+  width: 100%;
+}
+
+/* Sections */
+.lk-page__section {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+/* En-tête de section */
+.lk-section-header {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 0.8rem;
+  align-items: flex-end;
+}
+
+.lk-section-header__title {
+  margin: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: #111827;
+}
+
+.lk-section-header__title i {
+  color: #0d6efd;
+}
+
+.lk-section-header__subtitle {
+  margin: 0.25rem 0 0;
+  font-size: 0.9rem;
+  color: #6b7280;
+}
+
+.lk-section-header__meta {
+  font-size: 0.85rem;
+  color: #4b5563;
+}
+
+/* CTA */
+.lk-page__section--cta {
+  margin-top: 0.5rem;
+}
+
+.lk-cta {
+  border-radius: 1rem;
+  padding: 1rem 1.1rem;
+  background: linear-gradient(
+    135deg,
+    rgba(13, 110, 253, 0.06),
+    rgba(56, 189, 248, 0.08)
+  );
+  border: 1px solid rgba(191, 219, 254, 0.9);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.9rem;
+}
+
+.lk-cta__title {
+  margin: 0 0 0.25rem;
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: #0f172a;
+}
+
+.lk-cta__subtitle {
+  margin: 0;
+  font-size: 0.9rem;
+  color: #475569;
+}
+
+.lk-cta__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .lk-page {
+    padding-inline: 1rem;
+  }
+
+  .lk-hero {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .lk-hero__side {
+    align-items: flex-start;
+  }
+
+  .lk-hero__main {
+    font-size: 1.5rem;
+  }
+
+  .lk-cta {
+    flex-direction: column;
+    align-items: flex-start;
+  }
 }
 </style>

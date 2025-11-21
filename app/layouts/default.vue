@@ -20,7 +20,7 @@
     </main>
 
     <footer>
-      <Footer />
+     <!-- <Footer />-->
     </footer>
   </div>
 </template>

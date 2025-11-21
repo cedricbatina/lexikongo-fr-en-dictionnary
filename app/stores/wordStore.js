@@ -1,5 +1,6 @@
 // stores/wordStore.js
 import { defineStore } from "pinia";
+import { $fetch } from "ofetch"; // ✅ utilisation directe, stable, réutilisable
 
 export const useWordStore = defineStore("wordStore", {
   state: () => ({
@@ -34,7 +35,7 @@ export const useWordStore = defineStore("wordStore", {
   },
 
   actions: {
-    // --- Recherche (tel que tu l'avais) ---
+    // --- Recherche (telle que tu l’avais, mais avec $fetch importé) ---
     setLanguage(lang) {
       this.language = lang;
     },
@@ -65,8 +66,6 @@ export const useWordStore = defineStore("wordStore", {
 
       this.isLoading = true;
       this.error = null;
-
-      const { $fetch } = useNuxtApp();
 
       let url = "/api/words";
       let params = {};
@@ -100,10 +99,10 @@ export const useWordStore = defineStore("wordStore", {
       this.isLoading = true;
       this.error = null;
 
-      const { $fetch } = useNuxtApp();
-
       try {
-        const data = await $fetch("/api/all-words-verbs");
+       const data = await $fetch("/api/words", {
+         params: { mode: "all" },
+       });
 
         this.items = (Array.isArray(data) ? data : [])
           .filter((item) => item.type === "word" && item.slug)

@@ -240,8 +240,9 @@ const router = useRouter();
 
 const isMenuOpen = ref(false);
 
-const isLoggedIn = computed(() => authStore.isLoggedIn);
-const userRoles = computed(() => authStore.userRoles || []);
+// Adapté à TON authStore actuel
+const isLoggedIn = computed(() => authStore.isLoggedIn);        // getter
+const userRoles = computed(() => authStore.userRoles || []);    // getter
 const username = computed(() => authStore.user?.username || 'Utilisateur');
 
 // liens principaux
@@ -253,8 +254,10 @@ const mainLinks = [
   { to: '/documentation/for-contributors', icon: 'fas fa-hands-helping', labelKey: 'nav.contribute' },
 ];
 
+// ⚠️ important : on utilise fetchMe(), pas checkAuth()
+// onMounted est déjà *client-only*, donc OK pour le SSR
 onMounted(() => {
-  authStore.checkAuth();
+  authStore.fetchMe();
 });
 
 const toggleMenu = () => {
@@ -275,6 +278,7 @@ const handleLogoutFromPanel = async () => {
   closeMenu();
 };
 </script>
+
 
 <style scoped>
 .lk-nav {
