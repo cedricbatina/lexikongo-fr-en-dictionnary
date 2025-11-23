@@ -51,26 +51,8 @@
       </div>
     </section>
 
-    <!-- Bloc principal : liste + stats -->
+    <!-- Bloc principal : on laisse WordList gérer son propre titre -->
     <section class="lk-page__section lk-page__section--words">
-      <header class="lk-section-header">
-        <div>
-          <h2 class="lk-section-header__title">
-            <i class="fas fa-spell-check" aria-hidden="true"></i>
-            <span>Liste des mots</span>
-          </h2>
-          <p class="lk-section-header__subtitle">
-            Toutes les entrées de type <strong>mot</strong> actuellement disponibles
-            dans la base Lexikongo.
-          </p>
-        </div>
-
-        <div class="lk-section-header__meta">
-          <LastExpressionsCount />
-        </div>
-      </header>
-
-      <!-- Liste des mots (grid + cartes) -->
       <WordList />
     </section>
 
@@ -103,59 +85,58 @@
 </template>
 
 <script setup>
-import { useHead } from "#app";
-import { useI18n } from "vue-i18n";
+import { useHead } from '#app';
+import { useI18n } from 'vue-i18n';
 
-import WordList from "@/components/WordList.vue";
-import LogoSlogan from "@/components/LogoSlogan.vue";
-import SearchButtons from "@/components/SearchButtons.vue";
-import ContributorButtons from "@/components/ContributorButtons.vue";
-import AdminButtons from "@/components/AdminButtons.vue";
-import LastExpressionsCount from "@/components/LastExpressionsCount.vue";
+import WordList from '@/components/WordList.vue';
+import LogoSlogan from '@/components/LogoSlogan.vue';
+import SearchButtons from '@/components/SearchButtons.vue';
+import ContributorButtons from '@/components/ContributorButtons.vue';
+import AdminButtons from '@/components/AdminButtons.vue';
 
 const { t } = useI18n();
 
-// On prépare des clés i18n (fallback = texte FR si non traduites)
+// Clés i18n pour le SEO (avec fallback FR)
 const seoTitle =
-  t("words.meta.title") ||
-  "Lexikongo - Découvrez et explorez les mots en Kikongo";
+  t('words.meta.title') ||
+  'Lexikongo - Découvrez et explorez les mots en Kikongo';
 const seoDescription =
-  t("words.meta.description") ||
+  t('words.meta.description') ||
   "Explorez le lexique des mots en Kikongo avec leurs pluriels, transcriptions phonétiques et traductions en français et en anglais.";
 
-// JSON-LD (adapté de ta version précédente)
+// JSON-LD (SEO)
 const jsonLd = {
-  "@context": "https://schema.org",
-  "@type": "WebPage",
-  name: "Liste des mots en Kikongo | Lexikongo",
+  '@context': 'https://schema.org',
+  '@type': 'WebPage',
+  name: 'Liste des mots en Kikongo | Lexikongo',
   description:
-    "Explorez la liste des mots en Kikongo avec leurs traductions en français et en anglais, ainsi que leur phonétique.",
-  url: "https://www.lexikongo.fr/words",
-  inLanguage: "fr",
-  image: "https://www.lexikongo.fr/images/text_logo@1x.webp",
+    'Explorez la liste des mots en Kikongo avec leurs traductions en français et en anglais, ainsi que leur phonétique.',
+  url: 'https://www.lexikongo.fr/words',
+  inLanguage: 'fr',
+  image: 'https://www.lexikongo.fr/images/text_logo@1x.webp',
   publisher: {
-    "@type": "Organization",
-    name: "Lexikongo",
-    url: "https://www.lexikongo.fr",
+    '@type': 'Organization',
+    name: 'Lexikongo',
+    url: 'https://www.lexikongo.fr',
     logo: {
-      "@type": "ImageObject",
-      url: "https://www.lexikongo.fr/images/text_logo@1x.webp",
+      '@type': 'ImageObject',
+      url: 'https://www.lexikongo.fr/images/text_logo@1x.webp',
       width: 200,
       height: 200,
     },
   },
   about: {
-    "@type": "Thing",
-    name: "Kikongo Language",
+    '@type': 'Thing',
+    name: 'Kikongo Language',
     sameAs: [
-      "https://en.wikipedia.org/wiki/Kikongo",
-      "https://fr.wikipedia.org/wiki/Kikongo",
+      'https://en.wikipedia.org/wiki/Kikongo',
+      'https://fr.wikipedia.org/wiki/Kikongo',
     ],
   },
   potentialAction: {
-    "@type": "SearchAction",
-    target: "https://www.lexikongo.fr/search?q={search_term_string}",
-    "query-input": "required name=search_term_string",
+    '@type': 'SearchAction',
+    target: 'https://www.lexikongo.fr/search?q={search_term_string}',
+    'query-input': 'required name=search_term_string',
   },
 };
 
@@ -163,45 +144,46 @@ useHead({
   title: seoTitle,
   meta: [
     {
-      name: "description",
+      name: 'description',
       content: seoDescription,
     },
     {
-      name: "keywords",
+      name: 'keywords',
       content:
-        "Kikongo, dictionnaire Kikongo, mots en Kikongo, traduction Kikongo, langue africaine, lexique, Congo, culture africaine, étymologie Kikongo, mots, verbes, linguistique, traduction, français, anglais, patrimoine linguistique",
+        'Kikongo, dictionnaire Kikongo, mots en Kikongo, traduction Kikongo, langue africaine, lexique, Congo, culture africaine, étymologie Kikongo, mots, verbes, linguistique, traduction, français, anglais, patrimoine linguistique',
     },
-    { name: "author", content: "Lexikongo" },
-    { name: "robots", content: "index, follow" },
+    { name: 'author', content: 'Lexikongo' },
+    { name: 'robots', content: 'index, follow' },
 
     // Open Graph
-    { property: "og:title", content: seoTitle },
-    { property: "og:description", content: seoDescription },
+    { property: 'og:title', content: seoTitle },
+    { property: 'og:description', content: seoDescription },
     {
-      property: "og:image",
-      content: "https://www.lexikongo.fr/images/text_logo@1x.webp",
+      property: 'og:image',
+      content: 'https://www.lexikongo.fr/images/text_logo@1x.webp',
     },
-    { property: "og:url", content: "https://www.lexikongo.fr/words" },
-    { property: "og:type", content: "website" },
+    { property: 'og:url', content: 'https://www.lexikongo.fr/words' },
+    { property: 'og:type', content: 'website' },
 
     // Twitter
-    { name: "twitter:card", content: "summary_large_image" },
-    { name: "twitter:title", content: seoTitle },
-    { name: "twitter:description", content: seoDescription },
+    { name: 'twitter:card', content: 'summary_large_image' },
+    { name: 'twitter:title', content: seoTitle },
+    { name: 'twitter:description', content: seoDescription },
     {
-      name: "twitter:image",
-      content: "https://www.lexikongo.fr/images/text_logo@1x.webp",
+      name: 'twitter:image',
+      content: 'https://www.lexikongo.fr/images/text_logo@1x.webp',
     },
-
-    // Canonical
+  ],
+  // 🔧 canonical doit être dans "link" et non dans "meta"
+  link: [
     {
-      rel: "canonical",
-      href: "https://www.lexikongo.fr/words",
+      rel: 'canonical',
+      href: 'https://www.lexikongo.fr/words',
     },
   ],
   script: [
     {
-      type: "application/ld+json",
+      type: 'application/ld+json',
       children: JSON.stringify(jsonLd),
     },
   ],
@@ -345,40 +327,6 @@ useHead({
   display: flex;
   flex-direction: column;
   gap: 1.25rem;
-}
-
-/* En-tête de section */
-.lk-section-header {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  gap: 0.8rem;
-  align-items: flex-end;
-}
-
-.lk-section-header__title {
-  margin: 0;
-  display: inline-flex;
-  align-items: center;
-  gap: 0.45rem;
-  font-size: 1.15rem;
-  font-weight: 600;
-  color: #111827;
-}
-
-.lk-section-header__title i {
-  color: #0d6efd;
-}
-
-.lk-section-header__subtitle {
-  margin: 0.25rem 0 0;
-  font-size: 0.9rem;
-  color: #6b7280;
-}
-
-.lk-section-header__meta {
-  font-size: 0.85rem;
-  color: #4b5563;
 }
 
 /* CTA */

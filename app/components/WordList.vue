@@ -1,20 +1,48 @@
 <template>
   <section class="word-list" aria-labelledby="word-list-heading">
+    <!-- Header -->
     <header class="word-list__header">
       <div>
         <h2 id="word-list-heading" class="word-list__title">
-          Liste des mots
+          {{ t('words.list.title') }}
         </h2>
         <p class="word-list__subtitle">
-          Explorez les mots en Kikongo, avec leur pluriel, leur phonétique et
-          leurs traductions en français et en anglais.
+          {{ t('words.list.subtitle') }}
         </p>
       </div>
 
-      <p v-if="store.items.length" class="word-list__count">
-        {{ store.items.length }} mot<span v-if="store.items.length > 1">s</span> en base
+      <p
+        v-if="itemsLength"
+        class="word-list__count"
+      >
+        {{ t('words.list.count', itemsLength) }}
       </p>
     </header>
+
+    <!-- Barre de recherche + switch cartes -->
+    <div class="word-list__toolbar">
+      <div class="word-list__search">
+        <label class="word-list__search-label" for="word-search">
+          {{ t('words.list.searchLabel') }}
+        </label>
+        <input
+          id="word-search"
+          v-model="searchLocal"
+          type="search"
+          class="word-list__search-input"
+          :placeholder="t('words.list.searchPlaceholder')"
+        />
+      </div>
+
+      <NuxtLink
+        to="/wordlist-card"
+        class="word-list__view-link"
+        :aria-label="t('words.list.viewCardsAria')"
+      >
+        <i class="fas fa-th-large" aria-hidden="true"></i>
+        <span>{{ t('words.list.viewCards') }}</span>
+      </NuxtLink>
+    </div>
 
     <!-- État : chargement -->
     <div
@@ -23,7 +51,7 @@
       role="status"
       aria-live="polite"
     >
-      Chargement des mots...
+      {{ t('words.list.loading') }}
     </div>
 
     <!-- État : erreur -->
@@ -41,7 +69,7 @@
       class="word-list__empty"
       aria-live="polite"
     >
-      Aucun mot trouvé pour le moment.
+      {{ t('words.list.empty') }}
     </p>
 
     <!-- Tableau des mots -->
@@ -49,59 +77,34 @@
       v-else
       class="word-list__table-wrapper"
     >
-
-    <header class="word-list__header">
-      <div>
-        <h2 id="word-list-heading" class="word-list__title">
-          Liste des mots
-        </h2>
-        <p class="word-list__subtitle">
-          Explorez les mots en Kikongo, avec leur pluriel, leur phonétique et
-          leurs traductions en français et en anglais.
-        </p>
-      </div>
-
-      <p v-if="store.items.length" class="word-list__count">
-        {{ store.items.length }} mot<span v-if="store.items.length > 1">s</span> en base
-      </p>
-    </header>
-
-    <!-- Barre de recherche (même logique visuelle qu’ExpressionList) -->
-    <div class="word-list__toolbar">
-      <div class="word-list__search">
-        <label class="word-list__search-label" for="word-search">
-          Rechercher
-        </label>
-        <input
-          id="word-search"
-          v-model="searchLocal"
-          type="search"
-          class="word-list__search-input"
-          placeholder="Mot, pluriel, traduction FR ou EN…"
-        />
-      </div>
-    </div>
-
       <table
         class="word-list__table"
         role="table"
         aria-describedby="word-list-caption"
       >
+        <!-- Largeurs de colonnes -->
+        <colgroup>
+          <col style="width: 14%;" />
+          <col style="width: 15%;" />
+          <col style="width: 16%;" />
+          <col style="width: 27%;" />
+          <col style="width: 27%;" />
+        </colgroup>
+
         <caption
           id="word-list-caption"
           class="word-list__caption"
         >
-          Chaque ligne présente un mot en Kikongo, son pluriel (le cas échéant),
-          sa transcription phonétique, ainsi que ses traductions en français et en anglais.
+          {{ t('words.list.caption') }}
         </caption>
 
         <thead>
           <tr>
-            <th scope="col">Mot</th>
-            <th scope="col">Pluriel</th>
-            <th scope="col">Phonétique</th>
-            <th scope="col">Français</th>
-            <th scope="col">Anglais</th>
+            <th scope="col">{{ t('words.list.column.singular') }}</th>
+            <th scope="col">{{ t('words.list.column.plural') }}</th>
+            <th scope="col">{{ t('words.list.column.phonetic') }}</th>
+            <th scope="col">{{ t('words.list.column.fr') }}</th>
+            <th scope="col">{{ t('words.list.column.en') }}</th>
           </tr>
         </thead>
 
@@ -112,12 +115,12 @@
             class="word-list__row"
             @click="goToDetails(word.slug)"
             role="button"
-            :aria-label="`Voir la fiche du mot ${word.singular || '—'}`"
+            :aria-label="t('words.list.rowAria', { word: word.singular || '—' })"
           >
             <!-- Mot -->
             <td class="word-list__cell word-list__cell--singular">
               <span class="word-list__singular">
-                {{ word.singular || "—" }}
+                {{ word.singular || '—' }}
               </span>
             </td>
 
@@ -140,14 +143,14 @@
             <!-- Français -->
             <td class="word-list__cell">
               <span class="word-list__translation">
-                {{ truncateText(word.translation_fr, 80) || "—" }}
+                {{ truncateText(word.translation_fr, 80) || '—' }}
               </span>
             </td>
 
             <!-- Anglais -->
             <td class="word-list__cell">
               <span class="word-list__translation">
-                {{ truncateText(word.translation_en, 80) || "—" }}
+                {{ truncateText(word.translation_en, 80) || '—' }}
               </span>
             </td>
           </tr>
@@ -157,7 +160,7 @@
 
     <!-- Pagination -->
     <div
-      v-if="store.totalPages > 1"
+      v-if="totalPages > 1"
       class="word-list__pagination"
     >
       <Pagination
@@ -170,25 +173,33 @@
 </template>
 
 <script setup>
-import { onMounted, ref, computed } from "vue";
-import { useRouter } from "vue-router";
-import Pagination from "@/components/Pagination.vue";
-import { useWordStore } from "~/stores/wordStore";
+import { onMounted, ref, computed } from 'vue';
+import { useRouter } from 'vue-router';
+import { useI18n } from 'vue-i18n';
+import Pagination from '@/components/Pagination.vue';
+import { useWordStore } from '~/stores/wordStore';
 
 const router = useRouter();
 const store = useWordStore();
-const searchLocal = ref("");
+const { t } = useI18n();
+
+const searchLocal = ref('');
+
+// petit helper pour le compteur
+const itemsLength = computed(() => (Array.isArray(store.items) ? store.items.length : 0));
 
 // Liste filtrée en fonction de la recherche
 const filteredWords = computed(() => {
+  const items = Array.isArray(store.items) ? store.items : [];
   const q = searchLocal.value.trim().toLowerCase();
-  if (!q) return store.items;
 
-  return store.items.filter((word) => {
-    const singular = (word.singular || "").toLowerCase();
-    const plural = (word.plural || "").toLowerCase();
-    const fr = (word.translation_fr || "").toLowerCase();
-    const en = (word.translation_en || "").toLowerCase();
+  if (!q) return items;
+
+  return items.filter((word) => {
+    const singular = (word.singular || '').toLowerCase();
+    const plural = (word.plural || '').toLowerCase();
+    const fr = (word.translation_fr || '').toLowerCase();
+    const en = (word.translation_en || '').toLowerCase();
 
     return (
       singular.includes(q) ||
@@ -199,30 +210,31 @@ const filteredWords = computed(() => {
   });
 });
 
+// Pagination appliquée à la liste filtrée
+const paginatedWords = computed(() => {
+  const start = (store.page - 1) * store.pageSize;
+  return filteredWords.value.slice(start, start + store.pageSize);
+});
+
+// Nombre de pages sur la liste filtrée
+const totalPages = computed(() => {
+  const total = filteredWords.value.length || 0;
+  if (!total) return 1;
+  return Math.ceil(total / store.pageSize);
+});
 
 const goToDetails = (slug) => {
   if (!slug) {
-    console.error("Erreur : slug manquant pour la redirection.");
+    console.error('Erreur : slug manquant pour la redirection.');
     return;
   }
   router.push(`/details/word/${slug}`);
 };
 
 const truncateText = (text, limit = 80) => {
-  if (!text) return "";
-  return text.length > limit ? text.slice(0, limit) + "…" : text;
+  if (!text) return '';
+  return text.length > limit ? text.slice(0, limit) + '…' : text;
 };
-// Pagination appliquée à la liste filtrée
-const paginatedFilteredWords = computed(() => {
-  const start = (store.page - 1) * store.pageSize;
-  return filteredWords.value.slice(start, start + store.pageSize);
-});
-
-// Nombre de pages sur la liste filtrée
-const totalFilteredPages = computed(() => {
-  if (!filteredWords.value.length) return 1;
-  return Math.ceil(filteredWords.value.length / store.pageSize);
-});
 
 // Chargement initial (client side, SSR-safe)
 onMounted(() => {
@@ -231,6 +243,7 @@ onMounted(() => {
   }
 });
 </script>
+
 <style scoped>
 .word-list {
   display: flex;
@@ -248,168 +261,28 @@ onMounted(() => {
 .word-list__title {
   font-size: 1.35rem;
   font-weight: 650;
-  color: var(--text-default, #111827);
+  color: var(--text-default); /* ✅ thème */
 }
 
 .word-list__subtitle {
   font-size: 0.98rem;
-  /* ✅ contraste renforcé */
-  color: #ecedee;
+  color: var(--text-muted); /* ✅ thème */
   max-width: 46rem;
 }
 
 .word-list__count {
   margin-left: auto;
   font-size: 0.9rem;
-  color: var(--muted-text, #c9d0d9);
+  color: var(--text-muted); /* ✅ thème */
 }
 
-/* États */
-.word-list__status,
-.word-list__empty {
-  padding: 0.9rem 1rem;
-  border-radius: 0.75rem;
-  background: #eef2ff;
-  border: 1px solid rgba(79, 70, 229, 0.4);
-  font-size: 0.95rem;
-  color: #111827;
-}
-
-.word-list__error {
-  padding: 0.9rem 1rem;
-  border-radius: 0.75rem;
-  background: #fef2f2;
-  border: 1px solid rgba(248, 113, 113, 0.7);
-  font-size: 0.95rem;
-  color: #991b1b;
-}
-
-/* Table */
-.word-list__table-wrapper {
-  border-radius: 0.9rem;
-  border: 1px solid rgba(148, 163, 184, 0.4);
-  background: #ffffff; /* fond clair */
-  overflow: hidden;
-}
-
-.word-list__table {
-  width: 100%;
-  border-collapse: collapse;
-  font-size: 0.95rem;
-}
-
-.word-list__caption {
-  text-align: left;
-  padding: 0.7rem 1rem;
-  font-size: 0.82rem;
-  color: var(--muted-text, #6b7280);
-  border-bottom: 1px solid rgba(148, 163, 184, 0.35);
-  background: #f9fafb;
-}
-
-.word-list__table thead {
-  background: #f3f4f6;
-}
-
-.word-list__table th {
-  padding: 0.6rem 1rem;
-  text-align: left;
-  font-weight: 600;
-  font-size: 0.85rem;
-  color: var(--muted-text, #374151);
-  border-bottom: 1px solid rgba(148, 163, 184, 0.4);
-}
-
-/* Lignes + cellules */
-.word-list__cell {
-  padding: 0.55rem 1rem;
-  border-bottom: 1px solid rgba(148, 163, 184, 0.25);
-  vertical-align: middle;
-  color: var(--text-default, #111827);
-  font-size: 0.95rem;
-}
-
-.word-list__row {
-  cursor: pointer;
-  transition:
-    background-color 0.15s ease,
-    transform 0.08s ease;
-}
-
-.word-list__row:hover {
-  background-color: rgba(37, 99, 235, 0.04);
-  transform: translateY(-1px);
-}
-
-/* Colonnes spécifiques + code couleur */
-.word-list__cell--singular {
-  font-weight: 600;
-}
-
-/* Mot (colonne 1) → bleu primaire */
-.word-list__cell--singular .word-list__singular {
-  color: var(--primary, #0d6efd);
-}
-
-/* Pluriel (colonne 2) → violet doux */
-.word-list__cell--plural {
-  font-weight: 600;
-
-  color: #08439c;
-}
-
-/* Phonétique (colonne 3) → monospace + bleu gris */
-.word-list__cell--phonetic {
-  font-family: "Fira Code", Menlo, ui-monospace, SFMono-Regular, monospace;
-  font-size: 0.9rem;
-   color: #383839;
-
-}
-
-.word-list__phonetic {
-  white-space: nowrap;
-}
-
-/* Placeholder */
-.word-list__placeholder {
-  color: #9ca3af;
-}
-
-/* Traductions : FR = vert, EN = ambré */
-.word-list__translation {
-  color: #111827;
-}
-
-/* 4ᵉ colonne (Français) */
-.word-list__table tbody td:nth-child(4) .word-list__translation {
-  color: #047857; /* vert profond */
-}
-
-/* 5ᵉ colonne (Anglais) */
-.word-list__table tbody td:nth-child(5) .word-list__translation {
-  color: #b45309; /* amber / orange discret */
-}
-
-/* Pagination */
-.word-list__pagination {
-  margin-top: 1rem;
-}
-
-/* Responsive simple (on garde le tableau mais plus compact) */
-@media (max-width: 640px) {
-  .word-list__table {
-    font-size: 0.9rem;
-  }
-
-  .word-list__table th,
-  .word-list__cell {
-    padding: 0.45rem 0.6rem;
-  }
-}
 /* Barre de recherche (cohérente avec ExpressionList) */
 .word-list__toolbar {
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
 }
 
 .word-list__search {
@@ -420,18 +293,166 @@ onMounted(() => {
 
 .word-list__search-label {
   font-size: 0.78rem;
-  color: #6b7280;
+  color: var(--text-muted); /* ✅ thème */
 }
 
 .word-list__search-input {
-  min-width: 230px;
-  padding: 0.4rem 0.7rem;
+  width: 400px;
+  max-width: 100%;
+  padding: 0.45rem 0.85rem;
   border-radius: 999px;
-  border: 1px solid rgba(148, 163, 184, 0.8);
+  border: 1px solid var(--border-subtle); /* ✅ thème */
   font-size: 0.9rem;
+  color: var(--text-default);             /* ✅ thème */
+  background: var(--surface-elevated);    /* ✅ thème */
 }
 
+/* États */
+.word-list__status,
+.word-list__empty,
+.word-list__error {
+  padding: 0.9rem 1rem;
+  border-radius: 0.75rem;
+  font-size: 0.95rem;
+}
+
+/* info (chargement) */
+.word-list__status {
+  background: rgba(13, 110, 253, 0.12);
+  border: 1px solid rgba(13, 110, 253, 0.35);
+  color: var(--primary);
+}
+
+/* vide */
+.word-list__empty {
+  background: rgba(148, 163, 184, 0.16);
+  border: 1px solid rgba(148, 163, 184, 0.4);
+  color: var(--text-muted);
+}
+
+/* erreur */
+.word-list__error {
+  background: rgba(248, 113, 113, 0.16);
+  border: 1px solid rgba(248, 113, 113, 0.6);
+  color: #b91c1c;
+}
+
+/* Table */
+.word-list__table-wrapper {
+  border-radius: 0.9rem;
+  border: 1px solid var(--border-subtle);     /* ✅ thème */
+  background: var(--surface-elevated);        /* ✅ thème */
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+.word-list__table {
+  width: 100%;
+  min-width: 900px;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+  background: transparent;
+}
+
+.word-list__caption {
+  text-align: center;
+  padding: 0.7rem 1rem;
+  font-size: 0.82rem;
+  color: var(--text-muted);                    /* ✅ thème */
+  border-bottom: 1px solid var(--border-subtle);
+  background: var(--surface-default);          /* ✅ thème */
+}
+
+.word-list__table thead {
+  background: rgba(148, 163, 184, 0.16);       /* neutre, OK light/dark */
+}
+
+.word-list__table th {
+  padding: 0.6rem 1rem;
+  text-align: left;
+  font-weight: 600;
+  font-size: 0.85rem;
+  color: var(--text-muted);                    /* ✅ thème */
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+/* Lignes + cellules */
+.word-list__cell {
+  padding: 0.55rem 1rem;
+  border-bottom: 1px solid rgba(148, 163, 184, 0.25);
+  vertical-align: top;
+  color: var(--text-default);                  /* ✅ thème */
+  font-size: 0.95rem;
+  word-break: break-word;
+  white-space: normal;
+}
+
+.word-list__row {
+  cursor: pointer;
+  transition:
+    background-color 0.15s ease,
+    transform 0.08s ease;
+}
+
+.word-list__row:hover {
+  background-color: rgba(37, 99, 235, 0.06);
+  transform: translateY(-1px);
+}
+
+/* Colonnes spécifiques + code couleur */
+.word-list__cell--singular {
+  font-weight: 600;
+}
+
+.word-list__cell--singular .word-list__singular {
+  color: var(--primary); /* ✅ thème */
+}
+
+.word-list__cell--plural {
+  font-weight: 600;
+  color: var(--primary); /* ✅ même logique que le singulier, thème-friendly */
+}
+
+.word-list__cell--phonetic {
+  font-family: "Fira Code", Menlo, ui-monospace, SFMono-Regular, monospace;
+  font-size: 0.9rem;
+  color: var(--text-default); /* ✅ au lieu de gris fixe */
+}
+
+.word-list__placeholder {
+  color: #9ca3af;
+}
+
+.word-list__translation {
+  color: var(--text-default);
+}
+
+/* 4ᵉ colonne (Français) */
+.word-list__table tbody td:nth-child(4) .word-list__translation {
+  color: #047857;
+}
+
+/* 5ᵉ colonne (Anglais) */
+.word-list__table tbody td:nth-child(5) .word-list__translation {
+  color: #b45309;
+}
+
+/* Pagination */
+.word-list__pagination {
+  margin-top: 1rem;
+}
+
+/* Responsive */
 @media (max-width: 640px) {
+  .word-list__table {
+    font-size: 0.9rem;
+  }
+
+  .word-list__table th,
+  .word-list__cell {
+    padding: 0.45rem 0.6rem;
+  }
+
   .word-list__toolbar {
     justify-content: stretch;
   }
@@ -442,4 +463,24 @@ onMounted(() => {
   }
 }
 
+/* Bouton "vue cartes" */
+.word-list__view-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.85rem;
+  padding: 0.35rem 0.85rem;
+  border-radius: 999px;
+  border: 1px solid var(--border-subtle);      /* ✅ thème */
+  text-decoration: none;
+  background: var(--surface-elevated);         /* ✅ thème */
+  color: var(--primary);
+  white-space: nowrap;
+}
+
+.word-list__view-link:hover {
+  background: rgba(13, 110, 253, 0.06);
+  border-color: var(--primary);
+}
 </style>
+

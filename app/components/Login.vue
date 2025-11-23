@@ -1,103 +1,142 @@
 <template>
-  <div class="login-container">
-    <h1>Connexion</h1>
-    <form @submit.prevent="login" class="login-form">
+  <main
+    class="login-container"
+    aria-labelledby="login-title"
+    aria-busy="false"
+  >
+    <h1 id="login-title">Connexion</h1>
+
+    <form
+      @submit.prevent="login"
+      class="login-form"
+      novalidate
+    >
       <div class="form-group">
-        <label>Email</label>
+        <label for="login-identifier">Email ou nom d'utilisateur</label>
         <input
-          v-model="email"
-          type="email"
+          id="login-identifier"
+          v-model="identifier"
+          type="text"
           required
-          placeholder="Entrez votre email"
+          autocomplete="username"
+          placeholder="Entrez votre email ou nom d'utilisateur"
         />
       </div>
 
       <div class="form-group">
-        <label>Mot de passe</label>
+        <label for="login-password">Mot de passe</label>
         <div class="password-wrapper">
           <input
+            id="login-password"
             v-model="password"
             :type="showPassword ? 'text' : 'password'"
             required
+            autocomplete="current-password"
             placeholder="Entrez votre mot de passe"
+            :aria-invalid="error ? 'true' : 'false'"
+            :aria-describedby="error ? 'login-error' : undefined"
           />
-          <button type="button" class="toggle-password" @click="togglePassword">
+          <button
+            type="button"
+            class="toggle-password"
+            @click="togglePassword"
+            :aria-pressed="showPassword ? 'true' : 'false'"
+            :aria-label="showPassword ? 'Cacher le mot de passe' : 'Afficher le mot de passe'"
+          >
             {{ showPassword ? "Cacher" : "Voir" }}
           </button>
         </div>
       </div>
 
       <div class="form-group">
-        <button type="submit" class="btn btn-primary" :disabled="isLoading">
+        <button
+          type="submit"
+          class="btn btn-primary"
+          :disabled="isLoading"
+        >
           {{ isLoading ? "Connexion..." : "Connexion" }}
         </button>
       </div>
 
-      <div v-if="error" class="error">{{ error }}</div>
+      <div
+        v-if="error"
+        id="login-error"
+        class="error"
+        role="alert"
+        aria-live="assertive"
+      >
+        {{ error }}
+      </div>
 
       <div class="form-links">
-        <nuxt-link to="/register">Créer un compte</nuxt-link> |
+        <nuxt-link to="/register">Créer un compte</nuxt-link>
+        |
         <nuxt-link to="/forgot-password">Mot de passe oublié ?</nuxt-link>
       </div>
     </form>
-  </div>
+  </main>
 </template>
 
 <script setup>
-import { ref } from "vue";
+import { ref, computed } from "vue";
 import { useRouter } from "vue-router";
 import { useAuthStore } from "~/stores/authStore";
 
-const email = ref("");
+const identifier = ref(""); // email OU username
 const password = ref("");
 const showPassword = ref(false);
-const isLoading = ref(false);
 const error = ref("");
+
 const router = useRouter();
 const authStore = useAuthStore();
+
+// on réutilise l'état "pending" du store
+const isLoading = computed(() => authStore.pending);
+
 const login = async () => {
-  error.value = ""; // Réinitialiser les erreurs
-  isLoading.value = true;
+  error.value = "";
+
+  const trimmedIdentifier = identifier.value.trim();
+  if (!trimmedIdentifier || !password.value) {
+    error.value = "Veuillez remplir tous les champs.";
+    return;
+  }
 
   try {
-    // Effectuer la requête de connexion
-    const response = await fetch("/api/login", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      credentials: "include", // Important pour transmettre les cookies
-      body: JSON.stringify({ email: email.value, password: password.value }),
+    const { ok, error: loginError } = await authStore.login({
+      identifier: trimmedIdentifier,
+      password: password.value,
     });
 
-    if (!response.ok) {
-      throw new Error(`Erreur HTTP ${response.status}: ${response.statusText}`);
+    if (!ok) {
+      error.value =
+        loginError ||
+        authStore.error ||
+        "Échec de la connexion. Veuillez vérifier vos identifiants.";
+      return;
     }
 
-    const result = await response.json();
+    // Redirection dynamique
+    const currentRoute = router.currentRoute.value;
+    const redirectPath = currentRoute?.query?.redirect || null;
 
-    if (result.token) {
-      authStore.login(result.token);
+    if (redirectPath) {
+      await router.push(redirectPath);
+      return;
+    }
 
-      // Gérer une redirection dynamique si elle existe dans l'URL
-      const redirectPath = router.currentRoute.value.query.redirect || null;
-
-      if (redirectPath) {
-        router.push(redirectPath);
-      } else if (authStore.userRole.includes("admin")) {
-        router.push("/admin");
-      } else if (authStore.userRole.includes("contributor")) {
-        router.push("/contributor");
-      } else {
-        router.push("/user");
-      }
+    // Utilise les getters de rôles du store
+    if (authStore.hasRole("admin")) {
+      await router.push("/admin");
+    } else if (authStore.hasRole("contributor")) {
+      await router.push("/contributor");
     } else {
-      error.value = result.error || "Erreur inconnue.";
+      await router.push("/user");
     }
   } catch (err) {
     console.error("Erreur lors de la tentative de connexion :", err);
     error.value =
-      err.message || "Une erreur est survenue lors de la connexion.";
-  } finally {
-    isLoading.value = false;
+      err?.message || "Une erreur est survenue lors de la connexion.";
   }
 };
 
@@ -105,7 +144,6 @@ const togglePassword = () => {
   showPassword.value = !showPassword.value;
 };
 </script>
-
 
 <style scoped>
 .login-container {

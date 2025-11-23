@@ -3,17 +3,15 @@
     <!-- Hero pédagogique -->
     <header class="page-verbs__hero">
       <p class="page-verbs__eyebrow">
-        Liste des verbes en Kikongo
+        {{ t('verbs.page.eyebrow') }}
       </p>
 
       <div class="page-verbs__title-block">
         <h1 id="page-verbs-title" class="page-verbs__title">
-          Liste des Verbes
+          {{ t('verbs.page.title') }}
         </h1>
         <p class="page-verbs__subtitle">
-          Explorez les verbes en Kikongo avec leur phonétique et leurs traductions
-          en français et en anglais. Idéal pour l&apos;apprentissage, la révision
-          et la préparation de supports pédagogiques.
+          {{ t('verbs.page.subtitle') }}
         </p>
       </div>
     </header>
@@ -27,16 +25,14 @@
     <section class="page-verbs__cta" aria-label="Contribuer au dictionnaire">
       <div class="page-verbs__cta-inner">
         <h2 class="page-verbs__cta-title">
-          Vous ne trouvez pas le verbe que vous cherchez&nbsp;?
+          {{ t('verbs.page.ctaTitle') }}
         </h2>
         <p class="page-verbs__cta-text">
-          Contribuez à enrichir le lexique en proposant de nouveaux verbes en Kikongo,
-          avec leurs traductions et exemples d&apos;usage. Chaque contribution aide
-          la communauté à mieux apprendre et transmettre la langue.
+          {{ t('verbs.page.ctaText') }}
         </p>
         <NuxtLink to="/contributor" class="page-verbs__cta-button">
           <i class="fas fa-hands-helping" aria-hidden="true"></i>
-          <span>Devenir contributeur</span>
+          <span>{{ t('verbs.page.ctaButton') }}</span>
         </NuxtLink>
       </div>
     </section>
@@ -44,19 +40,79 @@
 </template>
 
 <script setup>
-import VerbList from "@/components/VerbList.vue";
-import { useSeoMeta } from "#imports";
+import VerbList from '@/components/VerbList.vue';
+import { useSeoMeta, useHead } from '#imports';
+import { useI18n } from 'vue-i18n';
+
+const { t } = useI18n();
+
+// SEO basés sur i18n avec fallback FR si la clé manque
+const seoTitle =
+  t('verbs.meta.title') ||
+  'Liste des verbes en Kikongo – Lexikongo';
+const seoDescription =
+  t('verbs.meta.description') ||
+  'Découvrez la liste des verbes en Kikongo avec leur phonétique et leurs traductions en français et en anglais. Outil idéal pour apprendre et enseigner la langue.';
 
 useSeoMeta({
-  title: "Liste des verbes en Kikongo – Lexikongo",
+  title: seoTitle,
+  description: seoDescription,
+  ogTitle: seoTitle,
+  ogDescription: seoDescription,
+  ogType: 'website',
+  ogUrl: 'https://www.lexikongo.fr/verbs',
+  ogSiteName: 'Lexikongo',
+});
+
+// JSON-LD + canonical
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'WebPage',
+  name: 'Liste des verbes en Kikongo | Lexikongo',
   description:
-    "Découvrez la liste des verbes en Kikongo avec leur phonétique et leurs traductions en français et en anglais. Outil idéal pour apprendre et enseigner la langue.",
-  ogTitle: "Liste des verbes en Kikongo – Lexikongo",
-  ogDescription:
-    "Parcourez les verbes en Kikongo, leur prononciation et leurs traductions. Un dictionnaire en ligne pensé pour l’apprentissage et la pédagogie.",
-  ogType: "website",
-  ogUrl: "https://www.lexikongo.fr/verbs",
-  ogSiteName: "Lexikongo",
+    'Explorez la liste des verbes en Kikongo avec leurs traductions en français et en anglais, ainsi que leur phonétique.',
+  url: 'https://www.lexikongo.fr/verbs',
+  inLanguage: 'fr',
+  image: 'https://www.lexikongo.fr/images/text_logo@1x.webp',
+  publisher: {
+    '@type': 'Organization',
+    name: 'Lexikongo',
+    url: 'https://www.lexikongo.fr',
+    logo: {
+      '@type': 'ImageObject',
+      url: 'https://www.lexikongo.fr/images/text_logo@1x.webp',
+      width: 200,
+      height: 200,
+    },
+  },
+  about: {
+    '@type': 'Thing',
+    name: 'Kikongo Language',
+    sameAs: [
+      'https://en.wikipedia.org/wiki/Kikongo',
+      'https://fr.wikipedia.org/wiki/Kikongo',
+    ],
+  },
+  potentialAction: {
+    '@type': 'SearchAction',
+    target: 'https://www.lexikongo.fr/search?q={search_term_string}',
+    'query-input': 'required name=search_term_string',
+  },
+};
+
+useHead({
+  link: [
+    {
+      rel: 'canonical',
+      href: 'https://www.lexikongo.fr/verbs',
+    },
+  ],
+  script: [
+    {
+      type: 'application/ld+json',
+      children: JSON.stringify(jsonLd),
+    },
+  ],
 });
 </script>
 

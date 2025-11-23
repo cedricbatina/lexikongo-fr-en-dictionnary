@@ -56,7 +56,7 @@ export default defineNuxtConfig({
     // publiques (exposées au client)
     public: {
       siteUrl:
-        process.env.NUXT_PUBLIC_SITE_URL || "https://lexikongo.example.com",
+        process.env.NUXT_PUBLIC_SITE_URL || "https://lexikongo.fr",
       siteName: process.env.NUXT_PUBLIC_SITE_NAME || "Lexikongo",
       siteDescription:
         process.env.NUXT_PUBLIC_SITE_DESC ||

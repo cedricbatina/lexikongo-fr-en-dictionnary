@@ -11,9 +11,10 @@
         </p>
       </div>
 
-      <p v-if="store.count" class="verb-list__count">
-        {{ store.count }} verbe<span v-if="store.count > 1">s</span> en base
-      </p>
+   <p v-if="store.items && store.items.length" class="verb-list__count">
+  {{ store.items.length }} verbe<span v-if="store.items.length > 1">s</span> en base
+</p>
+
     </header>
 
     <!-- État : chargement -->

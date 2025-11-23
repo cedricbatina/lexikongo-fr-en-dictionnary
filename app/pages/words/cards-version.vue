@@ -127,50 +127,6 @@ import { useWordStore } from '~/stores/wordStore';
 const router = useRouter();
 const store = useWordStore();
 
-
-const searchLocal = ref("");
-
-// Liste filtrée en fonction de la recherche
-const filteredWords = computed(() => {
-  const items = Array.isArray(store.items) ? store.items : [];
-  const q = searchLocal.value.trim().toLowerCase();
-
-  if (!q) return items;
-
-  return items.filter((word) => {
-    const singular = (word.singular || "").toLowerCase();
-    const plural = (word.plural || "").toLowerCase();
-    const fr = (word.translation_fr || "").toLowerCase();
-    const en = (word.translation_en || "").toLowerCase();
-
-    return (
-      singular.includes(q) ||
-      plural.includes(q) ||
-      fr.includes(q) ||
-      en.includes(q)
-    );
-  });
-});
-
-// 🔑 reset la pagination quand on modifie la recherche
-watch(searchLocal, () => {
-  store.page = 1;
-});
-
-// Pagination appliquée à la liste filtrée
-const paginatedWords = computed(() => {
-  const start = (store.page - 1) * store.pageSize;
-  return filteredWords.value.slice(start, start + store.pageSize);
-});
-
-const totalPages = computed(() => {
-  const total = filteredWords.value.length || 0;
-  if (!total) return 1;
-  return Math.ceil(total / store.pageSize);
-});
-
-
-
 const goToDetails = (slug) => {
   if (!slug) {
     console.error('Erreur : Slug manquant pour la redirection.');

@@ -1,21 +1,51 @@
 <template>
   <section class="verb-list" aria-labelledby="verb-list-heading">
-    <header class="verb-list__header">
+    <!-- Header -->
+     <header class="verb-list__header">
+ <!--   
       <div>
         <h2 id="verb-list-heading" class="verb-list__title">
-          Liste des verbes
+          {{ t('verbs.list.title') }}
         </h2>
         <p class="verb-list__subtitle">
-          Explorez les verbes en Kikongo, avec la particule
-          <span class="verb-list__ku-inline">ku</span> de l&apos;infinitif,
-          leur phonétique et leurs traductions.
+          {{ t('verbs.list.subtitle.prefix') }}
+          <span class="verb-list__ku-inline">ku</span>
+          {{ t('verbs.list.subtitle.suffix') }}
         </p>
-      </div>
+      </div>-->
 
-      <p v-if="store.items.length" class="verb-list__count">
-        {{ store.items.length }} verbe<span v-if="store.items.length > 1">s</span> en base
+      <p
+        v-if="itemsLength"
+        class="verb-list__count"
+      >
+        {{ t('verbs.list.count', itemsLength) }}
       </p>
     </header>
+
+    <!-- Barre de recherche + switch cartes -->
+    <div class="verb-list__toolbar">
+      <div class="verb-list__search">
+        <label class="verb-list__search-label" for="verb-search">
+          {{ t('verbs.list.searchLabel') }}
+        </label>
+        <input
+          id="verb-search"
+          v-model="searchLocal"
+          type="search"
+          class="verb-list__search-input"
+          :placeholder="t('verbs.list.searchPlaceholder')"
+        />
+      </div>
+
+      <NuxtLink
+        to="/verblist-card"
+        class="verb-list__view-link"
+        :aria-label="t('verbs.list.viewCardsAria')"
+      >
+        <i class="fas fa-th-large" aria-hidden="true"></i>
+        <span>{{ t('verbs.list.viewCards') }}</span>
+      </NuxtLink>
+    </div>
 
     <!-- État : chargement -->
     <div
@@ -24,7 +54,7 @@
       role="status"
       aria-live="polite"
     >
-      Chargement des verbes...
+      {{ t('verbs.list.loading') }}
     </div>
 
     <!-- État : erreur -->
@@ -38,11 +68,11 @@
 
     <!-- État : vide -->
     <p
-      v-else-if="!store.paginatedVerbs.length"
+      v-else-if="!paginatedVerbs.length"
       class="verb-list__empty"
       aria-live="polite"
     >
-      Aucun verbe trouvé pour le moment.
+      {{ t('verbs.list.empty') }}
     </p>
 
     <!-- Tableau des verbes -->
@@ -55,36 +85,48 @@
         role="table"
         aria-describedby="verb-list-caption"
       >
-        <caption id="verb-list-caption" class="verb-list__caption">
-          Chaque ligne présente un verbe en Kikongo à l&apos;infinitif,
-          sa transcription phonétique et ses traductions en français et en anglais.
+        <!-- Largeurs de colonnes -->
+        <colgroup>
+          <col style="width: 22%;" />
+          <col style="width: 18%;" />
+          <col style="width: 30%;" />
+          <col style="width: 30%;" />
+        </colgroup>
+
+        <caption
+          id="verb-list-caption"
+          class="verb-list__caption"
+        >
+          {{ t('verbs.list.caption') }}
         </caption>
 
         <thead>
           <tr>
-            <th scope="col">Verbe</th>
-            <th scope="col">Phonétique</th>
-            <th scope="col">Français</th>
-            <th scope="col">Anglais</th>
+            <th scope="col">{{ t('verbs.list.column.verb') }}</th>
+            <th scope="col">{{ t('verbs.list.column.phonetic') }}</th>
+            <th scope="col">{{ t('verbs.list.column.fr') }}</th>
+            <th scope="col">{{ t('verbs.list.column.en') }}</th>
           </tr>
         </thead>
 
         <tbody>
           <tr
-            v-for="verb in store.paginatedVerbs"
-            :key="verb.slug"
+            v-for="verb in paginatedVerbs"
+            :key="verb.slug || verb.id"
             class="verb-list__row"
             @click="goToDetails(verb.slug)"
             role="button"
-            :aria-label="`Voir la fiche du verbe ku ${verb.singular}`"
+            :aria-label="t('verbs.list.rowAria', { verb: verb.singular || '' })"
           >
+            <!-- Verbe (ku + infinitif) -->
             <td class="verb-list__cell verb-list__cell--verb">
               <span class="verb-list__ku">ku</span>
               <span class="verb-list__infinitive">
-                {{ verb.singular }}
+                {{ verb.singular || '—' }}
               </span>
             </td>
 
+            <!-- Phonétique -->
             <td class="verb-list__cell verb-list__cell--phonetic">
               <span v-if="verb.phonetic" class="verb-list__phonetic">
                 {{ verb.phonetic }}
@@ -92,15 +134,17 @@
               <span v-else class="verb-list__placeholder">—</span>
             </td>
 
+            <!-- Français -->
             <td class="verb-list__cell">
               <span class="verb-list__translation">
-                {{ truncateText(verb.translation_fr, 80) || "—" }}
+                {{ truncateText(verb.translation_fr, 80) || '—' }}
               </span>
             </td>
 
+            <!-- Anglais -->
             <td class="verb-list__cell">
               <span class="verb-list__translation">
-                {{ truncateText(verb.translation_en, 80) || "—" }}
+                {{ truncateText(verb.translation_en, 80) || '—' }}
               </span>
             </td>
           </tr>
@@ -110,12 +154,12 @@
 
     <!-- Pagination -->
     <div
-      v-if="store.totalPages > 1"
+      v-if="totalPages > 1"
       class="verb-list__pagination"
     >
       <Pagination
         :currentPage="store.page"
-        :totalPages="store.totalPages"
+        :totalPages="totalPages"
         @pageChange="store.setPage"
       />
     </div>
@@ -123,28 +167,76 @@
 </template>
 
 <script setup>
-import { onMounted } from "vue";
-import { useRouter } from "vue-router";
-import Pagination from "@/components/Pagination.vue";
-import { useVerbStore } from "~/stores/verbStore";
+import { ref, computed, onMounted, watch } from 'vue';
+import { useRouter } from 'vue-router';
+import { useI18n } from 'vue-i18n';
+import Pagination from '@/components/Pagination.vue';
+import { useVerbStore } from '~/stores/verbStore';
 
 const router = useRouter();
 const store = useVerbStore();
+const { t } = useI18n();
+
+const searchLocal = ref('');
+
+// helper pour le compteur (évite les erreurs si items = null)
+const itemsLength = computed(() =>
+  Array.isArray(store.items) ? store.items.length : 0
+);
+
+// liste filtrée selon la recherche
+const filteredVerbs = computed(() => {
+  const items = Array.isArray(store.items) ? store.items : [];
+  const q = searchLocal.value.trim().toLowerCase();
+  if (!q) return items;
+
+  return items.filter((verb) => {
+    const singular = (verb.singular || '').toLowerCase();
+    const phonetic = (verb.phonetic || '').toLowerCase();
+    const fr = (verb.translation_fr || '').toLowerCase();
+    const en = (verb.translation_en || '').toLowerCase();
+
+    return (
+      singular.includes(q) ||
+      phonetic.includes(q) ||
+      fr.includes(q) ||
+      en.includes(q)
+    );
+  });
+});
+
+// reset pagination quand on modifie la recherche
+watch(searchLocal, () => {
+  store.page = 1;
+});
+
+// pagination appliquée à la liste filtrée
+const paginatedVerbs = computed(() => {
+  const start = (store.page - 1) * store.pageSize;
+  return filteredVerbs.value.slice(start, start + store.pageSize);
+});
+
+// nombre de pages sur la liste filtrée
+const totalPages = computed(() => {
+  const total = filteredVerbs.value.length || 0;
+  if (!total) return 1;
+  return Math.ceil(total / store.pageSize);
+});
 
 const goToDetails = (slug) => {
   if (!slug) {
-    console.error("Erreur : slug manquant pour la redirection.");
+    console.error('Erreur : slug manquant pour la redirection.');
     return;
   }
   router.push(`/details/verb/${slug}`);
 };
 
 const truncateText = (text, limit = 80) => {
-  if (!text) return "";
-  return text.length > limit ? text.slice(0, limit) + "…" : text;
+  if (!text) return '';
+  return text.length > limit ? text.slice(0, limit) + '…' : text;
 };
 
-// Chargement initial (client side, SSR-safe)
+// Chargement initial (SSR-safe)
 onMounted(() => {
   if (!store.items.length) {
     store.fetchAll();
@@ -169,73 +261,119 @@ onMounted(() => {
 .verb-list__title {
   font-size: 1.35rem;
   font-weight: 650;
-  color: var(--text-default, #111827);
+  color: var(--text-default);
 }
 
 .verb-list__subtitle {
   font-size: 0.98rem;
-  /* ✅ contraste renforcé */
-  color: #1f2937;
+  color: var(--text-muted);
   max-width: 46rem;
 }
 
 .verb-list__ku-inline {
   font-family: inherit;
   font-weight: 600;
-  color: var(--primary, #0d6efd);
+    color: #535559;
+
+
+  
 }
 
 .verb-list__count {
   margin-left: auto;
   font-size: 0.9rem;
-  color: var(--muted-text, #4b5563);
+  color: var(--text-muted);
+}
+
+/* Barre de recherche */
+.verb-list__toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.verb-list__search {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.verb-list__search-label {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+}
+
+.verb-list__search-input {
+  width: 400px;
+  max-width: 100%;
+  padding: 0.45rem 0.85rem;
+  border-radius: 999px;
+  border: 1px solid var(--border-subtle);
+  font-size: 0.9rem;
+  color: var(--text-default);
+  background: var(--surface-elevated);
 }
 
 /* États */
 .verb-list__status,
-.verb-list__empty {
-  padding: 0.9rem 1rem;
-  border-radius: 0.75rem;
-  background: #eef2ff;
-  border: 1px solid rgba(79, 70, 229, 0.4);
-  font-size: 0.95rem;
-  color: #111827;
-}
-
+.verb-list__empty,
 .verb-list__error {
   padding: 0.9rem 1rem;
   border-radius: 0.75rem;
-  background: #fef2f2;
-  border: 1px solid rgba(248, 113, 113, 0.7);
   font-size: 0.95rem;
-  color: #991b1b;
+}
+
+/* info (chargement) */
+.verb-list__status {
+  background: rgba(13, 110, 253, 0.12);
+  border: 1px solid rgba(13, 110, 253, 0.35);
+  color: var(--primary);
+}
+
+/* vide */
+.verb-list__empty {
+  background: rgba(148, 163, 184, 0.16);
+  border: 1px solid rgba(148, 163, 184, 0.4);
+  color: var(--text-muted);
+}
+
+/* erreur */
+.verb-list__error {
+  background: rgba(248, 113, 113, 0.16);
+  border: 1px solid rgba(248, 113, 113, 0.6);
+  color: #b91c1c;
 }
 
 /* Table */
 .verb-list__table-wrapper {
   border-radius: 0.9rem;
-  border: 1px solid rgba(148, 163, 184, 0.4);
-  background: #ffffff;
-  overflow: hidden;
+  border: 1px solid var(--border-subtle);
+  background: var(--surface-elevated);
+  overflow-x: auto;
+  overflow-y: hidden;
 }
 
 .verb-list__table {
   width: 100%;
   border-collapse: collapse;
   font-size: 0.95rem;
+  min-width: 900px;
+  background: transparent;
 }
 
 .verb-list__caption {
-  text-align: left;
+  text-align: center;
   padding: 0.7rem 1rem;
   font-size: 0.82rem;
-  color: var(--muted-text, #6b7280);
-  border-bottom: 1px solid rgba(148, 163, 184, 0.35);
-  background: #f9fafb;
+  color: var(--text-muted);
+  border-bottom: 1px solid var(--border-subtle);
+  background: var(--surface-default);
 }
 
 .verb-list__table thead {
-  background: #f3f4f6;
+  background: rgba(148, 163, 184, 0.16);
 }
 
 .verb-list__table th {
@@ -243,17 +381,19 @@ onMounted(() => {
   text-align: left;
   font-weight: 600;
   font-size: 0.85rem;
-  color: var(--muted-text, #374151);
-  border-bottom: 1px solid rgba(148, 163, 184, 0.4);
+  color: var(--text-muted);
+  border-bottom: 1px solid var(--border-subtle);
 }
 
 /* Lignes + cellules */
 .verb-list__cell {
   padding: 0.55rem 1rem;
   border-bottom: 1px solid rgba(148, 163, 184, 0.25);
-  vertical-align: middle;
-  color: var(--text-default, #111827);
+  vertical-align: top;
+  color: var(--text-default);
   font-size: 0.95rem;
+  word-break: break-word;
+  white-space: normal;
 }
 
 .verb-list__row {
@@ -264,7 +404,7 @@ onMounted(() => {
 }
 
 .verb-list__row:hover {
-  background-color: rgba(37, 99, 235, 0.04);
+  background-color: rgba(37, 99, 235, 0.06);
   transform: translateY(-1px);
 }
 
@@ -273,27 +413,26 @@ onMounted(() => {
   display: flex;
   align-items: baseline;
   gap: 0.4rem;
+  min-width: 180px;
 }
 
-/* "ku" infinitif → bleu primaire */
 .verb-list__ku {
   font-size: 0.8rem;
   font-weight: 500;
   text-transform: lowercase;
- 
+  color: var(--primary);
 }
 
-/* infinitif → bleu légèrement différent pour bien se détacher */
 .verb-list__infinitive {
   font-weight: 600;
-  color: #1d4ed8;
+ color: var(--primary);
 }
 
-/* Phonétique → monospace + bleu-gris */
+/* Phonétique */
 .verb-list__cell--phonetic {
   font-family: "Fira Code", Menlo, ui-monospace, SFMono-Regular, monospace;
   font-size: 0.9rem;
-  color: #383839;
+  color: var(--text-default);
 }
 
 .verb-list__phonetic {
@@ -302,20 +441,20 @@ onMounted(() => {
 
 /* Placeholder */
 .verb-list__placeholder {
-  color: #9ca3af;
+  color: #535559;
 }
 
-/* Traductions : FR = vert, EN = ambré */
+/* Traductions : FR = vert, EN = ambré (comme WordList) */
 .verb-list__translation {
-  color: #111827;
+  color: var(--text-default);
+  white-space: normal;
+  word-break: break-word;
 }
 
-/* 3ᵉ colonne (Français) */
 .verb-list__table tbody td:nth-child(3) .verb-list__translation {
   color: #047857;
 }
 
-/* 4ᵉ colonne (Anglais) */
 .verb-list__table tbody td:nth-child(4) .verb-list__translation {
   color: #b45309;
 }
@@ -325,15 +464,45 @@ onMounted(() => {
   margin-top: 1rem;
 }
 
-/* Responsive : tableau plus compact */
+/* Bouton "vue cartes" */
+.verb-list__view-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.85rem;
+  padding: 0.35rem 0.85rem;
+  border-radius: 999px;
+  border: 1px solid var(--border-subtle);
+  text-decoration: none;
+  background: var(--surface-elevated);
+  color: var(--primary);
+  white-space: nowrap;
+}
+
+.verb-list__view-link:hover {
+  background: rgba(13, 110, 253, 0.06);
+  border-color: var(--primary);
+}
+
+/* Responsive */
 @media (max-width: 640px) {
   .verb-list__table {
     font-size: 0.9rem;
+    min-width: 640px;
   }
 
   .verb-list__table th,
   .verb-list__cell {
     padding: 0.45rem 0.6rem;
+  }
+
+  .verb-list__toolbar {
+    justify-content: stretch;
+  }
+
+  .verb-list__search-input {
+    width: 100%;
+    min-width: 0;
   }
 }
 </style>

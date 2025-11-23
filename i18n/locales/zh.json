@@ -1,2 +1,226 @@
-{}
+{
+  "app.name": "Lexikongo — Kikongo 词典",
+  "app.tagline": "Kikongo · 法语 · 英语 · 音标",
+
+  "home.title": "Lexikongo — Kikongo 词典",
+  "home.description": "在线 Kikongo 词典：单词、动词和表达，附法语和英语翻译，以及发音和音标。",
+  "home.keywords": "lexikongo, kikongo 词典, kikongo 法语, kikongo 英语, kikongo 词汇, kikongo 音标",
+
+  "layout.contact.phone": "电话",
+  "layout.contact.email": "电子邮箱",
+
+  "nav.home": "首页",
+  "nav.verbs": "动词",
+  "nav.words": "单词",
+  "nav.expressions": "表达",
+  "nav.login": "登录",
+  "nav.logout": "退出登录",
+  "nav.profile": "我的资料",
+  "nav.dashboard": "控制面板",
+  "nav.contributor": "贡献者专区",
+  "nav.admin": "后台管理",
+  "nav.profileTitle": "查看我的资料",
+  "nav.connectedAs": "当前登录为",
+  "nav.openMenu": "打开菜单",
+  "nav.closeMenu": "关闭菜单",
+  "nav.contribute": "参与贡献",
+
+  "verbs.index.title": "Kikongo 动词",
+  "verbs.index.description": "Kikongo 动词列表，包含法语和英语翻译以及音标转写。",
+  "verbs.index.keywords": "kikongo 动词, kikongo 变位, 动词词典",
+
+  "verbs.detail.title": "Kikongo 动词：{verb}",
+  "verbs.detail.description": "Kikongo 动词「{verb}」的释义、例句以及法语和英语翻译。",
+  "verbs.detail.keywords": "kikongo 动词 {verb}, kikongo 词典, kikongo 变位",
+
+  "words.index.title": "Kikongo 单词",
+  "words.index.description": "Kikongo 词汇表：单词、释义、法语和英语翻译以及音标。",
+  "words.index.keywords": "kikongo 单词, kikongo 词汇, kikongo 词汇表",
+
+  "words.detail.title": "Kikongo 单词：{word}",
+  "words.detail.description": "Kikongo 单词「{word}」的释义以及法语和英语翻译。",
+  "words.detail.keywords": "kikongo 单词 {word}, kikongo 词典, kikongo 词汇",
+
+  "expressions.index.title": "Kikongo 表达",
+  "expressions.index.description": "Kikongo 中的惯用语和实用短语，附法语和英语翻译。",
+  "expressions.index.keywords": "kikongo 表达, kikongo 短语, kikongo 会话",
+
+  "login.title": "登录",
+  "login.description": "登录以管理个人资料并为词典做出贡献。",
+  "register.title": "注册",
+  "register.description": "创建账号，为 Lexikongo 词典做出贡献。",
+  "profile.title": "我的资料",
+  "profile.description": "查看并更新你的 Lexikongo 账号信息。",
+
+  "home": {
+    "hero": {
+      "badge": "Kikongo 词典 · FR · EN",
+      "subtitle": "Kikongo · 法语 · 英语词典，附音标。一个用于学习、探索并共同保护 Kikongo 语言遗产的活跃资源库。",
+      "ctaWords": "浏览单词",
+      "ctaVerbs": "探索动词",
+      "hintPrefix": "你也可以浏览",
+      "hintExpressions": "表达",
+      "hintSeparator": "或查看",
+      "hintDoc": "贡献者文档"
+    },
+    "cards": {
+      "contribute": {
+        "title": "参与完善词汇库",
+        "body": "添加新的单词、动词或表达，帮助社区丰富数据库。",
+        "link": "进入贡献者专区"
+      },
+      "login": {
+        "title": "登录",
+        "body": "查看你的控制面板、提交记录和贡献活动。",
+        "link": "登录"
+      }
+    },
+    "seo": {
+      "title": "Lexikongo — Kikongo · 法语 · 英语词典",
+      "description": "Lexikongo 是一部在线 Kikongo · 法语 · 英语词典，附音标。探索 Kikongo 单词、动词和表达，并为语言保护做出贡献。",
+      "ogTitle": "Lexikongo — 在线 Kikongo 词典",
+      "ogDescription": "一个用于发现、练习和传承 Kikongo 语言的现代资源：单词、动词、表达和音标。"
+    }
+
+  },
+    "words.list.title": "单词列表",
+  "words.list.subtitle": "浏览基孔戈语单词，包括复数形式、音标以及对应的法语和英语翻译。",
+  "words.list.count": "{n} 个词条 | {n} 个词条",
+  "words.list.searchLabel": "搜索单词",
+  "words.list.searchPlaceholder": "单词、复数形式、法语或英语翻译…",
+  "words.list.viewCards": "卡片视图",
+  "words.list.viewCardsAria": "以卡片形式显示单词",
+  "words.list.loading": "正在加载单词…",
+  "words.list.empty": "目前没有找到任何单词。",
+  "words.list.caption": "每一行展示一个基孔戈语单词（单数和复数）、其音标以及对应的法语和英语翻译。",
+  "words.list.column.singular": "单词",
+  "words.list.column.plural": "复数",
+  "words.list.column.phonetic": "音标",
+  "words.list.column.fr": "法语",
+  "words.list.column.en": "英语",
+  "words.list.rowAria": "查看单词 {word} 的详细信息",
+  "words.cards.titleSuffix": "– 卡片视图",
+"words.cards.viewTable": "表格视图",
+"words.cards.viewTableAria": "以表格形式显示单词",
+"words": {
+  "cards": {
+    "titleSuffix": "– 卡片视图",
+    "viewTable": "表格视图",
+    "viewTableAria": "以表格形式显示单词",
+    "viewDetails": "查看词条"
+  }
+}
+,
+
+  "verbs.list.title": "动词列表",
+  "verbs.list.subtitle.prefix": "浏览带有助词",
+  "verbs.list.subtitle.suffix": "的不定式基孔戈语动词，以及其发音和法语、英语翻译。",
+  "verbs.list.count": "数据库中有 {n} 个动词 | 数据库中有 {n} 个动词",
+  "verbs.list.searchLabel": "搜索动词",
+  "verbs.list.searchPlaceholder": "动词，法语或英语翻译…",
+  "verbs.list.viewCards": "卡片视图",
+  "verbs.list.viewCardsAria": "以卡片形式显示动词",
+  "verbs.list.loading": "正在加载动词…",
+  "verbs.list.empty": "目前没有找到任何动词。",
+  "verbs.list.caption": "每一行显示一个带 ku 的基孔戈语不定式动词，它的音标，以及对应的法语和英语翻译。",
+  "verbs.list.column.verb": "动词",
+  "verbs.list.column.phonetic": "音标",
+  "verbs.list.column.fr": "法语",
+  "verbs.list.column.en": "英语",
+  "verbs.list.rowAria": "查看动词 ku {verb} 的详细信息",
+  "verbs.cards.titleSuffix": "– 卡片视图",
+"verbs.cards.viewTable": "表格视图",
+"verbs.cards.viewTableAria": "以表格形式显示动词",
+"verbs.list.viewOneVerb": "查看动词",
+"expressions.list.title": "所有表达",
+"expressions.list.subtitle": "一目了然浏览基孔戈语的单词和动词，以及它们的音标和法语、英语翻译。",
+"expressions.list.count": "显示 {n} 条表达",
+
+"expressions.list.filterAll": "全部",
+"expressions.list.filterWords": "单词",
+"expressions.list.filterVerbs": "动词",
+
+"expressions.list.searchLabel": "搜索",
+"expressions.list.searchPlaceholder": "单词、动词、法语或英语翻译…",
+
+"expressions.list.viewCards": "卡片视图",
+"expressions.list.viewCardsAria": "以卡片形式显示表达",
+
+"expressions.list.loading": "正在加载表达…",
+"expressions.list.empty": "没有找到符合条件的表达。",
+"expressions.list.caption": "每一行表示一个基孔戈语的单词或动词，以及其音标和法语、英语翻译。",
+
+"expressions.list.column.type": "类型",
+"expressions.list.column.expression": "表达",
+"expressions.list.column.phonetic": "音标",
+"expressions.list.column.fr": "法语",
+"expressions.list.column.en": "英语",
+
+"expressions.list.badge.word": "单词",
+"expressions.list.badge.verb": "动词",
+
+"expressions.list.rowAriaWord": "查看单词 {word} 的详细信息",
+"expressions.list.rowAriaVerb": "查看动词 ku {verb} 的详细信息",
+"expressions.cards.titleSuffix": "– 卡片视图",
+"expressions.cards.viewTable": "表格视图",
+"expressions.cards.viewTableAria": "返回表达的表格视图",
+"expressions.cards.viewDetails": "查看详情",
+
+"expressions.cards.subtitle": "一目了然浏览 Kikongo 语中的单词和动词，以及它们的音标和法语、英语翻译。",
+"expressions.cards.count": "{n} 条表达 | {n} 条表达",
+"expressions.cards.cta": "查看条目",
+
+  "verbs": {
+    "page": {
+      "eyebrow": "基孔戈语动词列表",
+      "title": "动词列表",
+      "subtitle": "浏览基孔戈语动词及其音标转写，以及对应的法语和英语翻译。非常适合学习、复习和编写教学资料。",
+      "ctaTitle": "没找到你要查的动词？",
+      "ctaText": "通过提交新的基孔戈语动词、它们的翻译和用法示例，帮助丰富词库。每一份贡献都在帮助社区学习并传承这门语言。",
+      "ctaButton": "成为贡献者"
+    },
+    "meta": {
+      "title": "基孔戈语动词列表 – Lexikongo",
+      "description": "探索基孔戈语动词的读音以及其法语和英语翻译，是学习和教授这门语言的实用工具。"
+    },
+     "cards": {
+    "titleSuffix": "– 卡片视图",
+    "viewTable": "表格视图",
+    "viewTableAria": "以表格形式显示动词",
+    "viewDetails": "查看动词"
+  }
+  },
+  
+  "expressions": {
+    "page": {
+      "eyebrow": "Lexikongo · 在线词典",
+      "title": "基孔戈语单词和动词列表",
+      "subtitle": "浏览 Lexikongo 数据库中的基孔戈语单词和动词，以及它们的音标转写和法语、英语翻译。",
+      "ctaSearch": "开始搜索",
+      "ctaContribute": "为词典做贡献",
+      "metaLanguages": "基孔戈语 · 法语 · 英语 · 音标",
+      "listTitle": "所有表达条目",
+      "listSubtitle": "当前在 Lexikongo 词典中可用的所有基孔戈语单词和动词条目总览。",
+      "bottomCtaTitle": "找不到你要查的表达？",
+      "bottomCtaText": "通过添加新的基孔戈语单词或动词及其翻译和用法示例，帮助丰富这个词汇表。"
+    },
+    "meta": {
+      "title": "基孔戈语单词和动词列表 – Lexikongo",
+      "description": "探索基孔戈语单词和动词，以及它们的音标和法语、英语翻译。"
+    },
+     "cards": {
+      "titleSuffix": "– 卡片视图",
+      "subtitle": "一目了然浏览基孔戈语的单词和动词及其发音，以及对应的法语和英语翻译。",
+      "count": "找到 {count} 条表达",
+      "viewTable": "表格视图",
+      "viewTableAria": "以表格形式显示表达",
+      "cta": "查看详情"
+    }
+  }
+
+
+
+
+}
+
 

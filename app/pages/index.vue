@@ -1,88 +1,108 @@
 <template>
   <main class="home-page" aria-labelledby="home-title">
-    <section class="home-hero">
+    <section class="home-hero" aria-label="Présentation de Lexikongo">
+      <!-- Colonne principale -->
       <div class="home-hero__content">
         <h1 id="home-title" class="home-hero__title">
-          Lexikongo
-          <span class="home-hero__badge">Nuxt 4 · SSR</span>
+          <span class="home-hero__brand">Lexikongo</span>
+          <span class="home-hero__badge">
+            {{ t('home.hero.badge') }}
+          </span>
         </h1>
+
         <p class="home-hero__subtitle">
-          Dictionnaire Kikongo · Français · Anglais · Phonétique.
-          Une base vivante pour apprendre, explorer et contribuer au patrimoine
-          linguistique kikongo.
+          {{ t('home.hero.subtitle') }}
         </p>
 
         <div class="home-hero__actions">
-          <NuxtLink to="/words" class="home-btn home-btn--solid">
+          <NuxtLink
+            to="/words"
+            class="home-btn home-btn--solid"
+            aria-label="Explorer les mots du dictionnaire"
+          >
             <i class="fas fa-spell-check" aria-hidden="true"></i>
-            <span>Explorer les mots</span>
+            <span>{{ t('home.hero.ctaWords') }}</span>
           </NuxtLink>
-          <NuxtLink to="/verbs" class="home-btn home-btn--ghost">
+
+          <NuxtLink
+            to="/verbs"
+            class="home-btn home-btn--ghost"
+            aria-label="Découvrir les verbes en Kikongo"
+          >
             <i class="fa-solid fa-arrow-down-a-z" aria-hidden="true"></i>
-            <span>Découvrir les verbes</span>
+            <span>{{ t('home.hero.ctaVerbs') }}</span>
           </NuxtLink>
         </div>
 
         <div class="home-hero__meta">
           <p class="home-hero__hint">
-            Vous pouvez aussi parcourir
+            {{ t('home.hero.hintPrefix') }}
             <NuxtLink to="/expressions" class="home-link">
-              les expressions
+              {{ t('home.hero.hintExpressions') }}
             </NuxtLink>
-            ou lire la
-            <NuxtLink to="/documentation" class="home-link">
-              documentation contributeur
+            {{ t('home.hero.hintSeparator') }}
+            <NuxtLink to="/documentation/for-contributors" class="home-link">
+              {{ t('home.hero.hintDoc') }}
             </NuxtLink>.
           </p>
         </div>
       </div>
 
+      <!-- Colonne de droite : cartes d’accès rapide -->
       <aside class="home-hero__side" aria-label="Accès rapide">
-        <div class="home-card">
-          <h2 class="home-card__title">
-            Contribuer au lexique
+        <section class="home-card" aria-labelledby="home-contrib-title">
+          <h2 id="home-contrib-title" class="home-card__title">
+            {{ t('home.cards.contribute.title') }}
           </h2>
           <p class="home-card__text">
-            Ajoutez de nouveaux mots, verbes ou expressions et
-            aidez la communauté à enrichir la base.
+            {{ t('home.cards.contribute.body') }}
           </p>
           <NuxtLink
             to="/documentation/for-contributors"
             class="home-card__link"
           >
-            <span>Accéder à l’espace contributeur</span>
+            <span>{{ t('home.cards.contribute.link') }}</span>
             <i class="fas fa-arrow-right" aria-hidden="true"></i>
           </NuxtLink>
-        </div>
+        </section>
 
-        <div class="home-card home-card--muted">
-          <h2 class="home-card__title">
-            Se connecter
+        <section class="home-card home-card--muted" aria-labelledby="home-login-title">
+          <h2 id="home-login-title" class="home-card__title">
+            {{ t('home.cards.login.title') }}
           </h2>
           <p class="home-card__text">
-            Retrouvez votre tableau de bord, vos propositions et votre activité.
+            {{ t('home.cards.login.body') }}
           </p>
-          <NuxtLink to="/login" class="home-card__link">
-            <span>Se connecter</span>
+          <NuxtLink
+            to="/login"
+            class="home-card__link"
+          >
+            <span>{{ t('home.cards.login.link') }}</span>
             <i class="fas fa-sign-in-alt" aria-hidden="true"></i>
           </NuxtLink>
-        </div>
+        </section>
       </aside>
     </section>
   </main>
 </template>
 
+
 <script setup>
 import { useSeoMeta } from '#imports';
+import { useI18n } from 'vue-i18n';
 
+const { t } = useI18n();
+
+// SEO réactif à la langue
 useSeoMeta({
-  title: 'Lexikongo — Dictionnaire Kikongo · Nuxt 4 SSR',
-  description:
-    "Lexikongo est un dictionnaire Kikongo · Français · Anglais avec phonétique. Explorez les mots, les verbes et les expressions du Kikongo.",
-  ogTitle: 'Lexikongo — Dictionnaire Kikongo',
-  ogDescription:
-    "Dictionnaire Kikongo · Français · Anglais · Phonétique. Une ressource moderne pour découvrir et préserver la langue kikongo.",
+  title: () => t('home.seo.title'),
+  description: () => t('home.seo.description'),
+  ogTitle: () => t('home.seo.ogTitle'),
+  ogDescription: () => t('home.seo.ogDescription'),
   ogType: 'website',
+  ogSiteName: 'Lexikongo',
+  // ajuste l’URL si besoin
+  ogUrl: 'https://lexikongo.fr/',
   twitterCard: 'summary_large_image',
 });
 </script>
@@ -118,19 +138,23 @@ useSeoMeta({
   gap: 0.5rem;
 }
 
+.home-hero__brand {
+  color: var(--color-text);
+}
+
 .home-hero__badge {
   font-size: 0.8rem;
   font-weight: 600;
   padding: 0.2rem 0.55rem;
   border-radius: 999px;
   background: rgba(13, 110, 253, 0.08);
-  color: var(--primary, #0d6efd);
+  color: var(--primary);
 }
 
 .home-hero__subtitle {
   font-size: 0.98rem;
   line-height: 1.7;
-  color: var(--muted-text, #4b5563);
+  color: var(--color-muted);
   max-width: 36rem;
 }
 
@@ -162,15 +186,15 @@ useSeoMeta({
 }
 
 .home-btn--solid {
-  background: var(--primary, #0d6efd);
+  background: var(--primary);
   color: #fff;
   box-shadow: 0 14px 30px rgba(13, 110, 253, 0.35);
 }
 
 .home-btn--ghost {
-  background: rgba(148, 163, 184, 0.05);
-  color: var(--text-default, #111827);
-  border-color: rgba(148, 163, 184, 0.6);
+  background: var(--surface-elevated);
+  color: var(--color-text);
+  border-color: var(--border-subtle);
 }
 
 .home-btn:hover,
@@ -182,17 +206,17 @@ useSeoMeta({
 
 .home-btn--solid:hover,
 .home-btn--solid:focus-visible {
-  background: #0b5ed7;
+  background: var(--primary-hover);
 }
 
 .home-btn--ghost:hover,
 .home-btn--ghost:focus-visible {
-  background: rgba(148, 163, 184, 0.16);
+  background: rgba(148, 163, 184, 0.18);
 }
 
 /* Lien texte */
 .home-link {
-  color: var(--primary, #0d6efd);
+  color: var(--primary);
   text-decoration: none;
   font-weight: 500;
 }
@@ -209,7 +233,7 @@ useSeoMeta({
 
 .home-hero__hint {
   font-size: 0.9rem;
-  color: var(--muted-text, #6b7280);
+  color: var(--color-muted);
 }
 
 /* Colonne de droite (side cards) */
@@ -222,28 +246,28 @@ useSeoMeta({
 .home-card {
   border-radius: 1.1rem;
   padding: 1rem 1.1rem;
-  background: var(--surface-elevated, #ffffff);
-  border: 1px solid rgba(148, 163, 184, 0.5);
+  background: var(--surface-elevated);
+  border: 1px solid var(--border-subtle);
   box-shadow: 0 16px 36px rgba(15, 23, 42, 0.08);
 }
 
+/* ✅ plus de gradient agressif ; on reste sur un fond lisible dans les deux thèmes */
 .home-card--muted {
-  background: linear-gradient(
-    135deg,
-    rgba(148, 163, 184, 0.06),
-    rgba(249, 250, 251, 0.9)
-  );
+  background: var(--surface-default);
+  border-style: dashed;
+  border-color: rgba(148, 163, 184, 0.8);
 }
 
 .home-card__title {
   font-size: 0.98rem;
   font-weight: 600;
   margin-bottom: 0.3rem;
+  color: var(--color-text);
 }
 
 .home-card__text {
   font-size: 0.9rem;
-  color: var(--muted-text, #6b7280);
+  color: var(--color-muted);
   margin-bottom: 0.6rem;
 }
 
@@ -254,7 +278,7 @@ useSeoMeta({
   font-size: 0.9rem;
   font-weight: 500;
   text-decoration: none;
-  color: var(--primary, #0d6efd);
+  color: var(--primary);
 }
 
 .home-card__link i {

@@ -1,29 +1,37 @@
 /* =========================
-   Lexikongo CSS — Mobile-first + Theming + A11y
+   Lexikongo CSS — v2 (Nuxt SSR)
+   - Thèmes light/dark/kongo
+   - Tokens compatibles avec les nouveaux composants
    ========================= */
 
 /* ---------- Design tokens (light / default) ---------- */
 :root {
-  /* Palette */
-  --color-bg: #ffffff;
-  --color-surface: #ffffff;
-  --color-border: #e5e7eb;
-  --color-text: #111827;
-  --color-muted: #6b7280;
+  /* Surfaces & bordures */
+  --bg-default: #ffffff;
+  --surface-default: #ffffff;
+  --surface-elevated: #ffffff;
+  --border-subtle: #e5e7eb;
 
-  --primary: #0d6efd;        /* remplace #007bff */
-  --primary-hover: #0a58ca;  /* remplace #0056b3 */
+  /* Texte */
+  --text-default: #111827;
+  --text-muted: #6b7280;
+  /* ✅ alias utilisés dans les composants */
+  --muted-text: var(--text-muted);
+
+  /* Couleurs de marque */
+  --primary: #0d6efd;
+  --primary-hover: #0a58ca;
   --secondary: #a52a2a;
   --secondary-hover: #8c2323;
-  --accent: #28a745;         /* highlight */
+  --accent: #28a745;
   --warning: #ff4500;
 
-  /* Effects */
-  --shadow-sm: 0 1px 2px rgba(0,0,0,.06);
-  --shadow-md: 0 4px 6px rgba(0,0,0,.1);
-  --shadow-lg: 0 6px 12px rgba(0,0,0,.15);
+  /* Ombres */
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, .06);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, .1);
+  --shadow-lg: 0 6px 12px rgba(0, 0, 0, .15);
 
-  /* Radius / spacing / typography scale */
+  /* Rayons / espace / typo */
   --radius: 12px;
   --radius-sm: 8px;
   --space-1: .5rem;
@@ -31,19 +39,32 @@
   --space-3: 1rem;
   --space-4: 1.5rem;
 
-  --font-lg: 1.125rem;   /* 18px */
-  --font-xl: 1.25rem;    /* 20px */
-  --font-2xl: 1.75rem;   /* 28px */
-  --font-3xl: 2.25rem;   /* 36px */
+  --font-lg: 1.125rem;
+  --font-xl: 1.25rem;
+  --font-2xl: 1.75rem;
+  --font-3xl: 2.25rem;
+
+  /* Compatibilité avec ton ancien naming + layout */
+  --color-bg: var(--bg-default);
+  --color-page-bg: var(--bg-default);       /* ✅ utilisé dans layouts/default.vue */
+  --color-surface: var(--surface-default);
+  --color-surface-elevated: var(--surface-elevated);
+  --color-border: var(--border-subtle);
+  --color-text: var(--text-default);
+  --color-text-muted: var(--text-muted);    /* ✅ pour du texte secondaire */
+  --color-muted: var(--text-muted);
 }
 
 /* ---------- Dark theme ---------- */
 :root[data-theme="dark"] {
-  --color-bg: #0b0f14;
-  --color-surface: #11161c;
-  --color-border: #1f2937;
-  --color-text: #e5e7eb;
-  --color-muted: #9ca3af;
+  --bg-default: #020617;       /* fond très sombre mais lisible */
+  --surface-default: #020617;
+  --surface-elevated: #111827;
+  --border-subtle: #1f2937;
+
+  --text-default: #e5e7eb;
+  --text-muted: #9ca3af;
+  --muted-text: var(--text-muted); /* alias */
 
   --primary: #60a5fa;
   --primary-hover: #3b82f6;
@@ -52,29 +73,43 @@
   --accent: #34d399;
   --warning: #fb7185;
 
-  --shadow-sm: 0 1px 2px rgba(0,0,0,.5);
-  --shadow-md: 0 4px 6px rgba(0,0,0,.55);
-  --shadow-lg: 0 8px 16px rgba(0,0,0,.6);
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, .5);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, .55);
+  --shadow-lg: 0 8px 16px rgba(0, 0, 0, .6);
+
+  /* compat ancien naming + layout */
+  --color-bg: var(--bg-default);
+  --color-page-bg: var(--bg-default);
+  --color-surface: var(--surface-default);
+  --color-surface-elevated: var(--surface-elevated);
+  --color-border: var(--border-subtle);
+  --color-text: var(--text-default);
+  --color-text-muted: var(--text-muted);
+  --color-muted: var(--text-muted);
 }
 
-/* ---------- Kongo theme (ex. accent culturel) ---------- */
+/* ---------- Kongo theme (accent culturel) ---------- */
 :root[data-theme="kongo"] {
+  /* On part de la base light, puis on override la palette de marque */
   --primary: #ff7a00;
   --primary-hover: #e06400;
-  --secondary: #1b4d3e;     /* vert profond */
+  --secondary: #1b4d3e;
   --secondary-hover: #153d31;
   --accent: #ffd166;
   --warning: #ef476f;
 }
 
-/* Respect du thème système par défaut */
+/* Respect du thème système par défaut si aucun data-theme n’est fixé */
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme]) {
-    --color-bg: #0b0f14;
-    --color-surface: #11161c;
-    --color-border: #1f2937;
-    --color-text: #e5e7eb;
-    --color-muted: #9ca3af;
+    --bg-default: #020617;
+    --surface-default: #020617;
+    --surface-elevated: #111827;
+    --border-subtle: #1f2937;
+
+    --text-default: #e5e7eb;
+    --text-muted: #9ca3af;
+    --muted-text: var(--text-muted);
 
     --primary: #60a5fa;
     --primary-hover: #3b82f6;
@@ -82,96 +117,192 @@
     --secondary-hover: #d97706;
     --accent: #34d399;
     --warning: #fb7185;
+
+    --shadow-sm: 0 1px 2px rgba(0, 0, 0, .5);
+    --shadow-md: 0 4px 6px rgba(0, 0, 0, .55);
+    --shadow-lg: 0 8px 16px rgba(0, 0, 0, .6);
+
+    --color-bg: var(--bg-default);
+    --color-page-bg: var(--bg-default);
+    --color-surface: var(--surface-default);
+    --color-surface-elevated: var(--surface-elevated);
+    --color-border: var(--border-subtle);
+    --color-text: var(--text-default);
+    --color-text-muted: var(--text-muted);
+    --color-muted: var(--text-muted);
   }
 }
 
-/* ---------- Base / Reset léger ---------- */
+/* ---------- Base / reset léger ---------- */
 *,
 *::before,
-*::after { box-sizing: border-box; }
+*::after {
+  box-sizing: border-box;
+}
 
-html, body {
+html,
+body {
   margin: 0;
   padding: 0;
-  background: var(--color-bg);
+  background: var(--color-page-bg);
   color: var(--color-text);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
 }
-img, svg, video { max-width: 100%; height: auto; display: block; }
+
+img,
+svg,
+video {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
 
 /* A11y: screen-reader-only */
 .sr-only {
-  position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
-  overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0;
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
 }
 
 /* ---------- Typography helpers ---------- */
-.display-4 { font-size: var(--font-3xl); color: var(--primary); line-height: 1.2; }
-.lead { font-size: var(--font-lg); color: var(--color-text); }
+.display-4 {
+  font-size: var(--font-3xl);
+  color: var(--primary);
+  line-height: 1.2;
+}
+
+.lead {
+  font-size: var(--font-lg);
+  color: var(--text-default);
+}
 
 /* ---------- Links ---------- */
-a { color: var(--primary); text-decoration: none; }
-a:hover { color: var(--primary-hover); text-decoration: underline; }
-a:focus-visible { outline: 3px solid var(--primary); outline-offset: 2px; }
+a {
+  color: var(--primary);
+  text-decoration: none;
+}
+a:hover {
+  color: var(--primary-hover);
+  text-decoration: underline;
+}
+a:focus-visible {
+  outline: 3px solid var(--primary);
+  outline-offset: 2px;
+}
 
 /* ---------- Buttons ---------- */
 .btn {
-  display: inline-flex; align-items: center; justify-content: center;
-  gap: .5rem; padding: .65rem 1rem; font-size: 1rem; border-radius: var(--radius-sm);
-  border: 1px solid var(--color-border); background: var(--color-surface); color: var(--color-text);
-  box-shadow: var(--shadow-sm); cursor: pointer; transition: transform .12s ease, box-shadow .12s ease, background .12s;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: .5rem;
+  padding: .65rem 1rem;
+  font-size: 1rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-subtle);
+  background: var(--surface-elevated);
+  color: var(--text-default);
+  box-shadow: var(--shadow-sm);
+  cursor: pointer;
+  transition:
+    transform .12s ease,
+    box-shadow .12s ease,
+    background .12s ease,
+    border-color .12s ease;
 }
-.btn:hover { transform: translateY(-1px); box-shadow: var(--shadow-md); }
-.btn:active { transform: translateY(0); box-shadow: var(--shadow-sm); }
-.btn:focus-visible { outline: 3px solid var(--primary); outline-offset: 2px; }
+.btn:hover {
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-md);
+}
+.btn:active {
+  transform: translateY(0);
+  box-shadow: var(--shadow-sm);
+}
+.btn:focus-visible {
+  outline: 3px solid var(--primary);
+  outline-offset: 2px;
+}
 
 .btn-primary {
-  background: var(--primary); border-color: var(--primary); color: #fff;
+  background: var(--primary);
+  border-color: var(--primary);
+  color: #ffffff;
 }
-.btn-primary:hover { background: var(--primary-hover); border-color: var(--primary-hover); }
+.btn-primary:hover {
+  background: var(--primary-hover);
+  border-color: var(--primary-hover);
+}
 
 .btn-secondary {
-  background: var(--secondary); border-color: var(--secondary); color: #fff;
+  background: var(--secondary);
+  border-color: var(--secondary);
+  color: #ffffff;
 }
-.btn-secondary:hover { background: var(--secondary-hover); border-color: var(--secondary-hover); }
+.btn-secondary:hover {
+  background: var(--secondary-hover);
+  border-color: var(--secondary-hover);
+}
 
 /* ---------- Cards ---------- */
 .card {
-  border: 1px solid var(--color-border);
+  border: 1px solid var(--border-subtle);
   border-radius: var(--radius);
   box-shadow: var(--shadow-md);
-  background-color: var(--color-surface);
+  background-color: var(--surface-elevated);
   overflow: hidden;
   transition: transform .2s ease, box-shadow .2s ease;
 }
-.card:hover { transform: translateY(-2px); box-shadow: var(--shadow-lg); }
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+}
 
 .card .card-header {
-  background-color: var(--primary); color: #fff;
+  background-color: var(--primary);
+  color: #ffffff;
   padding: var(--space-2) var(--space-3);
-  font-size: var(--font-xl); font-weight: 700;
+  font-size: var(--font-xl);
+  font-weight: 700;
 }
-.card .card-body { padding: var(--space-3); }
+.card .card-body {
+  padding: var(--space-3);
+}
 .card .card-footer {
   padding: var(--space-2) var(--space-3);
-  background-color: color-mix(in oklab, var(--color-surface) 85%, #000 15%);
+  background-color: rgba(15, 23, 42, 0.04);
   text-align: right;
 }
 
 /* ---------- Domain text helpers ---------- */
 .translation_fr,
 .translation_en {
-  color: var(--color-text);
+  color: var(--text-default);
   margin-left: 5px;
   font-weight: 500;
   font-size: .9rem;
 }
-.searched-word { color: var(--primary); }
-.searchedExpression { color: var(--secondary); font-weight: 600; }
-.phonetic { font-style: italic; color: var(--accent); }
+.searched-word {
+  color: var(--primary);
+}
+.searchedExpression {
+  color: var(--secondary);
+  font-weight: 600;
+}
+.phonetic {
+  font-style: italic;
+  color: var(--accent);
+}
 
-/* ---------- Tables (mobile-first) ---------- */
+/* ---------- Tables (desktop) ---------- */
 .table {
   width: 100%;
   border-collapse: collapse;
@@ -182,58 +313,91 @@ a:focus-visible { outline: 3px solid var(--primary); outline-offset: 2px; }
 .table th,
 .table td {
   padding: .75rem;
-  border: 1px solid var(--color-border);
+  border: 1px solid var(--border-subtle);
 }
 .table th {
   background-color: var(--primary);
-  color: #fff;
+  color: #ffffff;
   text-transform: uppercase;
   font-weight: 700;
 }
 
 .table-hover tbody tr:hover {
-  background-color: color-mix(in oklab, var(--primary) 14%, var(--color-surface));
-  color: inherit;
+  background-color: rgba(37, 99, 235, 0.06);
   cursor: pointer;
 }
 
-.table-responsive { overflow-x: auto; }
+.table-responsive {
+  overflow-x: auto;
+}
 
 /* ---------- Responsive (<= 768px) : empilement des lignes ---------- */
 @media (max-width: 768px) {
-  .display-4 { font-size: var(--font-2xl); }
-  .lead { font-size: 1rem; }
-  .btn { font-size: .95rem; padding: .55rem .9rem; }
+  .display-4 {
+    font-size: var(--font-2xl);
+  }
+  .lead {
+    font-size: 1rem;
+  }
+  .btn {
+    font-size: .95rem;
+    padding: .55rem .9rem;
+  }
 
-  .card { border: none; box-shadow: none; background: transparent; }
+  .card {
+    border: none;
+    box-shadow: none;
+    background: transparent;
+  }
 
-  .table thead { display: none; }
+  .table thead {
+    display: none;
+  }
   .table tbody tr {
-    display: flex; flex-direction: column;
+    display: flex;
+    flex-direction: column;
     margin-bottom: 1rem;
-    border: 1px solid var(--color-border);
+    border: 1px solid var(--border-subtle);
     border-radius: var(--radius-sm);
     overflow: hidden;
-    background: var(--color-surface);
+    background: var(--surface-elevated);
   }
   .table tbody td {
-    display: flex; justify-content: space-between; gap: .5rem;
-    padding: .75rem; border: none;
+    display: flex;
+    justify-content: space-between;
+    gap: .5rem;
+    padding: .75rem;
+    border: none;
   }
   .table tbody td::before {
     content: attr(data-label);
-    font-weight: 700; color: var(--secondary);
+    font-weight: 700;
+    color: var(--secondary);
     margin-right: .5rem;
   }
 }
 
 /* ---------- Small phones (<= 576px) ---------- */
 @media (max-width: 576px) {
-  .display-4 { font-size: 1.5rem; }
-  .lead { font-size: .95rem; }
+  .display-4 {
+    font-size: 1.5rem;
+  }
+  .lead {
+    font-size: .95rem;
+  }
 }
 
 /* ---------- Motion & focus safety ---------- */
 @media (prefers-reduced-motion: reduce) {
-  * { transition: none !important; animation: none !important; }
+  * {
+    transition: none !important;
+    animation: none !important;
+  }
+}
+/* assets/css/main.css */
+
+.page {
+  max-width: 1280px;           /* largeur confortable pour les tableaux */
+  margin: 0 auto;
+  padding: 1.5rem 1.25rem 2rem; /* tu avais "1.5re", je corrige en rem 😉 */
 }

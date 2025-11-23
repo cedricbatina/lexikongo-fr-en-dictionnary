@@ -1,31 +1,51 @@
 <template>
-  <section class="word-list" aria-labelledby="word-list-heading">
-<header class="word-list__header">
+  <section
+    class="container-fluid word-list p-2"
+    aria-labelledby="word-list-heading"
+  >
+  <header class="word-list__header">
   <div>
-    <h2 id="word-list-heading" class="word-list__title">
-      Liste des mots
-    </h2>
+   <h1 id="word-list-heading" class="word-list__title">
+  {{ t('words.list.title') }} {{ t('words.cards.titleSuffix') }}
+</h1>
+
     <p class="word-list__subtitle">
-      Consultez les mots disponibles dans le lexique, avec leur pluriel, leur
-      phonétique et leurs traductions.
+      {{ t('words.list.subtitle') }}
     </p>
   </div>
 
-  <div class="word-list__header-right">
-    <p v-if="store.items.length" class="word-list__count">
-      {{ store.items.length }} mot<span v-if="store.items.length > 1">s</span> en base
-    </p>
-
-    <NuxtLink
-      to="/words"
-      class="word-list__view-link"
-      aria-label="Revenir à la version tableau des mots"
-    >
-      <i class="fas fa-table" aria-hidden="true"></i>
-      <span>Version tableau</span>
-    </NuxtLink>
-  </div>
+  <p
+    v-if="store.items && store.items.length"
+    class="word-list__count"
+  >
+    {{ t('words.list.count', store.items.length) }}
+  </p>
 </header>
+
+
+<div class="word-list__toolbar">
+  <div class="word-list__search">
+    <label class="word-list__search-label" for="word-search">
+      {{ t('words.list.searchLabel') }}
+    </label>
+    <input
+      id="word-search"
+      v-model="searchLocal"
+      type="search"
+      class="word-list__search-input"
+      :placeholder="t('words.list.searchPlaceholder')"
+    />
+  </div>
+
+  <NuxtLink
+    to="/words"
+    class="word-list__view-link"
+    :aria-label="t('words.cards.viewTableAria')"
+  >
+    <i class="fas fa-table" aria-hidden="true"></i>
+    <span>{{ t('words.cards.viewTable') }}</span>
+  </NuxtLink>
+</div>
 
 
     <!-- État : chargement -->
@@ -35,7 +55,7 @@
       role="status"
       aria-live="polite"
     >
-      Chargement des mots...
+      {{ t('words.list.loading') }}
     </div>
 
     <!-- État : erreur -->
@@ -49,25 +69,25 @@
 
     <!-- État : vide -->
     <p
-      v-else-if="!store.paginatedWords.length"
+      v-else-if="!paginatedWords.length"
       class="word-list__empty"
       aria-live="polite"
     >
-      Aucun mot trouvé pour le moment.
+      {{ t('words.list.empty') }}
     </p>
 
     <!-- Résultats -->
     <ul v-else class="word-list__grid">
       <li
-        v-for="item in store.paginatedWords"
-        :key="item.id"
+        v-for="item in paginatedWords"
+        :key="item.slug || item.id"
         class="word-card"
       >
         <button
           type="button"
           class="word-card__inner"
           @click="goToDetails(item.slug)"
-          :aria-label="`Détails pour ${item.singular || 'ce mot'}`"
+          :aria-label="t('words.list.rowAria', { word: item.singular || '—' })"
         >
           <header class="word-card__header">
             <h3 class="word-card__title">
@@ -85,20 +105,21 @@
 
           <dl class="word-card__body">
             <div class="word-card__row">
-              <dt>Français</dt>
+              <dt>{{ t('words.list.column.fr') }}</dt>
               <dd>{{ truncateText(item.translation_fr, 80) }}</dd>
             </div>
             <div class="word-card__row">
-              <dt>Anglais</dt>
+              <dt>{{ t('words.list.column.en') }}</dt>
               <dd>{{ truncateText(item.translation_en, 80) }}</dd>
             </div>
           </dl>
 
           <footer class="word-card__footer">
-            <span class="word-card__cta">
-              Voir la fiche
-              <i class="fas fa-arrow-right" aria-hidden="true"></i>
-            </span>
+           <span class="word-card__cta">
+  {{ t('words.cards.viewDetails') }}
+  <i class="fas fa-arrow-right" aria-hidden="true"></i>
+</span>
+
           </footer>
         </button>
       </li>
@@ -106,12 +127,12 @@
 
     <!-- Pagination -->
     <div
-      v-if="store.totalPages > 1"
+      v-if="totalPages > 1"
       class="word-list__pagination"
     >
       <Pagination
         :currentPage="store.page"
-        :totalPages="store.totalPages"
+        :totalPages="totalPages"
         @pageChange="store.setPage"
       />
     </div>
@@ -119,16 +140,17 @@
 </template>
 
 <script setup>
-import { onMounted } from 'vue';
+import { onMounted, ref, computed, watch } from 'vue';
 import { useRouter } from 'vue-router';
+import { useI18n } from 'vue-i18n';
 import Pagination from '@/components/Pagination.vue';
 import { useWordStore } from '~/stores/wordStore';
 
 const router = useRouter();
 const store = useWordStore();
+const { t } = useI18n();
 
-
-const searchLocal = ref("");
+const searchLocal = ref('');
 
 // Liste filtrée en fonction de la recherche
 const filteredWords = computed(() => {
@@ -138,10 +160,10 @@ const filteredWords = computed(() => {
   if (!q) return items;
 
   return items.filter((word) => {
-    const singular = (word.singular || "").toLowerCase();
-    const plural = (word.plural || "").toLowerCase();
-    const fr = (word.translation_fr || "").toLowerCase();
-    const en = (word.translation_en || "").toLowerCase();
+    const singular = (word.singular || '').toLowerCase();
+    const plural = (word.plural || '').toLowerCase();
+    const fr = (word.translation_fr || '').toLowerCase();
+    const en = (word.translation_en || '').toLowerCase();
 
     return (
       singular.includes(q) ||
@@ -152,7 +174,7 @@ const filteredWords = computed(() => {
   });
 });
 
-// 🔑 reset la pagination quand on modifie la recherche
+// reset la pagination quand on modifie la recherche
 watch(searchLocal, () => {
   store.page = 1;
 });
@@ -163,20 +185,18 @@ const paginatedWords = computed(() => {
   return filteredWords.value.slice(start, start + store.pageSize);
 });
 
+// Nombre de pages sur la liste filtrée
 const totalPages = computed(() => {
   const total = filteredWords.value.length || 0;
   if (!total) return 1;
   return Math.ceil(total / store.pageSize);
 });
 
-
-
 const goToDetails = (slug) => {
   if (!slug) {
     console.error('Erreur : Slug manquant pour la redirection.');
     return;
   }
-  // On garde ta route actuelle /details/word/:slug
   router.push(`/details/word/${slug}`);
 };
 
@@ -185,7 +205,6 @@ const truncateText = (text, limit = 80) => {
   return text.length > limit ? text.slice(0, limit) + '…' : text;
 };
 
-// Chargement initial (client side, SSR-safe)
 onMounted(() => {
   if (!store.items.length) {
     store.fetchAll();
@@ -208,18 +227,27 @@ onMounted(() => {
 }
 
 .word-list__title {
-  font-size: 1.25rem;
-  font-weight: 600;
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--text-default, #111827); /* ✅ thème-friendly */
 }
 
 .word-list__subtitle {
   font-size: 0.95rem;
-  color: var(--muted-text, #6c757d);
+  color: var(--text-muted, #6b7280); /* ✅ comme WordList */
+  max-width: 40rem;
+}
+
+.word-list__header-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
 }
 
 .word-list__count {
   font-size: 0.9rem;
-  color: var(--muted-text, #6c757d);
+  color: var(--text-muted, #6b7280);
 }
 
 /* États */
@@ -238,12 +266,12 @@ onMounted(() => {
 
 .word-list__error {
   background: rgba(220, 53, 69, 0.08);
-  color: #dc3545;
+  color: #fecaca;
 }
 
 .word-list__empty {
   background: rgba(108, 117, 125, 0.06);
-  color: var(--muted-text, #6c757d);
+  color: var(--text-muted, #e5e7eb);
 }
 
 /* Grid de cartes */
@@ -277,7 +305,7 @@ onMounted(() => {
   border: 1px solid rgba(148, 163, 184, 0.4);
   border-radius: 1rem;
   padding: 0.9rem 1rem;
-  background: var(--surface-elevated, #ffffff);
+  background: var(--surface-elevated, #ffffff); /* ✅ thème */
   text-align: left;
   display: flex;
   flex-direction: column;
@@ -311,18 +339,22 @@ onMounted(() => {
 }
 
 .word-card__singular {
-  color: var(--secondary-color, #0f172a);
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--primary, #0d6efd);
 }
 
 .word-card__plural {
-  font-size: 0.9rem;
-  color: var(--muted-text, #6c757d);
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--primary); /* ✅ même couleur que le singulier, thème-friendly */
 }
 
 .word-card__phonetic {
-  font-size: 0.85rem;
-  font-style: italic;
-  color: var(--highlight-color, #0d6efd);
+  font-family: "Fira Code", Menlo, ui-monospace, SFMono-Regular, monospace;
+  font-size: 0.9rem;
+  color: var(--text-default, #111827);
+  white-space: nowrap;
 }
 
 .word-card__body {
@@ -341,12 +373,20 @@ onMounted(() => {
 
 .word-card__row dt {
   font-weight: 600;
-  color: var(--muted-text, #6c757d);
+  color: var(--text-muted, #6c757d);
 }
 
 .word-card__row dd {
   margin: 0;
   color: var(--text-default, #111827);
+}
+/* Traductions : même code couleur que le tableau (FR / EN) */
+.word-card__row:nth-child(1) dd {
+  color: #047857; /* Français */
+}
+
+.word-card__row:nth-child(2) dd {
+  color: #b45309; /* Anglais */
 }
 
 /* Footer de la carte */
@@ -371,65 +411,89 @@ onMounted(() => {
   display: flex;
   justify-content: center;
 }
+
+/* Barre de recherche */
+.word-list__toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.word-list__search {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.word-list__search-label {
+  font-size: 0.78rem;
+  color: var(--text-muted, #6b7280);
+}
+
+.word-list__search-input {
+  width: 400px;
+  max-width: 100%;
+  padding: 0.45rem 0.85rem;
+  border-radius: 999px;
+  border: 1px solid rgba(148, 163, 184, 0.8);
+  font-size: 0.9rem;
+  color: var(--text-default, #111827);
+  background: var(--surface-elevated, #ffffff);
+}
+
+/* Bouton vue tableau */
+.word-list__view-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.85rem;
+  padding: 0.35rem 0.85rem;
+  border-radius: 999px;
+  border: 1px solid rgba(148, 163, 184, 0.8);
+  text-decoration: none;
+  background: var(--surface-elevated, #ffffff);
+  color: var(--primary, #0d6efd);
+  white-space: nowrap;
+}
+
+.word-list__view-link:hover {
+  background: rgba(13, 110, 253, 0.06);
+  border-color: var(--primary, #0d6efd);
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+  .word-list__toolbar {
+    justify-content: stretch;
+  }
+
+  .word-list__search-input {
+    width: 100%;
+    min-width: 0;
+  }
+}
 .word-list__header {
   display: flex;
   flex-direction: column;
   gap: 0.6rem;
 }
 
-/* Regroupe compteur + bouton de vue */
-.word-list__header-right {
+/* important pour mettre le compteur à droite */
+.word-list__count {
+  margin-left: auto;
+  font-size: 0.9rem;
+  color: var(--text-muted, #6b7280);
+}
+
+/* toolbar identique à WordList */
+.word-list__toolbar {
   display: flex;
+  justify-content: space-between;
   align-items: center;
   gap: 0.75rem;
-  margin-top: 0.25rem;
   flex-wrap: wrap;
-}
-
-.word-list__count {
-  font-size: 0.9rem;
-  color: var(--muted-text, #6c757d);
-}
-
-/* Bouton "Version tableau" */
-.word-list__view-link {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.35rem;
-  padding: 0.25rem 0.7rem;
-  border-radius: 999px;
-  border: 1px solid rgba(148, 163, 184, 0.7);
-  font-size: 0.85rem;
-  text-decoration: none;
-  color: var(--primary, #0d6efd);
-  background: rgba(255, 255, 255, 0.85);
-  transition:
-    background-color 0.15s ease,
-    border-color 0.15s ease,
-    transform 0.08s ease,
-    box-shadow 0.15s ease;
-}
-
-.word-list__view-link i {
-  font-size: 0.85rem;
-}
-
-.word-list__view-link:hover,
-.word-list__view-link:focus-visible {
-  border-color: rgba(37, 99, 235, 0.85);
-  background: #eff6ff;
-  box-shadow: 0 8px 20px rgba(15, 23, 42, 0.12);
-  transform: translateY(-1px);
-}
-
-@media (max-width: 640px) {
-  .word-list__header {
-    align-items: flex-start;
-  }
-
-  .word-list__header-right {
-    align-items: flex-start;
-  }
 }
 
 </style>

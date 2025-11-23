@@ -11,7 +11,8 @@
         class="lk-nav__brand"
         aria-label="Lexikongo — Accueil"
       >
-        <Logo />
+        <!-- ✅ on utilise bien le composant Logo -->
+        <LogoNavbar />
       </NuxtLink>
 
       <!-- Section droite (desktop) -->
@@ -254,8 +255,6 @@ const mainLinks = [
   { to: '/documentation/for-contributors', icon: 'fas fa-hands-helping', labelKey: 'nav.contribute' },
 ];
 
-// ⚠️ important : on utilise fetchMe(), pas checkAuth()
-// onMounted est déjà *client-only*, donc OK pour le SSR
 onMounted(() => {
   authStore.fetchMe();
 });
@@ -279,24 +278,22 @@ const handleLogoutFromPanel = async () => {
 };
 </script>
 
-
 <style scoped>
 .lk-nav {
   position: sticky;
   top: 0;
   z-index: 40;
-  border-bottom: 1px solid rgba(148, 163, 184, 0.4);
-  background-color: var(--surface-elevated, #ffffff);
+  border-bottom: 1px solid var(--color-border);
+  background-color: var(--color-surface);
   backdrop-filter: blur(10px);
 }
 
+/* On laisse le container gérer la largeur (cohérent avec le layout) */
 .lk-nav__inner {
-  max-width: 1120px;
-  margin: 0 auto;
-  padding: 0.6rem 1.2rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 0.75rem;
 }
 
 /* Brand */
@@ -334,7 +331,7 @@ const handleLogoutFromPanel = async () => {
   border-radius: 999px;
   font-size: 0.94rem;
   font-weight: 500;
-  color: var(--muted-text, #4b5563);
+  color: var(--color-muted);
   text-decoration: none;
   transition:
     background 0.15s ease,
@@ -346,11 +343,18 @@ const handleLogoutFromPanel = async () => {
   font-size: 0.9rem;
 }
 
+/* Survol + focus : lisible en light & dark */
 .lk-nav__link:hover,
 .lk-nav__link:focus-visible {
-  background: rgba(13, 110, 253, 0.08);
-  color: var(--primary, #0d6efd);
+  background: rgba(13, 110, 253, 0.12);
+  color: var(--primary);
   transform: translateY(-1px);
+}
+
+/* Lien actif (route courante) */
+.lk-nav__link.router-link-active {
+  background: rgba(13, 110, 253, 0.16);
+  color: var(--primary);
 }
 
 /* Auth desktop */
@@ -367,9 +371,9 @@ const handleLogoutFromPanel = async () => {
   padding: 0.25rem 0.65rem;
   border-radius: 999px;
   font-size: 0.9rem;
-  color: var(--text-default, #111827);
+  color: var(--color-text);
   text-decoration: none;
-  background: rgba(148, 163, 184, 0.14);
+  background: rgba(148, 163, 184, 0.16);
 }
 
 .lk-nav__user i {
@@ -398,11 +402,11 @@ const handleLogoutFromPanel = async () => {
 
 .lk-nav__btn--outline {
   border-color: rgba(13, 110, 253, 0.6);
-  color: var(--primary, #0d6efd);
+  color: var(--primary);
 }
 
 .lk-nav__btn--ghost {
-  color: var(--muted-text, #4b5563);
+  color: var(--color-muted);
 }
 
 .lk-nav__btn:hover,
@@ -414,13 +418,13 @@ const handleLogoutFromPanel = async () => {
 
 .lk-nav__btn--outline:hover,
 .lk-nav__btn--outline:focus-visible {
-  background: var(--primary, #0d6efd);
+  background: var(--primary);
   color: #fff;
 }
 
 .lk-nav__btn--ghost:hover,
 .lk-nav__btn--ghost:focus-visible {
-  background: rgba(148, 163, 184, 0.16);
+  background: rgba(148, 163, 184, 0.18);
 }
 
 /* Hamburger (mobile) */
@@ -432,8 +436,8 @@ const handleLogoutFromPanel = async () => {
   width: 32px;
   height: 32px;
   border-radius: 999px;
-  border: 1px solid rgba(148, 163, 184, 0.7);
-  background: rgba(255, 255, 255, 0.92);
+  border: 1px solid var(--color-border);
+  background: var(--surface-elevated);
   cursor: pointer;
   padding: 0;
 }
@@ -442,21 +446,21 @@ const handleLogoutFromPanel = async () => {
   width: 16px;
   height: 2px;
   border-radius: 999px;
-  background: var(--text-default, #111827);
+  background: var(--color-text);
   margin: 0 auto;
 }
 
 /* Panel mobile */
 .lk-nav__panel {
-  border-top: 1px solid rgba(148, 163, 184, 0.4);
-  background: var(--surface, #f9fafb);
-  padding: 0.75rem 1.2rem 1rem;
+  border-top: 1px solid var(--color-border);
+  background: var(--color-surface);
+  padding: 0.75rem 0 1rem;
 }
 
 .lk-nav__panel-links {
   list-style: none;
   margin: 0;
-  padding: 0;
+  padding: 0 1.2rem;
   display: flex;
   flex-direction: column;
   gap: 0.35rem;
@@ -472,26 +476,26 @@ const handleLogoutFromPanel = async () => {
   gap: 0.5rem;
   padding: 0.5rem 0.2rem;
   font-size: 0.95rem;
-  color: var(--text-default, #111827);
+  color: var(--color-text);
   text-decoration: none;
 }
 
 .lk-nav__panel-link i {
   width: 1.1rem;
   text-align: center;
-  color: var(--primary, #0d6efd);
+  color: var(--primary);
 }
 
 .lk-nav__panel-link:hover,
 .lk-nav__panel-link:focus-visible {
-  color: var(--primary, #0d6efd);
+  color: var(--primary);
 }
 
 /* Auth mobile */
 .lk-nav__panel-auth {
   margin-top: 0.75rem;
   border-top: 1px solid rgba(148, 163, 184, 0.3);
-  padding-top: 0.75rem;
+  padding: 0.75rem 1.2rem 0 1.2rem;
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
@@ -502,7 +506,7 @@ const handleLogoutFromPanel = async () => {
   align-items: center;
   gap: 0.5rem;
   text-decoration: none;
-  color: var(--text-default, #111827);
+  color: var(--color-text);
 }
 
 .lk-nav__panel-user i {
@@ -511,7 +515,7 @@ const handleLogoutFromPanel = async () => {
 
 .lk-nav__panel-user-label {
   font-size: 0.8rem;
-  color: var(--muted-text, #6b7280);
+  color: var(--color-muted);
 }
 
 .lk-nav__panel-user-name {
@@ -534,13 +538,13 @@ const handleLogoutFromPanel = async () => {
 }
 
 .lk-nav__panel-btn--solid {
-  background: var(--primary, #0d6efd);
+  background: var(--primary);
   color: #fff;
   border-color: transparent;
 }
 
 .lk-nav__panel-btn--ghost {
-  color: var(--muted-text, #4b5563);
+  color: var(--color-muted);
   border-color: rgba(148, 163, 184, 0.6);
 }
 

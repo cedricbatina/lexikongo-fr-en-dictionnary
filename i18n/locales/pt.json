@@ -1,2 +1,227 @@
-{}
+{
+  "app.name": "Lexikongo — Dicionário Kikongo",
+  "app.tagline": "Kikongo · Francês · Inglês · Fonética",
 
+  "home.title": "Lexikongo — Dicionário Kikongo",
+  "home.description": "Dicionário de Kikongo online: palavras, verbos, expressões, traduções em francês e inglês, com pronúncia e fonética.",
+  "home.keywords": "lexikongo, dicionário kikongo, kikongo francês, kikongo inglês, léxico kikongo, fonética kikongo",
+
+  "layout.contact.phone": "Telefone",
+  "layout.contact.email": "E-mail",
+
+  "nav.home": "Início",
+  "nav.verbs": "Verbos",
+  "nav.words": "Palavras",
+  "nav.expressions": "Expressões",
+  "nav.login": "Entrar",
+  "nav.logout": "Sair",
+  "nav.profile": "Meu perfil",
+  "nav.dashboard": "Painel",
+  "nav.contributor": "Área de contribuição",
+  "nav.admin": "Administração",
+  "nav.profileTitle": "Ver meu perfil",
+  "nav.connectedAs": "Conectado como",
+  "nav.openMenu": "Abrir menu",
+  "nav.closeMenu": "Fechar menu",
+  "nav.contribute": "Contribuir",
+
+  "verbs.index.title": "Verbos em kikongo",
+  "verbs.index.description": "Lista de verbos em kikongo com tradução em francês, inglês e transcrição fonética.",
+  "verbs.index.keywords": "verbos kikongo, conjugação kikongo, dicionário de verbos",
+
+  "verbs.detail.title": "Verbo em kikongo: {verb}",
+  "verbs.detail.description": "Definição, exemplos e traduções do verbo em kikongo \"{verb}\" em francês e inglês.",
+  "verbs.detail.keywords": "verbo kikongo {verb}, dicionário kikongo, conjugação kikongo",
+
+  "words.index.title": "Palavras em kikongo",
+  "words.index.description": "Léxico de kikongo: palavras, significados, traduções em francês e inglês, e fonética.",
+  "words.index.keywords": "palavras kikongo, vocabulário kikongo, léxico kikongo",
+
+  "words.detail.title": "Palavra em kikongo: {word}",
+  "words.detail.description": "Definição e traduções da palavra em kikongo \"{word}\" em francês e inglês.",
+  "words.detail.keywords": "palavra kikongo {word}, dicionário kikongo, vocabulário kikongo",
+
+  "expressions.index.title": "Expressões em kikongo",
+  "expressions.index.description": "Expressões idiomáticas e frases úteis em kikongo com traduções em francês e inglês.",
+  "expressions.index.keywords": "expressões kikongo, frases kikongo, conversação em kikongo",
+
+  "login.title": "Entrar",
+  "login.description": "Entre para gerir o seu perfil e contribuir para o dicionário.",
+  "register.title": "Criar conta",
+  "register.description": "Crie uma conta para contribuir para o dicionário Lexikongo.",
+  "profile.title": "Meu perfil",
+  "profile.description": "Consulte e atualize as informações da sua conta Lexikongo.",
+
+  "home": {
+    "hero": {
+      "badge": "Dicionário Kikongo · FR · EN",
+      "subtitle": "Dicionário Kikongo · Francês · Inglês com fonética. Uma base viva para aprender, explorar e contribuir para o património linguístico kikongo.",
+      "ctaWords": "Explorar palavras",
+      "ctaVerbs": "Descobrir verbos",
+      "hintPrefix": "Também pode explorar",
+      "hintExpressions": "as expressões",
+      "hintSeparator": "ou consultar",
+      "hintDoc": "a documentação para contribuidores"
+    },
+    "cards": {
+      "contribute": {
+        "title": "Contribuir para o léxico",
+        "body": "Adicione novas palavras, verbos ou expressões e ajude a comunidade a enriquecer a base de dados.",
+        "link": "Aceder à área de contribuição"
+      },
+      "login": {
+        "title": "Iniciar sessão",
+        "body": "Encontre o seu painel, as suas propostas e a sua atividade.",
+        "link": "Iniciar sessão"
+      }
+    },
+    "seo": {
+      "title": "Lexikongo — Dicionário Kikongo · Francês · Inglês",
+      "description": "Lexikongo é um dicionário online Kikongo · Francês · Inglês com fonética. Explore palavras, verbos e expressões em kikongo e contribua para a preservação da língua.",
+      "ogTitle": "Lexikongo — Dicionário online de Kikongo",
+      "ogDescription": "Um recurso moderno para descobrir, praticar e transmitir a língua kikongo: palavras, verbos, expressões e fonética."
+    }
+
+
+  }
+  ,
+    "words.list.title": "Lista de palavras",
+  "words.list.subtitle": "Explore as palavras em kikongo com o seu plural, fonética e traduções em francês e inglês.",
+  "words.list.count": "{n} palavra na base de dados | {n} palavras na base de dados",
+  "words.list.searchLabel": "Pesquisar uma palavra",
+  "words.list.searchPlaceholder": "Palavra, plural, tradução FR ou EN…",
+  "words.list.viewCards": "Visualização em cartões",
+  "words.list.viewCardsAria": "Mostrar as palavras em cartões",
+  "words.list.loading": "Carregando palavras…",
+  "words.list.empty": "Nenhuma palavra encontrada no momento.",
+  "words.list.caption": "Cada linha mostra uma palavra em kikongo no singular e no plural, sua transcrição fonética e suas traduções em francês e inglês.",
+  "words.list.column.singular": "Palavra",
+  "words.list.column.plural": "Plural",
+  "words.list.column.phonetic": "Fonética",
+  "words.list.column.fr": "Francês",
+  "words.list.column.en": "Inglês",
+  "words.list.rowAria": "Ver detalhes da palavra {word}",
+  "words.cards.titleSuffix": "– visualização em cartões",
+"words.cards.viewTable": "Visualização em tabela",
+"words.cards.viewTableAria": "Mostrar as palavras em forma de tabela",
+"words": {
+  "cards": {
+    "titleSuffix": "– vista em cartões",
+    "viewTable": "Vista em tabela",
+    "viewTableAria": "Mostrar as palavras em forma de tabela",
+    "viewDetails": "Ver a ficha"
+  }
+}
+,
+
+  "verbs.list.title": "Lista de verbos",
+  "verbs.list.subtitle.prefix": "Explore os verbos em kikongo com a partícula",
+  "verbs.list.subtitle.suffix": "do infinitivo, sua fonética e suas traduções em francês e em inglês.",
+  "verbs.list.count": "{n} verbo na base de dados | {n} verbos na base de dados",
+  "verbs.list.searchLabel": "Pesquisar um verbo",
+  "verbs.list.searchPlaceholder": "Verbo, tradução FR ou EN…",
+  "verbs.list.viewCards": "Vista em cartões",
+  "verbs.list.viewCardsAria": "Mostrar os verbos em cartões",
+  "verbs.list.loading": "Carregando verbos…",
+  "verbs.list.empty": "Nenhum verbo encontrado no momento.",
+  "verbs.list.caption": "Cada linha mostra um verbo em kikongo no infinitivo (com ku), sua transcrição fonética e suas traduções em francês e em inglês.",
+  "verbs.list.column.verb": "Verbo",
+  "verbs.list.column.phonetic": "Fonética",
+  "verbs.list.column.fr": "Francês",
+  "verbs.list.column.en": "Inglês",
+  "verbs.list.rowAria": "Ver a ficha do verbo ku {verb}",
+  "verbs.cards.titleSuffix": "– visualização em cartões",
+"verbs.cards.viewTable": "Vista em tabela",
+"verbs.cards.viewTableAria": "Mostrar os verbos em forma de tabela",
+
+"verbs.list.viewOneVerb": "Ver o verbo",
+"expressions.list.title": "Todas as expressões",
+
+"expressions.list.subtitle": "Veja de relance as palavras e os verbos em kikongo, com sua fonética e traduções para francês e inglês.",
+"expressions.list.count": "{n} expressão exibida | {n} expressões exibidas",
+
+"expressions.list.filterAll": "Todos",
+"expressions.list.filterWords": "Palavras",
+"expressions.list.filterVerbs": "Verbos",
+
+"expressions.list.searchLabel": "Pesquisar",
+"expressions.list.searchPlaceholder": "Palavra, verbo, tradução FR ou EN…",
+
+"expressions.list.viewCards": "Visualização em cartões",
+"expressions.list.viewCardsAria": "Mostrar as expressões em forma de cartões",
+
+"expressions.list.loading": "A carregar as expressões…",
+"expressions.list.empty": "Nenhuma expressão encontrada para estes critérios.",
+"expressions.list.caption": "Cada linha representa uma palavra ou um verbo em kikongo, com a sua transcrição fonética e as traduções para francês e inglês.",
+
+"expressions.list.column.type": "Tipo",
+"expressions.list.column.expression": "Expressão",
+"expressions.list.column.phonetic": "Fonética",
+"expressions.list.column.fr": "Francês",
+"expressions.list.column.en": "Inglês",
+
+"expressions.list.badge.word": "Palavra",
+"expressions.list.badge.verb": "Verbo",
+
+"expressions.list.rowAriaWord": "Ver a ficha da palavra {word}",
+"expressions.list.rowAriaVerb": "Ver a ficha do verbo ku {verb}",
+"expressions.cards.titleSuffix": "– visualização em cartões",
+"expressions.cards.viewTable": "Vista em tabela",
+"expressions.cards.viewTableAria": "Voltar à vista em tabela das expressões",
+"expressions.cards.viewDetails": "Ver ficha",
+
+"expressions.cards.subtitle": "Veja de relance as palavras e os verbos em kikongo, com a sua fonética e traduções para francês e inglês.",
+"expressions.cards.count": "{n} expressão encontrada | {n} expressões encontradas",
+"expressions.cards.cta": "Ver ficha",
+
+  "verbs": {
+    "page": {
+      "eyebrow": "Lista de verbos em kikongo",
+      "title": "Lista de verbos",
+      "subtitle": "Explore os verbos em kikongo com sua transcrição fonética e traduções em francês e inglês. Perfeito para aprendizagem, revisão e elaboração de materiais didáticos.",
+      "ctaTitle": "Não encontra o verbo que procura?",
+      "ctaText": "Ajude a enriquecer o léxico contribuindo com novos verbos em kikongo, suas traduções e exemplos de uso. Cada contribuição ajuda a comunidade a aprender e a transmitir o idioma.",
+      "ctaButton": "Torne-se colaborador"
+    },
+    "meta": {
+      "title": "Lista de verbos em kikongo – Lexikongo",
+      "description": "Explore os verbos em kikongo com sua fonética e traduções em francês e inglês. Uma ferramenta útil para aprender e ensinar o idioma."
+    },
+      "cards": {
+    "titleSuffix": "– vista em cartões",
+    "viewTable": "Vista em tabela",
+    "viewTableAria": "Mostrar os verbos em forma de tabela",
+    "viewDetails": "Ver o verbo"
+  }
+  },
+  
+  "expressions": {
+    "page": {
+      "eyebrow": "Lexikongo · Dicionário online",
+      "title": "Lista de palavras e verbos em kikongo",
+      "subtitle": "Descubra as palavras e os verbos em kikongo presentes na base de dados da Lexikongo, com transcrição fonética e traduções em francês e inglês.",
+      "ctaSearch": "Iniciar uma pesquisa",
+      "ctaContribute": "Contribuir para o dicionário",
+      "metaLanguages": "Kikongo · Francês · Inglês · Fonética",
+      "listTitle": "Todas as expressões",
+      "listSubtitle": "Visão geral de todas as entradas de palavras e verbos em kikongo atualmente disponíveis no dicionário Lexikongo.",
+      "bottomCtaTitle": "Não encontra a expressão que procura?",
+      "bottomCtaText": "Ajude a enriquecer o léxico adicionando novas palavras ou verbos em kikongo com as respetivas traduções e exemplos de uso."
+    },
+    "meta": {
+      "title": "Lista de palavras e verbos em kikongo – Lexikongo",
+      "description": "Descubra a lista completa de palavras e verbos em kikongo com a sua fonética e traduções em francês e inglês."
+    },
+     "cards": {
+      "titleSuffix": "– vista em cartões",
+      "subtitle": "Veja rapidamente as palavras e os verbos em kikongo, com a sua fonética e traduções para francês e inglês.",
+      "count": "{count} expressão encontrada | {count} expressões encontradas",
+      "viewTable": "Vista em tabela",
+      "viewTableAria": "Mostrar as expressões em forma de tabela",
+      "cta": "Ver ficha"
+    }
+  }
+
+
+
+}
