@@ -3,7 +3,7 @@
     class="container-fluid word-list p-2"
     aria-labelledby="word-list-heading"
   >
-  <header class="word-list__header">
+<!--  <header class="word-list__header">
   <div>
    <h1 id="word-list-heading" class="word-list__title">
   {{ t('words.list.title') }} {{ t('words.cards.titleSuffix') }}
@@ -20,9 +20,39 @@
   >
     {{ t('words.list.count', store.items.length) }}
   </p>
-</header>
+</header>-->
+  <!-- Hero réutilisable -->
+    <LkPageHero
+      id="words-page-title"
+      :eyebrow="t('words.page.eyebrow')"
+      :title="t('words.page.title')"
+      :description="t('words.page.subtitle')"
+      :primary-cta="primaryCta"
+      :secondary-cta="secondaryCta"
+      :side-aria-label="t('pageHero.sideAria')"
+    >
+      <!-- Meta sous les boutons -->
+      <template #meta>
+        <p class="lk-hero-meta">
+          <i class="fas fa-language" aria-hidden="true"></i>
+          <span>Kikongo · Français · Anglais · Phonétique</span>
+        </p>
+      </template>
 
-
+      <!-- Colonne de droite : logo + raccourcis -->
+      <template #side>
+        <div class="lk-hero-side">
+     
+          <LkActionsBar class="lk-hero__quick-search" />
+        </div>
+      </template>
+    </LkPageHero>
+  <p
+    v-if="store.items && store.items.length"
+    class="word-list__count"
+  >
+    {{ t('words.list.count', store.items.length) }}
+  </p>
 <div class="word-list__toolbar">
   <div class="word-list__search">
     <label class="word-list__search-label" for="word-search">
@@ -145,6 +175,7 @@ import { useRouter } from 'vue-router';
 import { useI18n } from 'vue-i18n';
 import Pagination from '@/components/Pagination.vue';
 import { useWordStore } from '~/stores/wordStore';
+import LkActionsBar from '@/components/LkActionsBar.vue';
 
 const router = useRouter();
 const store = useWordStore();

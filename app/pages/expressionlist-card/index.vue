@@ -155,17 +155,19 @@
               [{{ expr.phonetic }}]
             </p>
           </header>
+<dl class="expr-card__body">
+  <div class="expr-card__row">
+    <dt>{{ t('common.lang.fr') }}</dt>
+    <dd>{{ truncateText(expr.translation_fr, 110) || "—" }}</dd>
+  </div>
+  <div class="expr-card__row">
+    <dt>{{ t('common.lang.en') }}</dt>
+    <dd>{{ truncateText(expr.translation_en, 110) || "—" }}</dd>
+  </div>
+</dl>
 
-          <dl class="expr-card__body">
-            <div class="expr-card__row">
-              <dt>{{ t('expressions.list.column.fr') }}</dt>
-              <dd>{{ truncateText(expr.translation_fr, 80) }}</dd>
-            </div>
-            <div class="expr-card__row">
-              <dt>{{ t('expressions.list.column.en') }}</dt>
-              <dd>{{ truncateText(expr.translation_en, 80) }}</dd>
-            </div>
-          </dl>
+
+
 
           <footer class="expr-card__footer">
             <span class="expr-card__cta">
@@ -497,7 +499,7 @@ onMounted(() => {
 .expr-card__ku {
   font-size: 0.85rem;
   font-weight: 500;
-  color: #1d5ed8;
+  color: #8a8a8b;
 
 }
 
@@ -590,6 +592,14 @@ onMounted(() => {
   margin-top: 1rem;
   display: flex;
   justify-content: center;
+}
+/* Couleurs des traductions (même logique que WordList / VerbList) */
+.expr-card__row--fr dd {
+  color: #047857;   /* vert FR */
+}
+
+.expr-card__row--en dd {
+  color: #b45309;   /* ambré EN */
 }
 
 /* Responsive */

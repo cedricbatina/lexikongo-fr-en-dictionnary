@@ -111,9 +111,9 @@
       >
         <colgroup>
           <col style="width: 3%" />
-          <col style="width: 30%" />
-          <col style="width: 18%" />
-          <col style="width: 25%" />
+          <col style="width: 32%" />
+          <col style="width: 19%" />
+          <col style="width: 26%" />
           <col style="width: 25%" />
         </colgroup>
 
@@ -127,10 +127,11 @@
         <thead>
           <tr>
             <th scope="col">{{ t('expressions.list.column.type') }}</th>
-            <th scope="col">{{ t('expressions.list.column.expression') }}</th>
-            <th scope="col">{{ t('expressions.list.column.phonetic') }}</th>
-            <th scope="col">{{ t('expressions.list.column.fr') }}</th>
-            <th scope="col">{{ t('expressions.list.column.en') }}</th>
+<th scope="col">{{ t('expressions.list.column.expression') }}</th>
+<th scope="col">{{ t('expressions.list.column.phonetic') }}</th>
+<th scope="col">{{ t('common.lang.fr') }}</th>
+<th scope="col">{{ t('common.lang.en') }}</th>
+
           </tr>
         </thead>
 

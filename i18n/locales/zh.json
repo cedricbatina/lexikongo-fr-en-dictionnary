@@ -61,7 +61,8 @@
       "hintPrefix": "你也可以浏览",
       "hintExpressions": "表达",
       "hintSeparator": "或查看",
-      "hintDoc": "贡献者文档"
+      "hintDoc": "贡献者文档",
+      "sideAria": "快速访问和附加信息"
     },
     "cards": {
       "contribute": {
@@ -108,6 +109,17 @@
     "viewTable": "表格视图",
     "viewTableAria": "以表格形式显示单词",
     "viewDetails": "查看词条"
+  },
+    "page": {
+      "eyebrow": "Lexikongo · 在线词典",
+      "title": "探索基孔戈语单词",
+      "subtitle": "浏览基孔戈语单词及其复数形式、音标和法语、英语翻译。由社区共同建设和丰富。",
+      "primaryCta": "开始搜索",
+      "secondaryCta": "为词典做出贡献"
+    },
+     "meta": {
+    "title": "基孔戈语词汇列表 – Lexikongo",
+    "description": "查看基孔戈语词汇列表，包括其复数形式、音标转写，以及对应的法语和英语翻译。"
   }
 }
 ,
@@ -216,7 +228,46 @@
       "viewTableAria": "以表格形式显示表达",
       "cta": "查看详情"
     }
-  }
+  },
+  "common.lang.fr": "法语",
+"common.lang.en": "英语",
+ "actionsBar": {
+    "global": {
+      "ariaLabel": "字典的快速操作和快捷方式"
+    },
+    "admin": {
+      "title": "管理员操作",
+      "ariaLabel": "Lexikongo 管理员操作",
+      "addWord": "添加单词",
+      "addVerb": "添加动词",
+      "addUser": "添加用户"
+    },
+    "contrib": {
+      "title": "贡献者操作",
+      "ariaLabel": "Lexikongo 贡献者操作",
+      "addWord": "添加单词",
+      "addVerb": "添加动词",
+      "board": "贡献者空间"
+    },
+    "shortcuts": {
+      "title": "搜索和列表快捷方式",
+      "ariaLabel": "搜索和列表的快捷方式",
+      "searchWords": "搜索单词",
+      "searchVerbs": "搜索动词",
+      "listWords": "单词列表",
+      "listVerbs": "动词列表",
+      "listExpressions": "单词和动词列表",
+      "contribute": "在 Lexikongo 上贡献"
+    },
+    "common": {
+      "backHome": "返回首页"
+    }
+  }, 
+  "pageHero": {
+  "sideAria": "快捷访问和附加信息"
+}
+
+
 
 
 

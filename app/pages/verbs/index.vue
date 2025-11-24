@@ -1,20 +1,30 @@
 <template>
   <main class="page-verbs" aria-labelledby="page-verbs-title">
-    <!-- Hero pédagogique -->
-    <header class="page-verbs__hero">
-      <p class="page-verbs__eyebrow">
-        {{ t('verbs.page.eyebrow') }}
-      </p>
-
-      <div class="page-verbs__title-block">
-        <h1 id="page-verbs-title" class="page-verbs__title">
-          {{ t('verbs.page.title') }}
-        </h1>
-        <p class="page-verbs__subtitle">
-          {{ t('verbs.page.subtitle') }}
+    <!-- Hero réutilisable -->
+    <LkPageHero
+      id="page-verbs-title"
+      :eyebrow="t('verbs.page.eyebrow')"
+      :title="t('verbs.page.title')"
+      :description="t('verbs.page.subtitle')"
+      :side-aria-label="t('pageHero.sideAria')"
+    >
+      <!-- Meta sous le titre / description -->
+      <template #meta>
+        <p class="lk-hero-meta">
+          <i class="fas fa-language" aria-hidden="true"></i>
+          <span>Kikongo · Français · Anglais · Phonétique</span>
         </p>
-      </div>
-    </header>
+      </template>
+
+      <!-- Colonne de droite : LkActionsBar -->
+      <template #side>
+        <div class="page-verbs__side">
+          <LkActionsBar />
+        </div>
+      </template>
+    </LkPageHero>
+
+   
 
     <!-- Bloc principal : liste -->
     <section class="page-verbs__content">
@@ -41,6 +51,7 @@
 
 <script setup>
 import VerbList from '@/components/VerbList.vue';
+import LkPageHero from '@/components/LkPageHero.vue';
 import { useSeoMeta, useHead } from '#imports';
 import { useI18n } from 'vue-i18n';
 
@@ -48,8 +59,7 @@ const { t } = useI18n();
 
 // SEO basés sur i18n avec fallback FR si la clé manque
 const seoTitle =
-  t('verbs.meta.title') ||
-  'Liste des verbes en Kikongo – Lexikongo';
+  t('verbs.meta.title') || 'Liste des verbes en Kikongo – Lexikongo';
 const seoDescription =
   t('verbs.meta.description') ||
   'Découvrez la liste des verbes en Kikongo avec leur phonétique et leurs traductions en français et en anglais. Outil idéal pour apprendre et enseigner la langue.';
@@ -121,42 +131,6 @@ useHead({
   max-width: 1120px;
   margin: 0 auto;
   padding: 1.5rem 1rem 2.5rem;
-}
-
-/* Hero */
-.page-verbs__hero {
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
-  margin-bottom: 1.75rem;
-}
-
-.page-verbs__eyebrow {
-  font-size: 0.9rem;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  font-weight: 600;
-  color: var(--muted-text, #6b7280);
-}
-
-.page-verbs__title-block {
-  display: flex;
-  flex-direction: column;
-  gap: 0.4rem;
-}
-
-.page-verbs__title {
-  font-size: clamp(1.8rem, 2.4vw, 2.2rem);
-  line-height: 1.1;
-  font-weight: 700;
-  color: var(--text-default, #111827);
-}
-
-.page-verbs__subtitle {
-  max-width: 48rem;
-  font-size: 0.98rem;
-  line-height: 1.5;
-  color: var(--muted-text, #4b5563);
 }
 
 /* Contenu principal */
@@ -235,12 +209,33 @@ useHead({
     padding-inline: 1.5rem;
   }
 
-  .page-verbs__hero {
-    margin-bottom: 2rem;
-  }
-
   .page-verbs__cta-inner {
     padding: 1.6rem 1.8rem;
   }
 }
+/* Section actions sous le hero */
+.home-actions {
+  margin-top: 2rem;
+}
+/* Colonne de droite dans le hero des verbes */
+.page-verbs__side {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+/* Meta sous le hero (même style que words) */
+.lk-hero-meta {
+  margin: 0.4rem 0 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.9rem;
+  color: var(--text-muted, #6b7280);
+}
+
+.lk-hero-meta i {
+  color: var(--primary, #0d6efd);
+}
+
 </style>

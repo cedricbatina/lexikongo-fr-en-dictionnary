@@ -2,14 +2,14 @@
   <section class="word-list" aria-labelledby="word-list-heading">
     <!-- Header -->
     <header class="word-list__header">
-      <div>
+   <!--   <div>
         <h2 id="word-list-heading" class="word-list__title">
           {{ t('words.list.title') }}
         </h2>
         <p class="word-list__subtitle">
           {{ t('words.list.subtitle') }}
         </p>
-      </div>
+      </div>-->
 
       <p
         v-if="itemsLength"
@@ -411,6 +411,7 @@ onMounted(() => {
 .word-list__cell--plural {
   font-weight: 600;
   color: var(--primary); /* ✅ même logique que le singulier, thème-friendly */
+
 }
 
 .word-list__cell--phonetic {

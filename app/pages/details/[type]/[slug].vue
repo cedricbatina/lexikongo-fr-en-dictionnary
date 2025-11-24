@@ -290,11 +290,11 @@ useSeoMeta({
   },
   ogTitle: () => {
     if (!mainLabel.value) {
-      return isWord.value
+      return isWord.value || isVerb
         ? 'Mot en Kikongo – Fiche détaillée | Lexikongo'
         : 'Verbe en Kikongo – Fiche détaillée | Lexikongo';
     }
-    return isWord.value
+    return isWord.value || isVerb
       ? `Mot en Kikongo « ${mainLabel.value} » – Lexikongo`
       : `Verbe en Kikongo « ${mainLabel.value} » – Lexikongo`;
   },

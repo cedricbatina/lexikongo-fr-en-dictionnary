@@ -1,51 +1,60 @@
 <template>
-  <section class="verb-list" aria-labelledby="verb-list-heading">
-    <!-- Header -->
-    <header class="verb-list__header">
-      <div>
-        <h2 id="verb-list-heading" class="verb-list__title">
-          {{ t('verbs.list.title') }} {{ t('verbs.cards.titleSuffix') }}
-        </h2>
-        <p class="verb-list__subtitle">
-          {{ t('verbs.list.subtitle.prefix') }}
-          <span class="verb-list__ku-inline">ku</span>
-          {{ t('verbs.list.subtitle.suffix') }}
-        </p>
-      </div>
-
-      <div class="verb-list__header-actions">
-        
-        <p v-if="itemsLength" class="verb-list__count">
-          {{ t('verbs.list.count', itemsLength) }}
-        </p>
-
-        <NuxtLink
-          to="/verbs"
-          class="verb-list__view-link"
-          :aria-label="t('verbs.cards.viewTableAria')"
-        >
-          <i class="fas fa-table" aria-hidden="true"></i>
-          <span>{{ t('verbs.cards.viewTable') }}</span>
-        </NuxtLink>
-      </div>
-    </header>
-
-    <!-- Barre de recherche -->
-    <div class="verb-list__toolbar">
-      <div class="verb-list__search">
-        <label class="verb-list__search-label" for="verb-search">
-          {{ t('verbs.list.searchLabel') }}
-        </label>
-        <input
-          id="verb-search"
-          v-model="searchLocal"
-          type="search"
-          class="verb-list__search-input"
-          :placeholder="t('verbs.list.searchPlaceholder')"
-        />
-      </div>
+<section class="verb-list" aria-labelledby="verb-list-heading">
+  <!-- Header -->
+  <header class="verb-list__header">
+    <div>
+      <h2 id="verb-list-heading" class="verb-list__title">
+        {{ t('verbs.list.title') }} {{ t('verbs.cards.titleSuffix') }}
+      </h2>
+      <p class="verb-list__subtitle">
+        {{ t('verbs.list.subtitle.prefix') }}
+        <span class="verb-list__ku-inline">ku</span>
+        {{ t('verbs.list.subtitle.suffix') }}
+      </p>
     </div>
 
+    <div class="verb-list__header-actions">
+      <p v-if="itemsLength" class="verb-list__count">
+        {{ t('verbs.list.count', itemsLength) }}
+      </p>
+
+      <NuxtLink
+        to="/verbs"
+        class="verb-list__view-link"
+        :aria-label="t('verbs.cards.viewTableAria')"
+      >
+        <i class="fas fa-table" aria-hidden="true"></i>
+        <span>{{ t('verbs.cards.viewTable') }}</span>
+      </NuxtLink>
+    </div>
+  </header>
+
+  <!-- Barre de recherche -->
+  <div class="verb-list__toolbar">
+    <div class="verb-list__search">
+      <label class="verb-list__search-label" for="verb-search">
+        {{ t('verbs.list.searchLabel') }}
+      </label>
+      <input
+        id="verb-search"
+        v-model="searchLocal"
+        type="search"
+        class="verb-list__search-input"
+        :placeholder="t('verbs.list.searchPlaceholder')"
+      />
+    </div>
+  </div>
+
+   <div
+      v-if="totalPages > 1"
+      class="verb-list__pagination"
+    >
+      <Pagination
+        :currentPage="store.page"
+        :totalPages="totalPages"
+        @pageChange="store.setPage"
+      />
+    </div>
     <!-- État : chargement -->
     <div
       v-if="store.isLoading"
@@ -102,11 +111,11 @@
           <dl class="verb-card__body">
             <div class="verb-card__row">
               <dt>{{ t('verbs.list.column.fr') }}</dt>
-              <dd>{{ truncateText(item.translation_fr, 80) }}</dd>
+              <dd><span class="translation-fr">{{ truncateText(item.translation_fr, 80) }}</span></dd>
             </div>
             <div class="verb-card__row">
               <dt>{{ t('verbs.list.column.en') }}</dt>
-              <dd>{{ truncateText(item.translation_en, 80) }}</dd>
+              <dd><span class="translation-en">{{ truncateText(item.translation_en, 80) }}</span></dd>
             </div>
           </dl>
 
@@ -220,12 +229,27 @@ onMounted(() => {
   gap: 1.25rem;
 }
 
-/* Header */
 .verb-list__header {
   display: flex;
-  flex-direction: column;
+  flex-wrap: wrap;
   gap: 0.6rem;
+  align-items: flex-end;
 }
+
+/* Header actions : compteur au-dessus du bouton, le tout aligné à droite */
+.verb-list__header-actions {
+  margin-left: auto;
+  display: flex;
+  flex-direction: column;   /* ⬅️ compteur AU-DESSUS du bouton */
+  align-items: flex-end;    /* ⬅️ aligné à droite */
+  gap: 0.35rem;
+}
+
+.verb-list__count {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+
 
 .verb-list__title {
   font-size: 1.4rem;
@@ -244,18 +268,8 @@ onMounted(() => {
   color: var(--primary);       /* ✅ thème */
 }
 
-.verb-list__header-actions {
-  margin-left: auto;          /* ⬅️ pousse le bloc complètement à droite */
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  flex-wrap: wrap;
-}
 
-.verb-list__count {
-  font-size: 0.9rem;
-  color: var(--text-muted);    /* ✅ thème */
-}
+
 
 /* Bouton vers vue tableau */
 .verb-list__view-link {
@@ -496,43 +510,13 @@ onMounted(() => {
   }
 }
 
-.verb-cards__header {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.75rem;
-  align-items: flex-end;
+
+
+ .translation-fr {
+  color: #047857;
 }
 
-.verb-cards__header-actions {
-  margin-left: auto;          /* ⬅️ pousse le bloc complètement à droite */
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  flex-wrap: wrap;
+ .translation-en {
+  color: #b45309;
 }
-
-.verb-cards__count {
-  font-size: 0.9rem;
-  color: var(--text-muted, #6b7280);
-}
-
-.verb-cards__view-link {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.35rem;
-  font-size: 0.85rem;
-  padding: 0.35rem 0.85rem;
-  border-radius: 999px;
-  border: 1px solid var(--border-subtle, rgba(148,163,184,0.8));
-  text-decoration: none;
-  background: var(--surface-elevated, #ffffff);
-  color: var(--primary, #0d6efd);
-  white-space: nowrap;
-}
-
-.verb-cards__view-link:hover {
-  background: rgba(13, 110, 253, 0.06);
-  border-color: var(--primary, #0d6efd);
-}
-
 </style>

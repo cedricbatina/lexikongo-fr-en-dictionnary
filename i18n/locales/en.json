@@ -61,7 +61,8 @@
       "hintPrefix": "You can also explore",
       "hintExpressions": "expressions",
       "hintSeparator": "or read",
-      "hintDoc": "the contributor documentation"
+      "hintDoc": "the contributor documentation",
+      "sideAria": "Quick access and additional information"
     },
     "cards": {
       "contribute": {
@@ -109,6 +110,17 @@
     "viewTable": "Table view",
     "viewTableAria": "Show words as a table",
     "viewDetails": "View details"
+  },
+   "page": {
+      "eyebrow": "Lexikongo · Online dictionary",
+      "title": "Discover Kikongo words",
+      "subtitle": "Browse Kikongo words with their plurals, phonetic transcription, and translations into French and English. Built and enriched by the community.",
+      "primaryCta": "Start a search",
+      "secondaryCta": "Contribute to the dictionary"
+    },
+    "meta": {
+    "title": "List of Kikongo words – Lexikongo",
+    "description": "Discover the list of Kikongo words with their plural forms, phonetic transcriptions, and translations into French and English."
   }
 }
 ,
@@ -251,7 +263,47 @@
       "root": "Root",
       "suffix": "Suffix"
     }
-  }
+  },
+  "common.lang.fr": "French",
+"common.lang.en": "English",
+ "actionsBar": {
+    "global": {
+      "ariaLabel": "Quick actions and dictionary shortcuts"
+    },
+    "admin": {
+      "title": "Administrator actions",
+      "ariaLabel": "Lexikongo administrator actions",
+      "addWord": "Add a word",
+      "addVerb": "Add a verb",
+      "addUser": "Add a user"
+    },
+    "contrib": {
+      "title": "Contributor actions",
+      "ariaLabel": "Lexikongo contributor actions",
+      "addWord": "Add a word",
+      "addVerb": "Add a verb",
+      "board": "Contributor dashboard"
+    },
+    "shortcuts": {
+      "title": "Search and list shortcuts",
+      "ariaLabel": "Shortcuts to search and lists",
+      "searchWords": "Search words",
+      "searchVerbs": "Search verbs",
+      "listWords": "Word list",
+      "listVerbs": "Verb list",
+      "listExpressions": "Words & verbs list",
+      "contribute": "Contribute on Lexikongo"
+    },
+    "common": {
+      "backHome": "Back to homepage"
+    }
+  },
+  "pageHero": {
+  "sideAria": "Quick access and additional information"
+}
+
+
+
 
 
 

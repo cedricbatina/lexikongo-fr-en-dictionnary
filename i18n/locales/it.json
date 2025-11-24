@@ -61,7 +61,8 @@
       "hintPrefix": "Puoi anche esplorare",
       "hintExpressions": "le espressioni",
       "hintSeparator": "oppure consultare",
-      "hintDoc": "la documentazione per i collaboratori"
+      "hintDoc": "la documentazione per i collaboratori",
+      "sideAria": "Accesso rapido e informazioni aggiuntive"
     },
     "cards": {
       "contribute": {
@@ -110,6 +111,17 @@
     "viewTable": "Vista tabella",
     "viewTableAria": "Mostra le parole in tabella",
     "viewDetails": "Vedi la scheda"
+  },
+    "page": {
+      "eyebrow": "Lexikongo · Dizionario online",
+      "title": "Scoprire le parole in kikongo",
+      "subtitle": "Esplora le parole in kikongo con i loro plurali, la trascrizione fonetica e le traduzioni in francese e inglese. Un progetto costruito e arricchito dalla comunità.",
+      "primaryCta": "Iniziare una ricerca",
+      "secondaryCta": "Contribuire al dizionario"
+    },
+      "meta": {
+    "title": "Elenco delle parole in kikongo – Lexikongo",
+    "description": "Scopri l'elenco delle parole in kikongo con i loro plurali, trascrizioni fonetiche e traduzioni in francese e in inglese."
   }
 }
 ,
@@ -218,7 +230,47 @@
       "viewTableAria": "Mostrare le espressioni in forma di tabella",
       "cta": "Vedi scheda"
     }
-  }
+  },
+  "common.lang.fr": "Francese",
+"common.lang.en": "Inglese",
+
+  "actionsBar": {
+    "global": {
+      "ariaLabel": "Azioni rapide e scorciatoie del dizionario"
+    },
+    "admin": {
+      "title": "Azioni amministratore",
+      "ariaLabel": "Azioni amministratore di Lexikongo",
+      "addWord": "Aggiungi una parola",
+      "addVerb": "Aggiungi un verbo",
+      "addUser": "Aggiungi un utente"
+    },
+    "contrib": {
+      "title": "Azioni collaboratore",
+      "ariaLabel": "Azioni collaboratore di Lexikongo",
+      "addWord": "Aggiungi una parola",
+      "addVerb": "Aggiungi un verbo",
+      "board": "Area collaboratore"
+    },
+    "shortcuts": {
+      "title": "Scorciatoie di ricerca e liste",
+      "ariaLabel": "Scorciatoie per ricerche e liste",
+      "searchWords": "Cerca parole",
+      "searchVerbs": "Cerca verbi",
+      "listWords": "Elenco delle parole",
+      "listVerbs": "Elenco dei verbi",
+      "listExpressions": "Elenco di parole e verbi",
+      "contribute": "Contribuire su Lexikongo"
+    },
+    "common": {
+      "backHome": "Torna alla home page"
+    }
+  },
+  "pageHero": {
+  "sideAria": "Accesso rapido e informazioni aggiuntive"
+}
+
+
   
 
 

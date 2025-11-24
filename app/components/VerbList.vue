@@ -104,8 +104,8 @@
           <tr>
             <th scope="col">{{ t('verbs.list.column.verb') }}</th>
             <th scope="col">{{ t('verbs.list.column.phonetic') }}</th>
-            <th scope="col">{{ t('verbs.list.column.fr') }}</th>
-            <th scope="col">{{ t('verbs.list.column.en') }}</th>
+           <th scope="col">{{ t('common.lang.fr') }}</th>
+<th scope="col">{{ t('common.lang.en') }}</th>
           </tr>
         </thead>
 

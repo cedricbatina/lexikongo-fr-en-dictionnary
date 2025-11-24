@@ -2,12 +2,12 @@
   <!-- Visible uniquement pour les admins -->
   <div
     v-if="isAdmin"
-    class="lk-admin"
+    class="lk-actions"
     aria-label="Actions administrateur Lexikongo"
   >
     <button
       type="button"
-      class="lk-admin__btn lk-admin__btn--primary"
+      class="lk-actions__btn lk-actions__btn--primary"
       @click="addWord"
     >
       <i class="fas fa-spell-check" aria-hidden="true"></i>
@@ -16,7 +16,7 @@
 
     <button
       type="button"
-      class="lk-admin__btn lk-admin__btn--success"
+      class="lk-actions__btn lk-actions__btn--success"
       @click="addVerb"
     >
       <i class="fa-solid fa-arrow-down-a-z" aria-hidden="true"></i>
@@ -25,7 +25,7 @@
 
     <button
       type="button"
-      class="lk-admin__btn lk-admin__btn--accent"
+      class="lk-actions__btn lk-actions__btn--accent"
       @click="addUser"
     >
       <i class="fas fa-user-plus" aria-hidden="true"></i>
@@ -34,7 +34,7 @@
 
     <button
       type="button"
-      class="lk-admin__btn lk-admin__btn--ghost"
+      class="lk-actions__btn lk-actions__btn--ghost"
       @click="goHome"
     >
       <i class="fas fa-home" aria-hidden="true"></i>
@@ -44,9 +44,9 @@
 </template>
 
 <script setup>
-import { computed } from "vue";
-import { useRouter } from "vue-router";
-import { useAuthStore } from "@/stores/authStore";
+import { computed } from 'vue';
+import { useRouter } from 'vue-router';
+import { useAuthStore } from '@/stores/authStore';
 
 const authStore = useAuthStore();
 const router = useRouter();
@@ -54,35 +54,35 @@ const router = useRouter();
 // On utilise userRoles (array) avec fallback []
 const isAdmin = computed(() => {
   const roles = authStore.userRoles || [];
-  return Array.isArray(roles) && roles.includes("admin");
+  return Array.isArray(roles) && roles.includes('admin');
 });
 
 const addVerb = () => {
-  router.push("/admin/admin/add/verb");
+  router.push('/admin/admin/add/verb');
 };
 
 const addWord = () => {
-  router.push("/admin/admin/add/word");
+  router.push('/admin/admin/add/word');
 };
 
 const addUser = () => {
-  router.push("/admin/admin/add/user");
+  router.push('/admin/admin/add/user');
 };
 
 const goHome = () => {
-  router.push("/");
+  router.push('/');
 };
 </script>
 
 <style scoped>
-.lk-admin {
+.lk-actions {
   display: flex;
   flex-wrap: wrap;
   gap: 0.5rem;
 }
 
 /* Boutons génériques */
-.lk-admin__btn {
+.lk-actions__btn {
   border-radius: 999px;
   border: 1px solid transparent;
   padding: 0.45rem 0.9rem;
@@ -103,66 +103,66 @@ const goHome = () => {
     transform 0.1s ease;
 }
 
-.lk-admin__btn i {
+.lk-actions__btn i {
   font-size: 0.9rem;
 }
 
 /* Variantes */
-.lk-admin__btn--primary {
+.lk-actions__btn--primary {
   background: #0d6efd;
   border-color: #0d6efd;
   color: #ffffff;
 }
 
-.lk-admin__btn--success {
+.lk-actions__btn--success {
   background: #16a34a;
   border-color: #16a34a;
   color: #ffffff;
 }
 
-.lk-admin__btn--accent {
-  background: #e11d48; /* rouge/rose pour action sensible (utilisateurs) */
+.lk-actions__btn--accent {
+  background: #e11d48;
   border-color: #e11d48;
   color: #ffffff;
 }
 
-.lk-admin__btn--ghost {
+.lk-actions__btn--ghost {
   background: #ffffff;
   border-color: rgba(148, 163, 184, 0.7);
   color: #111827;
 }
 
 /* Hover / focus */
-.lk-admin__btn:hover,
-.lk-admin__btn:focus-visible {
+.lk-actions__btn:hover,
+.lk-actions__btn:focus-visible {
   outline: none;
   transform: translateY(-1px);
   box-shadow: 0 10px 22px rgba(15, 23, 42, 0.12);
 }
 
-.lk-admin__btn--primary:hover,
-.lk-admin__btn--primary:focus-visible {
+.lk-actions__btn--primary:hover,
+.lk-actions__btn--primary:focus-visible {
   box-shadow: 0 10px 24px rgba(13, 110, 253, 0.45);
 }
 
-.lk-admin__btn--success:hover,
-.lk-admin__btn--success:focus-visible {
+.lk-actions__btn--success:hover,
+.lk-actions__btn--success:focus-visible {
   box-shadow: 0 10px 24px rgba(22, 163, 74, 0.45);
 }
 
-.lk-admin__btn--accent:hover,
-.lk-admin__btn--accent:focus-visible {
+.lk-actions__btn--accent:hover,
+.lk-actions__btn--accent:focus-visible {
   box-shadow: 0 10px 24px rgba(225, 29, 72, 0.45);
 }
 
-/* Responsive mobile-first */
+/* Mobile */
 @media (max-width: 640px) {
-  .lk-admin {
+  .lk-actions {
     flex-direction: column;
     align-items: stretch;
   }
 
-  .lk-admin__btn {
+  .lk-actions__btn {
     justify-content: center;
   }
 }

@@ -46,6 +46,17 @@
     "viewTable": "Vue tableau",
     "viewTableAria": "Afficher les mots sous forme de tableau",
     "viewDetails": "Voir la fiche"
+  },
+   "page": {
+      "eyebrow": "Lexikongo · Liste des mots en kikongo",
+      "title": "Découvrir les mots en Kikongo",
+      "subtitle": "Parcourez le lexique des mots en Kikongo avec leurs pluriels, transcriptions phonétiques et traductions en français et en anglais. Construit et enrichi par la communauté.",
+      "primaryCta": "Commencer une recherche",
+      "secondaryCta": "Contribuer au dictionnaire"
+    },
+     "meta": {
+    "title": "Liste des mots en Kikongo – Lexikongo",
+    "description": "Découvrez la liste des mots en Kikongo avec leurs pluriels, transcriptions phonétiques et traductions en français et en anglais."
   }
 }
 
@@ -70,7 +81,8 @@
       "hintPrefix": "Vous pouvez aussi parcourir",
       "hintExpressions": "les expressions",
       "hintSeparator": "ou consulter",
-      "hintDoc": "la documentation contributeur"
+      "hintDoc": "la documentation contributeur",
+       "sideAria": "Accès rapide et informations complémentaires"
     },
     "cards": {
       "contribute": {
@@ -172,7 +184,7 @@
 "expressions.cards.cta": "Voir la fiche",
  "verbs": {
     "page": {
-      "eyebrow": "Liste des verbes en Kikongo",
+      "eyebrow": "Lexikongo . Liste des verbes en Kikongo",
       "title": "Liste des verbes",
       "subtitle": "Explorez les verbes en Kikongo avec leur phonétique et leurs traductions en français et en anglais. Idéal pour l’apprentissage, la révision et la préparation de supports pédagogiques.",
       "ctaTitle": "Vous ne trouvez pas le verbe que vous cherchez ?",
@@ -193,7 +205,7 @@
   
   "expressions": {
     "page": {
-      "eyebrow": "Lexikongo · Dictionnaire en ligne",
+      "eyebrow": "Lexikongo · Liste des mots & verbes",
       "title": "Liste des mots et verbes en Kikongo",
       "subtitle": "Découvrez la liste des mots et des verbes en Kikongo, avec leur phonétique et leurs traductions en français et en anglais.",
       "ctaSearch": "Commencer une recherche",
@@ -248,7 +260,50 @@
       "root": "Racine",
       "suffix": "Suffixe"
     }
-  }
+  },
+  "common.lang.fr": "Français",
+"common.lang.en": "Anglais",
+
+  "actionsBar": {
+    "global": {
+      "ariaLabel": "Actions rapides et raccourcis du dictionnaire"
+    },
+    "admin": {
+      "title": "Actions administrateur",
+      "ariaLabel": "Actions administrateur Lexikongo",
+      "addWord": "Ajouter un mot",
+      "addVerb": "Ajouter un verbe",
+      "addUser": "Ajouter un utilisateur"
+    },
+    "contrib": {
+      "title": "Actions contributeur",
+      "ariaLabel": "Actions contributeur Lexikongo",
+      "addWord": "Ajouter un mot",
+      "addVerb": "Ajouter un verbe",
+      "board": "Espace contributeur"
+    },
+    "shortcuts": {
+      "title": "Raccourcis de recherche et listes",
+      "ariaLabel": "Raccourcis de recherche et listes",
+      "searchWords": "Rechercher des mots",
+      "searchVerbs": "Rechercher des verbes",
+      "listWords": "Liste des mots",
+      "listVerbs": "Liste des verbes",
+      "listExpressions": "Liste de mots & verbes",
+      "contribute": "Contribuer sur Lexikongo"
+    },
+    "common": {
+      "backHome": "Retour à l'accueil"
+    }
+  },
+  "pageHero": {
+  "sideAria": "Accès rapide et informations complémentaires"
+}
+
+
+
+
+
 
 
 

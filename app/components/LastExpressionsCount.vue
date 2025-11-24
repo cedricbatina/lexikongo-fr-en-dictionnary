@@ -1,5 +1,5 @@
 <template>
-  <p class="last-expressions-count">
+  <p class="last-expressions-count text-center">
     <strong>{{ totalExpressions }}</strong> nouvelles expressions, dont
     <strong>{{ data.wordCount }}</strong> mots et
     <strong>{{ data.verbCount }}</strong> verbes !
@@ -48,5 +48,6 @@ onMounted(() => {
 }
 .last-expressions-count strong {
   color: #007bff; /* Couleur accentuée */
+  text-align: center;
 }
 </style>
