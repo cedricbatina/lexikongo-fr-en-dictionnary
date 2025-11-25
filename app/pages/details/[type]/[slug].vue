@@ -1,7 +1,7 @@
 <template>
   <main class="entry-page" aria-labelledby="entry-title">
     <!-- États globaux -->
-    <section v-if="isLoading" class="entry-state entry-state--loading">
+        <section v-if="isLoading" class="entry-state entry-state--loading">
       <p>{{ $t('details.common.loading') || 'Chargement de la fiche…' }}</p>
     </section>
 
@@ -13,9 +13,40 @@
       </NuxtLink>
     </section>
 
+    <!-- Quand tout est OK : Hero + fiche détaillée -->
+    <template v-else>
+      <LkPageHero
+        id="entry-title"
+        :eyebrow="isWord ? ($t('details.word.label') || 'Mot') : ($t('details.verb.label') || 'Verbe')"
+        :title="heroTitle"
+        :description="heroDescription"
+        :side-aria-label="t('pageHero.sideAria')"
+      >
+        <!-- Meta sous le titre -->
+        <template #meta>
+          <p class="lk-hero-meta">
+            <i class="fas fa-language" aria-hidden="true"></i>
+            <span>{{ $t('details.common.kikongoData') || 'Données en Kikongo' }}</span>
+          </p>
+        </template>
+
+        <!-- Colonne de droite : actions globales -->
+        <template #side>
+          <div class="entry-hero-side">
+            <LkActionsBar />
+          </div>
+        </template>
+      </LkPageHero>
+    </template>
+     <section class="lastexpr m-5">
+      <div class="expr-section__meta text-center m-auto">
+          <LastExpressionsCount />
+        </div>
+    </section>
+
     <!-- Fiche détaillée -->
     <section
-      v-else
+    
       class="entry-card"
       :aria-label="isWord ? 'Détail du mot en Kikongo' : 'Détail du verbe en Kikongo'"
     >
@@ -203,6 +234,7 @@
           <i class="fas fa-list" aria-hidden="true"></i>
           <span>{{ $t('details.common.backExpressions') || 'Voir la liste des mots & verbes' }}</span>
         </NuxtLink>
+        
 
         <div class="entry-footer__group">
           <NuxtLink
@@ -230,6 +262,9 @@ import { ref, computed, onMounted } from 'vue';
 import { useRoute } from 'vue-router';
 import { useI18n } from 'vue-i18n';
 import { useSeoMeta, useHead } from '#imports';
+import LkPageHero from '@/components/LkPageHero.vue';
+import LkActionsBar from '@/components/LkActionsBar.vue';
+import LastExpressionsCount from '@/components/LastExpressionsCount.vue';
 
 const route = useRoute();
 const { t } = useI18n();
@@ -237,7 +272,20 @@ const { t } = useI18n();
 const type = computed(() => route.params.type);
 const slug = computed(() => route.params.slug);
 
-const details = ref(null);
+const details = ref({
+  singular: '',
+  plural: '',
+  name: '',
+  phonetic: '',
+  translation_fr: '',
+  translation_en: '',
+  nominal_class: '',
+  root: '',
+  suffix: '',
+  author: '',
+  created_at: '',
+});
+
 const isLoading = ref(true);
 const error = ref(null);
 
@@ -247,6 +295,41 @@ const isVerb = computed(() => type.value === 'verb');
 const mainLabel = computed(() => {
   if (!details.value) return '';
   return isWord.value ? details.value.singular : details.value.name;
+});
+
+const heroTitle = computed(() => {
+  if (!details.value) {
+    // fallback très générique, déjà i18n
+    return isWord.value
+      ? t('details.word.label') || 'Mot'
+      : t('details.verb.label') || 'Verbe';
+  }
+
+  if (isWord.value) {
+    const label = t('details.word.label') || 'Mot';
+    const w = details.value.singular || '—';
+    // Ex : "Mot « nzu »"
+    return `${label} « ${w} »`;
+  }
+
+  // verbe
+  const label = t('details.verb.label') || 'Verbe';
+  const name = details.value.name || '—';
+  // Ex : "Verbe « ku longa »"
+  return `${label} « ku ${name} »`;
+});
+
+const heroDescription = computed(() => {
+  if (isWord.value) {
+    return (
+      t('details.word.subtitle') ||
+      'Fiche détaillée du mot en Kikongo avec sa phonétique et ses traductions.'
+    );
+  }
+  return (
+    t('details.verb.subtitle') ||
+    'Fiche détaillée du verbe en Kikongo avec sa phonétique, ses racines et ses traductions.'
+  );
 });
 
 // Date formatée

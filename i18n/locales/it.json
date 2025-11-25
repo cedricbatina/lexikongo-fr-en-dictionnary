@@ -113,7 +113,7 @@
     "viewDetails": "Vedi la scheda"
   },
     "page": {
-      "eyebrow": "Lexikongo · Dizionario online",
+      "eyebrow": "Elenco di parole in kikongo",
       "title": "Scoprire le parole in kikongo",
       "subtitle": "Esplora le parole in kikongo con i loro plurali, la trascrizione fonetica e le traduzioni in francese e inglese. Un progetto costruito e arricchito dalla comunità.",
       "primaryCta": "Iniziare una ricerca",
@@ -207,7 +207,7 @@
   
   "expressions": {
     "page": {
-      "eyebrow": "Lexikongo · Dizionario online",
+      "eyebrow": "Elenco di parole e verbi in kikongo",
       "title": "Elenco di parole e verbi in kikongo",
       "subtitle": "Scopri le parole e i verbi in kikongo presenti nel database di Lexikongo, con la trascrizione fonetica e le traduzioni in francese e in inglese.",
       "ctaSearch": "Avvia una ricerca",
@@ -268,7 +268,129 @@
   },
   "pageHero": {
   "sideAria": "Accesso rapido e informazioni aggiuntive"
+},
+  "auth": {
+      "login": {
+        "title": "Accesso",
+        "subtitle": "Accedi per entrare nel tuo spazio Lexikongo.",
+        "identifierLabel": "Email o nome utente",
+        "identifierPlaceholder": "Inserisci la tua email o il nome utente",
+        "passwordLabel": "Password",
+        "passwordPlaceholder": "Inserisci la tua password",
+        "submit": "Accedi",
+        "submitting": "Accesso in corso…",
+        "registerLink": "Crea un account",
+        "forgotLink": "Password dimenticata?",
+        "showPassword": "Mostra password",
+        "hidePassword": "Nascondi password",
+        "showPasswordText": "Mostra",
+        "hidePasswordText": "Nascondi",
+        "error": {
+          "requiredFields": "Compila tutti i campi.",
+          "generic": "Accesso non riuscito. Controlla le tue credenziali."
+        }
+      },
+      "register": {
+      "meta": {
+        "title": "Registrazione · Lexikongo",
+        "description": "Crea il tuo account Lexikongo per suggerire parole, verbi ed espressioni in kikongo e tenere traccia dei tuoi contributi."
+      },
+      "pageTitle": "Crea un account",
+      "intro": "Unisciti alla community di Lexikongo per contribuire al dizionario e salvare i tuoi preferiti.",
+      "emailConfirmLabel": "Conferma e-mail",
+      "emailConfirmHint": "Dopo la registrazione riceverai un'e-mail con un link di conferma. Il tuo account verrà attivato non appena farai clic sul link.",
+      "title": "Registrati",
+      "subtitle": "Crea il tuo account per accedere al tuo spazio Lexikongo.",
+      "usernameLabel": "Nome utente",
+      "usernamePlaceholder": "Scegli un nome utente",
+      "emailLabel": "Indirizzo e-mail",
+      "emailPlaceholder": "Inserisci un indirizzo e-mail valido",
+      "passwordLabel": "Password",
+      "passwordPlaceholder": "Scegli una password sicura",
+      "submit": "Crea il mio account",
+      "loginLink": "Hai già un account? Accedi",
+      "success": "Registrazione completata con successo! Controlla la tua casella di posta per attivare il tuo account.",
+      "error": {
+        "requiredFields": "Compila tutti i campi obbligatori.",
+        "generic": "Si è verificato un errore durante la creazione dell'account. Riprova."
+      }
+    }
+    },
+    "profile": {
+  "eyebrow": "Area membri · Profilo",
+  "title": "Profilo utente",
+  "subtitle": "Gestisci le informazioni del tuo account Lexikongo.",
+  "sideAria": "Riepilogo dell'account, ruoli e scorciatoie del dizionario Lexikongo",
+  "fallbackName": "Utente Lexikongo",
+  "actions": {
+    "expressions": "Esplora parole e verbi",
+     "editProfile": "Modificare il mio profilo",
+      "deleteAccount": "Eliminare il mio account"
+  },
+  "meta": {
+    "title": "Profilo utente | Lexikongo",
+    "description": "Consulta e gestisci le informazioni del tuo account Lexikongo (profilo, ruoli e sicurezza).",
+    "ogTitle": "Profilo utente – Lexikongo",
+    "ogDescription": "Area membri Lexikongo: profilo, ruoli e informazioni dell'account."
+  },
+  "metaSecurity": "Le tue informazioni personali restano private e non vengono mai condivise.",
+  "summary": {
+    "title": "Riepilogo dell'account",
+    "username": "Nome utente",
+    "email": "Indirizzo e-mail",
+    "emailUnknown": "Non indicata",
+    "memberSince": "Membro dal",
+    "roles": "Ruoli",
+    "editProfile": "Modifica il mio profilo"
+  },
+  "memberSince": {
+    "unknown": "Data sconosciuta"
+  },
+  "section": {
+    "account": {
+      "title": "Informazioni dell'account",
+      "subtitle": "Questi dati provengono dal tuo account Lexikongo attuale.",
+      "username": "Nome utente",
+      "usernameHint": "Questo nome può apparire accanto ad eventuali tuoi contributi pubblici.",
+      "email": "Indirizzo e-mail",
+      "emailUnknown": "Non indicata",
+      "emailHint": "Lo utilizziamo solo per l'accesso e la sicurezza del tuo account."
+    },
+    "roles": {
+      "title": "Ruoli e permessi",
+      "subtitle": "I ruoli determinano le azioni che puoi svolgere su Lexikongo."
+    },
+    "security": {
+      "title": "Sicurezza dell'account",
+      "subtitle": "Proteggi il tuo account con una password robusta e univoca."
+    }
+  },
+  "roleLabels": {
+    "user": "Utente",
+    "contributor": "Collaboratore",
+    "admin": "Amministratore"
+  },
+  "roles": {
+    "user": {
+      "desc": "Può consultare il dizionario e utilizzare gli strumenti di ricerca."
+    },
+    "contributor": {
+      "desc": "Può proporre nuove parole, verbi ed espressioni in kikongo."
+    },
+    "admin": {
+      "desc": "Può gestire gli utenti, i contenuti e la configurazione del dizionario."
+    }
+  },
+   "delete": {
+      "title": "Eliminare il mio account",
+      "message": "Questa azione è definitiva. Il tuo account Lexikongo e le informazioni associate verranno eliminati. Questa operazione non può essere annullata.",
+      "confirm": "Elimina definitivamente il mio account",
+      "cancel": "Annulla",
+      "success": "Il tuo account è stato eliminato correttamente.",
+      "error": "Si è verificato un errore durante l'eliminazione del tuo account. Riprova."
+    }
 }
+
 
 
   

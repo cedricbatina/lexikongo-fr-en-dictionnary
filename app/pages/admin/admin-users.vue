@@ -15,7 +15,7 @@
 </template>
 
 <script setup>
-import { useHead } from "@vueuse/head";
+import { useHead } from "#imports";
 
 // Définir les métadonnées de la page
 useHead({

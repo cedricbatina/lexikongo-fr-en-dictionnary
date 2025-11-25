@@ -2,14 +2,14 @@
   <section class="expr-list page" aria-labelledby="expr-list-heading">
     <!-- Header -->
     <header class="expr-list__header">
-      <div>
+     <!-- <div>
         <h2 id="expr-list-heading" class="expr-list__title">
           {{ t('expressions.list.title') }}
         </h2>
         <p class="expr-list__subtitle">
           {{ t('expressions.list.subtitle') }}
         </p>
-      </div>
+      </div>-->
 
       <p v-if="store.filteredItems.length" class="expr-list__count">
         {{ t('expressions.list.count', store.filteredItems.length) }}
@@ -111,10 +111,10 @@
       >
         <colgroup>
           <col style="width: 3%" />
-          <col style="width: 32%" />
-          <col style="width: 19%" />
-          <col style="width: 26%" />
-          <col style="width: 25%" />
+          <col style="width: 28%" />
+          <col style="width: 18%" />
+          <col style="width: 27%" />
+          <col style="width: 27%" />
         </colgroup>
 
         <caption

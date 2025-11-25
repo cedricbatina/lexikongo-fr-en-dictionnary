@@ -113,7 +113,7 @@
     "viewDetails": "Ver la ficha"
   },
    "page": {
-      "eyebrow": "Lexikongo · Diccionario en línea",
+      "eyebrow": "Lexikongo · Lista de palabras en kikongo",
       "title": "Descubrir las palabras en kikongo",
       "subtitle": "Explora las palabras en kikongo con sus plurales, transcripción fonética y traducciones al francés y al inglés. Un recurso construido y enriquecido por la comunidad.",
       "primaryCta": "Empezar una búsqueda",
@@ -205,7 +205,7 @@
   
   "expressions": {
     "page": {
-      "eyebrow": "Lexikongo · Diccionario en línea",
+      "eyebrow": "Lexikongo · Lista de palabras y verbos en kikongo",
       "title": "Lista de palabras y verbos en kikongo",
       "subtitle": "Descubre las palabras y los verbos en kikongo de la base de datos de Lexikongo, con su transcripción fonética y sus traducciones al francés y al inglés.",
       "ctaSearch": "Empezar una búsqueda",
@@ -266,7 +266,130 @@
   },
   "pageHero": {
   "sideAria": "Acceso rápido e información adicional"
+},
+ "auth": {
+      "login": {
+        "title": "Iniciar sesión",
+        "subtitle": "Inicia sesión para acceder a tu espacio Lexikongo.",
+        "identifierLabel": "Correo electrónico o nombre de usuario",
+        "identifierPlaceholder": "Introduce tu correo electrónico o nombre de usuario",
+        "passwordLabel": "Contraseña",
+        "passwordPlaceholder": "Introduce tu contraseña",
+        "submit": "Iniciar sesión",
+        "submitting": "Iniciando sesión…",
+        "registerLink": "Crear cuenta",
+        "forgotLink": "¿Has olvidado tu contraseña?",
+        "showPassword": "Mostrar contraseña",
+        "hidePassword": "Ocultar contraseña",
+        "showPasswordText": "Mostrar",
+        "hidePasswordText": "Ocultar",
+        "error": {
+          "requiredFields": "Por favor, rellena todos los campos.",
+          "generic": "Error al iniciar sesión. Comprueba tus credenciales."
+        }
+      },
+       "register": {
+      "meta": {
+        "title": "Crear cuenta · Lexikongo",
+        "description": "Crea tu cuenta de Lexikongo para proponer palabras, verbos y expresiones en kikongo y hacer seguimiento de tus contribuciones."
+      },
+      "pageTitle": "Crear una cuenta",
+      "intro": "Únete a la comunidad de Lexikongo para contribuir al diccionario y guardar tus favoritos.",
+      "emailConfirmLabel": "Confirmación por correo electrónico",
+      "emailConfirmHint": "Después de registrarte, recibirás un correo electrónico con un enlace de confirmación. Tu cuenta se activará en cuanto hagas clic en él.",
+      "title": "Registro",
+      "subtitle": "Crea tu cuenta para acceder a tu espacio Lexikongo.",
+      "usernameLabel": "Nombre de usuario",
+      "usernamePlaceholder": "Elige un nombre de usuario",
+      "emailLabel": "Dirección de correo electrónico",
+      "emailPlaceholder": "Introduce una dirección de correo electrónico válida",
+      "passwordLabel": "Contraseña",
+      "passwordPlaceholder": "Elige una contraseña segura",
+      "submit": "Crear mi cuenta",
+      "loginLink": "¿Ya tienes una cuenta? Inicia sesión",
+      "success": "Registro correcto. Revisa tu bandeja de entrada para activar tu cuenta.",
+      "error": {
+        "requiredFields": "Por favor, rellena todos los campos obligatorios.",
+        "generic": "Se ha producido un error al crear tu cuenta. Inténtalo de nuevo."
+      }
+    }
+    },
+    "profile": {
+  "eyebrow": "Área de miembro · Perfil",
+  "title": "Perfil de usuario",
+  "subtitle": "Gestiona la información de tu cuenta Lexikongo.",
+  "sideAria": "Resumen de la cuenta, roles y accesos directos del diccionario Lexikongo",
+  "fallbackName": "Usuario de Lexikongo",
+  "actions": {
+    "expressions": "Explorar palabras y verbos",
+    "editProfile": "Editar mi perfil",
+      "deleteAccount": "Eliminar mi cuenta"
+    
+  },
+  "meta": {
+    "title": "Perfil de usuario | Lexikongo",
+    "description": "Consulta y gestiona la información de tu cuenta Lexikongo (perfil, roles y seguridad).",
+    "ogTitle": "Perfil de usuario – Lexikongo",
+    "ogDescription": "Área de miembro de Lexikongo: perfil, roles e información de la cuenta."
+  },
+  "metaSecurity": "Tu información personal permanece privada y nunca se comparte.",
+  "summary": {
+    "title": "Resumen de la cuenta",
+    "username": "Nombre de usuario",
+    "email": "Dirección de correo electrónico",
+    "emailUnknown": "No indicada",
+    "memberSince": "Miembro desde",
+    "roles": "Roles",
+    "editProfile": "Editar mi perfil"
+  },
+  "memberSince": {
+    "unknown": "Fecha desconocida"
+  },
+  "section": {
+    "account": {
+      "title": "Información de la cuenta",
+      "subtitle": "Estos datos proceden de tu cuenta actual de Lexikongo.",
+      "username": "Nombre de usuario",
+      "usernameHint": "Este nombre puede aparecer junto a tus posibles contribuciones públicas.",
+      "email": "Dirección de correo electrónico",
+      "emailUnknown": "No indicada",
+      "emailHint": "Solo la utilizamos para el inicio de sesión y la seguridad de tu cuenta."
+    },
+    "roles": {
+      "title": "Roles y permisos",
+      "subtitle": "Los roles determinan las acciones que puedes realizar en Lexikongo."
+    },
+    "security": {
+      "title": "Seguridad de la cuenta",
+      "subtitle": "Protege tu cuenta con una contraseña robusta y única."
+    }
+  },
+  "roleLabels": {
+    "user": "Usuario",
+    "contributor": "Colaborador",
+    "admin": "Administrador"
+  },
+  "roles": {
+    "user": {
+      "desc": "Puede consultar el diccionario y utilizar las herramientas de búsqueda."
+    },
+    "contributor": {
+      "desc": "Puede proponer nuevas palabras, verbos y expresiones en kikongo."
+    },
+    "admin": {
+      "desc": "Puede gestionar los usuarios, los contenidos y la configuración del diccionario."
+    }
+  },
+   "delete": {
+      "title": "Eliminar mi cuenta",
+      "message": "Esta acción es definitiva. Tu cuenta de Lexikongo y la información asociada se eliminarán. Esta operación no se puede deshacer.",
+      "confirm": "Eliminar mi cuenta de forma permanente",
+      "cancel": "Cancelar",
+      "success": "Tu cuenta se ha eliminado correctamente.",
+      "error": "Se ha producido un error al eliminar tu cuenta. Inténtalo de nuevo."
+    }
 }
+
 
 
   

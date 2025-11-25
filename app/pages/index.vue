@@ -83,7 +83,11 @@
         </aside>
       </template>
     </LkPageHero>
-
+    <section class="lastexpr m-5">
+      <div class="expr-section__meta text-center m-auto">
+          <LastExpressionsCount />
+        </div>
+    </section>
     <!-- Optionnel : barre d’actions globale -->
     <section
       class="home-actions"
@@ -242,5 +246,15 @@ useSeoMeta({
   .home-page {
     padding-top: 1.25rem;
   }
+}
+.lastexpr {
+    margin-bottom: 20px;
+  padding: 20px;
+  background: linear-gradient(to bottom, #f9f9f9, #ffffff);
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  font-size: 1rem;
+  color: #333;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 </style>

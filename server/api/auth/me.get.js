@@ -1,32 +1,69 @@
 // server/api/auth/me.get.js
-import { defineEventHandler } from "h3";
+import { defineEventHandler, sendError, createError } from "h3";
 import { getUserFromCookie } from "../../utils/authSession";
-// (Optionnel) pour enrichir email/email_verified depuis la DB :
-// import { query } from "~/lib/db";
+import { query } from "../../utils/db.config";
 
 export default defineEventHandler(async (event) => {
-  const user = getUserFromCookie(event);
+  try {
+    // 1) Lire l’utilisateur depuis le cookie JWT
+    const payload = getUserFromCookie(event);
 
-  if (!user) {
-    return { authenticated: false, user: null };
+    if (!payload || !payload.id) {
+      return {
+        authenticated: false,
+        user: null,
+      };
+    }
+
+    // 2) Récupérer les infos à jour en base
+    const rows = await query(
+      `
+      SELECT
+        user_id,
+        username,
+        email,
+        email_verified,
+        created_at,
+        last_seen,
+        previous_seen
+      FROM users
+      WHERE user_id = ?
+      LIMIT 1
+    `,
+      [payload.id]
+    );
+
+    if (!rows || rows.length === 0) {
+      return {
+        authenticated: false,
+        user: null,
+      };
+    }
+
+    const user = rows[0];
+    const roles = Array.isArray(payload.roles) ? payload.roles : [];
+
+    return {
+      authenticated: true,
+      user: {
+        id: user.user_id,
+        username: user.username,
+        email: user.email,
+        roles,
+        email_verified: !!user.email_verified,
+        created_at: user.created_at,
+        last_seen: user.last_seen,
+        previous_seen: user.previous_seen,
+      },
+    };
+  } catch (err) {
+    console.error("Erreur /api/auth/me :", err);
+    return sendError(
+      event,
+      createError({
+        statusCode: 500,
+        statusMessage: "Erreur lors de la récupération du profil.",
+      })
+    );
   }
-
-  // Optionnel : enrichir depuis la DB (décommenter si besoin)
-  // try {
-  //   const rows = await query(
-  //     "SELECT email, email_verified FROM users WHERE user_id = ? LIMIT 1",
-  //     [user.id]
-  //   );
-  //   if (rows?.[0]) {
-  //     user.email = rows[0].email;
-  //     user.email_verified = !!rows[0].email_verified;
-  //   }
-  // } catch {
-  //   // on ignore l’enrichissement si la DB tombe; on garde le profil minimal
-  // }
-
-  return {
-    authenticated: true,
-    user,
-  };
 });

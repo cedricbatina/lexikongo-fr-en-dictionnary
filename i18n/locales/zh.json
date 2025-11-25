@@ -111,7 +111,7 @@
     "viewDetails": "查看词条"
   },
     "page": {
-      "eyebrow": "Lexikongo · 在线词典",
+      "eyebrow": "Lexikongo · 基孔戈语单词列表",
       "title": "探索基孔戈语单词",
       "subtitle": "浏览基孔戈语单词及其复数形式、音标和法语、英语翻译。由社区共同建设和丰富。",
       "primaryCta": "开始搜索",
@@ -184,7 +184,7 @@
 
   "verbs": {
     "page": {
-      "eyebrow": "基孔戈语动词列表",
+      "eyebrow": "Lexikongo · 基孔戈语动词列表",
       "title": "动词列表",
       "subtitle": "浏览基孔戈语动词及其音标转写，以及对应的法语和英语翻译。非常适合学习、复习和编写教学资料。",
       "ctaTitle": "没找到你要查的动词？",
@@ -205,7 +205,7 @@
   
   "expressions": {
     "page": {
-      "eyebrow": "Lexikongo · 在线词典",
+      "eyebrow": "Lexikongo · 基孔戈语单词和动词列表",
       "title": "基孔戈语单词和动词列表",
       "subtitle": "浏览 Lexikongo 数据库中的基孔戈语单词和动词，以及它们的音标转写和法语、英语翻译。",
       "ctaSearch": "开始搜索",
@@ -265,7 +265,130 @@
   }, 
   "pageHero": {
   "sideAria": "快捷访问和附加信息"
+},
+"auth": {
+      "login": {
+        "title": "登录",
+        "subtitle": "登录以访问你的 Lexikongo 空间。",
+        "identifierLabel": "邮箱或用户名",
+        "identifierPlaceholder": "请输入邮箱或用户名",
+        "passwordLabel": "密码",
+        "passwordPlaceholder": "请输入密码",
+        "submit": "登录",
+        "submitting": "正在登录…",
+        "registerLink": "创建账户",
+        "forgotLink": "忘记密码？",
+        "showPassword": "显示密码",
+        "hidePassword": "隐藏密码",
+        "showPasswordText": "显示",
+        "hidePasswordText": "隐藏",
+        "error": {
+          "requiredFields": "请填写所有字段。",
+          "generic": "登录失败，请检查你的账号信息。"
+        }
+      },
+       "register": {
+      "meta": {
+        "title": "注册 · Lexikongo",
+        "description": "创建你的 Lexikongo 帐号，提交基孔戈语的词汇、动词和表达，并跟踪你的贡献。"
+      },
+      "pageTitle": "创建帐号",
+      "intro": "加入 Lexikongo 社区，一起完善词典并保存你的收藏。",
+      "emailConfirmLabel": "邮箱验证",
+      "emailConfirmHint": "注册完成后，你会收到一封包含验证链接的邮件。点击链接后，你的帐号将会被激活。",
+      "title": "注册",
+      "subtitle": "创建帐号以访问你的 Lexikongo 空间。",
+      "usernameLabel": "用户名",
+      "usernamePlaceholder": "请选择一个用户名",
+      "emailLabel": "电子邮箱地址",
+      "emailPlaceholder": "请输入有效的邮箱地址",
+      "passwordLabel": "密码",
+      "passwordPlaceholder": "请选择一个安全的密码",
+      "submit": "创建我的帐号",
+      "loginLink": "已经有帐号？登录",
+      "success": "注册成功！请检查邮箱并激活你的帐号。",
+      "error": {
+        "requiredFields": "请填写所有必填字段。",
+        "generic": "创建帐号时出错，请稍后再试。"
+      }
+    }
+    },
+    
+"profile": {
+  "eyebrow": "会员区域 · 个人资料",
+  "title": "用户资料",
+  "subtitle": "管理你的 Lexikongo 账户信息。",
+  "sideAria": "账户摘要、角色以及 Lexikongo 词典快捷方式",
+  "fallbackName": "Lexikongo 用户",
+  "actions": {
+    "expressions": "浏览词汇和动词",
+     "editProfile": "编辑我的资料",
+      "deleteAccount": "删除我的账户"
+  },
+  "meta": {
+    "title": "用户资料 | Lexikongo",
+    "description": "查看并管理你的 Lexikongo 账户信息（资料、角色和安全）。",
+    "ogTitle": "用户资料 – Lexikongo",
+    "ogDescription": "Lexikongo 会员区域：资料、角色和账户信息。"
+  },
+  "metaSecurity": "你的个人信息会保持私密，绝不会被分享。",
+  "summary": {
+    "title": "账户摘要",
+    "username": "用户名",
+    "email": "电子邮箱地址",
+    "emailUnknown": "未填写",
+    "memberSince": "会员自",
+    "roles": "角色",
+    "editProfile": "编辑我的个人资料"
+  },
+  "memberSince": {
+    "unknown": "日期未知"
+  },
+  "section": {
+    "account": {
+      "title": "账户信息",
+      "subtitle": "这些信息来自你当前的 Lexikongo 账户。",
+      "username": "用户名",
+      "usernameHint": "此名称可能会显示在你公开贡献的内容旁边。",
+      "email": "电子邮箱地址",
+      "emailUnknown": "未填写",
+      "emailHint": "我们仅将其用于登录和账户安全。"
+    },
+    "roles": {
+      "title": "角色和权限",
+      "subtitle": "角色决定你在 Lexikongo 上可以执行的操作。"
+    },
+    "security": {
+      "title": "账户安全",
+      "subtitle": "使用强且唯一的密码来保护你的账户。"
+    }
+  },
+  "roleLabels": {
+    "user": "用户",
+    "contributor": "贡献者",
+    "admin": "管理员"
+  },
+  "roles": {
+    "user": {
+      "desc": "可以查看词典并使用搜索工具。"
+    },
+    "contributor": {
+      "desc": "可以提交新的 Kikongo 单词、动词和表达。"
+    },
+    "admin": {
+      "desc": "可以管理用户、内容以及词典配置。"
+    }
+  },
+    "delete": {
+      "title": "删除我的账户",
+      "message": "此操作不可撤销。您的 Lexikongo 账户及相关信息将被永久删除，无法恢复。",
+      "confirm": "永久删除我的账户",
+      "cancel": "取消",
+      "success": "您的账户已成功删除。",
+      "error": "删除账户时发生错误，请稍后重试。"
+    }
 }
+
 
 
 

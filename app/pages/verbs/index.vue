@@ -24,7 +24,11 @@
       </template>
     </LkPageHero>
 
-   
+   <section class="lastexpr m-5">
+      <div class="expr-section__meta text-center m-auto">
+          <LastExpressionsCount />
+        </div>
+    </section>
 
     <!-- Bloc principal : liste -->
     <section class="page-verbs__content">

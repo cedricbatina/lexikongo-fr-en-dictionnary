@@ -298,7 +298,254 @@
   },
   "pageHero": {
   "sideAria": "Accès rapide et informations complémentaires"
-}
+},
+
+"auth": {
+  "login": {
+    "title": "Connexion",
+     "meta": {
+        "title": "Connexion · Lexikongo",
+        "description": "Connectez-vous à votre compte Lexikongo pour contribuer au dictionnaire kikongo, gérer vos ajouts et retrouver vos favoris."
+      },
+    "subtitle": "Connectez-vous pour accéder à votre espace Lexikongo.",
+    "identifierLabel": "Email ou nom d'utilisateur",
+    "identifierPlaceholder": "Entrez votre email ou nom d’utilisateur",
+    "passwordLabel": "Mot de passe",
+    "passwordPlaceholder": "Entrez votre mot de passe",
+    "submit": "Connexion",
+    "submitting": "Connexion…",
+    "registerLink": "Créer un compte",
+    "forgotLink": "Mot de passe oublié ?",
+    "showPassword": "Afficher le mot de passe",
+    "hidePassword": "Cacher le mot de passe",
+    "showPasswordText": "Voir",
+    "hidePasswordText": "Cacher",
+    "error": {
+      "requiredFields": "Veuillez remplir tous les champs.",
+      "generic": "Échec de la connexion. Veuillez vérifier vos identifiants."
+    },
+     "kicker": "Lexikongo · Espace membre",
+      "pageTitle": "Connexion à votre compte Lexikongo",
+      "heroDescription": "Connectez-vous pour proposer des mots, verbes et expressions en kikongo, suivre vos contributions et retrouver vos favoris.",
+      "sideAria": "Formulaire de connexion et accès à votre espace Lexikongo",
+      "metaSecurity": "Votre adresse e-mail sert uniquement à la gestion de votre compte et à l’activation de votre profil Lexikongo.",
+      "sideTitle": "Retrouvez votre espace Lexikongo",
+      "sideBenefit1": "Poursuivez vos contributions au dictionnaire kikongo.",
+      "sideBenefit2": "Consultez l’historique de vos ajouts et modifications.",
+      "sideBenefit3": "Retrouvez plus rapidement vos entrées favorites."
+
+     
+  },
+   "register": {
+      "meta": {
+        "title": "Inscription · Lexikongo",
+        "description": "Créez un compte Lexikongo pour proposer des mots, verbes et expressions en Kikongo et suivre vos contributions."
+      },
+      "pageTitle": "Créer un compte",
+      "intro": "Rejoignez la communauté Lexikongo pour contribuer au dictionnaire et retrouver vos favoris.",
+      "emailConfirmLabel": "Confirmation par e-mail",
+      "emailConfirmHint": "Après l’inscription, vous recevrez un e-mail contenant un lien de confirmation. Votre compte sera activé dès que vous aurez cliqué dessus.",
+      "title": "Inscription",
+      "subtitle": "Créez votre compte pour accéder à votre espace Lexikongo.",
+      "usernameLabel": "Nom d’utilisateur",
+      "usernamePlaceholder": "Choisissez un nom d’utilisateur",
+      "emailLabel": "Adresse e-mail",
+      "emailPlaceholder": "Entrez une adresse e-mail valide",
+      "passwordLabel": "Mot de passe",
+      "passwordPlaceholder": "Choisissez un mot de passe sécurisé",
+      "submit": "Créer mon compte",
+      "loginLink": "Déjà un compte ? Se connecter",
+      "success": "Inscription réussie ! Vérifiez votre boîte mail pour activer votre compte.",
+      "error": {
+        "requiredFields": "Veuillez remplir tous les champs obligatoires.",
+        "generic": "Une erreur est survenue pendant l’inscription. Veuillez réessayer."
+      }
+    }
+},
+
+  "profile": {
+    "eyebrow": "Espace membre · Profil",
+    "title": "Profil utilisateur",
+    "subtitle": "Gérez les informations de votre compte Lexikongo.",
+    "sideAria": "Résumé du compte, rôles et raccourcis du dictionnaire Lexikongo",
+    "fallbackName": "Utilisateur Lexikongo",
+    "actions": {
+      "expressions": "Explorer les mots & verbes",
+         "editProfile": "Modifier mon profil",
+      "deleteAccount": "Supprimer mon compte"
+    },
+    "meta": {
+      "title": "Profil utilisateur | Lexikongo",
+      "description": "Consultez et gérez les informations de votre compte Lexikongo (profil, rôles et sécurité).",
+      "ogTitle": "Profil utilisateur – Lexikongo",
+      "ogDescription": "Espace membre Lexikongo : profil, rôles et informations de compte."
+    },
+    "metaSecurity": "Vos informations personnelles restent privées et ne sont jamais partagées.",
+    "summary": {
+      "title": "Résumé du compte",
+      "username": "Nom d’utilisateur",
+      "email": "Adresse e-mail",
+      "emailUnknown": "Non renseignée",
+      "memberSince": "Membre depuis",
+      "roles": "Rôles",
+      "editProfile": "Modifier mon profil"
+    },
+    "memberSince": {
+      "unknown": "Date inconnue"
+    },
+    "section": {
+      "account": {
+        "title": "Informations du compte",
+        "subtitle": "Ces informations proviennent de votre compte Lexikongo actuel.",
+        "username": "Nom d’utilisateur",
+        "usernameHint": "Ce nom peut apparaître à côté de vos éventuelles contributions publiques.",
+        "email": "Adresse e-mail",
+        "emailUnknown": "Non renseignée",
+        "emailHint": "Nous l’utilisons uniquement pour la connexion et la sécurité de votre compte."
+      },
+      "roles": {
+        "title": "Rôles et permissions",
+        "subtitle": "Les rôles déterminent les actions que vous pouvez effectuer sur Lexikongo."
+      },
+      "security": {
+        "title": "Sécurité du compte",
+        "subtitle": "Protégez votre compte avec un mot de passe robuste et unique."
+      }
+    },
+    "roleLabels": {
+      "user": "Utilisateur",
+      "contributor": "Contributeur",
+      "admin": "Administrateur"
+    },
+    "roles": {
+      "user": {
+        "desc": "Peut consulter le dictionnaire et utiliser les outils de recherche."
+      },
+      "contributor": {
+        "desc": "Peut proposer de nouveaux mots, verbes et expressions en Kikongo."
+      },
+      "admin": {
+        "desc": "Peut gérer les utilisateurs, les contenus et la configuration du dictionnaire."
+      }
+    },
+    "delete": {
+      "title": "Supprimer mon compte",
+      "message": "Cette action est définitive. Votre compte Lexikongo et vos informations associées seront supprimés. Cette opération ne peut pas être annulée.",
+      "confirm": "Supprimer définitivement mon compte",
+      "cancel": "Annuler",
+      "success": "Votre compte a été supprimé avec succès.",
+      "error": "Une erreur est survenue lors de la suppression de votre compte. Veuillez réessayer."
+    }
+  },
+   "admin": {
+    "dashboard": {
+      "hero": {
+        "eyebrow": "Espace membre · Administration",
+        "fallbackName": "Administrateur Lexikongo",
+        "title": "Tableau de bord admin · {name}",
+        "description": "Accédez aux outils d’administration de Lexikongo : mots, verbes, utilisateurs et soumissions.",
+        "sideAria": "Raccourcis administrateur et actions rapides",
+        "ctaWords": "Gérer les mots",
+        "ctaVerbs": "Gérer les verbes",
+        "meta": "Vous voyez ici uniquement des informations réservées à votre rôle d’administrateur.",
+        "actionsAria": "Actions rapides Lexikongo (mode administrateur)"
+      },
+      "access": {
+        "title": "Accès aux sections",
+        "intro": "Retrouvez rapidement les zones clés du dictionnaire et de la gestion des comptes.",
+        "words": {
+          "title": "Gestion des mots",
+          "text": "Consultez, filtrez et modifiez les entrées de mots du dictionnaire.",
+          "link": "Voir les mots"
+        },
+        "verbs": {
+          "title": "Gestion des verbes",
+          "text": "Consultez, filtrez et modifiez les verbes enregistrés.",
+          "link": "Voir les verbes"
+        },
+        "users": {
+          "title": "Gestion des utilisateurs",
+          "text": "Consultez et gérez les comptes utilisateurs (rôles, accès, suppression).",
+          "link": "Voir les utilisateurs"
+        },
+        "submissions": {
+          "title": "Gestion des soumissions",
+          "text": "Validez ou refusez les nouvelles propositions de mots, verbes et expressions.",
+          "link": "Voir les soumissions"
+        }
+      },
+      "stats": {
+        "title": "Statistiques rapides",
+        "intro": "Un aperçu global de l’activité sur Lexikongo.",
+        "usersLabel": "Utilisateurs",
+        "usersHint": "Comptes enregistrés dans la base.",
+        "wordsLabel": "Mots",
+        "wordsHint": "Entrées de mots actuellement disponibles.",
+        "verbsLabel": "Verbes",
+        "verbsHint": "Entrées de verbes actuellement disponibles."
+      },
+      "session": {
+        "text": "Vous êtes connecté avec un compte administrateur.",
+        "logout": "Se déconnecter"
+      },
+      "seo": {
+        "title": "Administration · Lexikongo",
+        "description": "Tableau de bord administrateur Lexikongo : gestion des mots, verbes et utilisateurs."
+      }
+    }
+  },
+  "contrib": {
+    "dashboard": {
+      "hero": {
+        "eyebrow": "Espace membre · Contributeur",
+        "titleWithName": "Espace contributeur · {name}",
+        "description": "Proposez de nouveaux mots, verbes et expressions en kikongo et suivez vos contributions.",
+        "sideAria": "Raccourcis contributeur et actions rapides",
+        "meta": "Chaque contribution est relue avant publication afin de préserver la qualité du dictionnaire.",
+        "actionsAria": "Actions rapides Lexikongo (mode contributeur)"
+      },
+      "actions": {
+        "title": "Contribuer au dictionnaire",
+        "intro": "Choisissez ce que vous souhaitez proposer ou améliorer sur Lexikongo.",
+        "words": {
+          "title": "Proposer un mot",
+          "text": "Ajoutez un nouveau mot en kikongo avec sa traduction et sa phonétique.",
+          "link": "Accéder aux mots"
+        },
+        "verbs": {
+          "title": "Proposer un verbe",
+          "text": "Ajoutez un verbe ou proposez une meilleure conjugaison.",
+          "link": "Accéder aux verbes"
+        },
+        "expressions": {
+          "title": "Proposer une expression",
+          "text": "Partagez des expressions idiomatiques, proverbes ou tournures fréquentes.",
+          "link": "Accéder aux expressions"
+        },
+        "doc": {
+          "title": "Lire la documentation",
+          "text": "Découvrez comment structurer vos propositions et les bonnes pratiques.",
+          "link": "Voir la documentation"
+        }
+      },
+      "summary": {
+        "title": "Résumé de votre compte",
+        "intro": "Un rappel des informations principales liées à votre profil.",
+        "username": "Nom d’utilisateur",
+        "role": "Rôle",
+        "roleLabel": "Contributeur",
+        "memberSince": "Membre depuis",
+        "memberSinceUnknown": "Date inconnue",
+        "fallbackName": "Contributeur Lexikongo"
+      },
+      "seo": {
+        "title": "Espace contributeur – Lexikongo",
+        "description": "Proposez et suivez vos contributions dans le dictionnaire kikongo Lexikongo."
+      }
+    }
+  }
+
+
 
 
 

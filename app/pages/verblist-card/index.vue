@@ -1,8 +1,36 @@
 <template>
 <section class="verb-list" aria-labelledby="verb-list-heading">
   <!-- Header -->
-  <header class="verb-list__header">
-    <div>
+ 
+ <LkPageHero
+      id="page-verbs-title"
+      :eyebrow="t('verbs.page.eyebrow')"
+      :title="t('verbs.page.title')"
+      :description="t('verbs.page.subtitle')"
+      :side-aria-label="t('pageHero.sideAria')"
+    >
+      <!-- Meta sous le titre / description -->
+      <template #meta>
+        <p class="lk-hero-meta">
+          <i class="fas fa-language" aria-hidden="true"></i>
+          <span>Kikongo · Français · Anglais · Phonétique</span>
+        </p>
+      </template>
+
+      <!-- Colonne de droite : LkActionsBar -->
+      <template #side>
+        <div class="page-verbs__side">
+          <LkActionsBar />
+        </div>
+      </template>
+    </LkPageHero>
+<section class="lastexpr m-5">
+      <div class="expr-section__meta text-center m-auto">
+          <LastExpressionsCount />
+        </div>
+    </section>
+    <header class="verb-list__header">
+  <!--  <div>
       <h2 id="verb-list-heading" class="verb-list__title">
         {{ t('verbs.list.title') }} {{ t('verbs.cards.titleSuffix') }}
       </h2>
@@ -12,7 +40,7 @@
         {{ t('verbs.list.subtitle.suffix') }}
       </p>
     </div>
-
+-->
     <div class="verb-list__header-actions">
       <p v-if="itemsLength" class="verb-list__count">
         {{ t('verbs.list.count', itemsLength) }}
@@ -28,7 +56,6 @@
       </NuxtLink>
     </div>
   </header>
-
   <!-- Barre de recherche -->
   <div class="verb-list__toolbar">
     <div class="verb-list__search">
@@ -519,4 +546,25 @@ onMounted(() => {
  .translation-en {
   color: #b45309;
 }
+/* Colonne de droite dans le hero des verbes */
+.page-verbs__side {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+/* Meta sous le hero (même style que words) */
+.lk-hero-meta {
+  margin: 0.4rem 0 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.9rem;
+  color: var(--text-muted, #6b7280);
+}
+
+.lk-hero-meta i {
+  color: var(--primary, #0d6efd);
+}
+
 </style>

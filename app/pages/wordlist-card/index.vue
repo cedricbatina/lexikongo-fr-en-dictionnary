@@ -47,6 +47,11 @@
         </div>
       </template>
     </LkPageHero>
+    <section class="lastexpr m-5">
+      <div class="expr-section__meta text-center m-auto">
+          <LastExpressionsCount />
+        </div>
+    </section>
   <p
     v-if="store.items && store.items.length"
     class="word-list__count"

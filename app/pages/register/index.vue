@@ -1,97 +1,109 @@
 <template>
   <main
     class="page-auth"
-    aria-labelledby="login-hero-title"
+    aria-labelledby="register-hero-title"
   >
     <LkPageHero
-      id="login-hero-title"
-      :eyebrow="tt('auth.login.kicker', 'Lexikongo · Espace membre')"
-      :title="tt('auth.login.pageTitle', 'Connexion à votre compte Lexikongo')"
+      id="register-hero-title"
+      :eyebrow="tt('auth.register.kicker', 'Lexikongo · Compte gratuit')"
+      :title="tt('auth.register.pageTitle', 'Créer un compte Lexikongo')"
       :description="
         tt(
-          'auth.login.heroDescription',
-          'Connectez-vous pour proposer des mots, verbes et expressions en kikongo, suivre vos contributions et retrouver vos favoris.'
+          'auth.register.heroDescription',
+          'Créez votre compte gratuit pour contribuer au dictionnaire kikongo, suivre vos contributions et retrouver vos favoris.'
         )
       "
       :side-aria-label="
         tt(
-          'auth.login.sideAria',
-          'Formulaire de connexion et accès à votre espace Lexikongo'
+          'auth.register.sideAria',
+          'Informations complémentaires et formulaire de création de compte Lexikongo'
         )
       "
     >
-      <!-- Actions du hero : CTA inscription -->
+      <!-- CTA secondaire : déjà un compte ? -->
       <template #actions>
         <NuxtLink
-          to="/register"
+          to="/login"
           class="auth-hero-btn auth-hero-btn--ghost"
         >
-          <i class="fas fa-user-plus" aria-hidden="true"></i>
+          <i class="fas fa-sign-in-alt" aria-hidden="true"></i>
           <span>
             {{
               tt(
-                'auth.login.registerLink',
-                'Pas encore de compte ? Inscrivez-vous gratuitement'
+                'auth.register.loginLink',
+                'Vous avez déjà un compte ? Connectez-vous'
               )
             }}
           </span>
         </NuxtLink>
       </template>
 
-      <!-- Meta : petit rappel sur l’activation / sécurité -->
+      <!-- Meta : explication sur l’e-mail de confirmation -->
       <template #meta>
-        <p class="auth-meta my-2">
-          <i class="fas fa-shield-alt" aria-hidden="true"></i>
-          <span>
+        <p class="auth-meta my-3">
+          <span class="auth-meta__badge">
             {{
               tt(
-                'auth.login.metaSecurity',
-                'Votre adresse e-mail sert uniquement à la gestion de votre compte et à l’activation de votre profil Lexikongo.'
+                'auth.register.emailConfirmLabel',
+                'Activation du compte par e-mail'
+              )
+            }}
+          </span>
+          <span class="auth-meta__hint">
+            {{
+              tt(
+                'auth.register.emailConfirmHint',
+                'Après votre inscription, un e-mail contenant un lien de validation vous sera envoyé. Cliquez dessus pour activer votre compte (pensez à vérifier vos spams).'
               )
             }}
           </span>
         </p>
-         <!-- Carte info / rappel -->
+          <!-- Bénéfices / résumé -->
           <section
-            class="auth-side__card my-3"
-            aria-labelledby="auth-side-login-title"
+            class="auth-side__card my-5"
+            aria-labelledby="auth-side-benefits-title"
           >
             <h2
-              id="auth-side-login-title"
+              id="auth-side-benefits-title"
               class="auth-side__title"
             >
-              {{ tt('auth.login.sideTitle', 'Retrouvez votre espace Lexikongo') }}
+              {{
+                tt(
+                  'auth.register.sideTitle',
+                  'Votre espace Lexikongo'
+                )
+              }}
             </h2>
             <ul class="auth-side__list">
               <li>
-                <i class="fas fa-book-open" aria-hidden="true"></i>
+                <i class="fas fa-check-circle" aria-hidden="true"></i>
                 <span>
                   {{
                     tt(
-                      'auth.login.sideBenefit1',
-                      'Poursuivez vos contributions au dictionnaire kikongo.'
+                      'auth.register.sideBenefit1',
+                      'Proposer des mots, verbes et expressions en kikongo.'
                     )
                   }}
                 </span>
               </li>
               <li>
-                <i class="fas fa-history" aria-hidden="true"></i>
+                <i class="fas fa-check-circle" aria-hidden="true"></i>
                 <span>
                   {{
                     tt(
-                      'auth.login.sideBenefit2',
-                      'Consultez l’historique de vos ajouts et modifications.'
+                      'auth.register.sideBenefit2',
+                      'Suivre l’historique de vos contributions.'
                     )
                   }}
                 </span>
               </li>
               <li>
-                <i class="fas fa-star" aria-hidden="true"></i>
+                <i class="fas fa-check-circle" aria-hidden="true"></i>
                 <span>
                   {{
                     tt(
-                      'auth.login.sideBenefit3',
-                      'Retrouvez plus rapidement vos entrées favorites.'
+                      'auth.register.sideBenefit3',
+                      'Retrouver rapidement vos entrées favorites.'
                     )
                   }}
                 </span>
@@ -100,18 +112,19 @@
           </section>
       </template>
 
-      <!-- Colonne de droite : petite carte + formulaire de connexion -->
+      <!-- COLONNE DROITE : bénéfices + formulaire d’inscription -->
       <template #side>
         <aside class="auth-side">
-         
-
-          <!-- Formulaire de connexion (composant Login.vue) -->
+          <!-- Formulaire d’inscription directement dans la colonne de droite -->
           <section
             class="auth-side__form-wrapper"
-            aria-label="Formulaire de connexion à Lexikongo"
+            aria-label="Formulaire de création de compte"
           >
-            <Login />
+            <Register />
           </section>
+        
+
+         
         </aside>
       </template>
     </LkPageHero>
@@ -119,55 +132,69 @@
 </template>
 
 <script setup>
-import Login from '~/components/Login.vue';
+import Register from '@/components/Register.vue';
 import LkPageHero from '@/components/LkPageHero.vue';
-import { useI18n } from 'vue-i18n';
 import { useSeoMeta, useHead } from '#imports';
+import { useI18n } from 'vue-i18n';
 
 const { t } = useI18n();
 
-// helper i18n avec fallback lisible
+// helper i18n avec fallback propre
 const tt = (key, fallback) => {
   const res = t(key);
   return res === key ? fallback : res;
 };
 
-// SEO : titre + description i18n avec fallback FR
-const seoTitle = tt('auth.login.meta.title', 'Connexion à Lexikongo');
-const seoDescription = tt(
-  'auth.login.meta.description',
-  "Connectez-vous à votre compte Lexikongo pour contribuer au dictionnaire kikongo et accéder à votre espace personnel."
+// SEO
+const seoTitle = tt(
+  'auth.register.meta.title',
+  'Créer un compte · Dictionnaire Kikongo Lexikongo'
 );
 
-// Balises meta / Open Graph
+const seoDescription = tt(
+  'auth.register.meta.description',
+  "Créez votre compte Lexikongo pour proposer des mots, verbes et expressions en kikongo, suivre vos contributions et retrouver vos favoris. Un e-mail d’activation vous sera envoyé."
+);
+
 useSeoMeta({
   title: seoTitle,
   description: seoDescription,
   ogTitle: seoTitle,
   ogDescription: seoDescription,
   ogType: 'website',
-  ogUrl: 'https://www.lexikongo.fr/login',
+  ogUrl: 'https://www.lexikongo.fr/register',
   ogSiteName: 'Lexikongo',
-  // Page de login → en général on ne l’indexe pas
-  robots: 'noindex, nofollow, noimageindex',
+  twitterTitle: seoTitle,
+  twitterDescription: seoDescription,
+  twitterCard: 'summary',
 });
 
-// JSON-LD basique pour la page de connexion
+// JSON-LD + canonical
 const jsonLd = {
   '@context': 'https://schema.org',
   '@type': 'WebPage',
   name: seoTitle,
   description: seoDescription,
-  url: 'https://www.lexikongo.fr/login',
+  url: 'https://www.lexikongo.fr/register',
   inLanguage: 'fr',
-  isPartOf: {
-    '@type': 'WebSite',
+  publisher: {
+    '@type': 'Organization',
     name: 'Lexikongo',
     url: 'https://www.lexikongo.fr',
+  },
+  potentialAction: {
+    '@type': 'RegisterAction',
+    target: 'https://www.lexikongo.fr/register',
   },
 };
 
 useHead({
+  link: [
+    {
+      rel: 'canonical',
+      href: 'https://www.lexikongo.fr/register',
+    },
+  ],
   script: [
     {
       type: 'application/ld+json',
@@ -184,7 +211,7 @@ useHead({
   padding: 1.75rem 1.25rem 2.5rem;
 }
 
-/* Bouton dans le slot #actions (CTA inscription) */
+/* Bouton dans le slot #actions du hero */
 .auth-hero-btn {
   display: inline-flex;
   align-items: center;
@@ -219,21 +246,33 @@ useHead({
   transform: translateY(-1px);
 }
 
-/* Meta sous les boutons du hero */
+/* Meta (texte sous les boutons du hero) */
 .auth-meta {
   margin: 0.4rem 0 0;
-  display: inline-flex;
+  display: flex;
+  flex-wrap: wrap;
   align-items: center;
   gap: 0.4rem;
   font-size: 0.86rem;
   color: var(--text-muted, #6b7280);
 }
 
-.auth-meta i {
+.auth-meta__badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.12rem 0.55rem;
+  border-radius: 999px;
+  background: rgba(37, 99, 235, 0.12);
   color: var(--primary, #2563eb);
+  font-weight: 600;
+  font-size: 0.78rem;
 }
 
-/* Colonne de droite : carte + formulaire */
+.auth-meta__hint {
+  max-width: 440px;
+}
+
+/* Colonne de droite (slot #side) : bénéfices + formulaire */
 .auth-side {
   display: flex;
   flex-direction: column;
@@ -275,15 +314,16 @@ useHead({
 .auth-side__list i {
   margin-top: 0.08rem;
   font-size: 0.9rem;
-  color: var(--primary, #2563eb);
+  color: #16a34a;
 }
 
 /* Wrapper du formulaire dans la colonne de droite */
 .auth-side__form-wrapper {
-  max-width: 460px; /* ton Login.vue gère déjà sa propre carte */
+  /* le Register.vue gère déjà son design (lk-auth) */
+  max-width: 460px;
 }
 
-/* Mobile */
+/* Responsive léger */
 @media (max-width: 640px) {
   .page-auth {
     padding-inline: 1rem;

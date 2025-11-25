@@ -51,7 +51,7 @@
     <!-- Bloc principal : liste des expressions -->
     <section class="lk-page__section lk-page__section--expressions">
       <header class="expr-section__header">
-        <div>
+      <!--  <div>
           <h2 class="expr-section__title">
             <i class="fas fa-book" aria-hidden="true"></i>
             <span>{{ t('expressions.page.listTitle') }}</span>
@@ -59,11 +59,13 @@
           <p class="expr-section__subtitle">
             {{ t('expressions.page.listSubtitle') }}
           </p>
-        </div>
+        </div>-->
 
-        <div class="expr-section__meta">
+        <section class="lastexpr m-5">
+      <div class="expr-section__meta text-center m-auto">
           <LastExpressionsCount />
         </div>
+    </section>
       </header>
 
       <ExpressionList />
@@ -74,6 +76,7 @@
       class="lk-page__section lk-page__section--cta"
       aria-labelledby="expressions-contribute-title"
     >
+     
       <div class="lk-cta">
         <div class="lk-cta__text">
           <h2

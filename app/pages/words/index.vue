@@ -29,7 +29,11 @@
         </div>
       </template>
     </LkPageHero>
-
+  <section class="lastexpr m-5">
+      <div class="expr-section__meta text-center m-auto">
+          <LastExpressionsCount />
+        </div>
+    </section>
     <!-- Bloc principal : WordList gère son propre titre i18n -->
     <section class="lk-page__section lk-page__section--words">
       <WordList />

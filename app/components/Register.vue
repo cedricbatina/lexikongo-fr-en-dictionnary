@@ -1,23 +1,23 @@
 <template>
   <section
     class="lk-auth"
-    aria-labelledby="login-title"
+    aria-labelledby="register-title"
     :aria-busy="isLoading ? 'true' : 'false'"
   >
     <div class="lk-auth__card">
       <!-- En-tête -->
       <header class="lk-auth__header">
         <h1
-          id="login-title"
+          id="register-title"
           class="lk-auth__title"
         >
-          {{ tt('auth.login.title', 'Connexion') }}
+          {{ tt('auth.register.title', "Créer un compte") }}
         </h1>
         <p class="lk-auth__subtitle">
           {{
             tt(
-              'auth.login.subtitle',
-              'Connectez-vous pour accéder à votre espace Lexikongo.'
+              'auth.register.subtitle',
+              "Rejoignez Lexikongo pour contribuer au dictionnaire Kikongo."
             )
           }}
         </p>
@@ -29,30 +29,49 @@
         novalidate
         @submit.prevent="handleSubmit"
       >
-        <!-- Identifiant -->
+        <!-- Nom d'utilisateur -->
         <div class="lk-auth__field">
           <label
-            for="login-identifier"
+            for="register-username"
             class="lk-auth__label"
           >
-            {{
-              tt(
-                'auth.login.identifierLabel',
-                "Email ou nom d'utilisateur"
-              )
-            }}
+            {{ tt('auth.register.usernameLabel', "Nom d'utilisateur") }}
+          </label>
+<input
+  id="register-username"
+  v-model.trim="username"
+  type="text"
+  class="lk-auth__input"
+  required
+  autocomplete="username"
+  :placeholder="tt(
+    'auth.register.usernamePlaceholder',
+    'Entrez votre nom d\'utilisateur'
+  )"
+  :disabled="isLoading"
+/>
+
+        </div>
+
+        <!-- Email -->
+        <div class="lk-auth__field">
+          <label
+            for="register-email"
+            class="lk-auth__label"
+          >
+            {{ tt('auth.register.emailLabel', 'Email') }}
           </label>
 
           <input
-            id="login-identifier"
-            v-model.trim="identifier"
-            type="text"
+            id="register-email"
+            v-model.trim="email"
+            type="email"
             class="lk-auth__input"
             required
-            autocomplete="username"
+            autocomplete="email"
             :placeholder="tt(
-              'auth.login.identifierPlaceholder',
-              'Entrez votre email ou nom d’utilisateur'
+              'auth.register.emailPlaceholder',
+              'Entrez votre adresse email'
             )"
             :disabled="isLoading"
           />
@@ -61,26 +80,26 @@
         <!-- Mot de passe -->
         <div class="lk-auth__field">
           <label
-            for="login-password"
+            for="register-password"
             class="lk-auth__label"
           >
-            {{ tt('auth.login.passwordLabel', 'Mot de passe') }}
+            {{ tt('auth.register.passwordLabel', 'Mot de passe') }}
           </label>
 
           <div class="lk-auth__password-wrapper">
             <input
-              id="login-password"
+              id="register-password"
               v-model="password"
               :type="showPassword ? 'text' : 'password'"
               class="lk-auth__input lk-auth__input--password"
               required
-              autocomplete="current-password"
+              autocomplete="new-password"
               :placeholder="tt(
-                'auth.login.passwordPlaceholder',
-                'Entrez votre mot de passe'
+                'auth.register.passwordPlaceholder',
+                'Choisissez un mot de passe sécurisé'
               )"
               :aria-invalid="error ? 'true' : 'false'"
-              :aria-describedby="error ? 'login-error' : undefined"
+              :aria-describedby="error ? 'register-error' : undefined"
               :disabled="isLoading"
             />
 
@@ -117,11 +136,15 @@
             class="lk-auth__submit"
             :disabled="isLoading"
           >
+            <i
+              class="fas fa-user-plus"
+              aria-hidden="true"
+            />
             <span v-if="isLoading">
-              {{ tt('auth.login.submitting', 'Connexion…') }}
+              {{ tt('auth.register.submitting', 'Inscription…') }}
             </span>
             <span v-else>
-              {{ tt('auth.login.submit', 'Connexion') }}
+              {{ tt('auth.register.submit', "S'inscrire") }}
             </span>
           </button>
         </div>
@@ -129,7 +152,7 @@
         <!-- Erreur globale -->
         <p
           v-if="error"
-          id="login-error"
+          id="register-error"
           class="lk-auth__error"
           role="alert"
           aria-live="assertive"
@@ -137,129 +160,138 @@
           {{ error }}
         </p>
 
+        <!-- Message succès -->
+        <p
+          v-if="success"
+          class="lk-auth__success"
+          role="status"
+          aria-live="polite"
+        >
+          {{ success }}
+        </p>
+
         <!-- Liens secondaires -->
         <div class="lk-auth__links">
           <NuxtLink
-            to="/register"
+            to="/login"
             class="lk-auth__link"
           >
-            {{ tt('auth.login.registerLink', 'Créer un compte') }}
-          </NuxtLink>
-
-          <span aria-hidden="true">·</span>
-
-          <NuxtLink
-            to="/forgot-password"
-            class="lk-auth__link"
-          >
-            {{ tt('auth.login.forgotLink', 'Mot de passe oublié ?') }}
+            {{ tt('auth.register.loginLink', 'Déjà un compte ? Connexion') }}
           </NuxtLink>
         </div>
       </form>
     </div>
   </section>
 </template>
+
 <script setup>
-import { ref, computed } from 'vue';
+import { ref } from 'vue';
 import { useRouter } from 'vue-router';
 import { useI18n } from 'vue-i18n';
-import { useAuthStore } from '~/stores/authStore';
 
 const router = useRouter();
-const authStore = useAuthStore();
 const { t } = useI18n();
 
 // Champs
-const identifier = ref('');
+const username = ref('');
+const email = ref('');
 const password = ref('');
 const showPassword = ref(false);
+
 const error = ref('');
+const success = ref('');
+const isLoading = ref(false);
 
-// On s'aligne sur l'état du store
-const isLoading = computed(() => authStore.pending);
-
-// Helper i18n avec fallback lisible si la clé manque
+// helper i18n avec fallback lisible
 const tt = (key, fallback) => {
   const res = t(key);
   return res === key ? fallback : res;
 };
 
-// ✅ Helper pour slugifier le username
-function usernameToSlug(username = '') {
-  if (typeof username !== 'string' || !username) return 'profil';
-
-  const safe =
-    username
-      .normalize('NFD') // supprime les accents
-      .replace(/[\u0300-\u036f]/g, '')
-      .toLowerCase()
-      .trim()
-      .replace(/[^a-z0-9]+/g, '-') // tout ce qui n’est pas alphanum → tirets
-      .replace(/^-+|-+$/g, '');    // supprime les tirets en début/fin
-
-  return safe || 'profil';
-}
-
 const handleSubmit = async () => {
   error.value = '';
+  success.value = '';
 
-  if (!identifier.value || !password.value) {
+  const u = username.value.trim();
+  const e = email.value.trim();
+  const p = password.value;
+
+  if (!u || !e || !p) {
     error.value = tt(
-      'auth.login.error.requiredFields',
+      'auth.register.error.requiredFields',
       'Veuillez remplir tous les champs.'
     );
     return;
   }
 
+  // Petit check email (optionnel, mais utile côté UX)
+  if (!e.includes('@') || !e.includes('.')) {
+    error.value = tt(
+      'auth.register.error.invalidEmail',
+      'Veuillez saisir une adresse email valide.'
+    );
+    return;
+  }
+
+  isLoading.value = true;
+
   try {
-    const { ok, error: loginError } = await authStore.login({
-      identifier: identifier.value,
-      password: password.value,
+    const response = await fetch('/api/register', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        username: u,
+        email: e,
+        password: p,
+      }),
     });
 
-    if (!ok) {
-      error.value =
-        loginError ||
-        authStore.error ||
+    let data = null;
+    try {
+      data = await response.json();
+    } catch {
+      // si le backend ne renvoie pas de JSON propre, on ignore
+    }
+
+    if (!response.ok) {
+      const message =
+        data?.statusMessage ||
+        data?.message ||
+        `${tt('auth.register.error.http', 'Erreur HTTP')} ${response.status}`;
+      throw new Error(message);
+    }
+
+    if (data?.success) {
+      success.value =
+        data?.message ||
         tt(
-          'auth.login.error.generic',
-          'Échec de la connexion. Veuillez vérifier vos identifiants.'
+          'auth.register.success.message',
+          "Inscription réussie ! Veuillez vérifier votre email pour valider votre compte."
         );
-      return;
+
+      // Petite redirection après un court délai, comme dans ta version
+      setTimeout(() => {
+        router.push('/login');
+      }, 2000);
+    } else {
+      throw new Error(
+        data?.message ||
+          tt(
+            'auth.register.error.generic',
+            "L'inscription a échoué. Veuillez réessayer."
+          )
+      );
     }
-
-    // Redirection dynamique via ?redirect=...
-    const currentRoute = router.currentRoute.value;
-    const redirectPath = currentRoute?.query?.redirect || null;
-
-    if (redirectPath) {
-      await router.push(redirectPath);
-      return;
-    }
-
-    // Rôles : admin / contributor → dashboards dédiés
-    if (authStore.hasRole('admin')) {
-      await router.push('/admin');
-      return;
-    }
-
-    if (authStore.hasRole('contributor')) {
-      await router.push('/contributor');
-      return;
-    }
-
-    // ✅ User "normal" → profil avec username slugifié
-    const rawUsername = authStore.user?.username || '';
-    const slug = usernameToSlug(rawUsername);
-    await router.push(`/user/profile/${slug}`);
   } catch (err) {
-    console.error('Erreur lors de la tentative de connexion :', err);
+    console.error("Erreur lors de l'inscription :", err);
     error.value =
       err?.message ||
       tt(
-        'auth.login.error.generic',
-        'Une erreur est survenue lors de la connexion.'
+        'auth.register.error.generic',
+        "Une erreur est survenue pendant l'inscription."
       );
+  } finally {
+    isLoading.value = false;
   }
 };
 
@@ -384,7 +416,6 @@ const togglePassword = () => {
   display: none;
 }
 
-/* On garde juste l’icône sur mobile */
 @media (min-width: 480px) {
   .lk-auth__toggle-password-text {
     display: inline;
@@ -416,6 +447,10 @@ const togglePassword = () => {
     transform 0.08s ease;
 }
 
+.lk-auth__submit i {
+  font-size: 0.95rem;
+}
+
 .lk-auth__submit:hover,
 .lk-auth__submit:focus-visible {
   outline: none;
@@ -431,12 +466,21 @@ const togglePassword = () => {
   box-shadow: none;
 }
 
-/* Erreur globale */
+/* Erreurs / succès */
 .lk-auth__error {
   margin: 0.25rem 0 0;
   font-size: 0.88rem;
   color: #b91c1c;
   background: rgba(248, 113, 113, 0.18);
+  border-radius: 0.75rem;
+  padding: 0.5rem 0.75rem;
+}
+
+.lk-auth__success {
+  margin: 0.4rem 0 0;
+  font-size: 0.88rem;
+  color: #166534;
+  background: rgba(34, 197, 94, 0.16);
   border-radius: 0.75rem;
   padding: 0.5rem 0.75rem;
 }

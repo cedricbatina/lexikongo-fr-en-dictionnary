@@ -20,11 +20,13 @@
           </span>
         </button>
       </div>
-    </header>
 
+    </header>
+<LkConfirmModal />
     <main id="main-content" class="layout-main">
       <slot />
     </main>
+
 
     <footer class="layout-footer">
       <!-- Tu pourras remettre <Footer /> ici si tu veux -->
@@ -36,7 +38,7 @@
 <script setup>
 import { ref, computed, onMounted } from "vue";
 import Navbar from "~/components/Navbar.vue";
-
+import LkConfirmModal from "~/components/LkConfirmModal.vue"; // 👈 MANQUAIT
 const theme = ref("light");
 
 const applyTheme = (value) => {

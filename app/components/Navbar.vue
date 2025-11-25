@@ -11,14 +11,17 @@
         class="lk-nav__brand"
         aria-label="Lexikongo — Accueil"
       >
-        <!-- ✅ on utilise bien le composant Logo -->
         <LogoNavbar />
       </NuxtLink>
 
       <!-- Section droite (desktop) -->
       <div class="lk-nav__right lk-nav__right--desktop">
         <ul class="lk-nav__links">
-          <li v-for="link in mainLinks" :key="link.to" class="lk-nav__item">
+          <li
+            v-for="link in mainLinks"
+            :key="link.to"
+            class="lk-nav__item"
+          >
             <NuxtLink
               :to="link.to"
               class="lk-nav__link"
@@ -35,7 +38,7 @@
               class="lk-nav__item"
             >
               <NuxtLink
-                to="/user/profile"
+                :to="`/profile/${profileSlug}`"
                 class="lk-nav__link"
               >
                 <i class="fas fa-user-check" aria-hidden="true"></i>
@@ -73,13 +76,13 @@
         <div class="lk-nav__auth">
           <NuxtLink
             v-if="isLoggedIn"
-            :to="`/user/profile/${username}`"
+            :to="`/profile/${profileSlug}`"
             class="lk-nav__user"
             :title="t('nav.profileTitle')"
           >
             <i class="fas fa-user-circle" aria-hidden="true"></i>
             <span class="lk-nav__user-name">
-              {{ username }}
+              {{ displayName }}
             </span>
           </NuxtLink>
 
@@ -148,7 +151,7 @@
               class="lk-nav__panel-item"
             >
               <NuxtLink
-                to="/user/profile"
+                :to="`/profile/${profileSlug}`"
                 class="lk-nav__panel-link"
                 @click="closeMenu"
               >
@@ -188,7 +191,7 @@
         <div class="lk-nav__panel-auth">
           <NuxtLink
             v-if="isLoggedIn"
-            :to="`/user/profile/${username}`"
+            :to="`/user/profile/${profileSlug}`"
             class="lk-nav__panel-user"
             @click="closeMenu"
           >
@@ -198,7 +201,7 @@
                 {{ t('nav.connectedAs') }}
               </span>
               <span class="lk-nav__panel-user-name">
-                {{ username }}
+                {{ displayName }}
               </span>
             </div>
           </NuxtLink>
@@ -233,7 +236,7 @@ import { ref, computed, onMounted } from 'vue';
 import { useRouter } from 'vue-router';
 import { useI18n } from 'vue-i18n';
 import { useAuthStore } from '@/stores/authStore';
-import Logo from '@/components/Logo.vue';
+import LogoNavbar from '@/components/LogoNavbar.vue'; // ✅ le bon composant
 
 const { t } = useI18n();
 const authStore = useAuthStore();
@@ -241,18 +244,34 @@ const router = useRouter();
 
 const isMenuOpen = ref(false);
 
-// Adapté à TON authStore actuel
-const isLoggedIn = computed(() => authStore.isLoggedIn);        // getter
-const userRoles = computed(() => authStore.userRoles || []);    // getter
-const username = computed(() => authStore.user?.username || 'Utilisateur');
+// État auth
+const isLoggedIn = computed(() => authStore.isLoggedIn);
+const userRoles = computed(() => authStore.userRoles || []);
 
-// liens principaux
+// ✅ Helper slug pour le profil
+function usernameToSlug(username = '') {
+  if (typeof username !== 'string' || !username) return 'profil';
+
+  const safe =
+    username
+      .normalize('NFD')                    // supprime les accents
+      .replace(/[\u0300-\u036f]/g, '')
+      .toLowerCase()
+      .trim()
+      .replace(/[^a-z0-9]+/g, '-')        // non alphanum → tirets
+      .replace(/^-+|-+$/g, '');           // tirets au début/fin
+
+  return safe || 'profil';
+}
+
+// Nom brut & variants
+const rawUsername = computed(() => authStore.user?.username || '');
+const displayName = computed(() => rawUsername.value || 'Utilisateur');
+const profileSlug = computed(() => usernameToSlug(rawUsername.value));
+
+// liens principaux (on garde seulement Home comme tu l’as choisi)
 const mainLinks = [
   { to: '/', icon: 'fas fa-home', labelKey: 'nav.home' },
-  { to: '/words', icon: 'fas fa-spell-check', labelKey: 'nav.words' },
-  { to: '/verbs', icon: 'fa-solid fa-arrow-down-a-z', labelKey: 'nav.verbs' },
-  { to: '/expressions', icon: 'fas fa-book', labelKey: 'nav.expressions' },
-  { to: '/documentation/for-contributors', icon: 'fas fa-hands-helping', labelKey: 'nav.contribute' },
 ];
 
 onMounted(() => {

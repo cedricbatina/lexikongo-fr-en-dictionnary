@@ -112,7 +112,7 @@
     "viewDetails": "View details"
   },
    "page": {
-      "eyebrow": "Lexikongo · Online dictionary",
+      "eyebrow": "Lexikongo · Kikongo words List",
       "title": "Discover Kikongo words",
       "subtitle": "Browse Kikongo words with their plurals, phonetic transcription, and translations into French and English. Built and enriched by the community.",
       "primaryCta": "Start a search",
@@ -208,7 +208,7 @@
   
   "expressions": {
     "page": {
-      "eyebrow": "Lexikongo · Online dictionary",
+      "eyebrow": "Lexikongo · Kikongo words & verbs list",
       "title": "Kikongo words and verbs list",
       "subtitle": "Browse Kikongo words and verbs from the Lexikongo database, with their phonetic transcription and translations into French and English.",
       "ctaSearch": "Start a search",
@@ -300,7 +300,251 @@
   },
   "pageHero": {
   "sideAria": "Quick access and additional information"
-}
+},
+  "auth": {
+      "login": {
+        "title": "Log in",
+         "meta": {
+        "title": "Log in · Lexikongo",
+        "description": "Log in to your Lexikongo account to contribute to the Kikongo dictionary, manage your entries and find your favourites."
+      },
+       "kicker": "Lexikongo · Member area",
+      "pageTitle": "Log in to your Lexikongo account",
+      "heroDescription": "Log in to suggest Kikongo words, verbs and expressions, track your contributions and find your favourites.",
+      "sideAria": "Login form and access to your Lexikongo space",
+      "metaSecurity": "Your email address is only used to manage your account and activate your Lexikongo profile.",
+      "sideTitle": "Access your Lexikongo space",
+      "sideBenefit1": "Continue contributing to the Kikongo dictionary.",
+      "sideBenefit2": "Review the history of your additions and edits.",
+      "sideBenefit3": "Quickly find your favourite entries.",
+        "subtitle": "Log in to access your Lexikongo space.",
+        "identifierLabel": "Email or username",
+        "identifierPlaceholder": "Enter your email or username",
+        "passwordLabel": "Password",
+        "passwordPlaceholder": "Enter your password",
+        "submit": "Log in",
+        "submitting": "Logging in…",
+        "registerLink": "Create an account",
+        "forgotLink": "Forgot your password?",
+        "showPassword": "Show password",
+        "hidePassword": "Hide password",
+        "showPasswordText": "Show",
+        "hidePasswordText": "Hide",
+        "error": {
+          "requiredFields": "Please fill in all fields.",
+          "generic": "Login failed. Please check your credentials."
+        }
+      },
+       "register": {
+      "meta": {
+        "title": "Sign up · Lexikongo",
+        "description": "Create your Lexikongo account to suggest Kikongo words, verbs and expressions, and keep track of your contributions."
+      },
+      "pageTitle": "Create an account",
+      "intro": "Join the Lexikongo community to contribute to the dictionary and save your favourites.",
+      "emailConfirmLabel": "Email confirmation",
+      "emailConfirmHint": "After signing up, you will receive an email with a confirmation link. Your account will be activated once you click it.",
+      "title": "Sign up",
+      "subtitle": "Create your account to access your Lexikongo space.",
+      "usernameLabel": "Username",
+      "usernamePlaceholder": "Choose a username",
+      "emailLabel": "Email address",
+      "emailPlaceholder": "Enter a valid email address",
+      "passwordLabel": "Password",
+      "passwordPlaceholder": "Choose a secure password",
+      "submit": "Create my account",
+      "loginLink": "Already have an account? Log in",
+      "success": "Sign up successful! Please check your inbox to activate your account.",
+      "error": {
+        "requiredFields": "Please fill in all required fields.",
+        "generic": "An error occurred while creating your account. Please try again."
+      }
+    }
+    },
+    
+  "profile": {
+    "eyebrow": "Member area · Profile",
+    "title": "User profile",
+    "subtitle": "Manage your Lexikongo account information.",
+    "sideAria": "Account summary, roles and shortcuts for the Lexikongo dictionary",
+    "fallbackName": "Lexikongo user",
+    "actions": {
+      "expressions": "Browse words & verbs",
+       "editProfile": "Edit my profile",
+      "deleteAccount": "Delete my account"
+    },
+    "meta": {
+      "title": "User profile | Lexikongo",
+      "description": "View and manage your Lexikongo account information (profile, roles and security).",
+      "ogTitle": "User profile – Lexikongo",
+      "ogDescription": "Lexikongo member area: profile, roles and account information."
+    },
+    "metaSecurity": "Your personal information remains private and is never shared.",
+    "summary": {
+      "title": "Account summary",
+      "username": "Username",
+      "email": "Email address",
+      "emailUnknown": "Not provided",
+      "memberSince": "Member since",
+      "roles": "Roles",
+       "editProfile": "Edit my profile"
+    },
+    "memberSince": {
+      "unknown": "Unknown date"
+    },
+    "section": {
+      "account": {
+        "title": "Account information",
+        "subtitle": "These details come from your current Lexikongo account.",
+        "username": "Username",
+        "usernameHint": "This name may appear next to any public contributions you make.",
+        "email": "Email address",
+        "emailUnknown": "Not provided",
+        "emailHint": "We only use it for login and security purposes."
+      },
+      "roles": {
+        "title": "Roles and permissions",
+        "subtitle": "Roles determine what you can do on Lexikongo."
+      },
+      "security": {
+        "title": "Account security",
+        "subtitle": "Protect your account with a strong, unique password."
+      }
+    },
+    "roleLabels": {
+      "user": "User",
+      "contributor": "Contributor",
+      "admin": "Administrator"
+    },
+    "roles": {
+      "user": {
+        "desc": "Can browse the dictionary and use search tools."
+      },
+      "contributor": {
+        "desc": "Can suggest new Kikongo words, verbs and expressions."
+      },
+      "admin": {
+        "desc": "Can manage users, content and dictionary configuration."
+      }
+    },
+     "delete": {
+      "title": "Delete my account",
+      "message": "This action is permanent. Your Lexikongo account and its associated information will be deleted. This operation cannot be undone.",
+      "confirm": "Permanently delete my account",
+      "cancel": "Cancel",
+      "success": "Your account has been successfully deleted.",
+      "error": "An error occurred while deleting your account. Please try again."
+    }
+  },
+    "admin": {
+    "dashboard": {
+      "hero": {
+        "eyebrow": "Member area · Admin",
+        "fallbackName": "Lexikongo admin",
+        "title": "Admin dashboard · {name}",
+        "description": "Access Lexikongo admin tools: words, verbs, users and submissions.",
+        "sideAria": "Admin shortcuts and quick actions",
+        "ctaWords": "Manage words",
+        "ctaVerbs": "Manage verbs",
+        "meta": "You only see information reserved to your administrator role here.",
+        "actionsAria": "Lexikongo quick actions (admin mode)"
+      },
+      "access": {
+        "title": "Section access",
+        "intro": "Quick links to dictionary areas and account management.",
+        "words": {
+          "title": "Word management",
+          "text": "Browse, filter and edit dictionary word entries.",
+          "link": "View words"
+        },
+        "verbs": {
+          "title": "Verb management",
+          "text": "Browse, filter and edit registered verbs.",
+          "link": "View verbs"
+        },
+        "users": {
+          "title": "User management",
+          "text": "List and manage user accounts (roles, access, deletion).",
+          "link": "View users"
+        },
+        "submissions": {
+          "title": "Submission management",
+          "text": "Approve or reject new word, verb and expression proposals.",
+          "link": "View submissions"
+        }
+      },
+      "stats": {
+        "title": "Quick stats",
+        "intro": "A global overview of activity on Lexikongo.",
+        "usersLabel": "Users",
+        "usersHint": "Registered accounts in the database.",
+        "wordsLabel": "Words",
+        "wordsHint": "Word entries currently available.",
+        "verbsLabel": "Verbs",
+        "verbsHint": "Verb entries currently available."
+      },
+      "session": {
+        "text": "You are signed in with an administrator account.",
+        "logout": "Sign out"
+      },
+      "seo": {
+        "title": "Administration · Lexikongo",
+        "description": "Lexikongo admin dashboard: manage words, verbs and user accounts."
+      }
+    }
+  },
+  "contrib": {
+    "dashboard": {
+      "hero": {
+        "eyebrow": "Member area · Contributor",
+        "titleWithName": "Contributor area · {name}",
+        "description": "Suggest new Kikongo words, verbs and expressions and track your contributions.",
+        "sideAria": "Contributor shortcuts and quick actions",
+        "meta": "Every contribution is reviewed before publication to preserve the dictionary’s quality.",
+        "actionsAria": "Lexikongo quick actions (contributor mode)"
+      },
+      "actions": {
+        "title": "Contribute to the dictionary",
+        "intro": "Choose what you want to propose or improve on Lexikongo.",
+        "words": {
+          "title": "Suggest a word",
+          "text": "Add a new Kikongo word with its translation and phonetics.",
+          "link": "Go to words"
+        },
+        "verbs": {
+          "title": "Suggest a verb",
+          "text": "Add a new verb or suggest a better conjugation.",
+          "link": "Go to verbs"
+        },
+        "expressions": {
+          "title": "Suggest an expression",
+          "text": "Share idiomatic expressions, proverbs or frequent turns of phrase.",
+          "link": "Go to expressions"
+        },
+        "doc": {
+          "title": "Read the documentation",
+          "text": "Learn how to structure your proposals and follow best practices.",
+          "link": "Open documentation"
+        }
+      },
+      "summary": {
+        "title": "Your account summary",
+        "intro": "Key information related to your profile.",
+        "username": "Username",
+        "role": "Role",
+        "roleLabel": "Contributor",
+        "memberSince": "Member since",
+        "memberSinceUnknown": "Unknown date",
+        "fallbackName": "Lexikongo contributor"
+      },
+      "seo": {
+        "title": "Contributor area – Lexikongo",
+        "description": "Suggest and track your contributions in the Lexikongo Kikongo dictionary."
+      }
+    }
+  }
+
+
 
 
 

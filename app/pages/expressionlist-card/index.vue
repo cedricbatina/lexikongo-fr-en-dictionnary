@@ -1,6 +1,6 @@
 <template>
   <section class="expr-cards" aria-labelledby="expr-cards-heading">
-    <header class="expr-cards__header">
+  <!--  <header class="expr-cards__header">
       <div>
         <h1 id="expr-cards-heading" class="expr-cards__title">
           {{ t('expressions.list.title') }} {{ t('expressions.cards.titleSuffix') }}
@@ -27,9 +27,87 @@
           <span>{{ t('expressions.cards.viewTable') }}</span>
         </NuxtLink>
       </div>
-    </header>
+    </header>-->
+ <!-- Hero réutilisable -->
+    <LkPageHero
+      id="expressions-page-title"
+      :eyebrow="t('expressions.page.eyebrow')"
+      :title="t('expressions.page.title')"
+      :description="t('expressions.page.subtitle')"
+      :side-aria-label="t('pageHero.sideAria')"
+    >
+      <!-- Boutons d’action principaux -->
+      <template #actions>
+        <NuxtLink
+          to="/search"
+          class="lk-hero-btn lk-hero-btn--primary"
+        >
+          <i class="fas fa-search" aria-hidden="true"></i>
+          <span>{{ t('expressions.page.ctaSearch') }}</span>
+        </NuxtLink>
 
+        <NuxtLink
+          to="/documentation/for-contributors"
+          class="lk-hero-btn lk-hero-btn--ghost"
+        >
+          <i class="fas fa-hands-helping" aria-hidden="true"></i>
+          <span>{{ t('expressions.page.ctaContribute') }}</span>
+        </NuxtLink>
+      </template>
+
+      <!-- Meta sous les boutons -->
+      <template #meta>
+        <p class="lk-hero-meta">
+          <i class="fas fa-language" aria-hidden="true"></i>
+          <span>{{ t('expressions.page.metaLanguages') }}</span>
+        </p>
+      </template>
+
+      <!-- Colonne de droite : actions bar + raccourci recherche -->
+      <template #side>
+        <div class="lk-hero-side">
+          <LkActionsBar />
+
+     
+        </div>
+      </template>
+    </LkPageHero>
+        <section class="lastexpr m-5">
+      <div class="expr-section__meta text-center m-auto">
+          <LastExpressionsCount />
+        </div>
+    </section>
+              <!-- 🔽 Nouveau bloc : compteur AU-DESSUS du lien -->
+    <div class="expr-cards__meta">
+      <p
+        v-if="store.filteredItems.length"
+        class="expr-cards__count"
+      >
+        {{ t('expressions.cards.count', store.filteredItems.length) }}
+      </p>
+
+
+    </div>
     <!-- Filtres simples -->
+    <!--
+      <div class="expr-cards__header-actions">
+        <p
+          v-if="store.filteredItems.length"
+          class="expr-cards__count"
+        >
+          {{ t('expressions.cards.count', store.filteredItems.length) }}
+        </p>
+
+        <NuxtLink
+          to="/expressions"
+          class="expr-cards__link-back"
+          :aria-label="t('expressions.cards.viewTableAria')"
+        >
+          <i class="fas fa-table" aria-hidden="true"></i>
+          <span>{{ t('expressions.cards.viewTable') }}</span>
+        </NuxtLink>
+      </div>-->
+       <!-- Barre filtres + recherche + switch tableau -->
     <div class="expr-cards__toolbar">
       <div class="expr-cards__filters">
         <button
@@ -58,20 +136,36 @@
         </button>
       </div>
 
-      <div class="expr-cards__search">
-        <label class="expr-cards__search-label" for="expr-cards-search">
-          {{ t('expressions.list.searchLabel') }}
-        </label>
-        <input
-          id="expr-cards-search"
-          v-model="searchLocal"
-          type="search"
-          class="expr-cards__search-input"
-          :placeholder="t('expressions.list.searchPlaceholder')"
-          @input="onSearchInput"
-        />
+      <div class="expr-cards__toolbar-right">
+        <div class="expr-cards__search">
+          <label class="expr-cards__search-label" for="expr-cards-search">
+            {{ t('expressions.list.searchLabel') }}
+          </label>
+          <input
+            id="expr-cards-search"
+            v-model="searchLocal"
+            type="search"
+            class="expr-cards__search-input"
+            :placeholder="t('expressions.list.searchPlaceholder')"
+            @input="onSearchInput"
+          />
+        </div>
+
+       <div class="expr-cards__meta">
+   
+
+      <NuxtLink
+        to="/expressions"
+        class="expr-cards__link-back"
+        :aria-label="t('expressions.cards.viewTableAria')"
+      >
+        <i class="fas fa-table" aria-hidden="true"></i>
+        <span>{{ t('expressions.cards.viewTable') }}</span>
+      </NuxtLink>
+    </div>
       </div>
     </div>
+
 
     <!-- État : chargement -->
     <div
@@ -158,11 +252,11 @@
 <dl class="expr-card__body">
   <div class="expr-card__row">
     <dt>{{ t('common.lang.fr') }}</dt>
-    <dd>{{ truncateText(expr.translation_fr, 110) || "—" }}</dd>
+    <dd><span class="translation-fr">{{ truncateText(expr.translation_fr, 110) || "—" }}</span></dd>
   </div>
   <div class="expr-card__row">
     <dt>{{ t('common.lang.en') }}</dt>
-    <dd>{{ truncateText(expr.translation_en, 110) || "—" }}</dd>
+    <dd><span class="translation-en">{{ truncateText(expr.translation_en, 110) || "—" }}</span></dd>
   </div>
 </dl>
 
@@ -559,11 +653,11 @@ onMounted(() => {
   word-break: break-word;
 }
 
-.expr-card__translation--fr {
+.translation-fr {
   color: #047857;
 }
 
-.expr-card__translation--en {
+.translation-en {
   color: #b45309;
 }
 
@@ -614,4 +708,54 @@ onMounted(() => {
     min-width: 0;
   }
 }
+.expr-cards__toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.expr-cards__toolbar-right {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+/* 🔽 nouveau : stack vertical (compteur au-dessus du lien) */
+.expr-cards__meta {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.25rem;
+}
+
+.expr-cards__count {
+  font-size: 0.9rem;
+  color: var(--text-muted, #6b7280);
+}
+
+.expr-cards__link-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.85rem;
+  padding: 0.35rem 0.85rem;
+  border-radius: 999px;
+  border: 1px solid var(--border-subtle, rgba(148,163,184,0.8));
+  text-decoration: none;
+  background: var(--surface-elevated, #ffffff);
+  color: var(--primary, #0d6efd);
+  white-space: nowrap;
+}
+
+.expr-cards__link-back:hover {
+  background: rgba(13, 110, 253, 0.06);
+  border-color: var(--primary, #0d6efd);
+}
+
+
+
+
 </style>
