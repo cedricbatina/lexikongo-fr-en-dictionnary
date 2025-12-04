@@ -1,20 +1,30 @@
 <template>
   <section class="expr-list page" aria-labelledby="expr-list-heading">
     <!-- Header -->
-    <header class="expr-list__header">
-     <!-- <div>
-        <h2 id="expr-list-heading" class="expr-list__title">
-          {{ t('expressions.list.title') }}
-        </h2>
-        <p class="expr-list__subtitle">
-          {{ t('expressions.list.subtitle') }}
-        </p>
-      </div>-->
+     <header class="expr-list__header">
+  <div class="expr-list__header-main">
+    <!-- On laisse vide pour l’instant,
+         ou on pourra remettre un petit texte plus tard si tu veux -->
+  </div>
 
-      <p v-if="store.filteredItems.length" class="expr-list__count">
+  <div
+    v-if="store.filteredItems.length"
+    class="expr-list__meta"
+  >
+    <p
+      class="expr-count-chip"
+      aria-live="polite"
+    >
+      <span
+        class="expr-count-chip__dot"
+        aria-hidden="true"
+      />
+      <span class="expr-count-chip__text">
         {{ t('expressions.list.count', store.filteredItems.length) }}
-      </p>
-    </header>
+      </span>
+    </p>
+  </div>
+</header>
 
     <!-- Barre filtres + recherche + switch cartes -->
     <div class="expr-list__toolbar">
@@ -59,18 +69,35 @@
             @input="onSearchInput"
           />
         </div>
+ 
+   <div class="expr-view-mode">
+    <!-- Légende : vue actuelle = tableau -->
+    <p class="expr-view-caption">
+      {{ t('expressions.cards.viewTable') }}
+    </p>
 
-        <NuxtLink
-          to="/expressionlist-card"
-          class="expr-list__view-link"
-          :aria-label="t('expressions.list.viewCardsAria')"
-        >
-          <i class="fas fa-th-large" aria-hidden="true"></i>
-          <span>{{ t('expressions.list.viewCards') }}</span>
-        </NuxtLink>
+    <NuxtLink
+      to="/expressionlist-card"
+      class="expr-list__view-link"
+      :aria-label="t('expressions.list.viewCardsAria')"
+    >
+      <i class="fas fa-th-large" aria-hidden="true"></i>
+      <span>{{ t('expressions.list.viewCards') }}</span>
+    </NuxtLink>
+  </div>
       </div>
     </div>
-
+ <!-- Pagination -->
+    <div
+      v-if="store.totalPages > 1"
+      class="expr-list__pagination"
+    >
+      <Pagination
+        :currentPage="store.page"
+        :totalPages="store.totalPages"
+        @pageChange="store.setPage"
+      />
+    </div>
     <!-- État : chargement -->
     <div
       v-if="store.isLoading"
@@ -613,6 +640,68 @@ onMounted(() => {
   .expr-list__view-link {
     justify-content: center;
   }
+}
+/* Header au-dessus de la toolbar */
+.expr-list__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 0.75rem;
+  margin-top: 0.8rem;
+}
+
+.expr-list__header-main {
+  flex: 1 1 auto;
+}
+
+.expr-list__meta {
+  flex: 0 0 auto;
+  display: flex;
+  justify-content: flex-end;
+}
+
+/* Chip de compteur partagé avec la vue cartes (même look) */
+.expr-count-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.18rem 0.7rem;
+  border-radius: 999px;
+  border: 1px solid rgba(148, 163, 184, 0.7);
+  background: linear-gradient(
+    135deg,
+    rgba(15, 23, 42, 0.03),
+    rgba(37, 99, 235, 0.06)
+  );
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--text-muted, #4b5563);
+}
+
+.expr-count-chip__dot {
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 999px;
+  background: radial-gradient(circle at 30% 30%, #22c55e, #16a34a);
+  box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.18);
+}
+
+.expr-count-chip__text {
+  white-space: nowrap;
+}
+.expr-view-mode {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.15rem;
+}
+
+.expr-view-caption {
+  margin: 0;
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-muted, #6b7280);
 }
 
 </style>

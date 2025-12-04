@@ -1,25 +1,32 @@
 <template>
   <section class="word-list" aria-labelledby="word-list-heading">
-    <!-- Header -->
+    <!-- Header aligné sur ExpressionList -->
     <header class="word-list__header">
-   <!--   <div>
-        <h2 id="word-list-heading" class="word-list__title">
-          {{ t('words.list.title') }}
-        </h2>
-        <p class="word-list__subtitle">
-          {{ t('words.list.subtitle') }}
-        </p>
-      </div>-->
+      <div class="word-list__header-main">
+        <!-- On laisse vide pour l’instant (comme expr-list),
+             ou on remettra un petit texte plus tard si tu veux -->
+      </div>
 
-      <p
+      <div
         v-if="itemsLength"
-        class="word-list__count"
+        class="word-list__meta"
       >
-        {{ t('words.list.count', itemsLength) }}
-      </p>
+        <p
+          class="word-count-chip"
+          aria-live="polite"
+        >
+          <span
+            class="word-count-chip__dot"
+            aria-hidden="true"
+          />
+          <span class="word-count-chip__text">
+            {{ t('words.list.count', itemsLength) }}
+          </span>
+        </p>
+      </div>
     </header>
 
-    <!-- Barre de recherche + switch cartes -->
+    <!-- Barre de recherche + switch cartes (comme ExpressionList) -->
     <div class="word-list__toolbar">
       <div class="word-list__search">
         <label class="word-list__search-label" for="word-search">
@@ -34,14 +41,21 @@
         />
       </div>
 
-      <NuxtLink
-        to="/wordlist-card"
-        class="word-list__view-link"
-        :aria-label="t('words.list.viewCardsAria')"
-      >
-        <i class="fas fa-th-large" aria-hidden="true"></i>
-        <span>{{ t('words.list.viewCards') }}</span>
-      </NuxtLink>
+      <!-- Légende + bouton switch vue cartes -->
+      <div class="word-view-mode">
+        <p class="word-view-caption">
+          {{ t('words.cards.viewTable') }}
+        </p>
+
+        <NuxtLink
+          to="/wordlist-card"
+          class="word-list__view-link"
+          :aria-label="t('words.list.viewCardsAria')"
+        >
+          <i class="fas fa-th-large" aria-hidden="true"></i>
+          <span>{{ t('words.list.viewCards') }}</span>
+        </NuxtLink>
+      </div>
     </div>
 
     <!-- État : chargement -->
@@ -483,5 +497,209 @@ onMounted(() => {
   background: rgba(13, 110, 253, 0.06);
   border-color: var(--primary);
 }
+.word-view-mode {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.15rem;
+}
+
+.word-view-caption {
+  margin: 0;
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-muted, #6b7280);
+}
+.word-list__header {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 0.35rem;
+}
+
+.word-list__meta {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+.word-list__header {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 0.4rem;
+}
+
+.word-view-mode {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.15rem;
+}
+
+/* 🔁 Copie du style expr-count-chip mais version “word” */
+.word-count-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.18rem 0.7rem;
+  border-radius: 999px;
+  border: 1px solid rgba(148, 163, 184, 0.7);
+  background: linear-gradient(
+    135deg,
+    rgba(15, 23, 42, 0.03),
+    rgba(37, 99, 235, 0.06)
+  );
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--text-muted, #4b5563);
+}
+
+.word-count-chip__dot {
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 999px;
+  background: radial-gradient(circle at 30% 30%, #22c55e, #16a34a);
+  box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.18);
+}
+
+.word-count-chip__text {
+  white-space: nowrap;
+}
+
+/* Header au-dessus de la toolbar (aligné sur expr-list) */
+.word-list__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 0.75rem;
+  margin-top: 0.8rem;
+}
+
+.word-list__header-main {
+  flex: 1 1 auto;
+}
+
+.word-list__meta {
+  flex: 0 0 auto;
+  display: flex;
+  justify-content: flex-end;
+}
+
+/* Chip compteur – même style que expr-count-chip */
+.word-count-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.18rem 0.7rem;
+  border-radius: 999px;
+  border: 1px solid rgba(148, 163, 184, 0.7);
+  background: linear-gradient(
+    135deg,
+    rgba(15, 23, 42, 0.03),
+    rgba(37, 99, 235, 0.06)
+  );
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--text-muted, #4b5563);
+}
+
+.word-count-chip__dot {
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 999px;
+  background: radial-gradient(circle at 30% 30%, #22c55e, #16a34a);
+  box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.18);
+}
+
+.word-count-chip__text {
+  white-space: nowrap;
+}
+
+/* Toolbar & vue mode (comme expr-list) */
+.word-list__toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 0.4rem;
+}
+
+.word-list__search {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.word-list__search-label {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+}
+
+.word-list__search-input {
+  width: 400px;
+  max-width: 100%;
+  padding: 0.45rem 0.85rem;
+  border-radius: 999px;
+  border: 1px solid var(--border-subtle);
+  font-size: 0.9rem;
+  color: var(--text-default);
+  background: var(--surface-elevated);
+}
+
+/* Bloc vue actuelle + bouton switch */
+.word-view-mode {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.15rem;
+}
+
+.word-view-caption {
+  margin: 0;
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-muted, #6b7280);
+}
+
+.word-list__view-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.85rem;
+  padding: 0.35rem 0.85rem;
+  border-radius: 999px;
+  border: 1px solid var(--border-subtle);
+  text-decoration: none;
+  background: var(--surface-elevated);
+  color: var(--primary);
+  white-space: nowrap;
+}
+
+.word-list__view-link:hover {
+  background: rgba(13, 110, 253, 0.06);
+  border-color: var(--primary);
+}
+
+@media (max-width: 640px) {
+  .word-list__toolbar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .word-list__search-input {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .word-view-mode {
+    align-items: flex-start;
+  }
+
+  .word-list__view-link {
+    justify-content: center;
+  }
+}
+
 </style>
 

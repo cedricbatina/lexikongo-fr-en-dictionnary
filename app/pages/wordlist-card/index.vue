@@ -1,35 +1,16 @@
 <template>
   <section
-    class="container-fluid word-list p-2"
-    aria-labelledby="word-list-heading"
+    class="word-cards page"
+    aria-labelledby="words-page-title"
   >
-<!--  <header class="word-list__header">
-  <div>
-   <h1 id="word-list-heading" class="word-list__title">
-  {{ t('words.list.title') }} {{ t('words.cards.titleSuffix') }}
-</h1>
-
-    <p class="word-list__subtitle">
-      {{ t('words.list.subtitle') }}
-    </p>
-  </div>
-
-  <p
-    v-if="store.items && store.items.length"
-    class="word-list__count"
-  >
-    {{ t('words.list.count', store.items.length) }}
-  </p>
-</header>-->
-  <!-- Hero réutilisable -->
+    <!-- Hero réutilisable -->
     <LkPageHero
       id="words-page-title"
       :eyebrow="t('words.page.eyebrow')"
       :title="t('words.page.title')"
       :description="t('words.page.subtitle')"
-      :primary-cta="primaryCta"
-      :secondary-cta="secondaryCta"
       :side-aria-label="t('pageHero.sideAria')"
+      :show-last-expressions="true"
     >
       <!-- Meta sous les boutons -->
       <template #meta>
@@ -39,49 +20,69 @@
         </p>
       </template>
 
-      <!-- Colonne de droite : logo + raccourcis -->
+      <!-- Colonne de droite : LkActionsBar -->
       <template #side>
         <div class="lk-hero-side">
-     
-          <LkActionsBar class="lk-hero__quick-search" />
+          <LkActionsBar />
         </div>
       </template>
     </LkPageHero>
-    <section class="lastexpr m-5">
-      <div class="expr-section__meta text-center m-auto">
-          <LastExpressionsCount />
-        </div>
-    </section>
-  <p
-    v-if="store.items && store.items.length"
-    class="word-list__count"
-  >
-    {{ t('words.list.count', store.items.length) }}
-  </p>
-<div class="word-list__toolbar">
-  <div class="word-list__search">
-    <label class="word-list__search-label" for="word-search">
-      {{ t('words.list.searchLabel') }}
-    </label>
-    <input
-      id="word-search"
-      v-model="searchLocal"
-      type="search"
-      class="word-list__search-input"
-      :placeholder="t('words.list.searchPlaceholder')"
-    />
-  </div>
 
-  <NuxtLink
-    to="/words"
-    class="word-list__view-link"
-    :aria-label="t('words.cards.viewTableAria')"
-  >
-    <i class="fas fa-table" aria-hidden="true"></i>
-    <span>{{ t('words.cards.viewTable') }}</span>
-  </NuxtLink>
-</div>
+    <!-- Compteur premium : X mots en base (comme expressions) -->
+    <div
+      v-if="itemsLength"
+      class="word-cards__meta"
+    >
+      <p
+        class="word-count-chip"
+        aria-live="polite"
+      >
+        <span
+          class="word-count-chip__dot"
+          aria-hidden="true"
+        />
+        <span class="word-count-chip__text">
+          {{ t('words.list.count', itemsLength) }}
+        </span>
+      </p>
+    </div>
 
+    <!-- Barre de recherche + switch tableau -->
+    <div class="word-cards__toolbar">
+      <div class="word-cards__search">
+        <label
+          class="word-cards__search-label"
+          for="word-cards-search"
+        >
+          {{ t('words.list.searchLabel') }}
+        </label>
+
+        <input
+          id="word-cards-search"
+          v-model="searchLocal"
+          type="search"
+          class="word-cards__search-input"
+          :placeholder="t('words.list.searchPlaceholder')"
+        />
+      </div>
+
+      <!-- Légende + bouton switch vue tableau -->
+      <div class="word-view-mode">
+        <!-- Vue actuelle = cartes -->
+        <p class="word-view-caption">
+          {{ t('words.cards.viewCards') }}
+        </p>
+
+        <NuxtLink
+          to="/words"
+          class="word-cards__view-link"
+          :aria-label="t('words.cards.viewTableAria')"
+        >
+          <i class="fas fa-table" aria-hidden="true"></i>
+          <span>{{ t('words.cards.viewTable') }}</span>
+        </NuxtLink>
+      </div>
+    </div>
 
     <!-- État : chargement -->
     <div
@@ -111,8 +112,11 @@
       {{ t('words.list.empty') }}
     </p>
 
-    <!-- Résultats -->
-    <ul v-else class="word-list__grid">
+    <!-- Résultats : cartes -->
+    <ul
+      v-else
+      class="word-list__grid"
+    >
       <li
         v-for="item in paginatedWords"
         :key="item.slug || item.id"
@@ -129,11 +133,18 @@
               <span class="word-card__singular">
                 {{ item.singular || '—' }}
               </span>
-              <span v-if="item.plural" class="word-card__plural">
+              <span
+                v-if="item.plural"
+                class="word-card__plural"
+              >
                 · {{ item.plural }}
               </span>
             </h3>
-            <p v-if="item.phonetic" class="word-card__phonetic">
+
+            <p
+              v-if="item.phonetic"
+              class="word-card__phonetic"
+            >
               [{{ item.phonetic }}]
             </p>
           </header>
@@ -150,11 +161,10 @@
           </dl>
 
           <footer class="word-card__footer">
-           <span class="word-card__cta">
-  {{ t('words.cards.viewDetails') }}
-  <i class="fas fa-arrow-right" aria-hidden="true"></i>
-</span>
-
+            <span class="word-card__cta">
+              {{ t('words.cards.viewDetails') }}
+              <i class="fas fa-arrow-right" aria-hidden="true"></i>
+            </span>
           </footer>
         </button>
       </li>
@@ -188,7 +198,7 @@ const { t } = useI18n();
 
 const searchLocal = ref('');
 
-// Liste filtrée en fonction de la recherche
+// Liste filtrée (singulier / pluriel / FR / EN)
 const filteredWords = computed(() => {
   const items = Array.isArray(store.items) ? store.items : [];
   const q = searchLocal.value.trim().toLowerCase();
@@ -210,7 +220,12 @@ const filteredWords = computed(() => {
   });
 });
 
-// reset la pagination quand on modifie la recherche
+// Compteur premium : nombre d’éléments filtrés
+const itemsLength = computed(() =>
+  Array.isArray(filteredWords.value) ? filteredWords.value.length : 0,
+);
+
+// Reset pagination quand la recherche change
 watch(searchLocal, () => {
   store.page = 1;
 });
@@ -241,6 +256,7 @@ const truncateText = (text, limit = 80) => {
   return text.length > limit ? text.slice(0, limit) + '…' : text;
 };
 
+// Chargement initial
 onMounted(() => {
   if (!store.items.length) {
     store.fetchAll();
@@ -249,87 +265,154 @@ onMounted(() => {
 </script>
 
 <style scoped>
-.word-list {
+.word-cards {
   display: flex;
   flex-direction: column;
   gap: 1.25rem;
 }
 
-/* Header */
-.word-list__header {
+/* Meta (compteur) */
+.word-cards__meta {
   display: flex;
-  flex-direction: column;
-  gap: 0.6rem;
+  justify-content: flex-end;
 }
 
-.word-list__title {
-  font-size: 1.4rem;
-  font-weight: 700;
-  color: var(--text-default, #111827); /* ✅ thème-friendly */
+/* Chip compteur : même logique que expressions */
+.word-count-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.18rem 0.7rem;
+  border-radius: 999px;
+  border: 1px solid rgba(148, 163, 184, 0.7);
+  background: linear-gradient(
+    135deg,
+    rgba(15, 23, 42, 0.03),
+    rgba(37, 99, 235, 0.06)
+  );
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--text-muted, #4b5563);
 }
 
-.word-list__subtitle {
-  font-size: 0.95rem;
-  color: var(--text-muted, #6b7280); /* ✅ comme WordList */
-  max-width: 40rem;
+.word-count-chip__dot {
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 999px;
+  background: radial-gradient(circle at 30% 30%, #22c55e, #16a34a);
+  box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.18);
 }
 
-.word-list__header-actions {
+.word-count-chip__text {
+  white-space: nowrap;
+}
+
+/* Toolbar (recherche + switch vue) */
+.word-cards__toolbar {
   display: flex;
   flex-wrap: wrap;
+  gap: 0.75rem;
   align-items: center;
-  gap: 0.5rem;
+  justify-content: space-between;
+  margin-top: 0.25rem;
 }
 
-.word-list__count {
+.word-cards__search {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.word-cards__search-label {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+}
+
+.word-cards__search-input {
+  width: 400px;
+  max-width: 100%;
+  padding: 0.45rem 0.85rem;
+  border-radius: 999px;
+  border: 1px solid var(--border-subtle);
   font-size: 0.9rem;
+  color: var(--text-default);
+  background: var(--surface-elevated);
+}
+
+/* Bloc vue “cartes” + bouton vers tableau */
+.word-view-mode {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.15rem;
+}
+
+.word-view-caption {
+  margin: 0;
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
   color: var(--text-muted, #6b7280);
+}
+
+.word-cards__view-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.85rem;
+  padding: 0.35rem 0.85rem;
+  border-radius: 999px;
+  border: 1px solid var(--border-subtle);
+  text-decoration: none;
+  background: var(--surface-elevated);
+  color: var(--primary);
+  white-space: nowrap;
+}
+
+.word-cards__view-link:hover {
+  background: rgba(13, 110, 253, 0.06);
+  border-color: var(--primary);
 }
 
 /* États */
 .word-list__status,
-.word-list__error,
-.word-list__empty {
-  font-size: 0.95rem;
-  padding: 0.85rem 1rem;
-  border-radius: 0.75rem;
-}
-
-.word-list__status {
-  background: rgba(13, 110, 253, 0.08);
-  color: var(--primary, #0d6efd);
-}
-
+.word-list__empty,
 .word-list__error {
-  background: rgba(220, 53, 69, 0.08);
-  color: #fecaca;
+  padding: 0.9rem 1rem;
+  border-radius: 0.75rem;
+  font-size: 0.95rem;
 }
 
+/* info (chargement) */
+.word-list__status {
+  background: rgba(13, 110, 253, 0.12);
+  border: 1px solid rgba(13, 110, 253, 0.35);
+  color: var(--primary);
+}
+
+/* vide */
 .word-list__empty {
-  background: rgba(108, 117, 125, 0.06);
-  color: var(--text-muted, #e5e7eb);
+  background: rgba(148, 163, 184, 0.16);
+  border: 1px solid rgba(148, 163, 184, 0.4);
+  color: var(--text-muted);
+}
+
+/* erreur */
+.word-list__error {
+  background: rgba(248, 113, 113, 0.16);
+  border: 1px solid rgba(248, 113, 113, 0.6);
+  color: #b91c1c;
 }
 
 /* Grid de cartes */
 .word-list__grid {
   list-style: none;
   margin: 0;
+  margin-top: 0.8rem;
   padding: 0;
   display: grid;
-  grid-template-columns: minmax(0, 1fr);
-  gap: 1rem;
-}
-
-@media (min-width: 640px) {
-  .word-list__grid {
-    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-  }
-}
-
-@media (min-width: 992px) {
-  .word-list__grid {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-  }
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 0.9rem;
 }
 
 .word-card {
@@ -338,31 +421,36 @@ onMounted(() => {
 
 .word-card__inner {
   width: 100%;
-  border: 1px solid rgba(148, 163, 184, 0.4);
-  border-radius: 1rem;
-  padding: 0.9rem 1rem;
-  background: var(--surface-elevated, #ffffff); /* ✅ thème */
   text-align: left;
+  padding: 0.9rem 0.85rem 0.8rem;
+  border-radius: 0.9rem;
+  border: 1px solid var(--border-subtle);
+  background: var(--surface-elevated, #ffffff);
+  cursor: pointer;
   display: flex;
   flex-direction: column;
-  gap: 0.6rem;
-  cursor: pointer;
+  gap: 0.55rem;
   transition:
+    background-color 0.15s ease,
     box-shadow 0.15s ease,
-    transform 0.15s ease,
-    border-color 0.15s ease,
-    background 0.15s ease;
+    transform 0.08s ease,
+    border-color 0.15s ease;
 }
 
 .word-card__inner:hover,
 .word-card__inner:focus-visible {
   outline: none;
-  border-color: var(--primary, #0d6efd);
-  box-shadow: 0 12px 30px rgba(15, 23, 42, 0.12);
+  border-color: var(--primary);
+  background: linear-gradient(
+    135deg,
+    rgba(239, 246, 255, 0.9),
+    rgba(219, 234, 254, 0.95)
+  );
+  box-shadow: 0 14px 34px rgba(15, 23, 42, 0.18);
   transform: translateY(-1px);
 }
 
-/* Contenu de la carte */
+/* Header de carte */
 .word-card__header {
   display: flex;
   flex-direction: column;
@@ -370,166 +458,86 @@ onMounted(() => {
 }
 
 .word-card__title {
-  font-size: 1.05rem;
+  margin: 0;
+  font-size: 1rem;
   font-weight: 600;
+  color: var(--text-default, #111827);
 }
 
 .word-card__singular {
-  font-size: 1.5rem;
-  font-weight: 600;
-  color: var(--primary, #0d6efd);
+  color: var(--primary, #2563eb);
 }
 
 .word-card__plural {
-  font-size: 1.5rem;
-  font-weight: 600;
-  color: var(--primary); /* ✅ même couleur que le singulier, thème-friendly */
+  margin-left: 0.25rem;
+  font-size: 0.9rem;
+  color: var(--text-muted, #6b7280);
 }
 
 .word-card__phonetic {
-  font-family: "Fira Code", Menlo, ui-monospace, SFMono-Regular, monospace;
-  font-size: 0.9rem;
-  color: var(--text-default, #111827);
-  white-space: nowrap;
+  margin: 0;
+  font-size: 0.86rem;
+  font-family: 'Fira Code', Menlo, ui-monospace, SFMono-Regular, monospace;
+  color: var(--text-muted, #4b5563);
 }
 
+/* Body */
 .word-card__body {
   margin: 0;
   display: flex;
   flex-direction: column;
-  gap: 0.4rem;
+  gap: 0.35rem;
+  font-size: 0.9rem;
 }
 
 .word-card__row {
   display: grid;
-  grid-template-columns: auto minmax(0, 1fr);
-  column-gap: 0.4rem;
-  font-size: 0.9rem;
+  grid-template-columns: minmax(0, 80px) minmax(0, 1fr);
+  gap: 0.25rem 0.5rem;
 }
 
 .word-card__row dt {
   font-weight: 600;
-  color: var(--text-muted, #6c757d);
+  font-size: 0.82rem;
+  color: var(--text-muted, #6b7280);
 }
 
 .word-card__row dd {
   margin: 0;
-  color: var(--text-default, #111827);
-}
-/* Traductions : même code couleur que le tableau (FR / EN) */
-.word-card__row:nth-child(1) dd {
-  color: #047857; /* Français */
 }
 
-.word-card__row:nth-child(2) dd {
-  color: #b45309; /* Anglais */
-}
-
-/* Footer de la carte */
+/* Footer / CTA */
 .word-card__footer {
-  margin-top: 0.35rem;
-  display: flex;
-  justify-content: flex-end;
+  margin-top: 0.25rem;
 }
 
 .word-card__cta {
-  font-size: 0.9rem;
+  font-size: 0.82rem;
   font-weight: 500;
-  color: var(--primary, #0d6efd);
+  color: var(--primary);
   display: inline-flex;
   align-items: center;
-  gap: 0.4rem;
+  gap: 0.3rem;
 }
 
 /* Pagination */
 .word-list__pagination {
-  margin-top: 1.25rem;
-  display: flex;
-  justify-content: center;
-}
-
-/* Barre de recherche */
-.word-list__toolbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 0.75rem;
-  flex-wrap: wrap;
-}
-
-.word-list__search {
-  display: flex;
-  flex-direction: column;
-  gap: 0.2rem;
-}
-
-.word-list__search-label {
-  font-size: 0.78rem;
-  color: var(--text-muted, #6b7280);
-}
-
-.word-list__search-input {
-  width: 400px;
-  max-width: 100%;
-  padding: 0.45rem 0.85rem;
-  border-radius: 999px;
-  border: 1px solid rgba(148, 163, 184, 0.8);
-  font-size: 0.9rem;
-  color: var(--text-default, #111827);
-  background: var(--surface-elevated, #ffffff);
-}
-
-/* Bouton vue tableau */
-.word-list__view-link {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.35rem;
-  font-size: 0.85rem;
-  padding: 0.35rem 0.85rem;
-  border-radius: 999px;
-  border: 1px solid rgba(148, 163, 184, 0.8);
-  text-decoration: none;
-  background: var(--surface-elevated, #ffffff);
-  color: var(--primary, #0d6efd);
-  white-space: nowrap;
-}
-
-.word-list__view-link:hover {
-  background: rgba(13, 110, 253, 0.06);
-  border-color: var(--primary, #0d6efd);
+  margin-top: 1rem;
 }
 
 /* Responsive */
 @media (max-width: 640px) {
-  .word-list__toolbar {
-    justify-content: stretch;
+  .word-cards__toolbar {
+    flex-direction: column;
+    align-items: stretch;
   }
 
-  .word-list__search-input {
-    width: 100%;
-    min-width: 0;
+  .word-view-mode {
+    align-items: flex-start;
+  }
+
+  .word-cards__view-link {
+    justify-content: center;
   }
 }
-.word-list__header {
-  display: flex;
-  flex-direction: column;
-  gap: 0.6rem;
-}
-
-/* important pour mettre le compteur à droite */
-.word-list__count {
-  margin-left: auto;
-  font-size: 0.9rem;
-  color: var(--text-muted, #6b7280);
-}
-
-/* toolbar identique à WordList */
-.word-list__toolbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 0.75rem;
-  flex-wrap: wrap;
-}
-
 </style>

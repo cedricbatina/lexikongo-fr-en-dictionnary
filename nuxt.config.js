@@ -1,14 +1,19 @@
 // nuxt.config.js — SSR first
+
+const SITE_URL = process.env.NUXT_PUBLIC_SITE_URL || "https://lexikongo.fr";
+
 export default defineNuxtConfig({
   compatibilityDate: "2025-07-15",
-  ssr: true, // explicite (SSR partout)
-  // ⬇️ Désactiver le checker TS (on est en JS)
+  ssr: true, // SSR partout
+
+  // ⬇️ On désactive le type-check TS (projet en JS)
   typescript: {
     typeCheck: false,
   },
+
   modules: [
     "@pinia/nuxt",
-    "@nuxtjs/sitemap",
+    // ❌ "@nuxtjs/sitemap" est désactivé : on gère notre sitemap à la main
     "@nuxtjs/robots",
     "@vite-pwa/nuxt",
     "@nuxtjs/i18n",
@@ -18,13 +23,16 @@ export default defineNuxtConfig({
     "bootstrap/dist/css/bootstrap.css",
     "@fortawesome/fontawesome-free/css/all.css",
     "vue-toastification/dist/index.css",
-    // '~/assets/css/data-style.css',
-    "~/assets/css/global.css",
+    //"~/assets/css/global.css",
     "~/assets/css/main.css",
-    "~/assets/css/button-styles.css",
-    "~/assets/css/footer-style.css",
+    //"~/assets/css/button-styles.css",
+    //"~/assets/css/footer-style.css",
   ],
 
+  plugins: [
+    { src: "~/plugins/bootstrap.client.js", mode: "client" },
+    { src: "~/plugins/toastification.js" },
+  ],
 
   app: {
     head: {
@@ -55,8 +63,7 @@ export default defineNuxtConfig({
 
     // publiques (exposées au client)
     public: {
-      siteUrl:
-        process.env.NUXT_PUBLIC_SITE_URL || "https://lexikongo.fr",
+      siteUrl: SITE_URL,
       siteName: process.env.NUXT_PUBLIC_SITE_NAME || "Lexikongo",
       siteDescription:
         process.env.NUXT_PUBLIC_SITE_DESC ||
@@ -77,6 +84,8 @@ export default defineNuxtConfig({
       adminEmail: process.env.ADMIN_EMAIL || "",
     },
   },
+
+  // ------- i18n -------
   i18n: {
     locales: [
       { code: "fr", iso: "fr-FR", name: "Français", file: "fr.json" },
@@ -90,7 +99,6 @@ export default defineNuxtConfig({
     defaultLocale: "fr",
     strategy: "prefix_except_default",
     lazy: true,
-    // ⬇️ on pointe vers "locales" DANS le dossier i18n
     langDir: "locales",
     detectBrowserLanguage: {
       useCookie: true,
@@ -101,23 +109,19 @@ export default defineNuxtConfig({
     },
     seo: true,
   },
+
   // ------- Sitemap / Robots -------
-  sitemap: {
-    siteUrl: process.env.NUXT_PUBLIC_SITE_URL || "https://lexikongo.fr",
-    autoLastmod: true,
-    xsl: true,
-    defaults: { changefreq: "weekly", priority: 0.7 },
-    // exclude: ['/admin/**', '/api/**'],
-  },
+  // ❌ On enlève complètement la clé "sitemap" (elle servait au module @nuxtjs/sitemap)
+  // sitemap: { ... } → supprimé
+
   robots: {
     rules: [{ userAgent: "*", allow: "/" }],
-    sitemap: [
-      (process.env.NUXT_PUBLIC_SITE_URL || "https://lexikongo.fr") +
-        "/sitemap.xml",
-    ],
+    // 🔗 On pointe explicitement vers NOTRE route /sitemap.xml
+    sitemap: [`${SITE_URL}/sitemap.xml`],
   },
 
   // ------- PWA (compatible SSR) -------
+  // ✅ Rien à changer ici : PWA + workbox restent identiques
   pwa: {
     registerType: "autoUpdate",
     includeAssets: ["icon.svg", "apple-touch-icon.png", "pwa-maskable.png"],
@@ -167,13 +171,12 @@ export default defineNuxtConfig({
 
   // ------- Nitro (SSR hosting) -------
   nitro: {
-    preset: "vercel", // SSR classique (adapter si Vercel, Node, Docker, etc.)
+    preset: "vercel", // SSR classique pour Vercel
     routeRules: {
       "/_nuxt/**": {
         headers: { "cache-control": "public, max-age=31536000, immutable" },
       },
-      // Rien en SPA: SSR reste actif partout
-      // ISR optionnel (tu peux activer au cas par cas) :
+      // ISR optionnel si tu veux plus tard :
       // '/': { isr: 60 },
     },
   },
@@ -181,11 +184,9 @@ export default defineNuxtConfig({
   // ------- Vite -------
   vite: {
     build: { sourcemap: process.env.NODE_ENV !== "production" },
-    // fs: { allow: ['.'] }, // on garde strict pour éviter l’erreur “allow list”
   },
 
-  // ------- TS / Devtools / Expérimental -------
-  //typescript: { typeCheck: true, strict: true },
+  // ------- Imports / Devtools / Expérimental -------
   imports: { autoImport: true },
   devtools: { enabled: true },
   experimental: { typedPages: true },

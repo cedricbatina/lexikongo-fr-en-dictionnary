@@ -139,3 +139,380 @@ Tests manuels : login/register/logout/me, rôles (admin/contributor/user), flux 
 
 ✅ État actuel : serveur Nuxt 4 SSR OK, base du projet propre, erreurs initiales résolues, structure DB “users/roles” consignée.
 ▶️ Action suivante : fournir les fichiers “user” existants pour patch SSR ciblé.
+
+///
+26/11/2025
+Journal de dev – Session du jour
+1. Auth & session côté serveur
+
+On garde utils/db.config.js comme unique source pour le pool MySQL (Nuxt 4 / SSR / Vercel).
+
+Mise en cohérence de tous les endpoints d’auth avec ce fichier :
+
+/server/api/auth/login.post.js
+
+/server/api/auth/me.get.js
+
+Utilisation de query() plutôt que getConnection().execute() dès que possible.
+
+AuthSession (JWT / cookie)
+
+server/utils/authSession.js :
+
+getAuthCookieName() → basé sur runtimeConfig ou AUTH_COOKIE_NAME.
+
+signJwt() / verifyJwt() → secret pris dans runtimeConfig.jwtSecret ou JWT_SECRET.
+
+setAuthCookie() / clearAuthCookie() → cookie HttpOnly, secure en prod, sameSite=lax.
+
+getUserFromCookie(event) :
+
+Décoder le JWT.
+
+Hydrater event.context.user = { id, username, roles }.
+
+requireUser(event) :
+
+Lève un 401 si pas de user dans le cookie.
+
+2. Login API & rôles
+Table SQL
+
+roles(role_id, role_name)
+
+user_roles(user_id, role_id)
+
+/api/auth/login.post.js
+
+Requête DB :
+
+SELECT user_id, username, email, password, email_verified, created_at, last_seen, previous_seen FROM users WHERE email = ? OR username = ? LIMIT 1
+
+Vérification du mot de passe avec bcrypt (pas bcryptjs).
+
+Vérification de email_verified (on ne bloque pas encore la connexion, mais l’info remonte).
+
+Mise à jour :
+
+previous_seen = last_seen
+
+last_seen = NOW()
+
+Rôles récupérés proprement :
+
+SELECT r.role_name
+FROM user_roles ur
+JOIN roles r ON r.role_id = ur.role_id
+WHERE ur.user_id = ?
+
+
+roles renvoyés comme tableau de strings (["user"], ["admin","contributor"], etc.).
+
+Création du JWT avec { uid, username, roles }.
+
+Pose du cookie HttpOnly via setAuthCookie.
+
+3. /api/auth/me.get.js
+
+Lit le JWT via getUserFromCookie(event).
+
+Si pas d’utilisateur → { authenticated: false, user: null }.
+
+Si utilisateur :
+
+Requête DB par user_id.
+
+Projection sécurisée :
+
+user_id, username, email, email_verified, created_at, last_seen, previous_seen
+
+Même requête pour les rôles qu’au login.
+
+Réponse :
+
+{
+  authenticated: true,
+  user: {
+    id,
+    username,
+    email,
+    email_verified,
+    created_at,
+    last_seen,
+    previous_seen,
+    roles: [...]
+  }
+}
+
+4. stores/authStore.js
+
+State :
+
+ready, authenticated, user, roles, pending, error.
+
+Getters :
+
+isLoggedIn
+
+hasRole(role)
+
+hasAnyRole([roles...])
+
+Actions :
+
+fetchMe() :
+
+GET /api/auth/me (avec useRequestHeaders(['cookie']) côté SSR).
+
+Alimente authenticated, user, roles, ready.
+
+login({ identifier, password }) :
+
+POST /api/auth/login.
+
+Appelle ensuite fetchMe().
+
+logout() :
+
+POST /api/auth/logout.
+
+Purge localement user + roles.
+
+5. Composant Login.vue
+
+UI refaite “haut de gamme” (layout carte + boutons arrondis).
+
+Texte et placeholders i18n avec fallback via tt(key, fallback).
+
+Gestion des erreurs :
+
+Champs vides → message i18n auth.login.error.requiredFields.
+
+Erreur API → authStore.error ou message générique.
+
+Redirections :
+
+Si ?redirect=/... dans l’URL → priorité.
+
+Sinon :
+
+admin → /admin
+
+contributor → /contributor
+
+sinon user normal → /user/profile/{usernameSlug}
+
+usernameToSlug(username) intégré dans le composant (accents, espaces, etc. → slug propre).
+
+6. Navbar & profil slugifié
+
+components/Navbar.vue :
+
+isLoggedIn basé sur authStore.isLoggedIn.
+
+userRoles basé sur authStore.roles.
+
+Lien profil desktop & mobile :
+
+<NuxtLink
+  v-if="isLoggedIn"
+  :to="`/user/profile/${usernameSlug}`"
+  ...
+>
+  {{ displayName }}
+</NuxtLink>
+
+
+usernameSlug = slug du authStore.user.username.
+
+Correction du bug normalize is not a function en s’assurant qu’on ne slugifie que des strings.
+
+7. Page profile/[username].vue
+
+Grosse avancée UX / design.
+
+Utilise LkPageHero + LkActionsBar comme sur Home / Expressions :
+
+Eyebrow : “Espace membre”.
+
+Titre dynamique : Fiche utilisateur · {username} ou clé i18n.
+
+CTA “Explorer les mots”, “Explorer les verbes”.
+
+Texte de sécurité : “Vos informations personnelles restent privées…”.
+
+Colonne droite : LkActionsBar (raccourcis dictionnaire).
+
+Fiche utilisateur (carte principale) :
+
+Eyebrow : “Fiche utilisateur”.
+
+Titre = username.
+
+“Membre depuis” → formaté fr-FR (23 septembre 2024).
+
+Rôles → chips stylées :
+
+Utilisateur
+
+Contributeur
+
+Administrateur
+
+Carte “Informations du compte” :
+
+Nom d’utilisateur + hint.
+
+Adresse e-mail :
+
+email réel ou “Non renseignée”.
+
+Badge “E-mail vérifié” / “E-mail non vérifié”.
+
+Texte : “Nous utilisons votre adresse e-mail uniquement pour la connexion et la sécurité…”.
+
+Carte “Sécurité du compte” :
+
+Recommandations mot de passe long, unique, etc.
+
+SEO :
+
+useSeoMeta avec titre / description i18n.
+
+robots: 'noindex, nofollow, noimageindex' (page privée).
+
+8. LkActionsBar (admin / contributeur / raccourcis)
+
+Composant utilisé sur Home, Expressions, Profil, Admin.
+
+Rôles :
+
+isAdmin → basé sur authStore.roles.includes('admin').
+
+isContributor → roles.includes('contributor') seulement si pas admin (admin > contrib).
+
+Groupes :
+
+Admin (si admin) :
+
+Ajouter un mot → /admin/admin/add/word
+
+Ajouter un verbe → /admin/admin/add/verb
+
+Ajouter un utilisateur → /admin/admin/add/user
+
+Espace contributeur → /contributor
+
+Contributeur (si contributeur sans être admin) :
+
+Ajouter un mot → /contributor/add/word
+
+Ajouter un verbe → /contributor/add/verb
+
+Espace contributeur → /contributor
+
+Raccourcis publics (toujours) :
+
+Recherche mots / verbes
+
+Listes mots / verbes / expressions
+
+Contribuer
+
+Retour à l’accueil
+
+Styles :
+
+Groupes visuellement séparés (bordures, fond, ombres).
+
+Boutons admin / contrib bien colorés.
+
+Raccourcis publics → boutons avec outline coloré.
+
+Correction du contraste de “Retour à l’accueil” en dark mode (lk-actions__link--secondary).
+
+9. Statistiques Admin
+
+Endpoint statistiques (ex /api/admin/stats ou équivalent) remis en service avec query() :
+
+SELECT COUNT(*) AS totalUsers FROM users
+
+SELECT COUNT(*) AS totalWords FROM words
+
+SELECT COUNT(*) AS totalVerbs FROM verbs
+
+Page /admin/index :
+
+Les chiffres ne sont plus à 0, ils reflètent la DB réelle.
+
+Texte explicite : “Vous êtes connecté avec un compte administrateur…” (déjà présent, conservé).
+
+10. Confirm modal global
+
+Rappel : components/LkConfirmModal.vue + stores/confirmStore déjà en place.
+
+Utilisable plus tard pour :
+
+Suppression de compte user.
+
+Suppression de mots / verbes par admin.
+
+Toute action destructive.
+
+11. Colonnes last_seen / previous_seen
+
+Dans users :
+
+last_seen → mise à jour à chaque login réussi.
+
+previous_seen → ancienne valeur de last_seen.
+
+created_at, updated_at (pour l’instant updated_at pas encore exploité).
+
+Infos remontées :
+
+Via /api/auth/login et surtout /api/auth/me.
+
+Déjà utilisables plus tard pour audit, dernière activité, etc.
+
+12. Petites corrections diverses
+
+Erreur MySQL Unknown column 'r.slug' corrigée en utilisant la vraie structure roles(role_name) (plus de slug supposé).
+
+Erreurs de chemins corrigées (../../utils/db.config plutôt que ../lib/db).
+
+Bascule totale sur utils/db.config pour tout ce qui touche la DB côté server API.
+
+Pour demain (pistes déjà prêtes)
+
+userStore dédié :
+
+Charger / éditer / supprimer le compte utilisateur.
+
+Permettre d’avoir un store propre pour toute la partie “profil”.
+
+Endpoints users :
+
+/api/users/profile.patch.js (édition profil user lui-même).
+
+/api/users/profile.delete.js (suppression de compte).
+
+Extensions admin :
+
+Autoriser admin à modifier / supprimer via même endpoints.
+
+Variante future /api/admin/users/[username].* si besoin.
+
+Page profile/edit/[username].vue :
+
+Formulaire d’édition (username, éventuellement email plus tard).
+
+Bouton “Supprimer mon compte” → LkConfirmModal → appel API delete.
+
+Admin users :
+
+Plus tard : /admin/users + /admin/users/[username].
+
+Accueil :
+
+Adapter les messages “Se connecter” / “Accéder à l’espace contributeur” en fonction du statut (connecté vs non connecté).

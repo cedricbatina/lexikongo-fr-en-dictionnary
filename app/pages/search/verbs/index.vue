@@ -1,252 +1,569 @@
 <template>
-  <div class="container mt-5">
-    <!-- Titre principal -->
-    <header class="text-center mb-4">
-      <h1 class="display-4 text-primary mb-4 mt-4">
-        <i class="fa-solid fa-search me-2"></i> Recherche de Verbes en Kikongo
-      </h1>
-      <p class="lead text-muted">
-        Recherchez des verbes en Kikongo et découvrez leurs conjugaisons, leurs
-        significations en français et en anglais. Explorez la richesse des
-        verbes de cette langue fascinante.
-      </p>
-    </header>
-
-    <!-- Section de recherche -->
-    <div class="row justify-content-center mb-4">
-      <div class="col-lg-8 col-md-10 col-sm-12">
-        <div class="card shadow-sm p-4">
-          <h4 class="card-title text-primary mb-4">
-            <i class="fa-solid fa-magnifying-glass"></i> Recherche
-          </h4>
-          <VerbSearchForm @search="handleSearch" />
-        </div>
-      </div>
-    </div>
-
-    <!-- Spinner pendant le chargement -->
-    <div v-if="isLoading" class="text-center mt-4">
-      <span
-        class="spinner-border text-primary"
-        role="status"
-        aria-hidden="true"
-      ></span>
-      <p class="mt-2">Recherche en cours...</p>
-    </div>
-
-    <!-- Résultats de la recherche -->
-    <section v-if="results.length && !isLoading" class="mt-5">
-      <VerbSearchResults :results="results" />
-    </section>
-
-    <!-- Aucun résultat -->
-    <div
-      v-else-if="searchQuery && !results.length && !isLoading"
-      class="alert alert-info mt-4 text-center"
+  <main
+    class="page search-page"
+    aria-labelledby="search-verbs-title"
+  >
+    <!-- Hero Lexikongo -->
+    <LkPageHero
+      id="search-verbs-title"
+      :eyebrow="t('search.verb.eyebrow')"
+      :title="t('search.verb.title')"
+      :description="t('search.verb.subtitle')"
+      :side-aria-label="t('pageHero.sideAria')"
+      :show-last-expressions="true"
     >
-      Aucun résultat trouvé pour votre recherche.
-    </div>
+      <!-- Meta sous le titre -->
+      <template #meta>
+        <p class="lk-hero-meta">
+          <i class="fas fa-language" aria-hidden="true"></i>
+          <span>
+            {{ t('search.verb.metaKikongo') }}
+          </span>
+        </p>
+      </template>
 
-    <!-- Message d'erreur -->
-    <div v-if="errorMessage" class="alert alert-danger mt-4 text-center">
-      {{ errorMessage }}
-    </div>
+      <!-- Colonne de droite : actions globales -->
+      <template #side>
+        <div class="lk-hero-side">
+          <LkActionsBar />
+        </div>
+      </template>
+    </LkPageHero>
 
-    <!-- Appel à l'action -->
-    <LastExpressionsCount />
-    <ActionAppeal />
+    <!-- Barre de recherche -->
+    <section
+      class="search-panel"
+      aria-labelledby="search-verbs-form-title"
+    >
+      <header class="search-panel__header">
+        <h2
+          id="search-verbs-form-title"
+          class="search-panel__title"
+        >
+          {{ t('search.verb.formTitle') }}
+        </h2>
+        <p class="search-panel__subtitle">
+          {{ t('search.verb.formSubtitle') }}
+        </p>
+      </header>
 
-    <section class="text-center mb-5">
-      <SearchButtons />
-      <ContributorButtons />
-      <AdminButtons />
+      <form
+        class="search-panel__form"
+        @submit.prevent
+      >
+        <label
+          class="search-panel__label"
+          for="search-verbs-input"
+        >
+          {{ t('search.verb.inputLabel') }}
+        </label>
+
+        <div class="search-panel__input-wrap">
+          <span
+            class="search-panel__input-icon"
+            aria-hidden="true"
+          >
+            <i class="fas fa-search" />
+          </span>
+          <input
+            id="search-verbs-input"
+            v-model="searchLocal"
+            type="search"
+            class="search-panel__input"
+            :placeholder="t('search.verb.inputPlaceholder')"
+            autocomplete="off"
+          />
+        </div>
+
+        <p class="search-panel__hint">
+          {{ t('search.verb.hint') }}
+        </p>
+      </form>
     </section>
-  </div>
+
+    <!-- Résultats -->
+    <section
+      class="search-results"
+      aria-live="polite"
+      :aria-busy="store.isLoading ? 'true' : 'false'"
+    >
+      <!-- États -->
+      <div class="search-results__status">
+        <p
+          v-if="store.isLoading"
+          class="search-results__badge search-results__badge--loading"
+          role="status"
+        >
+          {{ t('search.verb.loading') }}
+        </p>
+
+        <p
+          v-else-if="store.error"
+          class="search-results__badge search-results__badge--error"
+          role="alert"
+        >
+          {{ store.error }}
+        </p>
+
+        <p
+          v-else-if="!searchLocal"
+          class="search-results__badge search-results__badge--idle"
+        >
+          {{ t('search.verb.idle') }}
+        </p>
+
+        <p
+          v-else-if="filteredVerbs.length === 0"
+          class="search-results__badge search-results__badge--empty"
+        >
+          {{ t('search.verb.emptyForQuery', { query: searchLocal }) }}
+        </p>
+
+        <p
+          v-else
+          class="search-results__badge search-results__badge--count"
+        >
+          {{ t('search.verb.resultsCount', { count: filteredVerbs.length }) }}
+        </p>
+      </div>
+
+      <!-- Tableau des résultats -->
+      <div
+        v-if="paginatedVerbs.length"
+        class="search-results__table-wrapper"
+      >
+        <table
+          class="search-results__table"
+          role="table"
+          aria-describedby="search-verbs-caption"
+        >
+          <colgroup>
+            <col style="width: 28%;" />
+            <col style="width: 22%;" />
+            <col style="width: 25%;" />
+            <col style="width: 25%;" />
+          </colgroup>
+
+          <caption
+            id="search-verbs-caption"
+            class="search-results__caption"
+          >
+            {{ t('search.verb.resultsCaption') }}
+          </caption>
+
+          <thead>
+            <tr>
+              <th scope="col">
+                {{ t('verbs.list.column.infinitive') }}
+              </th>
+              <th scope="col">
+                {{ t('verbs.list.column.phonetic') }}
+              </th>
+              <th scope="col">
+                {{ t('verbs.list.column.fr') }}
+              </th>
+              <th scope="col">
+                {{ t('verbs.list.column.en') }}
+              </th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr
+              v-for="verb in paginatedVerbs"
+              :key="verb.slug || verb.id"
+              class="search-results__row"
+              role="button"
+              tabindex="0"
+              @click="goToDetails(verb.slug)"
+              @keydown.enter.prevent="goToDetails(verb.slug)"
+              @keydown.space.prevent="goToDetails(verb.slug)"
+              :aria-label="t('verbs.list.rowAria', { verb: getVerbLabel(verb) || '—' })"
+            >
+              <td class="search-results__cell search-results__cell--main">
+                <span class="search-results__singular">
+                  ku {{ getVerbLabel(verb) || '—' }}
+                </span>
+              </td>
+
+              <td class="search-results__cell">
+                <span
+                  v-if="verb.phonetic"
+                  class="search-results__phonetic"
+                >
+                  {{ verb.phonetic }}
+                </span>
+                <span v-else class="search-results__placeholder">—</span>
+              </td>
+
+              <td class="search-results__cell">
+                <span class="search-results__translation search-results__translation--fr">
+                  {{ truncateText(verb.translation_fr, 90) || '—' }}
+                </span>
+              </td>
+
+              <td class="search-results__cell">
+                <span class="search-results__translation search-results__translation--en">
+                  {{ truncateText(verb.translation_en, 90) || '—' }}
+                </span>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Pagination -->
+    <div
+      v-if="totalPages > 1 && filteredVerbs.length"
+      class="search-page__pagination"
+    >
+      <Pagination
+        :currentPage="currentPage"
+        :totalPages="totalPages"
+        :totalItems="filteredVerbs.length"
+        :pageSize="pageSize"
+        :ariaLabel="t('search.verb.paginationAria')"
+        :labelPrev="t('pagination.prev')"
+        :labelNext="t('pagination.next')"
+        :showSummary="true"
+        :showGoto="true"
+        :gotoLabel="t('pagination.gotoLabel')"
+        @pageChange="handlePageChange"
+      />
+    </div>
+  </main>
 </template>
 
-
 <script setup>
-import { ref } from "vue";
-import { useHead } from "#app";
-import LogoSlogan from "@/components/LogoSlogan.vue";
-import SearchButtons from "@/components/SearchButtons.vue";
-import ContributorButtons from "@/components/ContributorButtons.vue";
-import AdminButtons from "@/components/AdminButtons.vue";
-import VerbSearchForm from "@/components/VerbSearchForm.vue";
-import VerbSearchResults from "@/components/VerbSearchResults.vue";
+import { ref, computed, onMounted, watch } from "vue";
+import { useRouter } from "vue-router";
+import { useI18n } from "vue-i18n";
+import { useSeoMeta } from "#imports";
 
-// États de la recherche
-const searchQuery = ref("");
-const selectedLanguage = ref("kikongo");
-const results = ref([]);
-const isLoading = ref(false); // Indicateur de chargement
-const errorMessage = ref(null); // Message d'erreur
+import LkPageHero from "@/components/LkPageHero.vue";
+import LkActionsBar from "@/components/LkActionsBar.vue";
+import Pagination from "@/components/Pagination.vue";
+import { useVerbStore } from "~/stores/verbStore";
 
-// Gérer les recherches
-const handleSearch = async ({ query, language, mode }) => {
-  searchQuery.value = query;
-  selectedLanguage.value = language;
+const { t } = useI18n();
+const router = useRouter();
+const store = useVerbStore();
 
-  // Initialisation des états
-  isLoading.value = true;
-  errorMessage.value = null;
+const searchLocal = ref("");
+const currentPage = ref(1);
+const pageSize = 20;
 
-  try {
-    const response = await fetch(
-      `/api/search-verbs?query=${encodeURIComponent(
-        query
-      )}&language=${encodeURIComponent(language)}&mode=${encodeURIComponent(
-        mode
-      )}`
+// SEO
+useSeoMeta({
+  title: () =>
+    t("search.verb.metaTitle") || "Rechercher des verbes en Kikongo | Lexikongo",
+  description: () =>
+    t("search.verb.metaDescription") ||
+    "Recherchez des verbes en Kikongo (infinitif ku + racine) avec leurs traductions en français et en anglais dans le dictionnaire Lexikongo.",
+});
+
+// Helper pour obtenir le label du verbe (en fonction de ce que renvoie l’API)
+const getVerbLabel = (verb) =>
+  verb?.infinitive || verb?.name || verb?.singular || "";
+
+// Filtrage local
+const filteredVerbs = computed(() => {
+  const items = Array.isArray(store.items) ? store.items : [];
+  const q = searchLocal.value.trim().toLowerCase();
+
+  if (!q) return [];
+
+  return items.filter((verb) => {
+    const label = getVerbLabel(verb).toLowerCase();
+    const fr = (verb.translation_fr || "").toLowerCase();
+    const en = (verb.translation_en || "").toLowerCase();
+
+    return (
+      label.includes(q) ||
+      fr.includes(q) ||
+      en.includes(q)
     );
+  });
+});
 
-    if (!response.ok) {
-      throw new Error(`Erreur HTTP : ${response.status}`);
-    }
+// Pagination
+const paginatedVerbs = computed(() => {
+  const start = (currentPage.value - 1) * pageSize;
+  return filteredVerbs.value.slice(start, start + pageSize);
+});
 
-    const data = await response.json();
-    results.value = Array.isArray(data) ? data : [];
-  } catch (error) {
-    console.error("Erreur lors de la recherche :", error);
-    errorMessage.value = "Une erreur s'est produite lors de la recherche.";
-    results.value = [];
-  } finally {
-    isLoading.value = false;
+const totalPages = computed(() => {
+  const total = filteredVerbs.value.length || 0;
+  if (!total) return 1;
+  return Math.ceil(total / pageSize);
+});
+
+watch(searchLocal, () => {
+  currentPage.value = 1;
+});
+
+const handlePageChange = (page) => {
+  if (page < 1 || page > totalPages.value) return;
+  currentPage.value = page;
+};
+
+const truncateText = (text, limit = 90) => {
+  if (!text) return "";
+  return text.length > limit ? text.slice(0, limit) + "…" : text;
+};
+
+const goToDetails = (slug) => {
+  if (!slug) return;
+  router.push(`/details/verb/${slug}`);
+};
+
+onMounted(() => {
+  if (!store.items.length) {
+    store.fetchAll();
   }
-};
-// SEO Configuration
-const jsonLd = {
-  "@context": "https://schema.org",
-  "@type": "WebPage",
-  name: "Recherche de Verbes en Kikongo | Lexikongo",
-  description:
-    "Recherchez des verbes en Kikongo et découvrez leurs conjugaisons ainsi que leurs significations en français et anglais. Explorez notre base enrichie de verbes Kikongo.",
-  url: "https://www.lexikongo.fr/search-verbs",
-  image: "https://www.lexikongo.fr/images/text_logo@1x.webp",
-  inLanguage: "fr",
-  publisher: {
-    "@type": "Organization",
-    name: "Lexikongo",
-    url: "https://www.lexikongo.fr",
-    logo: {
-      "@type": "ImageObject",
-      url: "https://www.lexikongo.fr/images/text_logo@1x.webp",
-      width: 200,
-      height: 200,
-    },
-  },
-  potentialAction: {
-    "@type": "SearchAction",
-    target:
-      "https://www.lexikongo.fr/search-verbs?q={search_term_string}&lang={lang}",
-    "query-input": ["required name=search_term_string", "optional name=lang"],
-  },
-  about: {
-    "@type": "Thing",
-    name: "Kikongo Verbs",
-    sameAs: [
-      "https://en.wikipedia.org/wiki/Kikongo",
-      "https://fr.wikipedia.org/wiki/Kikongo",
-    ],
-  },
-};
-
-useHead({
-  title: "Recherche de Verbes en Kikongo | Lexikongo",
-  script: [
-    {
-      type: "application/ld+json",
-      children: JSON.stringify(jsonLd),
-    },
-  ],
-  meta: [
-    {
-      name: "description",
-      content:
-        "Recherchez des verbes en Kikongo et découvrez leurs conjugaisons, ainsi que leurs significations en français et en anglais. Une ressource pour explorer la richesse des verbes Kikongo.",
-    },
-    {
-      name: "keywords",
-      content:
-        "Kikongo, verbes, conjugaison, recherche, langue africaine, traduction, français, anglais, linguistique, patrimoine culturel, expressions Kikongo, Kikongo, mots, verbes, linguistique, traduction, français, anglais, culture africaine, patrimoine linguistique, Dictionnaire Kikongo - Français, Dictionnaire - Anglais, Dictionnaire Kikongo - Français - Anglais, Dictionnaire africain, Mbanza Kongo, Congo, Congo-Brazzaville, RDC, Angola, Gabon, Cameroun, RCA, Centrafrique, Langues, Langues Bantoues",
-    },
-    {
-      name: "author",
-      content: "Lexikongo",
-    },
-    {
-      name: "robots",
-      content: "index, follow",
-    },
-    {
-      property: "og:title",
-      content: "Recherche de Verbes en Kikongo | Lexikongo",
-    },
-    {
-      property: "og:description",
-      content:
-        "Explorez un dictionnaire complet des verbes en Kikongo avec leurs conjugaisons et significations en français et en anglais.",
-    },
-    {
-      property: "og:image",
-      content: "https://www.lexikongo.fr/images/text_logo@1x.webp",
-    },
-    {
-      property: "og:url",
-      content: "https://www.lexikongo.fr/search-verbs",
-    },
-    {
-      name: "twitter:card",
-      content: "summary_large_image",
-    },
-    {
-      name: "twitter:title",
-      content: "Recherche de Verbes en Kikongo | Lexikongo",
-    },
-    {
-      name: "twitter:description",
-      content:
-        "Découvrez les conjugaisons et significations des verbes en Kikongo grâce à notre base de données enrichie.",
-    },
-    {
-      name: "twitter:image",
-      content: "https://www.lexikongo.fr/images/text_logo@1x.webp",
-    },
-  ],
 });
 </script>
 
-
-
-
 <style scoped>
-/* Styles pour le titre et le texte principal */
-.display-4 {
-  font-size: 2.5rem;
-  color: var(--primary-color);
+/* On réutilise exactement les mêmes styles que la page search/word */
+.page.search-page {
+  display: flex;
+  flex-direction: column;
+  gap: 1.4rem;
 }
 
-.lead {
-  font-size: 1.25rem;
-  color: var(--text-default);
+.search-panel {
+  margin-top: 0.3rem;
+  border-radius: 0.9rem;
+  border: 1px solid var(--border-subtle, rgba(148, 163, 184, 0.4));
+  background: var(--surface-elevated, #ffffff);
+  padding: 0.9rem 1rem;
+  box-shadow: 0 8px 22px rgba(15, 23, 42, 0.06);
 }
 
-/* Responsivité */
+.search-panel__header {
+  margin-bottom: 0.4rem;
+}
+
+.search-panel__title {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-default, #111827);
+}
+
+.search-panel__subtitle {
+  margin: 0.1rem 0 0;
+  font-size: 0.85rem;
+  color: var(--text-muted, #6b7280);
+}
+
+.search-panel__form {
+  margin-top: 0.45rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.search-panel__label {
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: var(--text-muted, #6b7280);
+}
+
+.search-panel__input-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.search-panel__input-icon {
+  position: absolute;
+  left: 0.9rem;
+  font-size: 0.9rem;
+  color: var(--text-muted, #9ca3af);
+}
+
+.search-panel__input {
+  width: 100%;
+  border-radius: 999px;
+  border: 1px solid var(--border-subtle, rgba(148, 163, 184, 0.7));
+  padding: 0.5rem 0.9rem 0.5rem 2.1rem;
+  font-size: 0.95rem;
+  background: var(--surface-default, #f9fafb);
+  color: var(--text-default, #111827);
+  outline: none;
+  transition:
+    border-color 0.15s ease,
+    box-shadow 0.15s ease,
+    background-color 0.15s ease;
+}
+
+.search-panel__input:focus-visible {
+  border-color: var(--primary, #2563eb);
+  box-shadow: 0 0 0 1px rgba(37, 99, 235, 0.25);
+  background: #ffffff;
+}
+
+.search-panel__hint {
+  margin: 0;
+  font-size: 0.78rem;
+  color: var(--text-muted, #6b7280);
+}
+
+/* Résultats */
+.search-results {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.search-results__status {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.search-results__badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.2rem 0.75rem;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  border: 1px solid transparent;
+}
+
+.search-results__badge--loading {
+  border-color: rgba(37, 99, 235, 0.45);
+  background: rgba(37, 99, 235, 0.08);
+  color: var(--primary, #2563eb);
+}
+
+.search-results__badge--error {
+  border-color: rgba(248, 113, 113, 0.6);
+  background: rgba(248, 113, 113, 0.18);
+  color: #b91c1c;
+}
+
+.search-results__badge--empty,
+.search-results__badge--idle {
+  border-color: rgba(148, 163, 184, 0.6);
+  background: rgba(148, 163, 184, 0.12);
+  color: var(--text-muted, #6b7280);
+}
+
+.search-results__badge--count {
+  border-color: rgba(34, 197, 94, 0.55);
+  background: rgba(22, 163, 74, 0.08);
+  color: #15803d;
+}
+
+/* Tableau */
+.search-results__table-wrapper {
+  border-radius: 0.9rem;
+  border: 1px solid var(--border-subtle, rgba(148, 163, 184, 0.4));
+  background: var(--surface-elevated, #ffffff);
+  overflow: hidden;
+  box-shadow: 0 10px 26px rgba(15, 23, 42, 0.08);
+}
+
+.search-results__caption {
+  text-align: left;
+  font-size: 0.8rem;
+  padding: 0.5rem 0.9rem;
+  color: var(--text-muted, #6b7280);
+  background: rgba(148, 163, 184, 0.12);
+}
+
+.search-results__table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+}
+
+.search-results__table thead {
+  background: rgba(148, 163, 184, 0.1);
+}
+
+.search-results__table th,
+.search-results__table td {
+  padding: 0.55rem 0.9rem;
+  text-align: left;
+}
+
+.search-results__table th {
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text-muted, #6b7280);
+  border-bottom: 1px solid rgba(148, 163, 184, 0.45);
+}
+
+.search-results__row {
+  cursor: pointer;
+  transition:
+    background-color 0.12s ease,
+    transform 0.06s ease;
+}
+
+.search-results__row:nth-child(2n) {
+  background: rgba(148, 163, 184, 0.04);
+}
+
+.search-results__row:hover,
+.search-results__row:focus-visible {
+  outline: none;
+  background: rgba(37, 99, 235, 0.06);
+  transform: translateY(-1px);
+}
+
+.search-results__cell--main {
+  font-weight: 600;
+}
+
+.search-results__singular {
+  color: var(--primary, #2563eb);
+}
+
+.search-results__phonetic {
+  font-family: "Fira Code", ui-monospace, SFMono-Regular, Menlo, Monaco,
+    Consolas, "Liberation Mono", "Courier New", monospace;
+  font-size: 0.86rem;
+  color: var(--text-default, #111827);
+}
+
+.search-results__translation {
+  display: inline-block;
+  max-width: 100%;
+}
+
+.search-results__translation--fr {
+  color: #047857;
+}
+
+.search-results__translation--en {
+  color: #b45309;
+}
+
+.search-results__placeholder {
+  color: var(--text-muted, #9ca3af);
+}
+
+/* Pagination */
+.search-page__pagination {
+  margin-top: 0.6rem;
+}
+
+/* Responsive */
 @media (max-width: 768px) {
-  .display-4 {
-    font-size: 2rem;
+  .search-panel {
+    padding-inline: 0.85rem;
   }
-  .lead {
-    font-size: 1rem;
-  }
-}
 
-@media (max-width: 576px) {
-  .display-4 {
-    font-size: 1.75rem;
-  }
-  .lead {
-    font-size: 0.875rem;
+  .search-results__table th,
+  .search-results__table td {
+    padding-inline: 0.65rem;
   }
 }
 </style>

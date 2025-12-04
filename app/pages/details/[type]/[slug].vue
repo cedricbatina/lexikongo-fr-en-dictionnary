@@ -21,6 +21,8 @@
         :title="heroTitle"
         :description="heroDescription"
         :side-aria-label="t('pageHero.sideAria')"
+        :show-last-expressions="true"
+
       >
         <!-- Meta sous le titre -->
         <template #meta>
@@ -38,11 +40,7 @@
         </template>
       </LkPageHero>
     </template>
-     <section class="lastexpr m-5">
-      <div class="expr-section__meta text-center m-auto">
-          <LastExpressionsCount />
-        </div>
-    </section>
+   
 
     <!-- Fiche détaillée -->
     <section
@@ -124,34 +122,58 @@
 
           <dl class="entry-panel__dl">
             <!-- Spécifique MOT -->
-            <template v-if="isWord">
-              <div class="entry-row">
-                <dt>{{ $t('details.word.singular') || 'Singulier' }}</dt>
-                <dd class="entry-value entry-value--kikongo">
-                  {{ details.singular || '—' }}
-                </dd>
-              </div>
+        <!-- Spécifique MOT -->
+<template v-if="isWord">
+  <div class="entry-row">
+    <dt>{{ $t('details.word.singular') || 'Singulier' }}</dt>
+    <dd class="entry-value entry-value--kikongo">
+      {{ details.singular || '—' }}
+    </dd>
+  </div>
 
-              <div
-                v-if="details.plural"
-                class="entry-row"
-              >
-                <dt>{{ $t('details.word.plural') || 'Pluriel' }}</dt>
-                <dd class="entry-value entry-value--kikongo">
-                  {{ details.plural }}
-                </dd>
-              </div>
+  <div
+    v-if="details.plural"
+    class="entry-row"
+  >
+    <dt>{{ $t('details.word.plural') || 'Pluriel' }}</dt>
+    <dd class="entry-value entry-value--kikongo">
+      {{ details.plural }}
+    </dd>
+  </div>
 
-              <div
-                v-if="details.nominal_class"
-                class="entry-row"
-              >
-                <dt>{{ $t('details.word.nominalClass') || 'Classe nominale' }}</dt>
-                <dd class="entry-value entry-value--meta">
-                  {{ details.nominal_class }}
-                </dd>
-              </div>
-            </template>
+  <div
+    v-if="details.nominal_class"
+    class="entry-row"
+  >
+    <dt>{{ $t('details.word.nominalClass') || 'Classe nominale' }}</dt>
+    <dd class="entry-value entry-value--meta">
+      {{ details.nominal_class }}
+    </dd>
+  </div>
+
+  <!-- 🔹 Racine du mot -->
+  <div
+    v-if="details.root"
+    class="entry-row"
+  >
+    <dt>{{ $t('details.word.root') || 'Racine' }}</dt>
+    <dd class="entry-value entry-value--meta">
+      {{ details.root }}
+    </dd>
+  </div>
+
+  <!-- 🔹 Variabilité du nombre -->
+  <div
+    v-if="details.number_variability"
+    class="entry-row"
+  >
+    <dt>{{ $t('details.word.numberVariability.label') || 'Variabilité du nombre' }}</dt>
+    <dd class="entry-value entry-value--meta">
+      {{ numberVariabilityLabel }}
+    </dd>
+  </div>
+</template>
+
 
             <!-- Spécifique VERBE -->
             <template v-else>
@@ -226,33 +248,50 @@
       </div>
 
       <!-- Liens de navigation -->
-      <footer class="entry-card__footer">
-        <NuxtLink
-          to="/expressions"
-          class="entry-footer__link"
-        >
-          <i class="fas fa-list" aria-hidden="true"></i>
-          <span>{{ $t('details.common.backExpressions') || 'Voir la liste des mots & verbes' }}</span>
-        </NuxtLink>
-        
+     <footer class="entry-card__footer">
+  <NuxtLink
+    to="/expressions"
+    class="entry-footer__link"
+  >
+    <i class="fas fa-list" aria-hidden="true"></i>
+    <span>{{ $t('details.common.backExpressions') || 'Voir la liste des mots & verbes' }}</span>
+  </NuxtLink>
 
-        <div class="entry-footer__group">
-          <NuxtLink
-            to="/search-words"
-            class="entry-footer__link"
-          >
-            <i class="fas fa-search" aria-hidden="true"></i>
-            <span>{{ $t('details.common.searchWords') || 'Rechercher des mots' }}</span>
-          </NuxtLink>
-          <NuxtLink
-            to="/search-verbs"
-            class="entry-footer__link"
-          >
-            <i class="fas fa-search" aria-hidden="true"></i>
-            <span>{{ $t('details.common.searchVerbs') || 'Rechercher des verbes' }}</span>
-          </NuxtLink>
-        </div>
-      </footer>
+  <div class="entry-footer__group">
+    <!-- 🔹 Bouton Éditer visible uniquement si admin -->
+    <NuxtLink
+      v-if="editUrl"
+      :to="editUrl"
+      class="entry-footer__link entry-footer__link--edit"
+    >
+      <i class="fas fa-pen" aria-hidden="true"></i>
+      <span>
+        {{
+          isWord
+            ? ($t('details.word.editCta') || 'Éditer ce mot')
+            : ($t('details.verb.editCta') || 'Éditer ce verbe')
+        }}
+      </span>
+    </NuxtLink>
+
+    <NuxtLink
+      to="/search/words"
+      class="entry-footer__link"
+    >
+      <i class="fas fa-search" aria-hidden="true"></i>
+      <span>{{ $t('details.common.searchWords') || 'Rechercher des mots' }}</span>
+    </NuxtLink>
+
+    <NuxtLink
+      to="/search/verbs"
+      class="entry-footer__link"
+    >
+      <i class="fas fa-search" aria-hidden="true"></i>
+      <span>{{ $t('details.common.searchVerbs') || 'Rechercher des verbes' }}</span>
+    </NuxtLink>
+  </div>
+</footer>
+
     </section>
   </main>
 </template>
@@ -264,7 +303,7 @@ import { useI18n } from 'vue-i18n';
 import { useSeoMeta, useHead } from '#imports';
 import LkPageHero from '@/components/LkPageHero.vue';
 import LkActionsBar from '@/components/LkActionsBar.vue';
-import LastExpressionsCount from '@/components/LastExpressionsCount.vue';
+import { useAuthStore } from '~/stores/authStore';
 
 const route = useRoute();
 const { t } = useI18n();
@@ -284,6 +323,26 @@ const details = ref({
   suffix: '',
   author: '',
   created_at: '',
+  number_variability: '',   // 🔹 ajout
+});
+const authStore = useAuthStore();
+
+const roles = computed(() => {
+  if (Array.isArray(authStore.roles) && authStore.roles.length) {
+    return authStore.roles;
+  }
+  if (Array.isArray(authStore.userRoles) && authStore.userRoles.length) {
+    return authStore.userRoles;
+  }
+  return [];
+});
+
+const isAdminUser = computed(() => roles.value.includes('admin'));
+
+const editUrl = computed(() => {
+  if (!isAdminUser.value || !slug.value) return null;
+  const entryType = isWord.value ? 'word' : 'verb';
+  return `/admin/edit/${entryType}/${slug.value}`;
 });
 
 const isLoading = ref(true);
@@ -346,6 +405,29 @@ const formattedDate = computed(() => {
     month: 'long',
     year: 'numeric',
   });
+});
+const numberVariabilityLabel = computed(() => {
+  const code = details.value?.number_variability;
+  if (!code) return '';
+
+  const key = `details.word.numberVariability.${code}`;
+  const maybe = t(key);
+
+  // Si la clé existe, on l’utilise
+  if (maybe && maybe !== key) return maybe;
+
+  // Fallback FR lisible si jamais la traduction manque
+  switch (code) {
+    case 'singular_only':
+      return 'Singulier uniquement';
+    case 'plural_only':
+      return 'Pluriel uniquement';
+    case 'invariable':
+      return 'Invariable';
+    case 'variable':
+    default:
+      return 'Variable';
+  }
 });
 
 // SEO (réactif sur details)
@@ -571,7 +653,7 @@ onMounted(fetchDetails);
   align-items: baseline;
   gap: 0.35rem;
   font-size: clamp(1.5rem, 2.4vw, 1.9rem);
-  font-weight: 700;
+  font-weight: 600;
   color: var(--text-default, #111827);
 }
 
@@ -580,7 +662,7 @@ onMounted(fetchDetails);
 }
 
 .entry-card__plural {
-  font-size: 1.1rem;
+
   font-weight: 600;
   color: #6d28d9;
 }

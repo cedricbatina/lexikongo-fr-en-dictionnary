@@ -210,7 +210,7 @@
               }}
             </p>
             <NuxtLink
-              to="/admin/manage-submissions"
+              to="/admin/manage-pendings"
               class="admin-access-card__link"
             >
               <span>

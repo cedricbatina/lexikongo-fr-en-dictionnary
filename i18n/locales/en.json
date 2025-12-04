@@ -81,10 +81,20 @@
       "description": "Lexikongo is an online Kikongo · French · English dictionary with phonetics. Explore Kikongo words, verbs and expressions and help preserve the language.",
       "ogTitle": "Lexikongo — Online Kikongo Dictionary",
       "ogDescription": "A modern resource to discover, practice and transmit the Kikongo language: words, verbs, expressions and phonetics."
-    }
+    },
+     "lastExpressions": {
+    "loading": "Chargement des dernières contributions…",
+    "error": "Impossible de récupérer les dernières contributions.",
+    "total": "{total} nouvelles expressions",
+    "details": "dont {words} mots et {verbs} verbes !"
+  }
   
   }
   ,
+  "common.langLine": "Kikongo · French · English · Phonetics"
+,
+"layout.header.logoAlt": "Logo du site"
+,
     "words.list.title": "Word list",
   "words.list.subtitle": "Browse Kikongo words with their plural form, phonetics, and translations in French and English.",
   "words.list.count": "{n} word in the database | {n} words in the database",
@@ -254,14 +264,24 @@
       "subtitle": "Detailed entry for a Kikongo word with phonetics, nominal class and translations.",
       "singular": "Singular",
       "plural": "Plural",
-      "nominalClass": "Nominal class"
+      "nominalClass": "Nominal class",
+        "root": "Root",
+    "numberVariability": {
+      "label": "Number variability",
+      "singular_only": "Singular only",
+      "plural_only": "Plural only",
+      "invariable": "Invariable",
+      "variable": "Variable"
+    },
+    "editCta": "Edit this word"
     },
     "verb": {
       "label": "Verb",
       "subtitle": "Detailed entry for a Kikongo verb with phonetics, root and translations.",
       "infinitive": "Infinitive",
       "root": "Root",
-      "suffix": "Suffix"
+      "suffix": "Suffix", 
+      "editCta": "Edit this verb"
     }
   },
   "common.lang.fr": "French",
@@ -455,7 +475,11 @@
         "words": {
           "title": "Word management",
           "text": "Browse, filter and edit dictionary word entries.",
-          "link": "View words"
+          "link": "View words",
+      "viewTable": "View table"
+   
+
+
         },
         "verbs": {
           "title": "Verb management",
@@ -491,7 +515,25 @@
         "title": "Administration · Lexikongo",
         "description": "Lexikongo admin dashboard: manage words, verbs and user accounts."
       }
+    },
+      "word": {
+    "add": {
+      "meta": "Admin · Add word",
+      "pageTitle": "Admin · Add a word",
+      "submit": "Create this word",
+      "saving": "Saving…",
+      "reset": "Reset",
+      "success": "Word successfully created.",
+      "errorRequiredSingular": "The singular form is required.",
+      "errorSave": "Error while creating the word.",
+      "seoTitle": "Admin · Add a word – Lexikongo",
+      "seoDescription": "Admin dashboard · add a Kikongo word (form, nominal class, phonetics, translations)."
+    },
+    "placeholders": {
+      "translationFr": "French meanings separated by commas",
+      "translationEn": "English meanings separated by commas"
     }
+  }
   },
   "contrib": {
     "dashboard": {
@@ -511,6 +553,11 @@
           "text": "Add a new Kikongo word with its translation and phonetics.",
           "link": "Go to words"
         },
+          "submissions": {
+        "title": "Manage your contributions",
+        "text": "See all the words and verbs you have submitted, and update or complete them.",
+        "link": "View your contributions"
+      },
         "verbs": {
           "title": "Suggest a verb",
           "text": "Add a new verb or suggest a better conjugation.",
@@ -542,7 +589,207 @@
         "description": "Suggest and track your contributions in the Lexikongo Kikongo dictionary."
       }
     }
+  },
+   "contributor": {
+    "addWord": {
+      "eyebrow": "Contributor area · Word",
+      "title": "Submit a new word",
+      "subtitle": "Add a Kikongo word with its noun class and its translations into French and/or English.",
+      "helpRequired": "Fields marked with * are required.",
+      "sections": {
+        "word": "Kikongo word",
+        "translations": "Translations",
+        "translationsHint": "Add at least one translation in French or English."
+      },
+      "fields": {
+        "singular": {
+          "label": "Singular"
+        },
+        "plural": {
+          "label": "Plural",
+          "hint": "Leave empty if the word has no specific plural form."
+        },
+        "phonetic": {
+          "label": "Phonetics",
+          "placeholder": "/…/",
+          "hint": "You can indicate an approximate pronunciation (IPA or simple notation)."
+        },
+        "classId": {
+          "label": "Noun class",
+          "placeholderSelect": "— Select a class —",
+          "placeholderInput": "Noun class ID",
+          "hint": "Choose or enter the noun class associated with this word."
+        },
+        "meaningFr": {
+          "label": "French"
+        },
+        "meaningEn": {
+          "label": "English"
+        }
+      },
+      "actions": {
+        "submit": "Submit contribution",
+        "submitting": "Submitting…",
+        "cancel": "Cancel and go back to the contributor area"
+      },
+      "errors": {
+        "singularRequired": "The singular form is required.",
+        "classIdRequired": "The noun class is required.",
+        "classIdInvalid": "The noun class must be a valid identifier.",
+        "translationsRequired": "Add at least one translation in French or English.",
+        "mustBeLoggedIn": "You must be logged in to submit a word."
+      },
+      "messages": {
+        "success": "Your submission has been saved. Thank you for your contribution!",
+        "errorGeneric": "An error occurred while submitting the word."
+      }
+    },
+      "addVerb": {
+    "eyebrow": "Contributor area · Verb",
+    "title": "Submit a new verb",
+    "subtitle": "Add a Kikongo verb with its root, possible derived forms and translations into French and/or English.",
+    "helpRequired": "Fields marked with * are required.",
+    "sections": {
+      "verb": "Kikongo verb",
+      "translations": "Translations",
+      "translationsHint": "Add at least one translation in French or English."
+    },
+    "fields": {
+      "name": {
+        "label": "Verb (base form)"
+      },
+      "root": {
+        "label": "Root",
+        "hint": "For example, the base of the verb without prefixes or suffixes."
+      },
+      "suffix": {
+        "label": "Suffix",
+        "hint": "Leave empty if the verb has no specific suffix."
+      },
+      "phonetic": {
+        "label": "Phonetics",
+        "placeholder": "/…/",
+        "hint": "You can indicate an approximate pronunciation (IPA or simple notation)."
+      },
+      "flags": {
+        "label": "Verb type",
+        "active": "Base / active verb",
+        "derived": "Derived verb",
+        "hint": "Check “derived verb” if this verb is formed from another one."
+      },
+      "derivedFrom": {
+        "label": "Source verb (if derived)",
+        "placeholder": "ID or reference of the source verb",
+        "hint": "Optional: specify the verb from which this one is derived (ID or internal code, if known)."
+      },
+      "derivedVerbType": {
+        "label": "Derivation type",
+        "placeholder": "ID or type of derived verb",
+        "hint": "Optional: specify the type of derivation (causative, reciprocal, etc.) if you know it."
+      },
+      "meaningFr": {
+        "label": "French"
+      },
+      "meaningEn": {
+        "label": "English"
+      }
+    },
+    "actions": {
+      "submit": "Submit contribution",
+      "submitting": "Submitting…",
+      "cancel": "Cancel and go back to the contributor area"
+    },
+    "errors": {
+      "nameRequired": "The verb is required.",
+      "rootRequired": "The verb root is required.",
+      "translationsRequired": "Add at least one translation in French or English.",
+      "mustBeLoggedIn": "You must be logged in to submit a verb."
+    },
+    "messages": {
+      "success": "Your submission has been saved. Thank you for your contribution!",
+      "errorGeneric": "An error occurred while submitting the verb."
+    }
+  },
+   "submissions": {
+    "hero": {
+      "eyebrow": "Contributor area · Contributions",
+      "title": "Your contributions",
+      "subtitle": "View all the words and verbs you have submitted to Lexikongo.",
+      "meta": "Pending contributions can be edited or deleted until they are reviewed and validated.",
+      "ctaAddWord": "Submit a word",
+      "ctaAddVerb": "Submit a verb"
+    },
+    "seo": {
+      "title": "Your contributions – Lexikongo",
+      "description": "View and manage your contributions (words and verbs) in the Lexikongo dictionary."
+    },
+    "sections": {
+      "words": {
+        "title": "Submitted words",
+        "intro": "List of the words you have submitted to the dictionary.",
+        "loading": "Loading your submitted words…",
+        "empty": "You have not submitted any word yet.",
+        "error": "Unable to fetch your submitted words.",
+        "caption": "List of words submitted by the contributor."
+      },
+      "verbs": {
+        "title": "Submitted verbs",
+        "intro": "List of the verbs you have submitted to the dictionary.",
+        "loading": "Loading your submitted verbs…",
+        "empty": "You have not submitted any verb yet.",
+        "error": "Unable to fetch your submitted verbs.",
+        "caption": "List of verbs submitted by the contributor."
+      }
+    },
+    "table": {
+      "headers": {
+        "word": "Word",
+        "class": "Class",
+        "translations": "Translations",
+        "status": "Status",
+        "createdAt": "Created on",
+        "updatedAt": "Updated on",
+        "actions": "Actions",
+        "verb": "Verb",
+        "root": "Root"
+      },
+      "labels": {
+        "fr": "FR",
+        "en": "EN"
+      },
+      "noTranslations": "No translation provided",
+      "wordPlural": "Plural: {plural}",
+      "verbSuffix": "Suffix: {suffix}",
+      "actions": {
+        "edit": "Edit",
+        "delete": "Delete"
+      }
+    },
+    "status": {
+      "pending": "Pending review"
+    },
+    "messages": {
+      "deleteConfirmWord": "Do you really want to delete the word “{word}”? This action cannot be undone.",
+      "deleteConfirmVerb": "Do you really want to delete the verb “{verb}”? This action cannot be undone.",
+      "deleteSuccessWord": "The word contribution has been deleted.",
+      "deleteSuccessVerb": "The verb contribution has been deleted.",
+      "deleteError": "An error occurred while deleting the contribution."
+    }
   }
+  }
+  ,
+"pagination": {
+  "ariaLabel": "Results pagination",
+  "prev": "Previous",
+  "next": "Next",
+  "gotoLabel": "Page",
+  "gotoAriaLabel": "Go to page (1 to {total})",
+  "summary": "{start}–{end} of {total} result(s)",
+  "summaryNoPageSize": "{total} result(s)",
+  "empty": "No results to display"
+}
+
+
 
 
 

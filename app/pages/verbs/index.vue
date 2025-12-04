@@ -7,6 +7,8 @@
       :title="t('verbs.page.title')"
       :description="t('verbs.page.subtitle')"
       :side-aria-label="t('pageHero.sideAria')"
+        :show-last-expressions="true"
+
     >
       <!-- Meta sous le titre / description -->
       <template #meta>
@@ -24,11 +26,7 @@
       </template>
     </LkPageHero>
 
-   <section class="lastexpr m-5">
-      <div class="expr-section__meta text-center m-auto">
-          <LastExpressionsCount />
-        </div>
-    </section>
+
 
     <!-- Bloc principal : liste -->
     <section class="page-verbs__content">

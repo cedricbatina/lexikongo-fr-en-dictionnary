@@ -34,6 +34,8 @@
       :eyebrow="t('expressions.page.eyebrow')"
       :title="t('expressions.page.title')"
       :description="t('expressions.page.subtitle')"
+        :show-last-expressions="true"
+
       :side-aria-label="t('pageHero.sideAria')"
     >
       <!-- Boutons d’action principaux -->
@@ -72,22 +74,26 @@
         </div>
       </template>
     </LkPageHero>
-        <section class="lastexpr m-5">
-      <div class="expr-section__meta text-center m-auto">
-          <LastExpressionsCount />
-        </div>
-    </section>
-              <!-- 🔽 Nouveau bloc : compteur AU-DESSUS du lien -->
-    <div class="expr-cards__meta">
-      <p
-        v-if="store.filteredItems.length"
-        class="expr-cards__count"
-      >
-        {{ t('expressions.cards.count', store.filteredItems.length) }}
-      </p>
+ <!-- 🔽 Compteur premium au-dessus de la toolbar -->
+<div
+  v-if="store.filteredItems.length"
+  class="expr-cards__meta"
+>
+  <p
+    class="expr-count-chip"
+    aria-live="polite"
+  >
+    <span
+      class="expr-count-chip__dot"
+      aria-hidden="true"
+    />
+    <span class="expr-count-chip__text">
+      {{ t('expressions.cards.count', store.filteredItems.length) }}
+    </span>
+  </p>
+</div>
 
-
-    </div>
+ 
     <!-- Filtres simples -->
     <!--
       <div class="expr-cards__header-actions">
@@ -135,35 +141,40 @@
           {{ t('expressions.list.filterVerbs') }}
         </button>
       </div>
+<div class="expr-cards__toolbar-right">
+  <div class="expr-cards__search">
+    <label class="expr-cards__search-label" for="expr-cards-search">
+      {{ t('expressions.list.searchLabel') }}
+    </label>
+    <input
+      id="expr-cards-search"
+      v-model="searchLocal"
+      type="search"
+      class="expr-cards__search-input"
+      :placeholder="t('expressions.list.searchPlaceholder')"
+      @input="onSearchInput"
+    />
+  </div>
 
-      <div class="expr-cards__toolbar-right">
-        <div class="expr-cards__search">
-          <label class="expr-cards__search-label" for="expr-cards-search">
-            {{ t('expressions.list.searchLabel') }}
-          </label>
-          <input
-            id="expr-cards-search"
-            v-model="searchLocal"
-            type="search"
-            class="expr-cards__search-input"
-            :placeholder="t('expressions.list.searchPlaceholder')"
-            @input="onSearchInput"
-          />
-        </div>
+ 
+  <div class="expr-view-mode">
+    <!-- Légende : vue actuelle = cartes -->
+    <p class="expr-view-caption">
+      {{ t('expressions.list.viewCards') }}
+    </p>
 
-       <div class="expr-cards__meta">
-   
+    <NuxtLink
+      to="/expressions"
+      class="expr-cards__link-back"
+      :aria-label="t('expressions.cards.viewTableAria')"
+    >
+      <i class="fas fa-table" aria-hidden="true"></i>
+      <span>{{ t('expressions.cards.viewTable') }}</span>
+    </NuxtLink>
+  </div>
+</div>
 
-      <NuxtLink
-        to="/expressions"
-        class="expr-cards__link-back"
-        :aria-label="t('expressions.cards.viewTableAria')"
-      >
-        <i class="fas fa-table" aria-hidden="true"></i>
-        <span>{{ t('expressions.cards.viewTable') }}</span>
-      </NuxtLink>
-    </div>
-      </div>
+
     </div>
 
 
@@ -756,6 +767,245 @@ onMounted(() => {
 }
 
 
+/* Boutons d’action du hero (comme sur la page expressions liste) */
+.lk-hero-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.55rem 1.05rem;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  font-size: 0.95rem;
+  font-weight: 500;
+  text-decoration: none;
+  cursor: pointer;
+  transition:
+    background 0.15s ease,
+    color 0.15s ease,
+    box-shadow 0.15s ease,
+    transform 0.1s ease,
+    border-color 0.15s ease;
+}
 
+.lk-hero-btn--primary {
+  background: var(--primary);
+  color: #fff;
+  box-shadow: 0 14px 30px rgba(13, 110, 253, 0.3);
+}
+
+.lk-hero-btn--ghost {
+  background: var(--surface-elevated, #ffffff);
+  color: var(--color-text);
+  border-color: var(--border-subtle);
+}
+
+.lk-hero-btn:hover,
+.lk-hero-btn:focus-visible {
+  outline: none;
+  transform: translateY(-1px);
+  box-shadow: 0 16px 34px rgba(15, 23, 42, 0.14);
+}
+
+.lk-hero-btn--primary:hover,
+.lk-hero-btn--primary:focus-visible {
+  background: var(--primary-hover, #0b5ed7);
+}
+
+.lk-hero-btn--ghost:hover,
+.lk-hero-btn--ghost:focus-visible {
+  background: rgba(148, 163, 184, 0.18);
+}
+
+/* Toolbar (filtres + recherche + switch tableau) */
+.expr-cards__toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 0.75rem;
+  margin: 1.2rem 0 0.8rem;
+}
+
+/* Groupe filtres */
+.expr-cards__filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.expr-cards__filter-btn {
+  border-radius: 999px;
+  border: 1px solid var(--border-subtle, rgba(148, 163, 184, 0.7));
+  padding: 0.32rem 0.9rem;
+  font-size: 0.86rem;
+  font-weight: 500;
+  background: var(--surface-default, #f9fafb);
+  color: var(--text-default, #111827);
+  cursor: pointer;
+  transition:
+    background 0.15s ease,
+    color 0.15s ease,
+    box-shadow 0.15s ease,
+    border-color 0.15s ease,
+    transform 0.08s ease;
+}
+
+.expr-cards__filter-btn--active {
+  background: var(--primary, #2563eb);
+  border-color: var(--primary, #2563eb);
+  color: #ffffff;
+  box-shadow: 0 10px 24px rgba(37, 99, 235, 0.3);
+}
+
+.expr-cards__filter-btn:hover,
+.expr-cards__filter-btn:focus-visible {
+  outline: none;
+  transform: translateY(-1px);
+  box-shadow: 0 12px 28px rgba(15, 23, 42, 0.16);
+}
+
+/* Colonne droite : recherche + lien "Vue tableau" */
+.expr-cards__toolbar-right {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: 0.6rem;
+  margin-left: auto;
+}
+
+.expr-cards__search {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  min-width: 220px;
+}
+
+.expr-cards__search-label {
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-muted, #6b7280);
+}
+
+.expr-cards__search-input {
+  border-radius: 999px;
+  border: 1px solid var(--border-subtle, rgba(148, 163, 184, 0.85));
+  padding: 0.4rem 0.9rem;
+  font-size: 0.9rem;
+  background: var(--surface-elevated, #ffffff);
+  color: var(--text-default, #111827);
+}
+
+/* Lien switch "Vue tableau" (même style que vue cartes) */
+.expr-cards__link-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  border-radius: 999px;
+  padding: 0.4rem 0.85rem;
+  font-size: 0.86rem;
+  font-weight: 500;
+  text-decoration: none;
+  border: 1px solid rgba(148, 163, 184, 0.8);
+  background: var(--surface-default, #f9fafb);
+  color: var(--text-default, #111827);
+  white-space: nowrap;
+  transition:
+    background 0.15s ease,
+    color 0.15s ease,
+    box-shadow 0.15s ease,
+    transform 0.08s ease,
+    border-color 0.15s ease;
+}
+
+.expr-cards__link-back i {
+  font-size: 0.9rem;
+}
+
+.expr-cards__link-back:hover,
+.expr-cards__link-back:focus-visible {
+  outline: none;
+  transform: translateY(-1px);
+  box-shadow: 0 10px 24px rgba(15, 23, 42, 0.16);
+  border-color: var(--primary, #2563eb);
+}
+
+/* Petit bloc meta juste au-dessus (compteur) */
+.expr-cards__meta {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 0.35rem;
+}
+
+.expr-cards__count {
+  font-size: 0.86rem;
+  color: var(--text-muted, #6b7280);
+}
+
+/* Responsive */
+@media (max-width: 720px) {
+  .expr-cards__toolbar {
+    align-items: stretch;
+  }
+
+  .expr-cards__toolbar-right {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .expr-cards__search {
+    flex: 1 1 auto;
+  }
+}
+/* Meta au-dessus de la toolbar (même logique que la vue tableau) */
+.expr-cards__meta {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 0.8rem;
+}
+
+/* On réutilise le même look de chip que dans expressions/index.vue */
+.expr-count-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.18rem 0.7rem;
+  border-radius: 999px;
+  border: 1px solid rgba(148, 163, 184, 0.7);
+  background: linear-gradient(
+    135deg,
+    rgba(15, 23, 42, 0.03),
+    rgba(37, 99, 235, 0.06)
+  );
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--text-muted, #4b5563);
+}
+
+.expr-count-chip__dot {
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 999px;
+  background: radial-gradient(circle at 30% 30%, #22c55e, #16a34a);
+  box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.18);
+}
+
+.expr-count-chip__text {
+  white-space: nowrap;
+}
+.expr-view-mode {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.15rem;
+}
+
+.expr-view-caption {
+  margin: 0;
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-muted, #6b7280);
+}
 
 </style>

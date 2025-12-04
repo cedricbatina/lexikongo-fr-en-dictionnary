@@ -1,0 +1,2642 @@
+[
+  {
+    "loc": "/",
+    "lastmod": "2025-12-04T10:15:35.908Z",
+    "changefreq": "weekly",
+    "priority": 0.8
+  },
+  {
+    "loc": "/expressions",
+    "lastmod": "2025-12-04T10:15:35.908Z",
+    "changefreq": "weekly",
+    "priority": 0.8
+  },
+  {
+    "loc": "/expressionlist-card",
+    "lastmod": "2025-12-04T10:15:35.908Z",
+    "changefreq": "weekly",
+    "priority": 0.8
+  },
+  {
+    "loc": "/words",
+    "lastmod": "2025-12-04T10:15:35.908Z",
+    "changefreq": "weekly",
+    "priority": 0.8
+  },
+  {
+    "loc": "/wordlist-card",
+    "lastmod": "2025-12-04T10:15:35.908Z",
+    "changefreq": "weekly",
+    "priority": 0.8
+  },
+  {
+    "loc": "/verbs",
+    "lastmod": "2025-12-04T10:15:35.908Z",
+    "changefreq": "weekly",
+    "priority": 0.8
+  },
+  {
+    "loc": "/verblist-card",
+    "lastmod": "2025-12-04T10:15:35.908Z",
+    "changefreq": "weekly",
+    "priority": 0.8
+  },
+  {
+    "loc": "/search",
+    "lastmod": "2025-12-04T10:15:35.908Z",
+    "changefreq": "weekly",
+    "priority": 0.8
+  },
+  {
+    "loc": "/contributor",
+    "lastmod": "2025-12-04T10:15:35.908Z",
+    "changefreq": "weekly",
+    "priority": 0.8
+  },
+  {
+    "loc": "/documentation",
+    "lastmod": "2025-12-04T10:15:35.908Z",
+    "changefreq": "weekly",
+    "priority": 0.8
+  },
+  {
+    "loc": "/details/word/bulungu",
+    "lastmod": "2024-11-19T21:16:53.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/diambu",
+    "lastmod": "2025-02-02T00:11:13.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/diisu",
+    "lastmod": "2025-02-02T00:11:13.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/kibakala",
+    "lastmod": "2025-02-02T00:11:13.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/kikoba",
+    "lastmod": "2025-02-02T00:11:13.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/kilumbu",
+    "lastmod": "2025-02-02T00:11:13.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/kimpuni",
+    "lastmod": "2025-02-02T00:11:13.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/kindongo",
+    "lastmod": "2025-11-27T10:44:48.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/kinzembele",
+    "lastmod": "2025-02-02T00:11:13.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/kiti",
+    "lastmod": "2024-11-19T20:49:25.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/kitutulu",
+    "lastmod": "2025-02-02T00:11:13.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/kiwa",
+    "lastmod": "2025-02-02T00:11:13.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/kiyakala",
+    "lastmod": "2025-02-02T00:11:13.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/lubongo",
+    "lastmod": "2025-02-02T00:11:13.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/lungutila",
+    "lastmod": "2025-02-02T00:11:13.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/lusakidisu",
+    "lastmod": "2025-02-02T00:11:13.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/lutaku",
+    "lastmod": "2025-02-02T00:11:13.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/manianga",
+    "lastmod": "2025-02-02T00:11:13.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/mbila",
+    "lastmod": "2025-02-02T00:11:13.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/mbua",
+    "lastmod": "2025-02-02T00:11:13.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/mbuata",
+    "lastmod": "2024-11-19T21:15:38.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/mbuka",
+    "lastmod": "2024-11-19T21:14:51.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/mbuma",
+    "lastmod": "2024-12-14T12:29:39.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/mbutete",
+    "lastmod": "2024-11-19T20:59:50.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/mpivi",
+    "lastmod": "2025-02-02T00:11:13.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/mpoofi",
+    "lastmod": "2025-02-02T00:11:13.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/mualu",
+    "lastmod": "2025-02-02T00:11:13.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/muana",
+    "lastmod": "2025-02-02T00:11:13.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/mulembo",
+    "lastmod": "2025-02-02T00:11:13.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/muludi",
+    "lastmod": "2025-02-02T00:11:13.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/muntu",
+    "lastmod": "2025-02-02T00:11:13.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/mupepe",
+    "lastmod": "2025-02-02T00:11:13.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/mutoto",
+    "lastmod": "2025-02-02T00:11:13.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/muzonzi-1",
+    "lastmod": "2025-02-02T00:11:13.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/ngala",
+    "lastmod": "2024-12-14T12:30:16.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/ngandu",
+    "lastmod": "2025-11-27T09:29:51.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/ngika",
+    "lastmod": "2025-02-02T00:11:13.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/ngonda",
+    "lastmod": "2025-02-02T00:11:13.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/nianga",
+    "lastmod": "2025-02-02T00:11:13.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/nkuala",
+    "lastmod": "2024-11-19T21:03:15.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/nsasumunu",
+    "lastmod": "2024-12-14T12:28:27.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/nse",
+    "lastmod": "2025-02-02T00:11:13.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/nsingu",
+    "lastmod": "2025-02-02T00:11:13.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/nza",
+    "lastmod": "2025-02-02T00:11:13.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/nzadi",
+    "lastmod": "2024-11-19T21:01:09.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/nzawu",
+    "lastmod": "2024-11-19T21:00:32.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/nzaza",
+    "lastmod": "2025-02-02T00:11:13.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/nzo",
+    "lastmod": "2025-02-02T00:11:13.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/nzonzi",
+    "lastmod": "2025-02-02T00:11:13.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/se",
+    "lastmod": "2025-02-02T00:11:13.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/sompa",
+    "lastmod": "2024-11-19T21:02:31.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/tiya",
+    "lastmod": "2025-02-02T00:11:13.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/ngunza",
+    "lastmod": "2024-10-24T19:21:27.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/tondo",
+    "lastmod": "2024-10-28T20:37:52.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/vembo",
+    "lastmod": "2024-10-30T12:59:33.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/tuku",
+    "lastmod": "2024-10-30T15:20:33.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/diela",
+    "lastmod": "2024-10-30T15:29:18.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/kisanu",
+    "lastmod": "2024-10-30T15:29:20.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/kikuku",
+    "lastmod": "2024-10-30T15:37:06.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/dimpa",
+    "lastmod": "2024-10-30T16:58:50.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/ntulu",
+    "lastmod": "2024-10-30T17:41:50.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/kinga",
+    "lastmod": "2024-10-30T18:19:21.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/lunungu",
+    "lastmod": "2024-10-30T18:27:46.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/ngangu",
+    "lastmod": "2024-10-30T18:39:13.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/mufimbi",
+    "lastmod": "2024-10-30T19:10:06.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/mbutu",
+    "lastmod": "2024-10-30T19:22:42.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/mpaka",
+    "lastmod": "2024-10-30T19:41:15.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/tatu",
+    "lastmod": "2024-12-14T12:31:01.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/lukongolo",
+    "lastmod": "2024-10-30T20:20:58.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/mpusu",
+    "lastmod": "2024-10-30T20:49:41.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/meza",
+    "lastmod": "2024-10-30T21:12:01.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/bufulu",
+    "lastmod": "2024-10-30T21:32:14.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/kiba",
+    "lastmod": "2024-10-30T21:49:57.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/dinkondi",
+    "lastmod": "2024-10-30T22:48:24.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/ntalu",
+    "lastmod": "2024-10-30T23:05:00.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/nkumbu",
+    "lastmod": "2024-10-30T23:51:37.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/nsa",
+    "lastmod": "2024-10-31T00:54:19.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/mbu",
+    "lastmod": "2024-10-31T11:57:03.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/silu",
+    "lastmod": "2024-10-31T13:28:04.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/sila",
+    "lastmod": "2024-10-31T15:33:53.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/yaya",
+    "lastmod": "2024-10-31T15:47:36.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/buka",
+    "lastmod": "2024-10-31T16:34:24.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/kumi",
+    "lastmod": "2024-10-31T18:23:20.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/mosi",
+    "lastmod": "2024-10-31T18:23:22.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/luzolo",
+    "lastmod": "2024-10-31T18:23:23.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/mbalu",
+    "lastmod": "2025-11-27T13:31:26.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/mvita",
+    "lastmod": "2024-10-31T21:27:21.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/kimpongo",
+    "lastmod": "2024-10-31T21:56:40.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/lumpangala",
+    "lastmod": "2024-10-31T21:56:43.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/nsilulu",
+    "lastmod": "2024-10-31T21:56:47.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/mpidi",
+    "lastmod": "2025-11-27T15:28:18.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/lukudidila",
+    "lastmod": "2024-11-01T14:29:39.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/kimpeve",
+    "lastmod": "2024-11-01T16:44:02.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/kimpuanza",
+    "lastmod": "2024-11-01T16:44:12.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/lukuni",
+    "lastmod": "2024-11-01T18:08:51.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/lukundu",
+    "lastmod": "2024-11-01T19:23:20.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/lukumuisu-luaku",
+    "lastmod": "2024-11-01T20:26:23.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/lukungu-nseke",
+    "lastmod": "2024-11-01T21:35:32.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/kinkasa",
+    "lastmod": "2024-11-01T21:35:36.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/kinkeso",
+    "lastmod": "2024-11-01T23:35:09.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/kulu",
+    "lastmod": "2024-11-02T00:20:24.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/lukuna",
+    "lastmod": "2024-11-02T00:50:21.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/kutu",
+    "lastmod": "2025-11-27T13:25:50.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/mbombo",
+    "lastmod": "2024-11-02T00:50:25.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/kuoko",
+    "lastmod": "2024-11-02T00:50:26.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/lutambi",
+    "lastmod": "2024-11-02T00:50:27.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/muoyo",
+    "lastmod": "2024-11-02T00:50:29.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/koto",
+    "lastmod": "2024-11-02T12:11:13.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/makumi-maole",
+    "lastmod": "2024-11-02T12:39:42.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/nkomi",
+    "lastmod": "2024-11-02T12:42:23.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/mbele",
+    "lastmod": "2024-11-02T13:00:14.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/niosi",
+    "lastmod": "2024-11-02T21:00:11.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/bola",
+    "lastmod": "2025-11-27T10:11:02.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/soka",
+    "lastmod": "2024-11-03T01:08:21.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/muvu",
+    "lastmod": "2024-11-03T02:42:34.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/lukaya",
+    "lastmod": "2024-11-03T13:59:39.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/kingundulu",
+    "lastmod": "2024-11-18T23:06:45.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/dongo-dongo",
+    "lastmod": "2024-11-18T23:07:04.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/nganga",
+    "lastmod": "2025-02-02T00:11:13.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/vula-1",
+    "lastmod": "2025-02-02T00:11:13.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/kikozo",
+    "lastmod": "2024-12-06T14:03:22.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/ngozi",
+    "lastmod": "2025-02-02T00:11:13.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/vuatua",
+    "lastmod": "2024-12-06T14:26:27.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/ntabala",
+    "lastmod": "2025-02-02T00:11:13.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/nianzi",
+    "lastmod": "2024-12-06T22:09:57.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/ngemba-ngudi",
+    "lastmod": "2024-12-06T22:19:31.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/mungumbuti",
+    "lastmod": "2025-02-02T00:11:13.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/luwumbilu",
+    "lastmod": "2025-02-02T00:11:13.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/ngumba",
+    "lastmod": "2025-02-02T00:11:13.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/nsanza",
+    "lastmod": "2025-02-02T00:11:13.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/ngungu",
+    "lastmod": "2025-02-02T00:11:13.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/nkawu",
+    "lastmod": "2024-12-07T01:35:52.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/ntongeka",
+    "lastmod": "2024-12-07T01:35:57.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/nkambiku",
+    "lastmod": "2024-12-07T10:02:44.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/nzumbulu",
+    "lastmod": "2024-12-07T10:16:48.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/mulolo",
+    "lastmod": "2024-12-07T01:36:14.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/nkono",
+    "lastmod": "2024-12-07T01:36:18.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/mukento",
+    "lastmod": "2025-02-02T00:11:13.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/nkangilua",
+    "lastmod": "2025-02-02T00:11:13.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/ntu",
+    "lastmod": "2025-02-02T00:11:13.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/ntongua",
+    "lastmod": "2025-02-02T00:11:13.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/lufiauluisu",
+    "lastmod": "2025-02-02T00:11:13.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/nkele",
+    "lastmod": "2025-11-28T10:32:32.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/nkangu",
+    "lastmod": "2025-02-02T00:11:13.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/zizi",
+    "lastmod": "2025-02-02T00:11:13.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/nsongi",
+    "lastmod": "2025-02-02T00:11:13.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/zunga",
+    "lastmod": "2025-02-02T00:11:13.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/ngobodi",
+    "lastmod": "2025-02-02T00:11:13.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/lunene",
+    "lastmod": "2025-02-02T00:11:13.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/kinkani",
+    "lastmod": "2025-02-02T00:11:13.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/kiandu",
+    "lastmod": "2025-02-02T00:11:13.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/kumu",
+    "lastmod": "2025-02-02T00:11:13.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/kimbangumuna",
+    "lastmod": "2025-02-02T00:11:13.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/lusangidika",
+    "lastmod": "2025-02-02T00:11:13.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/mfunu",
+    "lastmod": "2025-02-02T00:11:13.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/kuonko-tatu",
+    "lastmod": "2025-02-02T00:11:13.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/kikua",
+    "lastmod": "2025-02-02T00:11:13.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/kitunti",
+    "lastmod": "2025-02-02T00:11:13.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/vangilu",
+    "lastmod": "2025-02-02T00:11:13.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/luyambulu",
+    "lastmod": "2025-02-02T00:11:13.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/nsiamu",
+    "lastmod": "2025-02-02T00:11:13.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/nguizani",
+    "lastmod": "2025-02-02T00:11:13.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/ngonzekela",
+    "lastmod": "2025-02-02T00:11:13.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/nkanikunu",
+    "lastmod": "2025-02-02T00:11:13.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/kintungila",
+    "lastmod": "2025-02-02T00:11:13.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/lumonso",
+    "lastmod": "2025-02-02T00:11:13.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/mbamba-ngolo",
+    "lastmod": "2025-02-02T00:11:13.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/kimpa",
+    "lastmod": "2025-02-02T00:11:13.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/ba-1",
+    "lastmod": "2025-02-02T00:11:13.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/vaku",
+    "lastmod": "2025-02-02T00:11:13.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/nsakabadi",
+    "lastmod": "2025-02-02T00:11:13.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/lukayilu",
+    "lastmod": "2025-02-02T00:11:13.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/ngumbu",
+    "lastmod": "2025-02-02T00:11:13.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/nzanza",
+    "lastmod": "2025-02-02T00:11:13.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/mukiku",
+    "lastmod": "2024-12-23T02:07:33.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/nkonko",
+    "lastmod": "2025-02-02T00:11:13.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/kinkama",
+    "lastmod": "2025-01-07T23:52:55.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/mvutu",
+    "lastmod": "2025-02-02T00:11:13.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/mpanga",
+    "lastmod": "2025-02-02T00:11:13.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/nseki",
+    "lastmod": "2025-02-02T00:11:13.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/lumbu",
+    "lastmod": "2025-02-02T00:11:13.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/lunungu-1",
+    "lastmod": "2025-02-02T00:11:13.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/ntanginina",
+    "lastmod": "2025-02-02T00:11:13.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/ntemo",
+    "lastmod": "2025-02-02T00:11:13.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/ntungu",
+    "lastmod": "2025-02-02T00:11:13.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/nzimba",
+    "lastmod": "2025-02-02T00:11:13.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/nzila",
+    "lastmod": "2025-02-02T00:11:13.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/mpangilu",
+    "lastmod": "2025-02-05T22:59:37.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/nzanda",
+    "lastmod": "2025-01-31T21:44:44.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/nzangalavua",
+    "lastmod": "2025-01-31T21:44:44.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/nzangi",
+    "lastmod": "2025-01-31T21:44:44.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/nzangu",
+    "lastmod": "2025-01-31T21:44:44.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/nziu",
+    "lastmod": "2025-01-31T21:44:44.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/nzo-ezulu",
+    "lastmod": "2025-01-31T21:44:44.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/mvuku",
+    "lastmod": "2025-01-31T23:16:54.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/mfiku",
+    "lastmod": "2025-01-31T23:16:54.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/mfila",
+    "lastmod": "2025-01-31T23:16:54.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/kinsampala",
+    "lastmod": "2025-01-31T23:58:11.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/kinsamu",
+    "lastmod": "2025-01-31T23:58:11.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/kimfinang’ani",
+    "lastmod": "2025-01-31T23:58:11.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/kimfinga",
+    "lastmod": "2025-01-31T23:58:11.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/kimfini",
+    "lastmod": "2025-01-31T23:58:11.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/buwela",
+    "lastmod": "2025-11-27T11:39:35.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/lunkete",
+    "lastmod": "2025-11-27T13:30:13.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/bumpatele",
+    "lastmod": "2025-11-27T10:12:58.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/buyita",
+    "lastmod": "2025-01-31T23:58:11.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/fuzi",
+    "lastmod": "2025-02-01T00:27:40.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/n-sendo",
+    "lastmod": "2025-11-27T13:35:30.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/kangilua",
+    "lastmod": "2025-02-02T00:11:13.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/n'lungu",
+    "lastmod": "2025-02-02T00:11:13.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/luzalu",
+    "lastmod": "2025-02-02T00:11:13.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/nkulu",
+    "lastmod": "2025-02-02T00:11:13.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/pwa-meso",
+    "lastmod": "2025-02-02T00:11:13.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/kuezi",
+    "lastmod": "2025-11-27T13:27:25.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/mu-këbolo",
+    "lastmod": "2025-02-02T00:11:13.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/mu-kédi",
+    "lastmod": "2025-02-02T00:11:13.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/mu-këkete",
+    "lastmod": "2025-02-02T00:11:13.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/mu-kèeko",
+    "lastmod": "2025-02-02T00:11:13.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/mu-kèla",
+    "lastmod": "2025-02-02T00:11:13.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/mu-kéle",
+    "lastmod": "2025-02-02T00:11:13.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/kimpanzi",
+    "lastmod": "2025-02-01T16:25:03.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/mboko",
+    "lastmod": "2025-12-03T23:44:27.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/nzikila",
+    "lastmod": "2025-02-02T00:11:13.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/nvika",
+    "lastmod": "2025-02-02T00:11:13.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/kialua",
+    "lastmod": "2025-02-02T00:11:13.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/sosua",
+    "lastmod": "2025-11-28T10:55:39.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/mvika",
+    "lastmod": "2025-02-02T00:11:13.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/mpava",
+    "lastmod": "2025-02-02T00:11:13.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/mvaka",
+    "lastmod": "2025-02-02T00:11:13.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/mvivu",
+    "lastmod": "2025-02-02T00:11:13.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/mvoni",
+    "lastmod": "2025-02-02T00:11:13.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/mvonzi",
+    "lastmod": "2025-02-02T00:11:13.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/ndandu",
+    "lastmod": "2025-02-02T00:11:13.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/ndata",
+    "lastmod": "2025-02-02T00:11:13.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/ndaza",
+    "lastmod": "2025-02-02T00:11:13.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/ndiki-diki",
+    "lastmod": "2025-12-03T11:42:01.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/ndimbuki",
+    "lastmod": "2025-02-02T00:11:13.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/ndio-dio",
+    "lastmod": "2025-02-02T00:11:13.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/ndiokololo",
+    "lastmod": "2025-02-02T00:11:13.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/ndongota",
+    "lastmod": "2025-02-02T00:11:13.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/mulongoti",
+    "lastmod": "2025-02-02T00:11:13.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/ndua",
+    "lastmod": "2025-02-02T00:11:13.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/ndakuta",
+    "lastmod": "2025-02-02T00:11:13.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/ndukutila",
+    "lastmod": "2025-02-02T00:11:13.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/ndula",
+    "lastmod": "2025-02-02T00:11:13.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/ndumba",
+    "lastmod": "2025-02-02T00:11:13.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/ngengele",
+    "lastmod": "2025-02-02T00:11:13.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/ngongele",
+    "lastmod": "2025-02-02T00:11:13.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/nduka",
+    "lastmod": "2025-02-02T00:11:13.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/ndukana",
+    "lastmod": "2025-02-02T00:11:13.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/kisungulu",
+    "lastmod": "2025-11-13T14:32:04.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/kisungulu-2",
+    "lastmod": "2025-11-13T14:32:04.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/kisunsi",
+    "lastmod": "2025-11-13T14:32:04.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/kisunsa",
+    "lastmod": "2025-11-13T14:32:04.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/kisiulu",
+    "lastmod": "2025-11-13T14:32:04.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/kisengele",
+    "lastmod": "2025-11-13T14:32:04.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/kisiamuna",
+    "lastmod": "2025-11-13T14:32:04.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/kisasi",
+    "lastmod": "2025-11-13T14:32:04.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/kitanda",
+    "lastmod": "2025-11-13T14:32:04.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/kitaata",
+    "lastmod": "2025-11-13T14:32:04.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/kitatu",
+    "lastmod": "2025-11-13T14:32:04.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/kiteke",
+    "lastmod": "2025-11-13T14:32:04.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/kinse",
+    "lastmod": "2025-11-13T14:32:04.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/kinsedi",
+    "lastmod": "2025-11-13T14:32:04.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/kinsefi",
+    "lastmod": "2025-11-13T14:32:04.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/kinseka",
+    "lastmod": "2025-11-13T14:32:04.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/kinseke-nseke",
+    "lastmod": "2025-11-13T14:32:04.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/kinseki",
+    "lastmod": "2025-11-13T14:32:04.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/kinsende",
+    "lastmod": "2025-11-13T14:32:04.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/kinsisia",
+    "lastmod": "2025-11-13T14:32:04.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/kinsaba",
+    "lastmod": "2025-11-13T14:32:04.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/kinsobo",
+    "lastmod": "2025-11-13T14:32:04.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/kinsinsu",
+    "lastmod": "2025-11-13T14:32:04.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/kinsinza",
+    "lastmod": "2025-11-13T14:32:04.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/kianza",
+    "lastmod": "2025-11-13T14:32:04.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/kimfinzi",
+    "lastmod": "2025-11-13T14:32:04.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/kimfiti",
+    "lastmod": "2025-11-13T14:32:04.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/kimfufu",
+    "lastmod": "2025-11-13T14:32:04.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/kimfuki",
+    "lastmod": "2025-11-13T14:32:04.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/kibangulua",
+    "lastmod": "2025-11-13T14:32:04.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/kibangu",
+    "lastmod": "2025-11-13T14:32:04.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/kibangulua musundi",
+    "lastmod": "2025-11-13T14:32:04.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/kibantu",
+    "lastmod": "2025-11-13T14:32:04.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/kibata",
+    "lastmod": "2025-11-13T14:32:04.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/kibuka",
+    "lastmod": "2025-11-13T14:32:04.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/lutunu",
+    "lastmod": "2025-11-13T14:32:04.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/luvaiku",
+    "lastmod": "2025-11-13T14:32:04.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/luvangameso",
+    "lastmod": "2025-11-13T14:32:04.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/luvangamu",
+    "lastmod": "2025-11-13T14:32:04.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/luvanginiku",
+    "lastmod": "2025-11-13T14:32:04.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/luvimba",
+    "lastmod": "2025-11-13T14:32:04.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/lubamba",
+    "lastmod": "2025-11-13T14:32:04.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/lubambala",
+    "lastmod": "2025-11-13T14:32:04.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/lubambazi",
+    "lastmod": "2025-11-13T14:32:04.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/lubambu",
+    "lastmod": "2025-11-13T14:32:04.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/lubami",
+    "lastmod": "2025-11-13T14:32:04.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/lubanda",
+    "lastmod": "2025-11-13T14:32:04.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/lubanda_tubanda",
+    "lastmod": "2025-11-13T14:32:04.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/lubangu",
+    "lastmod": "2025-11-13T14:32:04.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/mukato",
+    "lastmod": "2025-11-13T14:32:04.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/mukovo",
+    "lastmod": "2025-11-13T14:32:04.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/mukuba",
+    "lastmod": "2025-11-13T14:32:04.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/mukudi",
+    "lastmod": "2025-11-13T14:32:04.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/mukumbi",
+    "lastmod": "2025-11-13T14:32:04.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/mukutu",
+    "lastmod": "2025-11-13T14:32:04.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/mukutu-2",
+    "lastmod": "2025-11-13T14:32:04.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/mukulutu",
+    "lastmod": "2025-11-13T14:32:04.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/mukuya",
+    "lastmod": "2025-11-13T14:32:04.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/mukuyu",
+    "lastmod": "2025-11-13T14:32:04.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/mukuzu",
+    "lastmod": "2025-11-13T14:32:04.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/mulandakani",
+    "lastmod": "2025-11-13T14:32:04.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/mulandu",
+    "lastmod": "2025-11-13T14:32:04.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/mulangi",
+    "lastmod": "2025-11-13T14:32:04.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/mulangu",
+    "lastmod": "2025-11-13T14:32:04.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/mulanzi",
+    "lastmod": "2025-11-13T14:32:04.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/mulebi",
+    "lastmod": "2025-11-13T14:32:04.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/dikakani",
+    "lastmod": "2025-11-13T14:32:04.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/kinzungidila",
+    "lastmod": "2025-11-13T14:32:04.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/mpiodi",
+    "lastmod": "2025-11-13T14:32:04.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/ndongolo",
+    "lastmod": "2025-11-13T14:32:04.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/nkelele",
+    "lastmod": "2025-11-28T10:31:00.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/nkungulu",
+    "lastmod": "2025-11-28T10:39:56.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/nona",
+    "lastmod": "2025-11-28T10:45:43.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/nsakila",
+    "lastmod": "2025-11-28T10:58:17.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/mbuabua",
+    "lastmod": "2025-11-28T10:59:42.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/nsalafu",
+    "lastmod": "2025-11-28T11:03:00.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/kinienie",
+    "lastmod": "2025-11-28T11:10:58.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/mvuma",
+    "lastmod": "2025-11-28T11:22:13.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/kinuanina",
+    "lastmod": "2025-11-28T14:24:12.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/kimazayu",
+    "lastmod": "2025-11-29T00:23:25.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/zayilu",
+    "lastmod": "2025-11-29T00:26:46.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/lukengo",
+    "lastmod": "2025-12-03T22:40:53.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/nitu",
+    "lastmod": "2025-12-03T23:32:05.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/word/ndiba",
+    "lastmod": "2025-12-03T23:33:36.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/verb/zonza",
+    "lastmod": "2024-11-19T21:18:19.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/verb/finga",
+    "lastmod": "2025-11-27T10:09:07.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/verb/moka",
+    "lastmod": "2025-02-02T00:11:13.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/verb/tatika",
+    "lastmod": "2025-02-02T00:11:13.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/verb/mokena",
+    "lastmod": "2025-02-02T00:11:13.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/verb/tunga",
+    "lastmod": "2025-02-02T00:11:13.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/verb/tungua",
+    "lastmod": "2025-02-02T00:11:13.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/verb/tungisa",
+    "lastmod": "2025-02-02T00:11:13.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/verb/kangana",
+    "lastmod": "2025-02-02T00:11:13.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/verb/soneka",
+    "lastmod": "2024-11-19T21:22:52.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/verb/sonekua",
+    "lastmod": "2025-02-02T00:11:13.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/verb/buaka",
+    "lastmod": "2025-02-02T00:11:13.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/verb/seasa",
+    "lastmod": "2025-11-27T15:29:59.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/verb/bonga",
+    "lastmod": "2024-11-19T21:24:12.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/verb/wuwumuka",
+    "lastmod": "2024-11-19T21:24:24.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/verb/vumbuka",
+    "lastmod": "2025-02-02T00:11:13.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/verb/zola",
+    "lastmod": "2025-02-02T00:11:13.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/verb/sola",
+    "lastmod": "2024-11-19T21:25:07.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/verb/kota",
+    "lastmod": "2024-11-19T21:25:56.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/verb/somona",
+    "lastmod": "2025-01-31T21:52:28.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/verb/sompeka",
+    "lastmod": "2025-01-31T21:52:28.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/verb/sisa",
+    "lastmod": "2025-01-31T21:52:28.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/verb/sisisa",
+    "lastmod": "2025-01-31T21:52:28.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/verb/kuangula",
+    "lastmod": "2025-01-31T21:52:28.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/verb/kuankuna",
+    "lastmod": "2025-01-31T21:52:28.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/verb/kuanza",
+    "lastmod": "2025-01-31T21:52:28.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/verb/kuata",
+    "lastmod": "2025-01-31T21:52:28.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/verb/kuatika",
+    "lastmod": "2025-01-31T21:52:28.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/verb/kueza",
+    "lastmod": "2025-01-31T23:23:17.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/verb/kuezika",
+    "lastmod": "2025-01-31T23:23:17.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/verb/kuezeka",
+    "lastmod": "2025-01-31T23:23:17.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/verb/tetomona",
+    "lastmod": "2025-01-31T23:44:04.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/verb/teva",
+    "lastmod": "2025-01-31T23:44:04.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/verb/tewa",
+    "lastmod": "2025-01-31T23:44:04.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/verb/tiakidila",
+    "lastmod": "2025-01-31T23:44:04.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/verb/tintila",
+    "lastmod": "2025-01-31T23:44:04.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/verb/tionga",
+    "lastmod": "2025-01-31T23:44:04.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/verb/titila",
+    "lastmod": "2025-01-31T23:44:04.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/verb/zeyalala",
+    "lastmod": "2025-01-31T23:44:04.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/verb/zeyeleka",
+    "lastmod": "2025-01-31T23:44:04.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/verb/zikuka",
+    "lastmod": "2025-01-31T23:44:04.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/verb/zenganana",
+    "lastmod": "2025-01-31T23:44:04.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/verb/zengeneka",
+    "lastmod": "2025-01-31T23:44:04.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/verb/zeloka",
+    "lastmod": "2025-01-31T23:44:04.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/verb/zelela",
+    "lastmod": "2025-01-31T23:44:04.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/verb/zelola",
+    "lastmod": "2025-01-31T23:44:04.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/verb/zelomona",
+    "lastmod": "2025-01-31T23:44:04.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/verb/zembalala",
+    "lastmod": "2025-01-31T23:44:04.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/verb/zembama",
+    "lastmod": "2025-01-31T23:44:04.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/verb/ziatalala",
+    "lastmod": "2025-01-31T23:44:04.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/verb/zangana",
+    "lastmod": "2025-01-31T23:44:04.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/verb/zungumuka",
+    "lastmod": "2025-01-31T23:44:04.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/verb/zuninika",
+    "lastmod": "2025-01-31T23:44:04.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/verb/zumbidika",
+    "lastmod": "2025-01-31T23:44:04.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/verb/zumbuluka",
+    "lastmod": "2025-01-31T23:44:04.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/verb/zunanana",
+    "lastmod": "2025-01-31T23:44:04.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/verb/kalakana",
+    "lastmod": "2025-02-01T00:02:38.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/verb/kalala",
+    "lastmod": "2025-02-01T00:02:38.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/verb/kaluluka",
+    "lastmod": "2025-02-01T00:02:38.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/verb/kangula",
+    "lastmod": "2025-02-02T00:11:13.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/verb/vengekele",
+    "lastmod": "2025-02-02T00:11:13.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/verb/safula",
+    "lastmod": "2025-02-02T00:11:13.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/verb/bolola",
+    "lastmod": "2025-11-27T09:36:01.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/verb/vengekela",
+    "lastmod": "2025-02-02T00:11:13.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/verb/tetela",
+    "lastmod": "2025-02-02T00:11:13.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/verb/tekela",
+    "lastmod": "2025-02-02T00:11:13.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/verb/budidisa",
+    "lastmod": "2025-02-02T00:11:13.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/verb/lunganisa",
+    "lastmod": "2025-02-02T00:11:13.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/verb/lungana",
+    "lastmod": "2025-02-02T00:11:13.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/verb/danda",
+    "lastmod": "2025-02-02T00:11:13.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/verb/vama",
+    "lastmod": "2025-02-02T00:11:13.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/verb/vambwila",
+    "lastmod": "2025-02-02T00:11:13.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/verb/vampamiana",
+    "lastmod": "2025-02-02T00:11:13.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/verb/vanakana",
+    "lastmod": "2025-02-02T00:11:13.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/verb/vanama",
+    "lastmod": "2025-02-02T00:11:13.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/verb/vanamiana",
+    "lastmod": "2025-02-02T00:11:13.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/verb/vanda-empanau",
+    "lastmod": "2025-02-02T00:11:13.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/verb/vandalala",
+    "lastmod": "2025-02-02T00:11:13.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/verb/vanga",
+    "lastmod": "2025-02-02T00:11:13.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/verb/kitumuka",
+    "lastmod": "2025-02-02T00:11:13.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/verb/bandila",
+    "lastmod": "2025-02-02T00:11:13.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/verb/fuankalakana",
+    "lastmod": "2025-02-02T00:11:13.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/verb/dikumuka",
+    "lastmod": "2025-02-02T00:11:13.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/verb/monganana",
+    "lastmod": "2025-02-02T00:11:13.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/verb/mongeneka",
+    "lastmod": "2025-02-02T00:11:13.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/verb/iza",
+    "lastmod": "2025-11-27T21:14:28.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/verb/enda",
+    "lastmod": "2025-11-28T10:26:18.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/verb/vumisa",
+    "lastmod": "2025-11-28T11:42:55.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/verb/somona-2",
+    "lastmod": "2025-11-28T12:01:23.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/verb/sinka",
+    "lastmod": "2025-11-28T12:02:53.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/verb/zama",
+    "lastmod": "2025-11-28T14:27:26.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/verb/zandula",
+    "lastmod": "2025-11-28T14:33:36.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/verb/yandula-2",
+    "lastmod": "2025-11-28T14:36:41.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/verb/zaya",
+    "lastmod": "2025-11-29T00:14:10.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/verb/kika",
+    "lastmod": "2025-12-03T22:40:43.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/verb/yela",
+    "lastmod": "2025-12-03T23:34:39.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  }
+]

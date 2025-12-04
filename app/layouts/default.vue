@@ -1,5 +1,10 @@
 <template>
   <div class="layout-root">
+    <!-- Lien d'évitement pour l'accessibilité -->
+    <a href="#main-content" class="layout-skip-link">
+      {{ t('layout.skipToContent') }}
+    </a>
+
     <header class="layout-header">
       <div class="layout-header-bar">
         <!-- Navbar gère le logo + les liens -->
@@ -16,20 +21,19 @@
             <i v-else class="fas fa-moon" />
           </span>
           <span class="theme-toggle__label">
-            {{ isDark ? "Mode clair" : "Mode sombre" }}
+            {{ isDark ? t('layout.theme.light') : t('layout.theme.dark') }}
           </span>
         </button>
       </div>
-
     </header>
-<LkConfirmModal />
-    <main id="main-content" class="layout-main">
+
+    <LkConfirmModal />
+
+    <main id="main-content" class="layout-main" tabindex="-1">
       <slot />
     </main>
 
-
     <footer class="layout-footer">
-      <!-- Tu pourras remettre <Footer /> ici si tu veux -->
       <!-- Footer Lexikongo -->
     </footer>
   </div>
@@ -37,8 +41,12 @@
 
 <script setup>
 import { ref, computed, onMounted } from "vue";
+import { useI18n } from "vue-i18n";
 import Navbar from "~/components/Navbar.vue";
-import LkConfirmModal from "~/components/LkConfirmModal.vue"; // 👈 MANQUAIT
+import LkConfirmModal from "~/components/LkConfirmModal.vue";
+
+const { t } = useI18n();
+
 const theme = ref("light");
 
 const applyTheme = (value) => {
@@ -98,6 +106,30 @@ const isDark = computed(() => theme.value === "dark");
   flex-direction: column;
 }
 
+/* Lien d'évitement (accessibilité) */
+.layout-skip-link {
+  position: absolute;
+  left: -999px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+}
+
+.layout-skip-link:focus {
+  left: 1rem;
+  top: 0.75rem;
+  width: auto;
+  height: auto;
+  padding: 0.4rem 0.8rem;
+  border-radius: 999px;
+  background: var(--color-surface-elevated);
+  color: var(--color-text);
+  box-shadow: var(--shadow-md);
+  z-index: 40;
+}
+
 /* Header global */
 .layout-header {
   border-bottom: 1px solid var(--color-border);
@@ -147,7 +179,6 @@ const isDark = computed(() => theme.value === "dark");
 }
 
 .theme-toggle__label {
-  /* ✅ toujours lisible, en clair comme en sombre */
   color: var(--color-text);
 }
 
@@ -163,7 +194,7 @@ const isDark = computed(() => theme.value === "dark");
   padding: 1.25rem 1rem 2.5rem;
 }
 
-/* Footer simple (tu pourras l’enrichir) */
+/* Footer simple */
 .layout-footer {
   border-top: 1px solid var(--color-border);
   background: var(--color-surface);

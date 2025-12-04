@@ -45,7 +45,8 @@
     "titleSuffix": "– vue cartes",
     "viewTable": "Vue tableau",
     "viewTableAria": "Afficher les mots sous forme de tableau",
-    "viewDetails": "Voir la fiche"
+    "viewDetails": "Voir la fiche",
+    "viewCards": "Vue cartes"
   },
    "page": {
       "eyebrow": "Lexikongo · Liste des mots en kikongo",
@@ -94,6 +95,11 @@
         "title": "Se connecter",
         "body": "Retrouvez votre tableau de bord, vos propositions et votre activité.",
         "link": "Se connecter"
+      },
+      "account": {
+        "adminTitle": "Espace administrateur",
+        "adminBody": "Accédez aux outils de modération et de gestion du dictionnaire (mots, verbes, utilisateurs…).",
+        "adminCta": "Ouvrir le tableau de bord admin"
       }
     },
     "seo": {
@@ -101,11 +107,20 @@
       "description": "Lexikongo est un dictionnaire en ligne Kikongo · Français · Anglais avec phonétique. Explorez les mots, verbes et expressions du Kikongo et contribuez à la préservation de la langue.",
       "ogTitle": "Lexikongo — Dictionnaire Kikongo en ligne",
       "ogDescription": "Une ressource moderne pour découvrir, pratiquer et transmettre la langue kikongo : mots, verbes, expressions et phonétique."
-    }
+    },
+      "lastExpressions": {
+    "loading": "Chargement des dernières contributions…",
+    "error": "Impossible de récupérer les dernières contributions.",
+    "total": "{total} nouvelles expressions",
+    "details": "dont {words} mots et {verbs} verbes !"
+  }
     
   }
   ,
-  
+  "common.langLine": "Kikongo · Français · Anglais · Phonétique"
+,
+"layout.header.logoAlt": "Site logo"
+,
   "words.list.title": "Liste des mots",
   "words.list.subtitle": "Explorez les mots en kikongo, avec leur pluriel, leur phonétique et leurs traductions en français et en anglais.",
   "words.list.count": "{n} mot en base | {n} mots en base",
@@ -124,6 +139,8 @@
   "words.list.rowAria": "Voir la fiche du mot {word}",
   "words.cards.titleSuffix": "– vue cartes",
 "words.cards.viewTable": "Vue tableau",
+"words.cards.viewCards": "Vue carte",
+
 "words.cards.viewTableAria": "Afficher les mots sous forme de tableau",
  "verbs.list.title": "Liste des verbes",
   "verbs.list.subtitle.prefix": "Explorez les verbes en kikongo, avec la particule",
@@ -251,14 +268,28 @@
       "subtitle": "Fiche détaillée d’un mot en kikongo avec sa phonétique, sa classe nominale et ses traductions.",
       "singular": "Singulier",
       "plural": "Pluriel",
-      "nominalClass": "Classe nominale"
+      "nominalClass": "Classe nominale",
+       "root": "Racine possible",
+    "numberVariability": {
+      "label": "Variabilité du nombre",
+      "singular_only": "Singulier uniquement",
+      "plural_only": "Pluriel uniquement",
+      "invariable": "Invariable",
+      "variable": "Variable",
+      "singularOnly": "Singulier uniquement",
+        "pluralOnly": "Pluriel uniquement"
     },
+    "editCta": "Éditer ce mot"
+  
+    },
+    
     "verb": {
       "label": "Verbe",
-      "subtitle": "Fiche détaillée d’un verbe en kikongo avec sa phonétique, sa racine et ses traductions.",
+      "subtitle": "Fiche détaillée d’un verbe en kikongo avec sa phonétique, son radical verbal et ses traductions.",
       "infinitive": "Infinitif",
-      "root": "Racine",
-      "suffix": "Suffixe"
+      "root": "Radical verbal",
+      "suffix": "Suffixe",
+      "editCta": "Éditer ce verbe"
     }
   },
   "common.lang.fr": "Français",
@@ -437,63 +468,7 @@
       "error": "Une erreur est survenue lors de la suppression de votre compte. Veuillez réessayer."
     }
   },
-   "admin": {
-    "dashboard": {
-      "hero": {
-        "eyebrow": "Espace membre · Administration",
-        "fallbackName": "Administrateur Lexikongo",
-        "title": "Tableau de bord admin · {name}",
-        "description": "Accédez aux outils d’administration de Lexikongo : mots, verbes, utilisateurs et soumissions.",
-        "sideAria": "Raccourcis administrateur et actions rapides",
-        "ctaWords": "Gérer les mots",
-        "ctaVerbs": "Gérer les verbes",
-        "meta": "Vous voyez ici uniquement des informations réservées à votre rôle d’administrateur.",
-        "actionsAria": "Actions rapides Lexikongo (mode administrateur)"
-      },
-      "access": {
-        "title": "Accès aux sections",
-        "intro": "Retrouvez rapidement les zones clés du dictionnaire et de la gestion des comptes.",
-        "words": {
-          "title": "Gestion des mots",
-          "text": "Consultez, filtrez et modifiez les entrées de mots du dictionnaire.",
-          "link": "Voir les mots"
-        },
-        "verbs": {
-          "title": "Gestion des verbes",
-          "text": "Consultez, filtrez et modifiez les verbes enregistrés.",
-          "link": "Voir les verbes"
-        },
-        "users": {
-          "title": "Gestion des utilisateurs",
-          "text": "Consultez et gérez les comptes utilisateurs (rôles, accès, suppression).",
-          "link": "Voir les utilisateurs"
-        },
-        "submissions": {
-          "title": "Gestion des soumissions",
-          "text": "Validez ou refusez les nouvelles propositions de mots, verbes et expressions.",
-          "link": "Voir les soumissions"
-        }
-      },
-      "stats": {
-        "title": "Statistiques rapides",
-        "intro": "Un aperçu global de l’activité sur Lexikongo.",
-        "usersLabel": "Utilisateurs",
-        "usersHint": "Comptes enregistrés dans la base.",
-        "wordsLabel": "Mots",
-        "wordsHint": "Entrées de mots actuellement disponibles.",
-        "verbsLabel": "Verbes",
-        "verbsHint": "Entrées de verbes actuellement disponibles."
-      },
-      "session": {
-        "text": "Vous êtes connecté avec un compte administrateur.",
-        "logout": "Se déconnecter"
-      },
-      "seo": {
-        "title": "Administration · Lexikongo",
-        "description": "Tableau de bord administrateur Lexikongo : gestion des mots, verbes et utilisateurs."
-      }
-    }
-  },
+
   "contrib": {
     "dashboard": {
       "hero": {
@@ -502,7 +477,9 @@
         "description": "Proposez de nouveaux mots, verbes et expressions en kikongo et suivez vos contributions.",
         "sideAria": "Raccourcis contributeur et actions rapides",
         "meta": "Chaque contribution est relue avant publication afin de préserver la qualité du dictionnaire.",
-        "actionsAria": "Actions rapides Lexikongo (mode contributeur)"
+        "actionsAria": "Actions rapides Lexikongo (mode contributeur)",
+         "ctaWords": "Explorer les mots",
+      "ctaVerbs": "Explorer les verbes"
       },
       "actions": {
         "title": "Contribuer au dictionnaire",
@@ -512,6 +489,11 @@
           "text": "Ajoutez un nouveau mot en kikongo avec sa traduction et sa phonétique.",
           "link": "Accéder aux mots"
         },
+         "submissions": {
+        "title": "Gérer vos contributions",
+        "text": "Retrouvez tous les mots et verbes que vous avez proposés, pour les modifier ou les compléter.",
+        "link": "Voir vos contributions"
+      },
         "verbs": {
           "title": "Proposer un verbe",
           "text": "Ajoutez un verbe ou proposez une meilleure conjugaison.",
@@ -543,7 +525,572 @@
         "description": "Proposez et suivez vos contributions dans le dictionnaire kikongo Lexikongo."
       }
     }
+ 
+
+
+}
+,
+
+  "admin": {
+    "verb": {
+      "add": {
+        "title": "Ajouter un verbe en kikongo",
+        "subtitle": "Ajoutez un nouveau verbe en kikongo avec sa phonétique et ses traductions en français et en anglais.",
+        "meta": "Admin · Ajout de verbe",
+        "legendKikongo": "Données en kikongo",
+        "legendTranslations": "Traductions",
+        "fields": {
+          "infinitive": "Infinitif",
+          "root": "Radical verbal",
+          "suffix": "Suffixe",
+          "phonetic": "Phonétique",
+          "translationFr": "Français",
+          "translationEn": "Anglais"
+        },
+        "placeholders": {
+          "infinitive": "longa, bala…",
+          "root": "Radical verbal",
+          "suffix": "-a, -ama…",
+          "phonetic": "[lónga]…",
+          "translationFr": "Sens FR séparés par des virgules…",
+          "translationEn": "EN meanings separated by commas…"
+        },
+        "actions": {
+          "submit": "Enregistrer le verbe",
+          "reset": "Réinitialiser le formulaire",
+          "saving": "Enregistrement…"
+        },
+        "messages": {
+          "success": "Verbe ajouté avec succès.",
+          "errorRequiredInfinitive": "L’infinitif du verbe est obligatoire.",
+          "errorGeneric": "Une erreur est survenue lors de l’ajout du verbe."
+        },
+        "seoTitle": "Admin · Ajouter un verbe en kikongo – Lexikongo",
+        "seoDescription": "Tableau de bord admin · ajout d’un verbe en kikongo (infinitif, phonétique, traductions)."
+      }
+    },
+      "common": {
+      "mustBeLoggedIn": "Vous devez être connecté en tant qu’administrateur pour accéder à cette page."
+    },
+    "editPendingWord": {
+      "eyebrow": "Espace admin · Mots en attente",
+      "title": "Éditer un mot proposé",
+      "subtitle": "Corrigez les informations d’un mot soumis par un contributeur avant de prendre une décision.",
+      "meta": {
+        "label": "Administration · Édition de mot en attente",
+        "title": "Admin · Éditer un mot proposé – Lexikongo",
+        "description": "Page d’administration pour éditer un mot en kikongo soumis par un contributeur (forme, classe nominale, phonétique, dérivations et traductions).",
+        "submittedAtLabel": "Soumis le"
+      },
+      "help": "Vous pouvez ajuster la forme en kikongo, la classe nominale, les liens de dérivation et les traductions avant validation ou rejet.",
+      "reviewNotice": "Les décisions d’approbation ou de rejet se feront depuis la page de gestion des soumissions en attente.",
+      "cardTitleFallback": "Mot en kikongo proposé",
+      "actions": {
+        "save": "Enregistrer les modifications",
+        "saving": "Enregistrement en cours…",
+        "reset": "Réinitialiser",
+        "delete": "Supprimer cette soumission"
+      },
+      "confirmTitle": "Supprimer cette soumission ?",
+      "confirmDelete": "Voulez-vous vraiment supprimer cette soumission ? Cette action est définitive.",
+      "deleted": "La soumission a été supprimée.",
+      "success": "Les modifications ont bien été enregistrées.",
+      "errors": {
+        "generic": "Erreur lors de la mise à jour de ce mot en attente.",
+        "requiredSingular": "Merci de renseigner au moins le singulier.",
+        "requiredClassId": "Merci d’indiquer la classe nominale.",
+        "translationRequired": "Merci de proposer au moins une traduction (FR ou EN).",
+        "delete": "Erreur lors de la suppression de la soumission."
+      }
+    },
+      "managePendings": {
+      "eyebrow": "Espace admin · Soumissions",
+      "title": "Soumissions en attente",
+      "subtitle": "Visualisez et filtrez les mots et verbes proposés par les contributeurs.",
+      "meta": {
+        "label": "Administration · Soumissions en attente",
+        "title": "Admin · Soumissions en attente – Lexikongo",
+        "description": "Liste des soumissions de mots et verbes en kikongo en attente de modération (filtres, recherche, pagination).",
+        "submittedAtLabel": "Soumis le"
+      },
+      "help": "Filtrez par type (mot / verbe), statut et recherche, puis ouvrez la fiche d’édition admin pour décider du sort de chaque soumission.",
+      "reviewNotice": "Les actions d’approbation, de rejet ou de suppression se font depuis les pages d’édition détaillées.",
+      "loading": "Chargement des soumissions en attente…",
+      "empty": "Aucune soumission ne correspond à ces filtres.",
+          "successApproved": "Soumission approuvée et intégrée au dictionnaire.",
+    "successRejected": "Soumission marquée comme rejetée.",
+    "deleted": "La soumission a été supprimée.",
+    "confirmDeleteTitle": "Supprimer cette soumission ?",
+    "confirmDeleteMessage": "Voulez-vous vraiment supprimer cette soumission ? Cette action est définitive.",
+    "unknownUser": "Contributeur inconnu",
+           "count": "{total} soumissions trouvées",
+    "countWords": "{totalWords} mot(s)",
+    "countVerbs": "{totalVerbs} verbe(s)",
+      "actions": {
+        "editWord": "Éditer le mot",
+        "editVerb": "Éditer le verbe",
+         "approve": "Approuver",
+      "reject": "Rejeter",
+      "delete": "Supprimer"
+      },
+      "search": {
+        "label": "Rechercher dans les soumissions",
+        "placeholder": "Recherchez par lemme, traduction ou contributeur…"
+      },
+      "pagination": {
+        "prev": "Précédent",
+        "next": "Suivant",
+        "info": "Page {page} / {pageCount}"
+      },
+      "error": {
+        "generic": "Impossible de récupérer les soumissions en attente pour le moment."
+      },
+       "errors": {
+      "generic": "Impossible de traiter cette soumission.",
+      "delete": "Impossible de supprimer cette soumission.",
+      "notPending": "Cette soumission n’est plus en statut « en attente »."
+    }
+   
+    },
+      "hero": {
+        "eyebrow": "Espace administrateur · Tableau de bord",
+        "title": "Tableau de bord Lexikongo",
+        "description": "Modérez les contributions, gérez le dictionnaire et pilotez l’activité de la communauté.",
+        "sideAria": "Résumé des accès administrateur et raccourcis vers les sections de gestion Lexikongo",
+        "ctaWords": "Gérer les mots",
+        "ctaVerbs": "Gérer les verbes",
+        "meta": "Tableau de bord administrateur Lexikongo",
+        "actionsAria": "Raccourcis vers les sections de gestion pour les administrateurs"
+      },
+       "dashboard": {
+      "hero": {
+        "eyebrow": "Espace administrateur · Tableau de bord",
+        "title": "Tableau de bord Lexikongo",
+        "description": "Modérez les contributions, gérez le dictionnaire et pilotez l’activité de la communauté.",
+        "sideAria": "Résumé des accès administrateur et raccourcis vers les sections de gestion Lexikongo",
+        "ctaWords": "Gérer les mots",
+        "ctaVerbs": "Gérer les verbes",
+        "meta": "Tableau de bord administrateur Lexikongo",
+        "actionsAria": "Raccourcis vers les sections de gestion pour les administrateurs"
+      },
+
+      "access": {
+        "title": "Accès rapides",
+        "intro": "Choisissez une section pour gérer les contenus et les comptes.",
+        "words": {
+          "title": "Mots du dictionnaire",
+          "text": "Consulter, rechercher et modifier les entrées de mots en kikongo.",
+          "link": "Ouvrir la gestion des mots"
+        },
+        "verbs": {
+          "title": "Verbes du dictionnaire",
+          "text": "Consulter, rechercher et modifier les verbes en kikongo.",
+          "link": "Ouvrir la gestion des verbes"
+        },
+        "users": {
+          "title": "Utilisateurs",
+          "text": "Gérer les comptes, rôles et accès des utilisateurs.",
+          "link": "Ouvrir la gestion des utilisateurs"
+        },
+        "submissions": {
+          "title": "Soumissions contributeurs",
+          "text": "Parcourir, filtrer et modérer les soumissions de mots et de verbes.",
+          "link": "Ouvrir la gestion des soumissions"
+        }
+      },
+
+      "stats": {
+        "title": "Statistiques rapides",
+        "intro": "Un aperçu des chiffres-clés du dictionnaire et de la communauté.",
+        "usersLabel": "Comptes utilisateurs",
+        "usersHint": "Nombre total d’utilisateurs inscrits sur Lexikongo.",
+        "wordsLabel": "Mots publiés",
+        "wordsHint": "Nombre total d’entrées de mots actuellement en ligne.",
+        "verbsLabel": "Verbes publiés",
+        "verbsHint": "Nombre total de verbes actuellement en ligne."
+      },
+
+      "session": {
+        "text": "Connecté en tant qu’administrateur.",
+        "logout": "Se déconnecter"
+      },
+
+      "seo": {
+        "title": "Tableau de bord administrateur · Lexikongo",
+        "description": "Accédez au tableau de bord administrateur Lexikongo pour modérer les soumissions, gérer les mots, verbes et comptes utilisateurs."
+      }
+    }
+  
+  },
+  
+"contributor": {
+  "addVerb": {
+    "eyebrow": "Espace contributeur · Verbes",
+    "title": "Proposer un verbe en kikongo",
+    "cardTitleFallback": "Proposition de verbe en kikongo",
+    "subtitle": "Proposez un verbe en kikongo avec son radical verbal, sa phonétique et ses traductions.",
+    
+    "meta": {
+      "label": "Contributeur · Ajout de verbe",
+      "title": "Contributeur · Proposer un verbe en kikongo – Lexikongo",
+      "description": "Soumettez un nouveau verbe en kikongo pour revue par l’équipe Lexikongo."
+    },
+   "helpRequired": "Les champs marqués d’une astérisque (*) sont obligatoires. Merci de donner au moins une traduction.",
+  "reviewNotice": "Votre proposition sera examinée par l’équipe Lexikongo avant une éventuelle publication dans le dictionnaire.",
+
+    "sections": {
+      "kikongo": "Forme en kikongo",
+      "translations": "Traductions",
+      "derived": "Verbe dérivé",
+      "derivedOptional": "optionnel"
+    },
+    "fields": {
+      "infinitive": "Infinitif (sans « ku »)",
+      "root": "Radical verbal",
+      "suffix": "Suffixe",
+      "phonetic": "Phonétique",
+      "translationFr": "Traductions en français",
+      "translationEn": "Traductions en anglais",
+      "derivedVerb": "Ce verbe est dérivé d’un autre verbe",
+      "derivedFrom": "ID du verbe de base",
+    
+       "derivedVerbType": "Type de verbe dérivé"
+    },
+    "hints": {
+      "infinitive": "Écrivez l’infinitif sans « ku » (ex. longa, bala…).",
+      "root": "Indiquez le radical verbal (ex. long-, bal-…).",
+      "phonetic": "Vous pouvez utiliser des crochets et des accents pour préciser la prononciation.",
+      "translationFr": "Vous pouvez proposer plusieurs sens en français, séparés par des virgules.",
+      "translationEn": "Vous pouvez proposer plusieurs sens en anglais, séparés par des virgules.",
+      "derivedVerb": "Cochez si ce verbe est construit à partir d’un autre (dérivé morphologique).",
+      "derivedFrom": "ID interne du verbe de base, si vous le connaissez (sinon, laissez vide).",
+        "derivedVerbType": "Sélectionnez le type de dérivation (passive, causative, etc.), si vous le connaissez."
+    },
+    "actions": {
+      "saving": "Envoi de votre proposition…",
+      "submit": "Proposer ce verbe",
+      "reset": "Réinitialiser le formulaire"
+    },
+    "success": "Merci ! Votre verbe a été soumis et sera vérifié par un administrateur.",
+    "errors": {
+      "missingCore": "Merci de remplir au moins l’infinitif et le radical verbal.",
+      "missingUser": "Vous devez être connecté pour proposer un verbe.",
+      "missingTranslations": "Merci de proposer au moins une traduction (FR ou EN).",
+      "generic": "Erreur lors de l’envoi de votre proposition de verbe."
+    }
+  },
+    "errors": {
+      "mustBeLoggedIn": "Vous devez être connecté pour pouvoir proposer un contenu."
+    },
+    "addWord": {
+      "eyebrow": "Espace contributeur · Mots",
+      "title": "Proposer un mot en kikongo",
+      "cardTitleFallback": "Proposition de mot en kikongo",
+      "subtitle": "Proposez un mot en kikongo avec sa classe nominale, sa phonétique et ses traductions.",
+      "meta": {
+        "label": "Contributeur · Ajout de mot",
+        "title": "Contributeur · Proposer un mot en kikongo – Lexikongo",
+        "description": "Formulaire contributeur pour proposer un nouveau mot en kikongo avec classe nominale, phonétique et traductions françaises et anglaises."
+      },
+      "helpRequired": "Les champs marqués d’une astérisque (*) sont obligatoires. Merci de donner au moins une traduction.",
+      "reviewNotice": "Votre proposition sera examinée par l’équipe Lexikongo avant une éventuelle publication dans le dictionnaire.",
+      
+      "placeholders": {
+        "singular": "Muana, Kikuku…",
+        "plural": "Bakento, Bikoba…",
+        "classId": "Choisissez une classe nominale…",
+        "phonetic": "[mùnkéntò]…",
+        "translationFr": "Sens FR séparés par des virgules…",
+        "translationEn": "EN meanings separated by commas…",
+         "baseWordSearch": "Rechercher un mot de base…",
+  "baseVerbSearch": "Rechercher un verbe de base…"
+      },
+      "hints": {
+        "singular": "Le mot au singulier, tel qu’il est utilisé en kikongo (forme de base).",
+        "plural": "Indiquez le pluriel si vous le connaissez. Sinon, vous pouvez laisser ce champ vide.",
+        "classId": "Sélectionnez une classe nominale.",
+        "numberVariability": "Optionnel : précisez si le mot ne s’emploie qu’au singulier, au pluriel, ou s’il est invariable.",
+    
+        "translationFr": "Vous pouvez proposer plusieurs sens en français, séparés par des virgules ou sur plusieurs lignes.",
+        "translationEn": "Vous pouvez proposer plusieurs sens en anglais, séparés par des virgules ou sur plusieurs lignes.",
+          "phonetic": "Vous pouvez utiliser les crochets et les accents pour préciser la prononciation.",
+        "derivedWord": "Cochez si ce mot est construit à partir d’un autre mot ou d’un verbe (nom d’action, résultat, personne, etc.).",
+        "numberVariabilityShort": "Variable : Singulier/Pluriel différents (Mukento/Bankento). Invariable : mots qui ne changent pas (adverbes, conjonctions, etc.)."
+,
+         
+
+  "derivedFromVerb": "Recherchez le verbe de base dans le dictionnaire (infinitif en « ku… » ou traduction).",
+    "baseWordSearch": "Tapez quelques lettres du mot (kikongo, français ou anglais) puis choisissez le bon résultat.",
+  "baseVerbSearch": "Tapez quelques lettres du verbe (kikongo, français ou anglais) puis choisissez le bon résultat."
+
+
+  
+      },
+      "numberVariability": {
+        "default": "— Laisser par défaut —"
+      },
+      "actions": {
+        "submit": "Proposer ce mot",
+        "saving": "Envoi de votre proposition…",
+        "reset": "Réinitialiser le formulaire",
+        "viewSubmission": "Voir votre soumission"
+      },
+      "errors": {
+        "requiredSingular": "Merci de remplir au moins le singulier du mot en kikongo.",
+        "requiredClassId": "Merci d’indiquer la classe nominale (au minimum une estimation).",
+        "translationRequired": "Merci de proposer au moins une traduction (FR ou EN).",
+        "generic": "Erreur lors de l’envoi de votre proposition de mot. Merci de réessayer plus tard."
+      },
+      "success": "Merci ! Votre mot a été soumis et sera vérifié par un administrateur avant publication éventuelle.",
+      "sections": {
+        "kikongo": "Forme en kikongo",
+        "translations": "Traductions",
+        "derived": "Mot dérivé",
+        "derivedOptional": "optionnel"
+      },
+       "fields": {
+    
+   "derivedWord": "Ce mot est dérivé d’un autre mot ou d’un verbe",
+  "derivedFromWord": "Mot de base dans le dictionnaire",
+  "derivedFromVerb": "Verbe de base (option avancée)"
+      },
+      
+      "details": {
+  "word": {
+    "nominalClass": "Classe nominale",
+    "numberVariability": {
+      "label": "Variabilité du nombre",
+      "variable": "Variable (singulier/pluriel distincts)",
+      "singularOnly": "Singulier uniquement",
+      "pluralOnly": "Pluriel uniquement",
+      "invariable": "Invariable"
+    }
+  },
+  "common": {
+    "phonetic": "Phonétique"
   }
+},
+"baseWordNoResults": "Aucun mot ne correspond à cette recherche pour l’instant.",
+"baseWordSelected": "Mot de base sélectionné : {word}",
+"baseVerbNoResults": "Aucun verbe ne correspond à cette recherche pour l’instant.",
+"baseVerbSelected": "Verbe de base sélectionné : {verb}"
+
+      
+    },
+    "submissions": {
+    "eyebrow": "Espace contributeur · Soumissions",
+    "title": "Vos soumissions en kikongo",
+    "subtitle": "Retrouvez ici l’historique de vos mots et verbes proposés.",
+    "meta": {
+      "label": "Historique des soumissions",
+      "title": "Contributeur · Soumissions – Lexikongo",
+      "description": "Consultez et filtrez vos soumissions de mots et verbes en kikongo (en attente, approuvées, rejetées).",
+      "createdAt": "Soumis le ",
+      "decidedAt": "Décision le ",
+      "adminReason": "Commentaire de la modération :",
+      "reviewedBy": "modéré par {admin}"
+    },
+    "help": "Vous pouvez filtrer vos soumissions par type (mot / verbe) et par statut (en attente, approuvée, rejetée).",
+    "reviewNotice": "Une fois validées par l’équipe Lexikongo, vos contributions rejoignent le dictionnaire.",
+    "mustBeLoggedIn": "Vous devez être connecté pour voir vos soumissions.",
+    "loading": "Chargement de vos soumissions…",
+    "empty": "Vous n’avez encore aucune soumission de mot ou de verbe.",
+    "error": {
+      "generic": "Impossible de récupérer vos soumissions pour le moment."
+    },
+    "filters": {
+      "status": "Statut",
+      "type": "Type"
+    },
+    "status": {
+      "all": "Tous les statuts",
+      "pending": "En attente",
+      "approved": "Approuvée",
+      "rejected": "Rejetée"
+    },
+    "types": {
+      "all": "Mots & verbes",
+      "word": "Mots uniquement",
+      "verb": "Verbes uniquement"
+    },
+    "search": {
+      "label": "Rechercher dans vos soumissions",
+      "placeholder": "Recherchez par mot, verbe, traduction ou phonétique…"
+    },
+    "badges": {
+      "word": "Mot proposé",
+      "verb": "Verbe proposé"
+    },
+   
+    "count": "{total} soumissions trouvées",
+    "actions": {
+      "edit": "Voir / modifier",
+      "delete": "Supprimer"
+    }
+   
+  },
+
+
+   "editPendingWord": {
+  "eyebrow": "Espace contributeur · Édition",
+  "title": "Modifier un mot proposé",
+  "subtitle": "Corrigez ou complétez les informations de votre mot avant validation par l’équipe Lexikongo.",
+  "meta": {
+    "label": "Édition d’un mot en attente",
+    "title": "Modifier un mot proposé | Lexikongo",
+    "description": "Modifiez un mot en kikongo que vous avez soumis sur Lexikongo (forme, classe nominale, phonétique, lien avec un verbe de base et traductions).",
+    "submittedAtLabel": "Soumis le"
+  },
+   "confirmTitle": "Supprimer cette soumission ?",
+  
+
+  "help": "Vous pouvez ajuster la forme en kikongo, la classe nominale, la phonétique, les liens de dérivation et les traductions.",
+  "reviewNotice": "Les modifications ne sont possibles que tant que la soumission est en attente. Une fois approuvée ou rejetée, elle rejoint l’historique de vos contributions.",
+  "cardTitleFallback": "Mot en kikongo en attente",
+
+  "locked": "Cette soumission a déjà été traitée et n’est plus modifiable.",
+  "loading": "Chargement de votre soumission…",
+
+  "actions": {
+    "save": "Enregistrer les modifications",
+    "saving": "Enregistrement en cours…",
+    "reset": "Réinitialiser le formulaire",
+    "delete": "Supprimer cette soumission",
+    "backToSubmissions": "Retour à mes soumissions"
+  },
+   
+
+  "success": "Les modifications de votre mot ont bien été enregistrées et seront revues par l’équipe Lexikongo.",
+  "deleted": "Votre soumission a bien été supprimée.",
+  "confirmDelete": "Voulez-vous vraiment supprimer cette soumission ? Cette action est définitive.",
+
+  "error": {
+    "generic": "Impossible de charger cette soumission.",
+    "delete": "Impossible de supprimer cette soumission."
+  },
+
+  "errors": {
+    "generic": "Erreur lors de la mise à jour de votre mot.",
+    "mustBeLoggedIn": "Vous devez être connecté pour modifier ce mot.",
+    "requiredSingular": "Merci de renseigner au moins le singulier.",
+    "requiredClassId": "Merci d’indiquer la classe nominale.",
+    "translationRequired": "Merci de proposer au moins une traduction (FR ou EN).",
+    "notEditable": "Cette soumission n’est plus modifiable (elle a déjà été approuvée ou rejetée)."
+  }
+
+
+},
+"editPendingVerb": {
+  "eyebrow": "Espace contributeur · Édition",
+  "title": "Modifier un verbe proposé",
+  "subtitle": "Corrigez ou complétez les informations de votre verbe avant validation par l’équipe Lexikongo.",
+  "meta": {
+    "label": "Édition d’un verbe en attente",
+    "title": "Modifier un verbe proposé | Lexikongo",
+    "description": "Modifiez un verbe en kikongo que vous avez soumis sur Lexikongo (infinitif, radical verbal, phonétique, dérivation et traductions).",
+    "submittedAtLabel": "Soumis le"
+  },
+  "help": "Vous pouvez ajuster l’infinitif, le radical verbal, la phonétique, les liens de dérivation et les traductions.",
+  "reviewNotice": "Les modifications ne sont possibles que tant que la soumission est en attente. Une fois approuvée ou rejetée, elle rejoint l’historique de vos contributions.",
+  "cardTitleFallback": "Verbe en kikongo en attente",
+  "locked": "Cette soumission a déjà été traitée et n’est plus modifiable.",
+  "loading": "Chargement de votre soumission…",
+  "actions": {
+    "save": "Enregistrer les modifications",
+    "saving": "Enregistrement en cours…",
+    "reset": "Réinitialiser",
+    "delete": "Supprimer cette soumission de verbe",
+    "confirmDelete": "Supprimer la soumission"
+  },
+  "errors": {
+    "generic": "Erreur lors de la mise à jour de votre verbe.",
+    "notEditable": "Cette soumission n’est plus modifiable (elle a déjà été approuvée ou rejetée).",
+    "missingName": "Merci d’indiquer l’infinitif du verbe (sans « ku »).",
+    "missingRoot": "Merci d’indiquer le radical verbal.",
+    "missingTranslations": "Merci de proposer au moins une traduction (FR ou EN).",
+    "delete": "Impossible de supprimer cette soumission."
+  },
+  "success": "Les modifications de votre verbe ont bien été enregistrées et seront revues par l’équipe Lexikongo.",
+  "confirmTitle": "Supprimer cette soumission ?",
+  "confirmDelete": "Voulez-vous vraiment supprimer cette soumission ? Cette action est définitive.",
+  "deleted": "Votre soumission de verbe a été supprimée."
+}
+  
+},
+  "common": {
+  "actions": {
+    "delete": "Supprimer",
+    "cancel": "Annuler"
+  }
+},
+"pagination": {
+  "ariaLabel": "Pagination des résultats",
+  "prev": "Précédent",
+  "next": "Suivant",
+  "gotoLabel": "Page",
+  "gotoAriaLabel": "Aller à la page (1 à {total})",
+  "summary": "{start}–{end} sur {total} résultat(s)",
+  "summaryNoPageSize": "{total} résultat(s)",
+  "empty": "Aucun résultat à afficher"
+},
+"layout": {
+  "skipToContent": "Aller au contenu principal",
+  "theme": {
+    "light": "Mode clair",
+    "dark": "Mode sombre"
+  }
+},
+"search": {
+  "word": {
+    "eyebrow": "Recherche · Mots",
+    "title": "Rechercher un mot en kikongo",
+    "subtitle": "Cherchez un mot par forme, phonétique ou traduction française / anglaise.",
+    "metaKikongo": "Kikongo · Français · Anglais · Phonétique",
+    "formTitle": "Filtrer les mots en base",
+    "formSubtitle": "Tapez au moins une partie du mot ou de sa traduction.",
+    "inputLabel": "Mot ou traduction à rechercher",
+    "inputPlaceholder": "Ex. nzo, maison, house…",
+    "hint": "La recherche s'applique sur le singulier, le pluriel et les traductions FR/EN.",
+    "loading": "Chargement des mots…",
+    "idle": "Saisissez un mot pour lancer la recherche.",
+    "emptyForQuery": "Aucun mot ne correspond à « {query} ».",
+    "resultsCount": "{count} résultat trouvé | {count} résultats trouvés",
+    "resultsCaption": "Résultats de la recherche de mots",
+    "paginationAria": "Pagination des résultats de recherche de mots",
+    "metaTitle": "Rechercher des mots en Kikongo | Lexikongo",
+    "metaDescription": "Recherchez des mots en Kikongo avec leurs traductions en français, en anglais et leur phonétique dans le dictionnaire Lexikongo."
+  },
+  "verb": {
+    "eyebrow": "Recherche · Verbes",
+    "title": "Rechercher un verbe en kikongo",
+    "subtitle": "Cherchez un verbe par infinitif (ku + racine) ou par traduction française / anglaise.",
+    "metaKikongo": "Verbes en kikongo · FR · EN · Phonétique",
+    "formTitle": "Filtrer les verbes en base",
+    "formSubtitle": "Tapez au moins une partie du verbe ou de sa traduction.",
+    "inputLabel": "Verbe ou traduction à rechercher",
+    "inputPlaceholder": "Ex. ku longa, enseigner, to teach…",
+    "hint": "La recherche s'applique sur l'infinitif et les traductions FR/EN.",
+    "loading": "Chargement des verbes…",
+    "idle": "Saisissez un verbe pour lancer la recherche.",
+    "emptyForQuery": "Aucun verbe ne correspond à « {query} ».",
+    "resultsCount": "{count} résultat trouvé | {count} résultats trouvés",
+    "resultsCaption": "Résultats de la recherche de verbes",
+    "paginationAria": "Pagination des résultats de recherche de verbes",
+    "metaTitle": "Rechercher des verbes en Kikongo | Lexikongo",
+    "metaDescription": "Recherchez des verbes en Kikongo (infinitif ku + racine) avec leurs traductions en français et en anglais dans le dictionnaire Lexikongo."
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
 
 
 

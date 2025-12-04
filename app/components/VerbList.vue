@@ -1,25 +1,29 @@
 <template>
   <section class="verb-list" aria-labelledby="verb-list-heading">
-    <!-- Header -->
-     <header class="verb-list__header">
- <!--   
-      <div>
-        <h2 id="verb-list-heading" class="verb-list__title">
-          {{ t('verbs.list.title') }}
-        </h2>
-        <p class="verb-list__subtitle">
-          {{ t('verbs.list.subtitle.prefix') }}
-          <span class="verb-list__ku-inline">ku</span>
-          {{ t('verbs.list.subtitle.suffix') }}
-        </p>
-      </div>-->
+    <!-- Header aligné avec WordList / ExpressionList -->
+    <header class="verb-list__header">
+      <div class="verb-list__header-main">
+        <!-- On laisse vide pour l’instant (comme expr/word-list),
+             on pourra remettre un petit texte plus tard si tu veux -->
+      </div>
 
-      <p
+      <div
         v-if="itemsLength"
-        class="verb-list__count"
+        class="verb-list__meta"
       >
-        {{ t('verbs.list.count', itemsLength) }}
-      </p>
+        <p
+          class="verb-count-chip"
+          aria-live="polite"
+        >
+          <span
+            class="verb-count-chip__dot"
+            aria-hidden="true"
+          />
+          <span class="verb-count-chip__text">
+            {{ t('verbs.list.count', itemsLength) }}
+          </span>
+        </p>
+      </div>
     </header>
 
     <!-- Barre de recherche + switch cartes -->
@@ -37,14 +41,21 @@
         />
       </div>
 
-      <NuxtLink
-        to="/verblist-card"
-        class="verb-list__view-link"
-        :aria-label="t('verbs.list.viewCardsAria')"
-      >
-        <i class="fas fa-th-large" aria-hidden="true"></i>
-        <span>{{ t('verbs.list.viewCards') }}</span>
-      </NuxtLink>
+      <!-- Légende + bouton switch vue cartes (comme WordList/ExpressionList) -->
+      <div class="verb-view-mode">
+        <p class="verb-view-caption">
+          {{ t('verbs.cards.viewTable') }}
+        </p>
+
+        <NuxtLink
+          to="/verblist-card"
+          class="verb-list__view-link"
+          :aria-label="t('verbs.list.viewCardsAria')"
+        >
+          <i class="fas fa-th-large" aria-hidden="true"></i>
+          <span>{{ t('verbs.list.viewCards') }}</span>
+        </NuxtLink>
+      </div>
     </div>
 
     <!-- État : chargement -->
@@ -104,8 +115,8 @@
           <tr>
             <th scope="col">{{ t('verbs.list.column.verb') }}</th>
             <th scope="col">{{ t('verbs.list.column.phonetic') }}</th>
-           <th scope="col">{{ t('common.lang.fr') }}</th>
-<th scope="col">{{ t('common.lang.en') }}</th>
+            <th scope="col">{{ t('common.lang.fr') }}</th>
+            <th scope="col">{{ t('common.lang.en') }}</th>
           </tr>
         </thead>
 
@@ -251,47 +262,63 @@ onMounted(() => {
   gap: 1.25rem;
 }
 
-/* Header */
+/* Header au-dessus de la toolbar (aligné sur WordList / ExpressionList) */
 .verb-list__header {
   display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 0.75rem;
+  margin-top: 0.8rem;
 }
 
-.verb-list__title {
-  font-size: 1.35rem;
-  font-weight: 650;
-  color: var(--text-default);
+.verb-list__header-main {
+  flex: 1 1 auto;
 }
 
-.verb-list__subtitle {
-  font-size: 0.98rem;
-  color: var(--text-muted);
-  max-width: 46rem;
+.verb-list__meta {
+  flex: 0 0 auto;
+  display: flex;
+  justify-content: flex-end;
 }
 
-.verb-list__ku-inline {
-  font-family: inherit;
-  font-weight: 600;
-    color: #535559;
-
-
-  
+/* Chip compteur – même style que expr/word-count-chip */
+.verb-count-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.18rem 0.7rem;
+  border-radius: 999px;
+  border: 1px solid rgba(148, 163, 184, 0.7);
+  background: linear-gradient(
+    135deg,
+    rgba(15, 23, 42, 0.03),
+    rgba(37, 99, 235, 0.06)
+  );
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--text-muted, #4b5563);
 }
 
-.verb-list__count {
-  margin-left: auto;
-  font-size: 0.9rem;
-  color: var(--text-muted);
+.verb-count-chip__dot {
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 999px;
+  background: radial-gradient(circle at 30% 30%, #22c55e, #16a34a);
+  box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.18);
 }
 
-/* Barre de recherche */
+.verb-count-chip__text {
+  white-space: nowrap;
+}
+
+/* Barre de recherche & vue mode (comme WordList / ExpressionList) */
 .verb-list__toolbar {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 0.75rem;
   flex-wrap: wrap;
+  gap: 0.75rem;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 0.4rem;
 }
 
 .verb-list__search {
@@ -314,6 +341,42 @@ onMounted(() => {
   font-size: 0.9rem;
   color: var(--text-default);
   background: var(--surface-elevated);
+}
+
+/* Bloc vue actuelle + bouton switch */
+.verb-view-mode {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.15rem;
+}
+
+.verb-view-caption {
+  margin: 0;
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-muted, #6b7280);
+}
+
+/* Bouton "vue cartes" */
+.verb-list__view-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.85rem;
+  padding: 0.35rem 0.85rem;
+  border-radius: 999px;
+  border: 1px solid var(--border-subtle);
+  text-decoration: none;
+  background: var(--surface-elevated);
+  color: var(--primary);
+  white-space: nowrap;
+}
+
+.verb-list__view-link:hover {
+  background: rgba(13, 110, 253, 0.06);
+  border-color: var(--primary);
 }
 
 /* États */
@@ -425,7 +488,7 @@ onMounted(() => {
 
 .verb-list__infinitive {
   font-weight: 600;
- color: var(--primary);
+  color: var(--primary);
 }
 
 /* Phonétique */
@@ -464,26 +527,6 @@ onMounted(() => {
   margin-top: 1rem;
 }
 
-/* Bouton "vue cartes" */
-.verb-list__view-link {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.35rem;
-  font-size: 0.85rem;
-  padding: 0.35rem 0.85rem;
-  border-radius: 999px;
-  border: 1px solid var(--border-subtle);
-  text-decoration: none;
-  background: var(--surface-elevated);
-  color: var(--primary);
-  white-space: nowrap;
-}
-
-.verb-list__view-link:hover {
-  background: rgba(13, 110, 253, 0.06);
-  border-color: var(--primary);
-}
-
 /* Responsive */
 @media (max-width: 640px) {
   .verb-list__table {
@@ -497,12 +540,21 @@ onMounted(() => {
   }
 
   .verb-list__toolbar {
-    justify-content: stretch;
+    flex-direction: column;
+    align-items: stretch;
   }
 
   .verb-list__search-input {
     width: 100%;
     min-width: 0;
+  }
+
+  .verb-view-mode {
+    align-items: flex-start;
+  }
+
+  .verb-list__view-link {
+    justify-content: center;
   }
 }
 </style>

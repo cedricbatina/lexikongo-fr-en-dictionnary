@@ -12,6 +12,8 @@
       :primary-cta="primaryCta"
       :secondary-cta="secondaryCta"
       :side-aria-label="t('pageHero.sideAria')"
+        :show-last-expressions="true"
+
     >
       <!-- Meta sous les boutons -->
       <template #meta>
@@ -29,11 +31,7 @@
         </div>
       </template>
     </LkPageHero>
-  <section class="lastexpr m-5">
-      <div class="expr-section__meta text-center m-auto">
-          <LastExpressionsCount />
-        </div>
-    </section>
+
     <!-- Bloc principal : WordList gère son propre titre i18n -->
     <section class="lk-page__section lk-page__section--words">
       <WordList />

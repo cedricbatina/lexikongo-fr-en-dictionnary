@@ -1,17 +1,18 @@
 <template>
   <nav
     class="app-pagination"
-    :aria-label="ariaLabel"
+    :aria-label="navAriaLabel"
   >
     <div class="app-pagination__inner">
       <!-- Résumé -->
-      <p
-        v-if="showSummary && totalItems > 0"
-        class="app-pagination__summary"
-        aria-live="polite"
-      >
-        {{ startItem }}–{{ endItem }} sur {{ totalItems }} résultat<span v-if="totalItems > 1">s</span>
-      </p>
+   <p
+  v-if="showSummary && summaryText"
+  class="app-pagination__summary"
+  aria-live="polite"
+>
+  {{ summaryText }}
+</p>
+
 
       <ul class="app-pagination__list">
         <!-- Bouton Précédent -->
@@ -22,13 +23,13 @@
             :class="{ 'app-pagination__btn--disabled': isFirstPage }"
             :disabled="isFirstPage"
             @click="goToPage(currentPage - 1)"
-            :aria-label="labelPrev"
+            :aria-label="computedLabelPrev"
           >
-            <span class="app-pagination__icon">
+            <span class="app-pagination__icon" aria-hidden="true">
               <i class="fas fa-chevron-left" aria-hidden="true"></i>
             </span>
             <span class="app-pagination__text">
-              {{ labelPrev }}
+              {{ computedLabelPrev }}
             </span>
           </button>
         </li>
@@ -66,12 +67,12 @@
             :class="{ 'app-pagination__btn--disabled': isLastPage }"
             :disabled="isLastPage"
             @click="goToPage(currentPage + 1)"
-            :aria-label="labelNext"
+            :aria-label="computedLabelNext"
           >
             <span class="app-pagination__text">
-              {{ labelNext }}
+              {{ computedLabelNext }}
             </span>
-            <span class="app-pagination__icon">
+            <span class="app-pagination__icon" aria-hidden="true">
               <i class="fas fa-chevron-right" aria-hidden="true"></i>
             </span>
           </button>
@@ -85,20 +86,22 @@
           <div class="app-pagination__goto">
             <label class="app-pagination__goto-label">
               <span class="app-pagination__goto-label-text">
-                Page
+                {{ gotoLabelText }}
               </span>
-              <input
-                v-model="inputPage"
-                type="number"
-                class="app-pagination__goto-input"
-                inputmode="numeric"
-                pattern="[0-9]*"
-                min="1"
-                :max="totalPages"
-                :aria-label="`Aller à la page (1 à ${totalPages})`"
-                @keydown.enter.prevent="applyInputPage"
-                @blur="applyInputPage"
-              />
+           <input
+  v-model="inputPage"
+  type="number"
+  class="app-pagination__goto-input"
+  inputmode="numeric"
+  pattern="[0-9]*"
+  min="1"
+  :max="totalPages"
+  :aria-label="gotoAriaLabel"
+  @keydown.enter.prevent="applyInputPage"
+  @blur="applyInputPage"
+  @change="applyInputPage"
+/>
+
               <span class="app-pagination__goto-total">
                 / {{ totalPages }}
               </span>
@@ -112,6 +115,9 @@
 
 <script setup>
 import { computed, ref, watch } from "vue";
+import { useI18n } from "vue-i18n";
+
+const { t } = useI18n();
 
 const props = defineProps({
   currentPage: {
@@ -138,21 +144,37 @@ const props = defineProps({
     type: Boolean,
     default: true,
   },
+  /**
+   * Texte aria-label du <nav>. Si non fourni, on prend t('pagination.ariaLabel').
+   */
   ariaLabel: {
     type: String,
-    default: "Pagination",
+    default: "",
   },
+  /**
+   * Libellés fallback pour compat.
+   * Si non fournis, on prend les traductions i18n.
+   */
   labelPrev: {
     type: String,
-    default: "Précédent",
+    default: "",
   },
   labelNext: {
     type: String,
-    default: "Suivant",
+    default: "",
+  },
+  /**
+   * Permet de namespacer les clés i18n si besoin (pagination.*, search.pagination.*, etc.)
+   */
+  i18nNamespace: {
+    type: String,
+    default: "pagination",
   },
 });
 
 const emit = defineEmits(["pageChange"]);
+
+const ns = computed(() => props.i18nNamespace);
 
 // Input local pour "aller à la page"
 const inputPage = ref(props.currentPage);
@@ -171,7 +193,7 @@ const isLastPage = computed(
   () => props.currentPage >= props.totalPages || props.totalPages <= 1
 );
 
-// Calcule le résumé X–Y sur Z
+// Calcule X et Y pour le résumé
 const startItem = computed(() => {
   if (!props.totalItems || !props.pageSize) return 1;
   return (props.currentPage - 1) * props.pageSize + 1;
@@ -182,6 +204,50 @@ const endItem = computed(() => {
   const raw = props.currentPage * props.pageSize;
   return raw > props.totalItems ? props.totalItems : raw;
 });
+
+// Libellés i18n / fallback
+const navAriaLabel = computed(() => {
+  if (props.ariaLabel) return props.ariaLabel;
+  return t(`${ns.value}.ariaLabel`);
+});
+
+const computedLabelPrev = computed(() => {
+  if (props.labelPrev) return props.labelPrev;
+  return t(`${ns.value}.prev`);
+});
+
+const computedLabelNext = computed(() => {
+  if (props.labelNext) return props.labelNext;
+  return t(`${ns.value}.next`);
+});
+
+const gotoLabelText = computed(() => t(`${ns.value}.gotoLabel`));
+const gotoAriaLabel = computed(() =>
+  t(`${ns.value}.gotoAriaLabel`, { total: props.totalPages })
+);
+
+// Résumé "X–Y sur Z résultats"
+const summaryText = computed(() => {
+  // Aucun résultat
+  if (!props.totalItems) {
+    return t(`${ns.value}.empty`, { total: props.totalItems });
+  }
+
+  // On a des résultats, mais pas de pageSize fiable → on évite de dire n'importe quoi
+  if (!props.pageSize) {
+    return t(`${ns.value}.summaryNoPageSize`, {
+      total: props.totalItems,
+    });
+  }
+
+  // Cas normal : X–Y sur Z
+  return t(`${ns.value}.summary`, {
+    start: startItem.value,
+    end: endItem.value,
+    total: props.totalItems,
+  });
+});
+
 
 // Algorithme d'affichage des pages (1 ... 4 5 [6] 7 8 ... 30)
 const visiblePages = computed(() => {
@@ -268,7 +334,7 @@ function applyInputPage() {
 .app-pagination__summary {
   margin: 0;
   font-size: 0.85rem;
-  color: #6b7280; /* gris neutre */
+  color: var(--lk-color-text-muted, #6b7280);
 }
 
 /* Liste principale */
@@ -290,8 +356,8 @@ function applyInputPage() {
 .app-pagination__btn {
   border-radius: 999px;
   border: 1px solid transparent;
-  background: #ffffff;
-  color: #374151;
+  background: var(--lk-color-surface, #ffffff);
+  color: var(--lk-color-text-main, #374151);
   padding: 0.32rem 0.8rem;
   font-size: 0.9rem;
   line-height: 1.2;
@@ -308,8 +374,11 @@ function applyInputPage() {
 }
 
 .app-pagination__btn--nav {
-  border-color: rgba(148, 163, 184, 0.7);
-  background: #f9fafb;
+  border-color: var(
+    --lk-color-border-subtle,
+    rgba(148, 163, 184, 0.7)
+  );
+  background: var(--lk-color-surface-muted, #f9fafb);
 }
 
 .app-pagination__btn--page {
@@ -318,10 +387,10 @@ function applyInputPage() {
 }
 
 .app-pagination__btn--page.app-pagination__btn--active {
-  background: #0d6efd; /* bleu primaire */
+  background: var(--lk-color-primary, #0d6efd);
   color: #ffffff;
-  border-color: #0d6efd;
-  box-shadow: 0 10px 24px rgba(13, 110, 253, 0.35);
+  border-color: var(--lk-color-primary, #0d6efd);
+  box-shadow: 0 10px 24px rgba(13, 110, 253, 0.25);
 }
 
 /* Hover / focus */
@@ -334,9 +403,9 @@ function applyInputPage() {
 
 .app-pagination__btn--nav:hover,
 .app-pagination__btn--nav:focus-visible {
-  border-color: #0d6efd;
-  color: #0d6efd;
-  background: #eef2ff;
+  border-color: var(--lk-color-primary, #0d6efd);
+  color: var(--lk-color-primary, #0d6efd);
+  background: var(--lk-color-primary-soft, #eef2ff);
 }
 
 /* Désactivé */
@@ -351,7 +420,7 @@ function applyInputPage() {
 .app-pagination__ellipsis {
   padding: 0.32rem 0.3rem;
   font-size: 0.9rem;
-  color: #9ca3af;
+  color: var(--lk-color-text-subtle, #9ca3af);
 }
 
 /* Icône / texte */
@@ -380,14 +449,17 @@ function applyInputPage() {
   align-items: center;
   gap: 0.3rem;
   font-size: 0.85rem;
-  color: #4b5563;
+  color: var(--lk-color-text-main, #4b5563);
 }
 
 .app-pagination__goto-input {
   width: 3rem;
   padding: 0.18rem 0.35rem;
   border-radius: 0.5rem;
-  border: 1px solid rgba(148, 163, 184, 0.8);
+  border: 1px solid var(
+    --lk-color-border-subtle,
+    rgba(148, 163, 184, 0.8)
+  );
   font-size: 0.85rem;
   text-align: center;
   outline: none;
@@ -395,13 +467,13 @@ function applyInputPage() {
 }
 
 .app-pagination__goto-input:focus-visible {
-  border-color: #0d6efd;
+  border-color: var(--lk-color-primary, #0d6efd);
   box-shadow: 0 0 0 1px rgba(13, 110, 253, 0.35);
 }
 
 .app-pagination__goto-total {
   font-size: 0.85rem;
-  color: #9ca3af;
+  color: var(--lk-color-text-subtle, #9ca3af);
 }
 
 /* Responsive */

@@ -81,9 +81,19 @@
       "description": "Lexikongo 是一部在线 Kikongo · 法语 · 英语词典，附音标。探索 Kikongo 单词、动词和表达，并为语言保护做出贡献。",
       "ogTitle": "Lexikongo — 在线 Kikongo 词典",
       "ogDescription": "一个用于发现、练习和传承 Kikongo 语言的现代资源：单词、动词、表达和音标。"
-    }
+    },
+    "lastExpressions": {
+  "loading": "正在加载最新贡献…",
+  "error": "无法获取最新贡献。",
+  "total": "{total} 条新表达",
+  "details": "其中包含 {words} 个名词和 {verbs} 个动词！"
+}
+
 
   },
+  "common.langLine": "基孔戈语 · 法语 · 英语 · 音标"
+,"layout.header.logoAlt": "站点标志"
+,
     "words.list.title": "单词列表",
   "words.list.subtitle": "浏览基孔戈语单词，包括复数形式、音标以及对应的法语和英语翻译。",
   "words.list.count": "{n} 个词条 | {n} 个词条",
@@ -108,7 +118,8 @@
     "titleSuffix": "– 卡片视图",
     "viewTable": "表格视图",
     "viewTableAria": "以表格形式显示单词",
-    "viewDetails": "查看词条"
+    "viewDetails": "查看词条",
+    "viewCards": "卡片视图"
   },
     "page": {
       "eyebrow": "Lexikongo · 基孔戈语单词列表",
@@ -247,7 +258,16 @@
       "ariaLabel": "Lexikongo 贡献者操作",
       "addWord": "添加单词",
       "addVerb": "添加动词",
-      "board": "贡献者空间"
+      "board": "贡献者空间",
+        "dashboard": {
+    "actions": {
+      "submissions": {
+        "title": "管理你的贡献",
+        "text": "查看你提交的所有单词和动词，并进行修改或补充说明。",
+        "link": "查看你的贡献"
+      }
+    }
+  }
     },
     "shortcuts": {
       "title": "搜索和列表快捷方式",
@@ -285,7 +305,21 @@
         "error": {
           "requiredFields": "请填写所有字段。",
           "generic": "登录失败，请检查你的账号信息。"
-        }
+        },
+"heroDescription": "登录你的 Lexikongo 空间，参与构建基孔戈语词典，管理你的投稿，并关注项目的发展。",
+"kicker": "会员空间 · 登录",
+"pageTitle": "登录 Lexikongo",
+"sideAria": "关于账号信息以及登录 Lexikongo 的优势",
+"sideBenefit1": "提交新的基孔戈语单词、动词和表达。",
+"sideBenefit2": "跟踪你的贡献及其审核状态。",
+"sideBenefit3": "帮助构建一个鲜活且协作的基孔戈语词典。",
+"sideTitle": "为什么要登录？",
+"meta": {
+  "title": "登录 · Lexikongo",
+  "description": "登录你的 Lexikongo 空间，提交新的基孔戈语单词、动词或表达，管理你的贡献，并关注协作词典的演变。"
+},
+"metaSecurity": "你的电子邮箱仅用于管理你的账号并激活你的 Lexikongo 个人资料。"
+
       },
        "register": {
       "meta": {
@@ -387,7 +421,258 @@
       "success": "您的账户已成功删除。",
       "error": "删除账户时发生错误，请稍后重试。"
     }
+},
+"details": {
+  "common": {
+    "loading": "正在加载词条…",
+    "backToList": "返回表达列表",
+    "author": "作者",
+    "unknown": "未知",
+    "createdAt": "创建日期",
+    "kikongoData": "基孔戈语数据",
+    "phonetic": "音标",
+    "translations": "翻译",
+    "fr": "法语",
+    "en": "英语",
+    "translationHint": "翻译中可能包含多个意义细微差别，用逗号分隔。",
+    "backExpressions": "查看单词和动词列表",
+    "searchWords": "搜索单词",
+    "searchVerbs": "搜索动词"
+  },
+  "word": {
+    "label": "单词",
+    "subtitle": "基孔戈语单词的详细词条，包括音标、名词类别及其翻译。",
+    "singular": "单数",
+    "plural": "复数",
+    "nominalClass": "名词类别",
+    "root": "词根",
+    "numberVariability": {
+      "label": "数的变化",
+      "singular_only": "仅单数",
+      "plural_only": "仅复数",
+      "invariable": "数不变",
+      "variable": "数可变"
+    },
+    "editCta": "编辑此词"
+  },
+  "verb": {
+    "label": "动词",
+    "subtitle": "基孔戈语动词的详细词条，包括音标、词根及其翻译。",
+    "infinitive": "不定式",
+    "root": "词根",
+    "suffix": "词尾",
+    "editCta": "编辑此动词"
+  }
+},
+ "contributor": {
+    "addWord": {
+      "eyebrow": "贡献者空间 · 词条",
+      "title": "提交新词",
+      "subtitle": "添加一个基孔戈语单词，并填写它的名词类别以及对应的法语和/或英语释义。",
+      "helpRequired": "带有 * 标记的字段为必填项。",
+      "sections": {
+        "word": "基孔戈语单词",
+        "translations": "翻译",
+        "translationsHint": "请至少添加一条法语或英语翻译。"
+      },
+      "fields": {
+        "singular": {
+          "label": "单数形式"
+        },
+        "plural": {
+          "label": "复数形式",
+          "hint": "如果该词没有特别的复数形式，可以留空。"
+        },
+        "phonetic": {
+          "label": "发音 / 音标",
+          "placeholder": "/…/",
+          "hint": "可以填写近似读音（IPA 或简单标注）。"
+        },
+        "classId": {
+          "label": "名词类别",
+          "placeholderSelect": "— 请选择一个类别 —",
+          "placeholderInput": "名词类别 ID",
+          "hint": "选择或填写与该词对应的名词类别。"
+        },
+        "meaningFr": {
+          "label": "法语"
+        },
+        "meaningEn": {
+          "label": "英语"
+        }
+      },
+      "actions": {
+        "submit": "提交词条",
+        "submitting": "正在提交…",
+        "cancel": "取消并返回贡献者空间"
+      },
+      "errors": {
+        "singularRequired": "单数形式为必填项。",
+        "classIdRequired": "名词类别为必填项。",
+        "classIdInvalid": "名词类别必须是有效的标识符。",
+        "translationsRequired": "请至少添加一条法语或英语翻译。",
+        "mustBeLoggedIn": "提交词条前需要先登录。"
+      },
+      "messages": {
+        "success": "您的词条已保存，感谢您的贡献！",
+        "errorGeneric": "提交词条时发生错误。"
+      }
+    },
+      "addVerb": {
+    "eyebrow": "贡献者空间 · 动词",
+    "title": "提交新动词",
+    "subtitle": "添加一个基孔戈语动词，填写它的词根、可能的派生形式，以及对应的法语和/或英语释义。",
+    "helpRequired": "带有 * 标记的字段为必填项。",
+    "sections": {
+      "verb": "基孔戈语动词",
+      "translations": "翻译",
+      "translationsHint": "请至少添加一条法语或英语翻译。"
+    },
+    "fields": {
+      "name": {
+        "label": "动词（基础形式）"
+      },
+      "root": {
+        "label": "词根",
+        "hint": "例如，不带前缀或后缀的动词词干。"
+      },
+      "suffix": {
+        "label": "词尾 / 后缀",
+        "hint": "如果该动词没有特殊词尾，可以留空。"
+      },
+      "phonetic": {
+        "label": "发音 / 音标",
+        "placeholder": "/…/",
+        "hint": "可以填写近似读音（IPA 或简单标注）。"
+      },
+      "flags": {
+        "label": "动词类型",
+        "active": "基础 / 主动动词",
+        "derived": "派生动词",
+        "hint": "如果该动词是由其他动词派生而来，请勾选“派生动词”。"
+      },
+      "derivedFrom": {
+        "label": "源动词（如为派生动词）",
+        "placeholder": "源动词 ID 或内部标识",
+        "hint": "可选：填写该动词所派生自的源动词（若知道，可使用 ID 或内部编码）。"
+      },
+      "derivedVerbType": {
+        "label": "派生类型",
+        "placeholder": "派生动词类型或 ID",
+        "hint": "可选：如已知，可说明派生类型（如使役、互相、反身等）。"
+      },
+      "meaningFr": {
+        "label": "法语"
+      },
+      "meaningEn": {
+        "label": "英语"
+      }
+    },
+    "actions": {
+      "submit": "提交动词",
+      "submitting": "正在提交…",
+      "cancel": "取消并返回贡献者空间"
+    },
+    "errors": {
+      "nameRequired": "动词为必填项。",
+      "rootRequired": "动词词根为必填项。",
+      "translationsRequired": "请至少添加一条法语或英语翻译。",
+      "mustBeLoggedIn": "提交动词前需要先登录。"
+    },
+    "messages": {
+      "success": "您的动词已保存，感谢您的贡献！",
+      "errorGeneric": "提交动词时发生错误。"
+    }
+  },
+    "submissions": {
+    "hero": {
+      "eyebrow": "贡献者空间 · 贡献记录",
+      "title": "你的贡献",
+      "subtitle": "查看你在 Lexikongo 提交的所有单词和动词。",
+      "meta": "在审核通过之前，你可以修改或删除这些待审核的贡献。",
+      "ctaAddWord": "提交新单词",
+      "ctaAddVerb": "提交新动词"
+    },
+    "seo": {
+      "title": "你的贡献 – Lexikongo",
+      "description": "在 Lexikongo 字典中查看并管理你提交的单词和动词。"
+    },
+    "sections": {
+      "words": {
+        "title": "已提交的单词",
+        "intro": "你提交到字典中的单词列表。",
+        "loading": "正在加载你提交的单词…",
+        "empty": "你还没有提交任何单词。",
+        "error": "无法获取你提交的单词。",
+        "caption": "贡献者提交的单词列表。"
+      },
+      "verbs": {
+        "title": "已提交的动词",
+        "intro": "你提交到字典中的动词列表。",
+        "loading": "正在加载你提交的动词…",
+        "empty": "你还没有提交任何动词。",
+        "error": "无法获取你提交的动词。",
+        "caption": "贡献者提交的动词列表。"
+      }
+    },
+    "table": {
+      "headers": {
+        "word": "单词",
+        "class": "类别",
+        "translations": "翻译",
+        "status": "状态",
+        "createdAt": "创建时间",
+        "updatedAt": "更新时间",
+        "actions": "操作",
+        "verb": "动词",
+        "root": "词根"
+      },
+      "labels": {
+        "fr": "法语",
+        "en": "英语"
+      },
+      "noTranslations": "尚未填写翻译",
+      "wordPlural": "复数形式：{plural}",
+      "verbSuffix": "词尾：{suffix}",
+      "actions": {
+        "edit": "编辑",
+        "delete": "删除"
+      }
+    },
+    "status": {
+      "pending": "待审核"
+    },
+    "messages": {
+      "deleteConfirmWord": "确定要删除单词「{word}」吗？此操作不可恢复。",
+      "deleteConfirmVerb": "确定要删除动词「{verb}」吗？此操作不可恢复。",
+      "deleteSuccessWord": "单词贡献已删除。",
+      "deleteSuccessVerb": "动词贡献已删除。",
+      "deleteError": "删除时发生错误。"
+    }
+  }
+  },
+  "admin": {
+  "word": {
+    "add": {
+      "meta": "管理 · 新增词语",
+      "pageTitle": "管理 · 新增词语",
+      "submit": "创建此词语",
+      "saving": "正在保存…",
+      "reset": "重置",
+      "success": "词语创建成功。",
+      "errorRequiredSingular": "单数形式为必填。",
+      "errorSave": "创建词语时出错。",
+      "seoTitle": "管理 · 新增词语 – Lexikongo",
+      "seoDescription": "管理面板 · 新增一条基孔戈词语（形式、名词类别、音标、翻译）。"
+    },
+    "placeholders": {
+      "translationFr": "法语含义，用逗号分隔",
+      "translationEn": "英语含义，用逗号分隔"
+    }
+  }
 }
+
+
 
 
 

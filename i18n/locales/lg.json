@@ -1,0 +1,39 @@
+{
+  
+  "admin": {
+    "common": {
+      "mustBeLoggedIn": "Vous devez être connecté en tant qu’administrateur pour accéder à cette page."
+    },
+    "editPendingWord": {
+      "eyebrow": "Espace admin · Mots en attente",
+      "title": "Éditer un mot proposé",
+      "subtitle": "Corrigez les informations d’un mot soumis par un contributeur avant de prendre une décision.",
+      "meta": {
+        "label": "Administration · Édition de mot en attente",
+        "title": "Admin · Éditer un mot proposé – Lexikongo",
+        "description": "Page d’administration pour éditer un mot en kikongo soumis par un contributeur (forme, classe nominale, phonétique, dérivations et traductions).",
+        "submittedAtLabel": "Soumis le"
+      },
+      "help": "Vous pouvez ajuster la forme en kikongo, la classe nominale, les liens de dérivation et les traductions avant validation ou rejet.",
+      "reviewNotice": "Les décisions d’approbation ou de rejet se feront depuis la page de gestion des soumissions en attente.",
+      "cardTitleFallback": "Mot en kikongo proposé",
+      "actions": {
+        "save": "Enregistrer les modifications",
+        "saving": "Enregistrement en cours…",
+        "reset": "Réinitialiser",
+        "delete": "Supprimer cette soumission"
+      },
+      "confirmTitle": "Supprimer cette soumission ?",
+      "confirmDelete": "Voulez-vous vraiment supprimer cette soumission ? Cette action est définitive.",
+      "deleted": "La soumission a été supprimée.",
+      "success": "Les modifications ont bien été enregistrées.",
+      "errors": {
+        "generic": "Erreur lors de la mise à jour de ce mot en attente.",
+        "requiredSingular": "Merci de renseigner au moins le singulier.",
+        "requiredClassId": "Merci d’indiquer la classe nominale.",
+        "translationRequired": "Merci de proposer au moins une traduction (FR ou EN).",
+        "delete": "Erreur lors de la suppression de la soumission."
+      }
+    }
+  }
+}

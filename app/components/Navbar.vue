@@ -6,13 +6,16 @@
   >
     <div class="lk-nav__inner">
       <!-- Logo / Home -->
-      <NuxtLink
-        to="/"
-        class="lk-nav__brand"
-        aria-label="Lexikongo — Accueil"
-      >
-        <LogoNavbar />
-      </NuxtLink>
+    <!-- Brand / Home (version texte légère) -->
+<NuxtLink
+  to="/"
+  class="lk-nav__brand"
+  aria-label="Lexikongo — Accueil"
+>
+  <!--<span class="lk-nav__brand-mark">LK</span>-->
+  <span class="lk-nav__brand-text">Lexikongo</span>
+</NuxtLink>
+
 
       <!-- Section droite (desktop) -->
       <div class="lk-nav__right lk-nav__right--desktop">

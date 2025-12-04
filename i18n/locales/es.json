@@ -81,11 +81,22 @@
       "description": "Lexikongo es un diccionario en línea Kikongo · Francés · Inglés con fonética. Explora palabras, verbos y expresiones en kikongo y contribuye a la preservación de la lengua.",
       "ogTitle": "Lexikongo — Diccionario Kikongo en línea",
       "ogDescription": "Un recurso moderno para descubrir, practicar y transmitir la lengua kikongo: palabras, verbos, expresiones y fonética."
-    }
+    },
+    "lastExpressions": {
+  "loading": "Cargando las últimas contribuciones…",
+  "error": "No se pueden recuperar las últimas contribuciones.",
+  "total": "{total} nuevas expresiones",
+  "details": "de las cuales {words} son palabras y {verbs} son verbos."
+}
+
    
 
 
   },
+  "common.langLine": "Kikongo · Francés · Inglés · Fonética"
+,
+"layout.header.logoAlt": "Logotipo del sitio"
+,
    "words.list.title": "Lista de palabras",
   "words.list.subtitle": "Explora las palabras en kikongo con su plural, fonética y traducciones al francés y al inglés.",
   "words.list.count": "{n} palabra en la base de datos | {n} palabras en la base de datos",
@@ -110,7 +121,18 @@
     "titleSuffix": "– vista de tarjetas",
     "viewTable": "Vista de tabla",
     "viewTableAria": "Mostrar las palabras en forma de tabla",
-    "viewDetails": "Ver la ficha"
+    "viewDetails": "Ver la ficha",
+"viewCards": "Vista en tarjetas",
+ "root": "Raíz",
+    "numberVariability": {
+      "label": "Variabilidad del número",
+      "singular_only": "Solo singular",
+      "plural_only": "Solo plural",
+      "invariable": "Invariable",
+      "variable": "Variable"
+    },
+    "editCta": "Editar esta palabra"
+
   },
    "page": {
       "eyebrow": "Lexikongo · Lista de palabras en kikongo",
@@ -248,7 +270,12 @@
       "ariaLabel": "Acciones de colaborador de Lexikongo",
       "addWord": "Añadir una palabra",
       "addVerb": "Añadir un verbo",
-      "board": "Espacio del colaborador"
+      "board": "Espacio del colaborador",
+      "submissions": {
+        "title": "Gestionar tus contribuciones",
+        "text": "Consulta todas las palabras y verbos que has propuesto para editarlos o completarlos.",
+        "link": "Ver tus contribuciones"
+      }
     },
     "shortcuts": {
       "title": "Atajos de búsqueda y listas",
@@ -286,7 +313,22 @@
         "error": {
           "requiredFields": "Por favor, rellena todos los campos.",
           "generic": "Error al iniciar sesión. Comprueba tus credenciales."
-        }
+        },
+   
+"heroDescription": "Accede a tu espacio Lexikongo para contribuir al diccionario de kikongo, gestionar tus propuestas y seguir la evolución del proyecto.",
+"kicker": "Espacio miembro · Inicio de sesión",
+"pageTitle": "Inicio de sesión en Lexikongo",
+"sideAria": "Información sobre la cuenta y las ventajas de conectarse a Lexikongo",
+"sideBenefit1": "Proponer nuevas palabras, verbos y expresiones en kikongo.",
+"sideBenefit2": "Seguir tus contribuciones y su estado de validación.",
+"sideBenefit3": "Ayudar a construir un diccionario de kikongo vivo y colaborativo.",
+"sideTitle": "¿Por qué conectarse?",
+"meta": {
+  "title": "Inicio de sesión · Lexikongo",
+  "description": "Inicia sesión en tu espacio Lexikongo para proponer nuevas palabras, verbos o expresiones en kikongo, gestionar tus contribuciones y seguir la evolución del diccionario colaborativo."
+},
+"metaSecurity": "Tu dirección de correo electrónico se utiliza únicamente para gestionar tu cuenta y activar tu perfil de Lexikongo."
+
       },
        "register": {
       "meta": {
@@ -388,7 +430,258 @@
       "success": "Tu cuenta se ha eliminado correctamente.",
       "error": "Se ha producido un error al eliminar tu cuenta. Inténtalo de nuevo."
     }
+},
+"details": {
+  "common": {
+    "loading": "Cargando la ficha…",
+    "backToList": "Volver a la lista de expresiones",
+    "author": "Autor",
+    "unknown": "Desconocido",
+    "createdAt": "Fecha de creación",
+    "kikongoData": "Datos en kikongo",
+    "phonetic": "Fonética",
+    "translations": "Traducciones",
+    "fr": "Francés",
+    "en": "Inglés",
+    "translationHint": "Las traducciones pueden proponer varios matices de significado, separados por comas.",
+    "backExpressions": "Ver la lista de palabras y verbos",
+    "searchWords": "Buscar palabras",
+    "searchVerbs": "Buscar verbos"
+  },
+  "word": {
+    "label": "Palabra",
+    "subtitle": "Ficha detallada de una palabra en kikongo con su fonética, su clase nominal y sus traducciones.",
+    "singular": "Singular",
+    "plural": "Plural",
+    "nominalClass": "Clase nominal",
+    "root": "Raíz",
+    "numberVariability": {
+      "label": "Variabilidad del número",
+      "singular_only": "Solo singular",
+      "plural_only": "Solo plural",
+      "invariable": "Invariable",
+      "variable": "Variable"
+    },
+    "editCta": "Editar esta palabra"
+  },
+  "verb": {
+    "label": "Verbo",
+    "subtitle": "Ficha detallada de un verbo en kikongo con su fonética, su raíz y sus traducciones.",
+    "infinitive": "Infinitivo",
+    "root": "Raíz",
+    "suffix": "Sufijo",
+    "editCta": "Editar este verbo"
+  }
+},
+ "contributor": {
+    "addWord": {
+      "eyebrow": "Espacio de colaboradores · Palabra",
+      "title": "Proponer una nueva palabra",
+      "subtitle": "Añade una palabra en kikongo con su clase nominal y sus traducciones al francés y/o al inglés.",
+      "helpRequired": "Los campos marcados con * son obligatorios.",
+      "sections": {
+        "word": "Palabra en kikongo",
+        "translations": "Traducciones",
+        "translationsHint": "Añade al menos una traducción en francés o en inglés."
+      },
+      "fields": {
+        "singular": {
+          "label": "Singular"
+        },
+        "plural": {
+          "label": "Plural",
+          "hint": "Déjalo vacío si la palabra no tiene una forma plural específica."
+        },
+        "phonetic": {
+          "label": "Fonética",
+          "placeholder": "/…/",
+          "hint": "Puedes indicar la pronunciación aproximada (AFI o notación sencilla)."
+        },
+        "classId": {
+          "label": "Clase nominal",
+          "placeholderSelect": "— Seleccionar una clase —",
+          "placeholderInput": "ID de la clase nominal",
+          "hint": "Elige o introduce la clase nominal asociada a esta palabra."
+        },
+        "meaningFr": {
+          "label": "Francés"
+        },
+        "meaningEn": {
+          "label": "Inglés"
+        }
+      },
+      "actions": {
+        "submit": "Enviar la propuesta",
+        "submitting": "Enviando…",
+        "cancel": "Cancelar y volver al espacio de colaboradores"
+      },
+      "errors": {
+        "singularRequired": "El singular es obligatorio.",
+        "classIdRequired": "La clase nominal es obligatoria.",
+        "classIdInvalid": "La clase nominal debe ser un identificador válido.",
+        "translationsRequired": "Añade al menos una traducción en francés o en inglés.",
+        "mustBeLoggedIn": "Debes iniciar sesión para proponer una palabra."
+      },
+      "messages": {
+        "success": "Tu propuesta se ha guardado. ¡Gracias por tu contribución!",
+        "errorGeneric": "Se ha producido un error al enviar la propuesta."
+      }
+    },
+      "addVerb": {
+    "eyebrow": "Espacio de colaboradores · Verbo",
+    "title": "Proponer un nuevo verbo",
+    "subtitle": "Añade un verbo en kikongo con su raíz, sus posibles formas derivadas y sus traducciones al francés y/o al inglés.",
+    "helpRequired": "Los campos marcados con * son obligatorios.",
+    "sections": {
+      "verb": "Verbo en kikongo",
+      "translations": "Traducciones",
+      "translationsHint": "Añade al menos una traducción en francés o en inglés."
+    },
+    "fields": {
+      "name": {
+        "label": "Verbo (forma base)"
+      },
+      "root": {
+        "label": "Raíz",
+        "hint": "Por ejemplo, la base del verbo sin prefijos ni sufijos."
+      },
+      "suffix": {
+        "label": "Sufijo",
+        "hint": "Déjalo vacío si el verbo no tiene un sufijo específico."
+      },
+      "phonetic": {
+        "label": "Fonética",
+        "placeholder": "/…/",
+        "hint": "Puedes indicar la pronunciación aproximada (AFI o notación sencilla)."
+      },
+      "flags": {
+        "label": "Tipo de verbo",
+        "active": "Verbo base / activo",
+        "derived": "Verbo derivado",
+        "hint": "Marca «verbo derivado» si este verbo se forma a partir de otro."
+      },
+      "derivedFrom": {
+        "label": "Verbo de origen (si es derivado)",
+        "placeholder": "ID o referencia del verbo de origen",
+        "hint": "Opcional: indica el verbo del que se deriva este (ID o código interno, si lo conoces)."
+      },
+      "derivedVerbType": {
+        "label": "Tipo de derivación",
+        "placeholder": "ID o tipo de verbo derivado",
+        "hint": "Opcional: indica el tipo de derivación (causativo, recíproco, etc.) si lo conoces."
+      },
+      "meaningFr": {
+        "label": "Francés"
+      },
+      "meaningEn": {
+        "label": "Inglés"
+      }
+    },
+    "actions": {
+      "submit": "Enviar la propuesta",
+      "submitting": "Enviando…",
+      "cancel": "Cancelar y volver al espacio de colaboradores"
+    },
+    "errors": {
+      "nameRequired": "El verbo es obligatorio.",
+      "rootRequired": "La raíz del verbo es obligatoria.",
+      "translationsRequired": "Añade al menos una traducción en francés o en inglés.",
+      "mustBeLoggedIn": "Debes iniciar sesión para proponer un verbo."
+    },
+    "messages": {
+      "success": "Tu propuesta se ha guardado. ¡Gracias por tu contribución!",
+      "errorGeneric": "Se ha producido un error al enviar el verbo."
+    }
+  },
+   "submissions": {
+    "hero": {
+      "eyebrow": "Espacio de colaboradores · Contribuciones",
+      "title": "Tus contribuciones",
+      "subtitle": "Consulta todas las palabras y verbos que has propuesto en Lexikongo.",
+      "meta": "Las contribuciones pendientes pueden modificarse o eliminarse mientras no hayan sido validadas.",
+      "ctaAddWord": "Proponer una palabra",
+      "ctaAddVerb": "Proponer un verbo"
+    },
+    "seo": {
+      "title": "Tus contribuciones – Lexikongo",
+      "description": "Consulta y gestiona tus contribuciones (palabras y verbos) en el diccionario Lexikongo."
+    },
+    "sections": {
+      "words": {
+        "title": "Palabras propuestas",
+        "intro": "Lista de palabras que has enviado al diccionario.",
+        "loading": "Cargando tus palabras propuestas…",
+        "empty": "Todavía no has propuesto ninguna palabra.",
+        "error": "No se han podido recuperar tus palabras propuestas.",
+        "caption": "Lista de palabras propuestas por el colaborador."
+      },
+      "verbs": {
+        "title": "Verbos propuestos",
+        "intro": "Lista de verbos que has enviado al diccionario.",
+        "loading": "Cargando tus verbos propuestos…",
+        "empty": "Todavía no has propuesto ningún verbo.",
+        "error": "No se han podido recuperar tus verbos propuestos.",
+        "caption": "Lista de verbos propuestos por el colaborador."
+      }
+    },
+    "table": {
+      "headers": {
+        "word": "Palabra",
+        "class": "Clase",
+        "translations": "Traducciones",
+        "status": "Estado",
+        "createdAt": "Creado el",
+        "updatedAt": "Modificado el",
+        "actions": "Acciones",
+        "verb": "Verbo",
+        "root": "Raíz"
+      },
+      "labels": {
+        "fr": "FR",
+        "en": "EN"
+      },
+      "noTranslations": "Sin traducción indicada",
+      "wordPlural": "Plural: {plural}",
+      "verbSuffix": "Sufijo: {suffix}",
+      "actions": {
+        "edit": "Editar",
+        "delete": "Eliminar"
+      }
+    },
+    "status": {
+      "pending": "Pendiente de validación"
+    },
+    "messages": {
+      "deleteConfirmWord": "¿Seguro que quieres eliminar la palabra «{word}»? Esta acción no se puede deshacer.",
+      "deleteConfirmVerb": "¿Seguro que quieres eliminar el verbo «{verb}»? Esta acción no se puede deshacer.",
+      "deleteSuccessWord": "La contribución (palabra) se ha eliminado correctamente.",
+      "deleteSuccessVerb": "La contribución (verbo) se ha eliminado correctamente.",
+      "deleteError": "Se ha producido un error al eliminar la contribución."
+    }
+  }
+  },
+  "admin": {
+  "word": {
+    "add": {
+      "meta": "Admin · Añadir palabra",
+      "pageTitle": "Admin · Añadir una palabra",
+      "submit": "Crear esta palabra",
+      "saving": "Guardando…",
+      "reset": "Reiniciar",
+      "success": "Palabra creada correctamente.",
+      "errorRequiredSingular": "El singular es obligatorio.",
+      "errorSave": "Error al crear la palabra.",
+      "seoTitle": "Admin · Añadir palabra – Lexikongo",
+      "seoDescription": "Panel de administración · añadir una palabra en kikongo (forma, clase nominal, fonética, traducciones)."
+    },
+    "placeholders": {
+      "translationFr": "Significados en FR separados por comas",
+      "translationEn": "Significados en EN separados por comas"
+    }
+  }
 }
+
+
 
 
 

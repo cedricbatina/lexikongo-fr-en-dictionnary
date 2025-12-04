@@ -1,13 +1,16 @@
 <template>
-<section class="verb-list" aria-labelledby="verb-list-heading">
-  <!-- Header -->
- 
- <LkPageHero
+  <section
+    class="verb-list"
+    aria-labelledby="page-verbs-title"
+  >
+    <!-- Hero réutilisable -->
+    <LkPageHero
       id="page-verbs-title"
       :eyebrow="t('verbs.page.eyebrow')"
       :title="t('verbs.page.title')"
       :description="t('verbs.page.subtitle')"
       :side-aria-label="t('pageHero.sideAria')"
+      :show-last-expressions="true"
     >
       <!-- Meta sous le titre / description -->
       <template #meta>
@@ -24,64 +27,66 @@
         </div>
       </template>
     </LkPageHero>
-<section class="lastexpr m-5">
-      <div class="expr-section__meta text-center m-auto">
-          <LastExpressionsCount />
-        </div>
-    </section>
+
+    <!-- Header : juste le chip compteur, comme WordList / ExpressionList -->
     <header class="verb-list__header">
-  <!--  <div>
-      <h2 id="verb-list-heading" class="verb-list__title">
-        {{ t('verbs.list.title') }} {{ t('verbs.cards.titleSuffix') }}
-      </h2>
-      <p class="verb-list__subtitle">
-        {{ t('verbs.list.subtitle.prefix') }}
-        <span class="verb-list__ku-inline">ku</span>
-        {{ t('verbs.list.subtitle.suffix') }}
-      </p>
-    </div>
--->
-    <div class="verb-list__header-actions">
-      <p v-if="itemsLength" class="verb-list__count">
-        {{ t('verbs.list.count', itemsLength) }}
-      </p>
+      <div class="verb-list__header-main">
+        <!-- vide pour l’instant (comme expr/word-list),
+             on pourra mettre un petit texte plus tard si tu veux -->
+      </div>
 
-      <NuxtLink
-        to="/verbs"
-        class="verb-list__view-link"
-        :aria-label="t('verbs.cards.viewTableAria')"
+      <div
+        v-if="itemsLength"
+        class="verb-list__meta"
       >
-        <i class="fas fa-table" aria-hidden="true"></i>
-        <span>{{ t('verbs.cards.viewTable') }}</span>
-      </NuxtLink>
-    </div>
-  </header>
-  <!-- Barre de recherche -->
-  <div class="verb-list__toolbar">
-    <div class="verb-list__search">
-      <label class="verb-list__search-label" for="verb-search">
-        {{ t('verbs.list.searchLabel') }}
-      </label>
-      <input
-        id="verb-search"
-        v-model="searchLocal"
-        type="search"
-        class="verb-list__search-input"
-        :placeholder="t('verbs.list.searchPlaceholder')"
-      />
-    </div>
-  </div>
+        <p
+          class="verb-count-chip"
+          aria-live="polite"
+        >
+          <span
+            class="verb-count-chip__dot"
+            aria-hidden="true"
+          />
+          <span class="verb-count-chip__text">
+            {{ t('verbs.list.count', itemsLength) }}
+          </span>
+        </p>
+      </div>
+    </header>
 
-   <div
-      v-if="totalPages > 1"
-      class="verb-list__pagination"
-    >
-      <Pagination
-        :currentPage="store.page"
-        :totalPages="totalPages"
-        @pageChange="store.setPage"
-      />
+    <!-- Toolbar : recherche + légende + switch vue tableau -->
+    <div class="verb-list__toolbar">
+      <div class="verb-list__search">
+        <label class="verb-list__search-label" for="verb-search">
+          {{ t('verbs.list.searchLabel') }}
+        </label>
+        <input
+          id="verb-search"
+          v-model="searchLocal"
+          type="search"
+          class="verb-list__search-input"
+          :placeholder="t('verbs.list.searchPlaceholder')"
+          @input="onSearchInput"
+        />
+      </div>
+
+      <div class="verb-view-mode">
+        <!-- Légende : vue actuelle = cartes -->
+        <p class="verb-view-caption">
+          {{ t('verbs.list.viewCards') }}
+        </p>
+
+        <NuxtLink
+          to="/verbs"
+          class="verb-list__view-link"
+          :aria-label="t('verbs.cards.viewTableAria')"
+        >
+          <i class="fas fa-table" aria-hidden="true"></i>
+          <span>{{ t('verbs.cards.viewTable') }}</span>
+        </NuxtLink>
+      </div>
     </div>
+
     <!-- État : chargement -->
     <div
       v-if="store.isLoading"
@@ -110,7 +115,7 @@
       {{ t('verbs.list.empty') }}
     </p>
 
-    <!-- Résultats -->
+    <!-- Résultats en cartes -->
     <ul v-else class="verb-list__grid">
       <li
         v-for="item in paginatedVerbs"
@@ -138,21 +143,28 @@
           <dl class="verb-card__body">
             <div class="verb-card__row">
               <dt>{{ t('verbs.list.column.fr') }}</dt>
-              <dd><span class="translation-fr">{{ truncateText(item.translation_fr, 80) }}</span></dd>
+              <dd>
+                <span class="translation-fr">
+                  {{ truncateText(item.translation_fr, 80) }}
+                </span>
+              </dd>
             </div>
             <div class="verb-card__row">
               <dt>{{ t('verbs.list.column.en') }}</dt>
-              <dd><span class="translation-en">{{ truncateText(item.translation_en, 80) }}</span></dd>
+              <dd>
+                <span class="translation-en">
+                  {{ truncateText(item.translation_en, 80) }}
+                </span>
+              </dd>
             </div>
           </dl>
 
-        <footer class="verb-card__footer">
-  <span class="verb-card__cta">
-    {{ t('verbs.cards.viewDetails') }}
-    <i class="fas fa-arrow-right" aria-hidden="true"></i>
-  </span>
-</footer>
-
+          <footer class="verb-card__footer">
+            <span class="verb-card__cta">
+              {{ t('verbs.cards.viewDetails') }}
+              <i class="fas fa-arrow-right" aria-hidden="true"></i>
+            </span>
+          </footer>
         </button>
       </li>
     </ul>
@@ -177,6 +189,8 @@ import { useRouter } from 'vue-router';
 import { useI18n } from 'vue-i18n';
 import Pagination from '@/components/Pagination.vue';
 import { useVerbStore } from '~/stores/verbStore';
+import LkPageHero from '@/components/LkPageHero.vue';
+import LkActionsBar from '@/components/LkActionsBar.vue';
 
 const router = useRouter();
 const store = useVerbStore();
@@ -186,7 +200,7 @@ const searchLocal = ref('');
 
 // petit helper pour le compteur
 const itemsLength = computed(() =>
-  Array.isArray(store.items) ? store.items.length : 0
+  Array.isArray(store.items) ? store.items.length : 0,
 );
 
 // liste filtrée selon la recherche
@@ -212,9 +226,9 @@ const filteredVerbs = computed(() => {
 });
 
 // reset pagination quand on tape dans la recherche
-watch(searchLocal, () => {
+const onSearchInput = () => {
   store.page = 1;
-});
+};
 
 // pagination appliquée à la liste filtrée
 const paginatedVerbs = computed(() => {
@@ -256,47 +270,122 @@ onMounted(() => {
   gap: 1.25rem;
 }
 
+/* Hero side + meta (même style que words) */
+.page-verbs__side {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.lk-hero-meta {
+  margin: 0.4rem 0 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.9rem;
+  color: var(--text-muted, #6b7280);
+}
+
+.lk-hero-meta i {
+  color: var(--primary, #0d6efd);
+}
+
+/* Header au-dessus de la toolbar, cohérent avec WordList / ExpressionList */
 .verb-list__header {
   display: flex;
-  flex-wrap: wrap;
-  gap: 0.6rem;
+  justify-content: space-between;
   align-items: flex-end;
+  gap: 0.75rem;
+  margin-top: 0.8rem;
 }
 
-/* Header actions : compteur au-dessus du bouton, le tout aligné à droite */
-.verb-list__header-actions {
-  margin-left: auto;
+.verb-list__header-main {
+  flex: 1 1 auto;
+}
+
+.verb-list__meta {
+  flex: 0 0 auto;
   display: flex;
-  flex-direction: column;   /* ⬅️ compteur AU-DESSUS du bouton */
-  align-items: flex-end;    /* ⬅️ aligné à droite */
-  gap: 0.35rem;
+  justify-content: flex-end;
 }
 
-.verb-list__count {
-  font-size: 0.9rem;
+/* Chip compteur – même style que Word/Expression */
+.verb-count-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.18rem 0.7rem;
+  border-radius: 999px;
+  border: 1px solid rgba(148, 163, 184, 0.7);
+  background: linear-gradient(
+    135deg,
+    rgba(15, 23, 42, 0.03),
+    rgba(37, 99, 235, 0.06)
+  );
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--text-muted, #4b5563);
+}
+
+.verb-count-chip__dot {
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 999px;
+  background: radial-gradient(circle at 30% 30%, #22c55e, #16a34a);
+  box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.18);
+}
+
+.verb-count-chip__text {
+  white-space: nowrap;
+}
+
+/* Toolbar : recherche + vue mode (comme WordListCard / ExpressionCards) */
+.verb-list__toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  margin-top: 0.4rem;
+}
+
+.verb-list__search {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.verb-list__search-label {
+  font-size: 0.78rem;
   color: var(--text-muted);
 }
 
-
-.verb-list__title {
-  font-size: 1.4rem;
-  font-weight: 700;
-  color: var(--text-default); /* ✅ thème */
+.verb-list__search-input {
+  width: 400px;
+  max-width: 100%;
+  padding: 0.4rem 0.7rem;
+  border-radius: 999px;
+  border: 1px solid var(--border-subtle);
+  font-size: 0.9rem;
+  color: var(--text-default);
+  background: var(--surface-elevated);
 }
 
-.verb-list__subtitle {
-  font-size: 0.95rem;
-  color: var(--text-muted);    /* ✅ thème */
-  max-width: 40rem;
+/* Bloc vue actuelle + bouton switch */
+.verb-view-mode {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.15rem;
 }
 
-.verb-list__ku-inline {
-  font-weight: 600;
-  color: var(--primary);       /* ✅ thème */
+.verb-view-caption {
+  margin: 0;
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-muted, #6b7280);
 }
-
-
-
 
 /* Bouton vers vue tableau */
 .verb-list__view-link {
@@ -387,7 +476,7 @@ onMounted(() => {
   text-align: left;
   border-radius: 1rem;
   border: 1px solid var(--border-subtle);
-  background: var(--surface-elevated); /* ✅ thème */
+  background: var(--surface-elevated);
   padding: 0.9rem 1rem;
   display: flex;
   flex-direction: column;
@@ -491,37 +580,6 @@ onMounted(() => {
   font-size: 0.8rem;
 }
 
-/* Barre de recherche */
-.verb-list__toolbar {
-  display: flex;
-  justify-content: flex-start;  /* ✅ comme WordListCard */
-  align-items: center;
-  gap: 0.75rem;
-  flex-wrap: wrap;
-}
-
-.verb-list__search {
-  display: flex;
-  flex-direction: column;
-  gap: 0.2rem;
-}
-
-.verb-list__search-label {
-  font-size: 0.78rem;
-  color: var(--text-muted);
-}
-
-.verb-list__search-input {
-  width: 400px;
-  max-width: 100%;
-  padding: 0.4rem 0.7rem;
-  border-radius: 999px;
-  border: 1px solid var(--border-subtle);
-  font-size: 0.9rem;
-  color: var(--text-default);
-  background: var(--surface-elevated);
-}
-
 /* Pagination */
 .verb-list__pagination {
   margin-top: 0.75rem;
@@ -529,42 +587,33 @@ onMounted(() => {
   justify-content: center;
 }
 
-/* Responsive */
+/* Responsive pour la toolbar */
 @media (max-width: 640px) {
+  .verb-list__toolbar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
   .verb-list__search-input {
     width: 100%;
     min-width: 0;
   }
+
+  .verb-view-mode {
+    align-items: flex-start;
+  }
+
+  .verb-list__view-link {
+    justify-content: center;
+  }
 }
 
-
-
- .translation-fr {
+/* Couleurs de traductions (cohérent avec WordList/VerbList) */
+.translation-fr {
   color: #047857;
 }
 
- .translation-en {
+.translation-en {
   color: #b45309;
 }
-/* Colonne de droite dans le hero des verbes */
-.page-verbs__side {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-}
-
-/* Meta sous le hero (même style que words) */
-.lk-hero-meta {
-  margin: 0.4rem 0 0;
-  display: inline-flex;
-  align-items: center;
-  gap: 0.4rem;
-  font-size: 0.9rem;
-  color: var(--text-muted, #6b7280);
-}
-
-.lk-hero-meta i {
-  color: var(--primary, #0d6efd);
-}
-
 </style>

@@ -109,7 +109,6 @@
             }}
           </p>
         </header>
-
         <div class="contrib-actions-grid">
           <article class="contrib-action-card">
             <h3 class="contrib-action-card__title">
@@ -210,6 +209,40 @@
             </NuxtLink>
           </article>
 
+          <!-- 🆕 Nouvelle carte : gérer les contributions -->
+          <article class="contrib-action-card">
+            <h3 class="contrib-action-card__title">
+              {{
+                tt(
+                  'contrib.dashboard.actions.submissions.title',
+                  'Gérer vos contributions'
+                )
+              }}
+            </h3>
+            <p class="contrib-action-card__text">
+              {{
+                tt(
+                  'contrib.dashboard.actions.submissions.text',
+                  'Retrouvez tous les mots et verbes que vous avez proposés, pour les modifier ou les compléter.'
+                )
+              }}
+            </p>
+            <NuxtLink
+              to="/contributor/submissions"
+              class="contrib-action-card__link"
+            >
+              <span>
+                {{
+                  tt(
+                    'contrib.dashboard.actions.submissions.link',
+                    'Voir vos contributions'
+                  )
+                }}
+              </span>
+              <i class="fas fa-arrow-right" aria-hidden="true" />
+            </NuxtLink>
+          </article>
+
           <article class="contrib-action-card">
             <h3 class="contrib-action-card__title">
               {{
@@ -243,6 +276,7 @@
             </NuxtLink>
           </article>
         </div>
+
       </section>
 
       <!-- Colonne droite : résumé compte -->

@@ -16,8 +16,8 @@
         :id="headingId"
         class="lk-hero__title"
       >
-      <LogoSlogan/>
-    <!--    {{ title }}-->
+        <LogoSlogan />
+        <!-- {{ title }} -->
       </h1>
 
       <p
@@ -28,12 +28,23 @@
         {{ description }}
       </p>
 
-      <div v-if="$slots.actions" class="lk-hero__actions">
+      <div
+        v-if="$slots.actions"
+        class="lk-hero__actions"
+      >
         <slot name="actions" />
       </div>
 
-      <div v-if="$slots.meta" class="lk-hero__meta">
+      <!-- 🔹 Meta + badge dernières expressions -->
+      <div
+        v-if="$slots.meta || showLastExpressions"
+        class="lk-hero__meta"
+      >
         <slot name="meta" />
+        <LastExpressionsCount
+          v-if="showLastExpressions"
+          class="lk-hero__lastexpr"
+        />
       </div>
     </div>
 
@@ -49,6 +60,8 @@
 
 <script setup>
 import { computed } from 'vue';
+import LastExpressionsCount from './LastExpressionsCount.vue';
+import LogoSlogan from '@/components/LogoSlogan.vue';
 
 const props = defineProps({
   id: {
@@ -71,6 +84,11 @@ const props = defineProps({
   sideAriaLabel: {
     type: String,
     default: '',
+  },
+  // 🔹 active le badge "dernières expressions" sous le meta
+  showLastExpressions: {
+    type: Boolean,
+    default: false,
   },
 });
 
@@ -134,6 +152,16 @@ const descriptionId = computed(() =>
   margin-top: 0.5rem;
   font-size: 0.9rem;
   color: var(--text-muted, #6b7280);
+
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.lk-hero__lastexpr {
+  /* légère séparation visuelle du texte meta */
+  margin-left: 0;
 }
 
 /* Colonne de droite */

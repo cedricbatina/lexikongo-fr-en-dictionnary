@@ -6,6 +6,7 @@
       :eyebrow="t('home.hero.badge')"
       title="Lexikongo"
       :description="t('home.hero.subtitle')"
+        :show-last-expressions="true"
     >
       <!-- Boutons principaux : mots / verbes -->
       <template #actions>
@@ -40,9 +41,10 @@
         </NuxtLink>.
       </template>
 
-      <!-- Colonne de droite : mêmes cartes qu’avant -->
+      <!-- Colonne de droite -->
       <template #side>
         <aside class="home-side" aria-label="Accès rapide">
+          <!-- Carte “Contribuer” (toujours visible) -->
           <section
             class="home-card"
             aria-labelledby="home-contrib-title"
@@ -62,7 +64,9 @@
             </NuxtLink>
           </section>
 
+          <!-- 🟢 Si NON connecté → carte “Se connecter” -->
           <section
+            v-if="!isLoggedIn"
             class="home-card home-card--muted"
             aria-labelledby="home-login-title"
           >
@@ -80,15 +84,34 @@
               <i class="fas fa-sign-in-alt" aria-hidden="true"></i>
             </NuxtLink>
           </section>
+
+          <!-- 🟣 Si connecté → carte “Espace membre / Admin / Contrib” -->
+          <section
+            v-else
+            class="home-card home-card--muted"
+            aria-labelledby="home-account-title"
+          >
+            <h2 id="home-account-title" class="home-card__title">
+              {{ accountTitle }}
+            </h2>
+            <p class="home-card__text">
+              {{ accountBody }}
+            </p>
+            <NuxtLink
+              :to="accountLink"
+              class="home-card__link"
+            >
+              <span>{{ accountCtaLabel }}</span>
+              <i class="fas fa-arrow-right" aria-hidden="true"></i>
+            </NuxtLink>
+          </section>
         </aside>
       </template>
     </LkPageHero>
-    <section class="lastexpr m-5">
-      <div class="expr-section__meta text-center m-auto">
-          <LastExpressionsCount />
-        </div>
-    </section>
-    <!-- Optionnel : barre d’actions globale -->
+
+
+
+    <!-- Barre d’actions globale -->
     <section
       class="home-actions"
       aria-label="Actions rapides et raccourcis du dictionnaire"
@@ -99,14 +122,112 @@
 </template>
 
 <script setup>
+import { computed } from 'vue';
 import { useSeoMeta } from '#imports';
 import { useI18n } from 'vue-i18n';
+import { useAuthStore } from '~/stores/authStore';
 import LkPageHero from '@/components/LkPageHero.vue';
 import LkActionsBar from '@/components/LkActionsBar.vue';
+import LastExpressionsCount from '@/components/LastExpressionsCount.vue';
 
 const { t } = useI18n();
+const authStore = useAuthStore();
 
-// SEO réactif à la langue (on garde exactement l’idée d’origine)
+// Helper i18n avec fallback (si jamais une clé manque)
+const tt = (key, fallback) => {
+  const res = t(key);
+  return res === key ? fallback : res;
+};
+
+// 🔐 État auth
+const isLoggedIn = computed(() => authStore.isLoggedIn);
+const roles = computed(() => authStore.roles || []);
+const user = computed(() => authStore.user || null);
+
+// Même helper que pour le profil / login
+function usernameToSlug(username = '') {
+  if (typeof username !== 'string' || !username) return 'profil';
+  const safe =
+    username
+      .normalize('NFD')
+      .replace(/[\u0300-\u036f]/g, '')
+      .toLowerCase()
+      .trim()
+      .replace(/[^a-z0-9]+/g, '-')
+      .replace(/^-+|-+$/g, '');
+  return safe || 'profil';
+}
+
+// Lien principal “espace membre”
+const accountLink = computed(() => {
+  const r = roles.value;
+
+  if (Array.isArray(r) && r.includes('admin')) {
+    return '/admin';
+  }
+  if (Array.isArray(r) && r.includes('contributor')) {
+    return '/contributor';
+  }
+
+  // user “classique” → profil
+  const username = user.value?.username || '';
+  const slug = usernameToSlug(username);
+  return `/profile/${slug}`;
+});
+
+// Texte de la carte quand on est connecté
+const accountTitle = computed(() => {
+  const r = roles.value;
+  if (Array.isArray(r) && r.includes('admin')) {
+    return tt('home.cards.account.adminTitle', 'Espace administrateur');
+  }
+  if (Array.isArray(r) && r.includes('contributor')) {
+    return tt('home.cards.account.contribTitle', 'Espace contributeur');
+  }
+  return tt('home.cards.account.userTitle', 'Espace membre');
+});
+
+const accountBody = computed(() => {
+  const r = roles.value;
+  if (Array.isArray(r) && r.includes('admin')) {
+    return tt(
+      'home.cards.account.adminBody',
+      'Accédez à votre tableau de bord administrateur : mots, verbes, utilisateurs et soumissions.'
+    );
+  }
+  if (Array.isArray(r) && r.includes('contributor')) {
+    return tt(
+      'home.cards.account.contribBody',
+      'Retrouvez vos propositions, votre activité et vos outils de contribution.'
+    );
+  }
+  return tt(
+    'home.cards.account.userBody',
+    'Retrouvez votre profil, vos favoris et votre activité sur Lexikongo.'
+  );
+});
+
+const accountCtaLabel = computed(() => {
+  const r = roles.value;
+  if (Array.isArray(r) && r.includes('admin')) {
+    return tt(
+      'home.cards.account.adminCta',
+      "Accéder à l’espace admin"
+    );
+  }
+  if (Array.isArray(r) && r.includes('contributor')) {
+    return tt(
+      'home.cards.account.contribCta',
+      "Accéder à l’espace contributeur"
+    );
+  }
+  return tt(
+    'home.cards.account.userCta',
+    'Accéder à mon espace'
+  );
+});
+
+// SEO réactif à la langue (comme avant)
 useSeoMeta({
   title: () => t('home.seo.title'),
   description: () => t('home.seo.description'),
@@ -118,6 +239,7 @@ useSeoMeta({
   twitterCard: 'summary_large_image',
 });
 </script>
+
 
 <style scoped>
 .home-page {
@@ -257,4 +379,35 @@ useSeoMeta({
   color: #333;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
+.lk-nav__brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  text-decoration: none;
+}
+
+.lk-nav__brand-mark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 0.75rem;
+  font-weight: 700;
+  font-size: 0.9rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  background: var(--primary);
+  color: #ffffff;
+  box-shadow: 0 4px 10px rgba(15, 23, 42, 0.18);
+}
+
+.lk-nav__brand-text {
+  font-weight: 700;
+  font-size: 1rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--color-text);
+}
+
 </style>

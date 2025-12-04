@@ -9,7 +9,11 @@
       :eyebrow="t('expressions.page.eyebrow')"
       :title="t('expressions.page.title')"
       :description="t('expressions.page.subtitle')"
+        :show-last-expressions="true"
+
+
       :side-aria-label="t('pageHero.sideAria')"
+
     >
       <!-- Boutons d’action principaux -->
       <template #actions>
@@ -61,11 +65,7 @@
           </p>
         </div>-->
 
-        <section class="lastexpr m-5">
-      <div class="expr-section__meta text-center m-auto">
-          <LastExpressionsCount />
-        </div>
-    </section>
+    
       </header>
 
       <ExpressionList />
