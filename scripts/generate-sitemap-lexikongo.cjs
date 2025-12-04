@@ -14,10 +14,24 @@ const staticRoutes = [
   "/wordlist-card",
   "/verbs",
   "/verblist-card",
-  "/search", // ✅ route globale de recherche
-  "/contributor", // ✅ comme dans ta navbar
-  "/documentation", // ✅ racine de la doc, pas les sous-pages
+  "/search/verb/[slug]",
+  "/search/word/[slug]",
+  "/contribution",
+
+  // Documentation : toutes les pages publiques
+  "/documentation",
+  "/documentation/for-devs",
+  "/documentation/for-contributors",
+  "/documentation/for-admins",
+  "/documentation/for-users",
+
+  // Autres pages publiques
+  "/privacy",
+  "/faqs",
+  "/contribute",
+  "/contact",
 ];
+
 
 // Connexion BDD (mêmes env vars que ton app Nuxt)
 async function getDbConnection() {

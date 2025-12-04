@@ -5,16 +5,17 @@
   "engines": {
     "node": ">=18.20.0 <23"
   },
- "scripts": {
+"scripts": {
   "dev": "nuxt dev",
-  "build": "nuxt build",
   "start": "nuxt start",
   "preview": "nuxt preview",
   "postinstall": "nuxt prepare",
 
   "generate:sitemap": "node scripts/generate-sitemap-lexikongo.cjs",
-  "build:with-sitemap": "npm run generate:sitemap && nuxt build"
+
+  "build": "npm run generate:sitemap && nuxt build"
 }
+
 ,
   "dependencies": {
     "@fortawesome/fontawesome-free": "^7.1.0",

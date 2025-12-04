@@ -1,293 +1,705 @@
 <template>
-  <div class="documentation">
-    <h1>Documentation pour les Développeurs</h1>
-    <p>
-      Ce guide exhaustif fournit toutes les informations techniques pour
-      contribuer au développement de Lexikongo, notamment sur la structure de la
-      base de données, les API, les rôles utilisateurs, et les détails du
-      déploiement.
-    </p>
+  <main
+    class="lk-page lk-page--doc-devs"
+    aria-labelledby="doc-devs-page-title"
+  >
+    <!-- Hero -->
+    <LkPageHero
+      id="doc-devs-page-title"
+      :eyebrow="t('docDevs.page.eyebrow')"
+      :title="t('docDevs.page.title')"
+      :description="t('docDevs.page.subtitle')"
+      :primary-cta="primaryCta"
+      :secondary-cta="secondaryCta"
+      :side-aria-label="t('pageHero.sideAria')"
+      :show-last-expressions="false"
+    >
+      <!-- Meta sous les boutons -->
+      <template #meta>
+        <p class="lk-hero-meta">
+          <i class="fas fa-code-branch" aria-hidden="true"></i>
+          <span>{{ t('docDevs.page.metaHighlight') }}</span>
+        </p>
+      </template>
 
-    <!-- Objectif et Contexte du Projet -->
-    <h3>Objectif et Contexte du Projet</h3>
-    <p>
-      Lexikongo est une application Nuxt 3 conçue pour promouvoir et préserver
-      la langue Kikongo, avec des fonctionnalités collaboratives permettant aux
-      utilisateurs de soumettre, valider et consulter des mots et verbes en
-      Kikongo, avec des traductions en français et anglais.
-    </p>
-    <p>
-      L'application est construite pour être évolutive, permettant l'ajout de
-      nouvelles langues et de rôles utilisateurs, ainsi qu'une gestion fine des
-      permissions pour assurer la qualité du contenu. Cette architecture
-      flexible permet également une intégration avec des systèmes externes, par
-      exemple pour la gestion des utilisateurs ou des paiements de soutien.
-    </p>
+      <!-- Colonne droite : logo + rappel techno -->
+      <template #side>
+        <aside class="lk-hero-side">
+          <LogoSlogan class="lk-hero__logo" />
 
-    <!-- Architecture de la Base de Données -->
-    <h3>Architecture de la Base de Données</h3>
-    <p>
-      La base de données MySQL de Lexikongo est structurée pour gérer les
-      utilisateurs, les rôles, les soumissions de mots et de verbes, les
-      traductions, et les slugs uniques. Voici un aperçu détaillé des tables :
-    </p>
-    <ul>
-      <li>
-        <strong>users</strong> : Gère les informations des utilisateurs avec les
-        champs <code>user_id</code>, <code>email</code>, <code>role</code>,
-        <code>password</code>. Les rôles sont reliés à la table
-        <code>roles</code>.
-      </li>
-      <li>
-        <strong>roles</strong> : Contient les rôles (admin, contributeur,
-        utilisateur) avec des permissions définies pour chaque type
-        d’utilisateur.
-      </li>
-      <li>
-        <strong>words</strong> et <strong>verbs</strong> : Tables principales
-        contenant les mots et verbes validés, incluant des champs comme
-        <code>singular</code>, <code>plural</code>, <code>root</code>,
-        <code>suffix</code>, <code>phonetic</code>, et les
-        <code>class_id</code> pour les déclinaisons nominales.
-      </li>
-      <li>
-        <strong>word_meanings</strong> et <strong>verb_meanings</strong> :
-        Gèrent les traductions de mots et de verbes dans les différentes
-        langues. Les traductions sont liées aux mots et verbes par leurs
-        <code>word_id</code> ou <code>verb_id</code>.
-      </li>
-      <li>
-        <strong>pending_words_submissions</strong> et
-        <strong>pending_verbs_submissions</strong> : Stockent les mots et verbes
-        soumis par les contributeurs en attente de validation par un
-        administrateur.
-      </li>
-      <li>
-        <strong>pending_words_translations</strong> et
-        <strong>pending_verbs_translations</strong> : Conservent les traductions
-        en attente de validation, reliées aux soumissions via leur
-        <code>submission_id</code>.
-      </li>
-      <li>
-        <strong>slugs</strong> : Gère les slugs uniques pour les mots et verbes
-        validés, essentiels pour le SEO et l'accès rapide via des URLs lisibles.
-      </li>
-      <li>
-        <strong>archived_submissions</strong> : Archive les soumissions traitées
-        pour un suivi de 90 jours, permettant aux administrateurs de consulter
-        l'historique des décisions de validation ou de rejet.
-      </li>
-      <li>
-        <strong>languages</strong> : Définit les langues disponibles pour les
-        traductions, permettant l’ajout de nouvelles langues avec des champs
-        comme <code>language_id</code>, <code>language_code</code>, et
-        <code>language_name</code>.
-      </li>
-      <li>
-        <strong>nominal_classes</strong> et
-        <strong>derived_verb_types</strong> : Gèrent les classes nominales et
-        les types de verbes pour organiser les formes linguistiques spécifiques
-        au Kikongo.
-      </li>
-    </ul>
+          <section
+            class="lk-dev-stack"
+            aria-label="Stack technique de Lexikongo"
+          >
+            <h2 class="lk-dev-stack__title">
+              <i class="fas fa-layer-group" aria-hidden="true"></i>
+              <span>Stack</span>
+            </h2>
+            <ul class="lk-dev-stack__list">
+              <li>Nuxt 4 (SSR, JavaScript)</li>
+              <li>MySQL (héritage existant, schéma conservé)</li>
+              <li>API Nitro (server/api/*)</li>
+              <li>JWT + cookies HttpOnly/Secure</li>
+            </ul>
+          </section>
+        </aside>
+      </template>
+    </LkPageHero>
 
-    <!-- Structure des Rôles et Permissions -->
-    <h3>Gestion des Rôles et Permissions</h3>
-    <p>
-      Lexikongo utilise une gestion dynamique des rôles pour définir les actions
-      autorisées pour chaque type d’utilisateur :
-    </p>
-    <ul>
-      <li>
-        <strong>Admin</strong> : Accès complet à toutes les fonctionnalités, y
-        compris la gestion des soumissions, la modification des mots et verbes,
-        et l’administration des utilisateurs. Peut valider, rejeter et archiver
-        les contributions.
-      </li>
-      <li>
-        <strong>Contributeur</strong> : Peut soumettre des mots et des verbes
-        pour validation par un administrateur. Les soumissions sont placées dans
-        les tables <code>pending_words_submissions</code> et
-        <code>pending_verbs_submissions</code>.
-      </li>
-      <li>
-        <strong>Utilisateur</strong> : Rôle en lecture seule permettant de
-        consulter les mots et verbes validés dans Lexikongo. Les utilisateurs
-        enregistrés ont accès à des détails supplémentaires, comme des exemples
-        d’utilisation et des synonymes.
-      </li>
-    </ul>
+    <!-- 1. Objectif & contexte -->
+    <section
+      class="lk-page__section lk-doc-section"
+      aria-labelledby="doc-devs-objective-title"
+    >
+      <header class="lk-doc-section__header">
+        <h2
+          id="doc-devs-objective-title"
+          class="lk-doc-section__title"
+        >
+          Objectif et contexte du projet
+        </h2>
+      </header>
 
-    <!-- API et Endpoints -->
-    <h3>API et Endpoints</h3>
-    <p>
-      Lexikongo dispose d’une API sécurisée utilisant des tokens JWT pour gérer
-      l’authentification et les autorisations. Voici les principaux endpoints,
-      leurs fonctions et des exemples de payloads :
-    </p>
+      <p class="lk-doc-paragraph">
+        Lexikongo est une application Nuxt (SSR) conçue pour promouvoir et
+        préserver la langue Kikongo, avec des fonctionnalités collaboratives
+        permettant aux utilisateurs de soumettre, valider et consulter des mots
+        et verbes en Kikongo, avec des traductions en français et anglais.
+      </p>
+      <p class="lk-doc-paragraph">
+        L’application est construite pour être évolutive : ajout de nouvelles
+        langues, gestion fine des rôles utilisateurs, historisation des
+        contributions et intégration potentielle avec des systèmes externes
+        (auth centralisée, paiements de soutien, etc.). Le schéma de base de
+        données existant est conservé et enrichi pour éviter toute régression.
+      </p>
+    </section>
 
-    <ul>
-      <li>
-        <strong>API de Soumission</strong>
-        <ul>
-          <li>
-            <code>POST /api/submit-word</code> : Permet aux contributeurs de
-            soumettre des mots avec les champs <code>singular</code>,
-            <code>plural</code>, <code>phonetic</code>,
-            <code>translations</code>. Les mots soumis sont ajoutés à la table
-            <code>pending_words_submissions</code>.
-          </li>
-          <li>
-            <code>POST /api/submit-verb</code> : Permet de soumettre des verbes
-            avec les champs <code>root</code>, <code>suffix</code>,
-            <code>phonetic</code>, et <code>translations</code>. Enregistré dans
-            <code>pending_verbs_submissions</code>.
-          </li>
-        </ul>
-      </li>
-      <li>
-        <strong>API de Validation/Rejet</strong>
-        <ul>
-          <li>
-            <code>POST /api/approve-submission</code> : Valide une soumission et
-            la déplace dans les tables <code>words</code> ou <code>verbs</code>.
-            Archive la soumission en ajoutant une entrée dans
-            <code>archived_submissions</code>.
-          </li>
-          <li>
-            <code>POST /api/reject-submission</code> : Rejette une soumission
-            avec un champ <code>reason</code> expliquant le motif. Archivé dans
-            <code>archived_submissions</code>.
-          </li>
-        </ul>
-      </li>
-      <li>
-        <strong>API de Gestion des Traductions</strong>
-        <ul>
-          <li>
-            <code>PUT /api/update-translation</code> : Permet de modifier les
-            traductions dans les tables <code>word_meanings</code> et
-            <code>verb_meanings</code>. Utilise <code>word_id</code> ou
-            <code>verb_id</code> pour identifier l’entrée et inclut les champs
-            <code>language_code</code> et <code>meaning</code>.
-          </li>
-          <li>
-            <code>DELETE /api/delete-translation</code> : Supprime une
-            traduction spécifique d'un mot ou d'un verbe.
-          </li>
-        </ul>
-      </li>
-      <li>
-        <strong>API de Slug</strong>
-        <ul>
-          <li>
-            <code>GET /api/generate-slug</code> : Génère un slug unique pour un
-            nouveau mot ou verbe. Les slugs sont ensuite enregistrés dans
-            <code>slugs</code> pour les mots approuvés ou dans les tables
-            temporaires pour les soumissions en attente.
-          </li>
-        </ul>
-      </li>
-    </ul>
+    <!-- 2. Architecture DB -->
+    <section
+      class="lk-page__section lk-doc-section"
+      aria-labelledby="doc-devs-db-title"
+    >
+      <header class="lk-doc-section__header">
+        <h2
+          id="doc-devs-db-title"
+          class="lk-doc-section__title"
+        >
+          Architecture de la base de données (MySQL)
+        </h2>
+        <p class="lk-doc-section__subtitle">
+          Vue d’ensemble des principales tables utilisées par Lexikongo.
+        </p>
+      </header>
 
-    <!-- Exemples de Flux de Données et Journalisation des Actions -->
-    <h3>Exemples de Flux de Données et Journalisation des Actions</h3>
-    <p>
-      Chaque action de validation ou de rejet de soumission est journalisée pour
-      garantir une traçabilité complète et permet aux administrateurs de suivre
-      l'historique des modifications. Voici un exemple de flux de données pour
-      la validation d'un verbe :
-    </p>
-    <pre>
-async function approveVerb(connection, verbSubmission, admin_id, submission_id) {
-  const { name, root, suffix, phonetic, user_id } = verbSubmission;
-  const slug = await generateUniqueSlug(connection, name);
+      <div class="lk-doc-2col">
+        <div class="lk-doc-2col__col">
+          <h3 class="lk-doc-subtitle">Utilisateurs & rôles</h3>
+          <ul class="lk-doc-list">
+            <li>
+              <strong>users</strong> : informations compte
+              (<code>user_id</code>, <code>username</code>,
+              <code>email</code>, <code>password</code> hashé, dates,
+              vérification e-mail…).
+            </li>
+            <li>
+              <strong>roles</strong> + éventuelle table de jointure (selon
+              version) pour associer les rôles <em>(user, contributor, admin)</em>
+              à chaque utilisateur.
+            </li>
+          </ul>
 
-  // Enregistrement du verbe approuvé
-  const [result] = await connection.execute(`
-    INSERT INTO verbs (name, root, suffix, phonetic, user_id, is_approved)
-    VALUES (?, ?, ?, ?, ?, 1)`, [name, root, suffix, phonetic, user_id]);
+          <h3 class="lk-doc-subtitle">Mots & verbes validés</h3>
+          <ul class="lk-doc-list">
+            <li>
+              <strong>words</strong> : mots validés (<code>word_id</code>,
+              <code>singular</code>, <code>plural</code>,
+              <code>class_id</code>, <code>phonetic</code>,
+              <code>derived_word</code>, liens vers mots/verbres dérivants,
+              <code>is_approved</code>, <code>user_id</code> auteur, etc.).
+            </li>
+            <li>
+              <strong>verbs</strong> : verbes validés (<code>verb_id</code>,
+              <code>name</code> (infinitif), <code>root</code>,
+              <code>suffix</code>, <code>phonetic</code>,
+              <code>active_verb</code>, <code>derived_verb</code>,
+              <code>derived_from</code>, <code>derived_verb_type_id</code>,
+              <code>is_approved</code>, <code>user_id</code>…).
+            </li>
+            <li>
+              <strong>word_meanings</strong> /
+              <strong>verb_meanings</strong> : traductions associées via
+              <code>word_id</code> ou <code>verb_id</code> avec
+              <code>language_code</code> (fr, en, …) et
+              <code>meaning</code>.
+            </li>
+          </ul>
+        </div>
 
-  const approvedVerbId = result.insertId;
-  
-  // Création de slug et transfert de traductions
-  await connection.execute(`INSERT INTO slugs (slug, verb_id) VALUES (?, ?)`, [slug, approvedVerbId]);
-  await connection.execute(`
-    INSERT INTO verb_meanings (verb_id, language_code, meaning)
-    SELECT ?, language_code, meaning FROM pending_verbs_translations WHERE submission_id = ?`,
-    [approvedVerbId, submission_id]);
+        <div class="lk-doc-2col__col">
+          <h3 class="lk-doc-subtitle">Soumissions en attente</h3>
+          <ul class="lk-doc-list">
+            <li>
+              <strong>pending_words_submissions</strong> /
+              <strong>pending_verbs_submissions</strong> : données envoyées par
+              les contributeurs avant validation (statut, phonétique, classe,
+              radical, suffixe…).
+            </li>
+            <li>
+              <strong>pending_words_translations</strong> /
+              <strong>pending_verbs_translations</strong> : traductions liées
+              aux soumissions via <code>submission_id</code>.
+            </li>
+            <li>
+              <strong>pending_words_slugs</strong> /
+              <strong>pending_verbs_slugs</strong> : slugs temporaires générés
+              côté pending avant bascule dans les tables finales.
+            </li>
+          </ul>
 
-  // Archivage de la soumission initiale
-  await archiveVerb(connection, verbSubmission, "approved", admin_id, approvedVerbId);
-  await connection.execute(`DELETE FROM pending_verbs_submissions WHERE submission_id = ?`, [submission_id]);
-}
-    </pre>
+          <h3 class="lk-doc-subtitle">Slugs & archivage</h3>
+          <ul class="lk-doc-list">
+            <li>
+              <strong>slugs</strong> : table unifiée pour les slugs
+              “publics” avec <code>slug_id</code>, <code>slug</code>
+              (unique), <code>word_id</code> ou <code>verb_id</code> et
+              <code>content_type</code> (<code>'word'</code> ou
+              <code>'verb'</code>).
+            </li>
+            <li>
+              <strong>archived_submitted_words</strong> /
+              <strong>archived_submitted_verbs</strong> : archivage des
+              soumissions (statut approved/rejected, admin, raison, lien vers
+              l’ID final quand approuvé). Utilisé pour garder un historique sur
+              une durée limitée.
+            </li>
+            <li>
+              <strong>languages</strong> : langues de traduction
+              (<code>language_id</code>, <code>language_code</code>,
+              <code>language_name</code>).
+            </li>
+            <li>
+              <strong>nominal_classes</strong> et
+              <strong>derived_verb_types</strong> : métadonnées
+              linguistiques (classes nominales, types de verbes).
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
 
-    <!-- Outils de Développement et Déploiement -->
-    <h3>Outils de Développement et Déploiement</h3>
-    <p>
-      Lexikongo est configuré pour être déployé sur des plateformes compatibles
-      Nuxt 3. Les développeurs peuvent utiliser les commandes suivantes pour
-      gérer l’application :
-    </p>
-    <ul>
-      <li><code>npm install</code> : Installer les dépendances nécessaires.</li>
-      <li>
-        <code>npm run dev</code> : Lancer le serveur de développement local.
-      </li>
-      <li>
-        <code>npm run build</code> : Générer les fichiers de build pour le
-        déploiement.
-      </li>
-      <li>
-        <code>npm start</code> : Lancer l’application en mode production après
-        le build.
-      </li>
-    </ul>
+    <!-- 3. Rôles & permissions -->
+    <section
+      class="lk-page__section lk-doc-section"
+      aria-labelledby="doc-devs-roles-title"
+    >
+      <header class="lk-doc-section__header">
+        <h2
+          id="doc-devs-roles-title"
+          class="lk-doc-section__title"
+        >
+          Gestion des rôles et permissions
+        </h2>
+      </header>
 
-    <!-- Gestion des Conflits et Mises à Jour -->
-    <h3>Gestion des Conflits et Mises à Jour</h3>
-    <p>
-      Pour une meilleure collaboration, il est recommandé d’utiliser un flux de
-      travail Git standard (branches de fonctionnalités, pull requests, revues
-      de code) et d’effectuer des tests approfondis avant chaque mise en
-      production. Les mises à jour majeures doivent être documentées dans le
-      fichier CHANGELOG.
-    </p>
-  </div>
+      <p class="lk-doc-paragraph">
+        Lexikongo s’appuie sur des rôles explicites pour contrôler l’accès aux
+        fonctionnalités critiques (modération, admin, etc.) :
+      </p>
+
+      <ul class="lk-doc-list">
+        <li>
+          <strong>Utilisateur</strong> (<code>user</code>) :
+          accès en lecture seule au dictionnaire public (mots &amp; verbes
+          approuvés). Peut gérer son profil.
+        </li>
+        <li>
+          <strong>Contributeur</strong> (<code>contributor</code>) :
+          peut soumettre des mots et des verbes. Les données vont dans les
+          tables <code>pending_*_submissions</code> et sont visibles côté
+          admin pour validation.
+        </li>
+        <li>
+          <strong>Administrateur</strong> (<code>admin</code>) :
+          accès à l’espace admin, validation/rejet des soumissions,
+          archivage, corrections directes dans les tables principales,
+          parfois gestion des utilisateurs.
+        </li>
+      </ul>
+
+      <p class="lk-doc-paragraph">
+        Côté code, les routes Nitro (server/api/*) vérifient le rôle en
+        se basant sur le JWT décodé (stocké dans un cookie HttpOnly) et
+        appliquent les gardes nécessaires (par ex. autoriser seulement
+        <code>admin</code> sur les endpoints de modération).
+      </p>
+    </section>
+
+    <!-- 4. API & endpoints -->
+    <section
+      class="lk-page__section lk-doc-section"
+      aria-labelledby="doc-devs-api-title"
+    >
+      <header class="lk-doc-section__header">
+        <h2
+          id="doc-devs-api-title"
+          class="lk-doc-section__title"
+        >
+          API et endpoints (Nitro)
+        </h2>
+        <p class="lk-doc-section__subtitle">
+          L’API est organisée par ressource dans <code>server/api/…</code>,
+          avec contrôle d’accès via JWT.
+        </p>
+      </header>
+
+      <div class="lk-doc-2col">
+        <div class="lk-doc-2col__col">
+          <h3 class="lk-doc-subtitle">Soumission</h3>
+          <ul class="lk-doc-list">
+            <li>
+              <code>POST /api/contributor/submit-word</code> (exemple) :
+              soumettre un mot → insertion dans
+              <code>pending_words_submissions</code> +
+              <code>pending_words_translations</code> +
+              <code>pending_words_slugs</code>.
+            </li>
+            <li>
+              <code>POST /api/contributor/submit-verb</code> :
+              soumettre un verbe avec <code>name</code>,
+              <code>root</code>, <code>suffix</code>,
+              <code>phonetic</code>, traductions, etc.
+            </li>
+          </ul>
+
+          <h3 class="lk-doc-subtitle">Modération</h3>
+          <ul class="lk-doc-list">
+            <li>
+              <code>POST /api/admin/manage-submissions</code> :
+              endpoint central pour approuver / rejeter / supprimer
+              une soumission. Déclenche :
+              <ul>
+                <li>création du mot / verbe final ;</li>
+                <li>transfert des traductions ;</li>
+                <li>création du slug dans <code>slugs</code> ;</li>
+                <li>archivage dans <code>archived_submitted_*</code> ;</li>
+                <li>suppression des tables pending.</li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+
+        <div class="lk-doc-2col__col">
+          <h3 class="lk-doc-subtitle">Traductions & slugs</h3>
+          <ul class="lk-doc-list">
+            <li>
+              <code>PUT /api/admin/word/[slug]</code>,
+              <code>PUT /api/admin/verb/[slug]</code> :
+              mise à jour d’un mot/verbe validé (surface, traductions,
+              phonétique…).
+            </li>
+            <li>
+              <code>GET /api/words</code>, <code>GET /api/verbs</code> :
+              recherche et listing côté public avec pagination,
+              filtres, etc.
+            </li>
+            <li>
+              Génération de slug unifié :
+              utilitaires internes pour s’assurer de
+              l’unicité dans <code>slugs</code> en fonction de
+              <code>content_type</code>.
+            </li>
+          </ul>
+
+          <h3 class="lk-doc-subtitle">Auth & session</h3>
+          <ul class="lk-doc-list">
+            <li>
+              <code>POST /api/auth/login</code> :
+              authentification, génération de JWT et placement
+              en cookie HttpOnly/SameSite.
+            </li>
+            <li>
+              <code>GET /api/auth/me</code> :
+              renvoie le profil courant + rôles
+              à partir du JWT.
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. Exemple de flux : validation d'un verbe -->
+    <section
+      class="lk-page__section lk-doc-section"
+      aria-labelledby="doc-devs-flow-title"
+    >
+      <header class="lk-doc-section__header">
+        <h2
+          id="doc-devs-flow-title"
+          class="lk-doc-section__title"
+        >
+          Exemple de flux : validation d’un verbe
+        </h2>
+        <p class="lk-doc-section__subtitle">
+          Simplification du flux appliqué dans l’endpoint d’admin lors d’un
+          <em>approve</em>.
+        </p>
+      </header>
+
+      <pre class="lk-code-block" aria-label="Exemple de pseudo-code de validation de verbe">
+<code>async function approvePendingVerb(connection, submission_id, admin_id) {
+  // 1. Charger la soumission et ses traductions
+  const submission = await fetchPendingVerbWithTranslations(connection, submission_id);
+
+  // 2. Créer le verbe officiel
+  const [resVerb] = await connection.execute(`
+    INSERT INTO verbs (name, root, suffix, phonetic, active_verb,
+                       derived_verb, derived_from, is_approved, user_id,
+                       derived_verb_type_id)
+    VALUES (?, ?, ?, ?, ?, ?, ?, 1, ?, ?)
+  `, [
+    submission.name,
+    submission.root,
+    submission.suffix ?? null,
+    submission.phonetic ?? null,
+    submission.active_verb ?? 1,
+    submission.derived_verb ?? 0,
+    submission.derived_from ?? null,
+    submission.user_id ?? null,
+    submission.derived_verb_type_id ?? null,
+  ]);
+
+  const newVerbId = resVerb.insertId;
+
+  // 3. Transférer les traductions vers verb_meanings
+  for (const tr of submission.translations) {
+    if (!tr.language_code || !tr.meaning) continue;
+    await connection.execute(
+      'INSERT INTO verb_meanings (verb_id, language_code, meaning) VALUES (?, ?, ?)',
+      [newVerbId, tr.language_code, tr.meaning.trim()]
+    );
+  }
+
+  // 4. Créer le slug définitif dans la table unifiée "slugs"
+  const slug = await ensureUniqueSlugForVerb(connection, submission.slug, newVerbId);
+
+  // 5. Archiver la soumission puis nettoyer les tables pending
+  await archiveVerb(connection, submission, 'approved', admin_id, newVerbId, null);
+  await deletePendingVerb(connection, submission_id);
+}</code>
+      </pre>
+
+      <p class="lk-doc-paragraph">
+        Le principe est identique pour les mots (<code>words</code> /
+        <code>word_meanings</code>) avec l’écriture dans
+        <code>archived_submitted_words</code>.
+      </p>
+    </section>
+
+    <!-- 6. Outils de développement & déploiement -->
+    <section
+      class="lk-page__section lk-doc-section"
+      aria-labelledby="doc-devs-tools-title"
+    >
+      <header class="lk-doc-section__header">
+        <h2
+          id="doc-devs-tools-title"
+          class="lk-doc-section__title"
+        >
+          Outils de développement & déploiement
+        </h2>
+      </header>
+
+      <p class="lk-doc-paragraph">
+        Lexikongo utilise la toolchain standard Nuxt (Vite). Quelques commandes
+        utiles :
+      </p>
+
+      <ul class="lk-doc-list">
+        <li><code>npm install</code> : installation des dépendances.</li>
+        <li><code>npm run dev</code> : serveur de développement local.</li>
+        <li><code>npm run build</code> : build de production (SSR).</li>
+        <li><code>npm run preview</code> (selon config) : prévisualisation locale du build.</li>
+      </ul>
+
+      <p class="lk-doc-paragraph">
+        Le déploiement actuel cible un environnement compatible Nuxt SSR (par
+        exemple Vercel, avec adaptation du fichier de config). Les scripts de
+        migration et d’évolution de schéma MySQL doivent être versionnés et
+        appliqués de manière maîtrisée.
+      </p>
+    </section>
+
+    <!-- 7. Workflow Git & mises à jour -->
+    <section
+      class="lk-page__section lk-doc-section"
+      aria-labelledby="doc-devs-git-title"
+    >
+      <header class="lk-doc-section__header">
+        <h2
+          id="doc-devs-git-title"
+          class="lk-doc-section__title"
+        >
+          Workflow Git & mises à jour
+        </h2>
+      </header>
+
+      <p class="lk-doc-paragraph">
+        Pour collaborer proprement sur Lexikongo, un workflow Git classique est
+        recommandé :
+      </p>
+
+      <ul class="lk-doc-list">
+        <li>création de branches de fonctionnalités (<code>feature/*</code>),</li>
+        <li>pull requests avec revue de code,</li>
+        <li>tests manuels (et automatisés quand disponibles) avant merge,</li>
+        <li>journalisation des changements dans un fichier <code>CHANGELOG</code> ou équivalent.</li>
+      </ul>
+
+      <p class="lk-doc-paragraph">
+        Les modifications sensibles (auth, rôles, migrations DB) doivent être
+        testées sur un environnement de pré-production avant la mise en ligne.
+      </p>
+    </section>
+  </main>
 </template>
 
 <script setup>
-import { useHead } from "#app";
+import { computed } from 'vue';
+import { useHead } from '#app';
+import { useI18n } from 'vue-i18n';
+
+import LkPageHero from '@/components/LkPageHero.vue';
+import LogoSlogan from '@/components/LogoSlogan.vue';
+import LkActionsBar from '@/components/LkActionsBar.vue';
+
+const { t } = useI18n();
+
+const primaryCta = computed(() => ({
+  to: '/documentation',
+  label: t('docDevs.page.primaryCta'),
+  icon: 'fas fa-book-open',
+}));
+
+const secondaryCta = computed(() => ({
+  to: '/contact',
+  label: t('docDevs.page.secondaryCta'),
+  icon: 'fas fa-envelope',
+  variant: 'ghost',
+}));
+
+const seoTitle =
+  t('docDevs.meta.title') ||
+  'Documentation développeurs – Lexikongo (Nuxt, MySQL, API, rôles)';
+const seoDescription =
+  t('docDevs.meta.description') ||
+  "Guide technique pour contribuer au développement de Lexikongo : architecture Nuxt, schéma MySQL, API Nitro, rôles et flux de validation.";
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'TechArticle',
+  headline: 'Documentation pour les développeurs – Lexikongo',
+  description: seoDescription,
+  inLanguage: 'fr',
+  author: {
+    '@type': 'Organization',
+    name: 'Lexikongo',
+  },
+  publisher: {
+    '@type': 'Organization',
+    name: 'Lexikongo',
+  },
+  url: 'https://www.lexikongo.fr/documentation/for-devs',
+};
 
 useHead({
-  title: "Documentation pour les Développeurs - Lexikongo",
+  title: seoTitle,
   meta: [
+    { name: 'description', content: seoDescription },
     {
-      name: "description",
+      name: 'keywords',
       content:
-        "Guide technique complet pour les développeurs travaillant sur Lexikongo, incluant l’architecture de la base de données, les API, et les détails de déploiement.",
+        'Lexikongo, développeur, Nuxt, MySQL, JWT, API, dictionnaire Kikongo',
     },
+    { name: 'robots', content: 'index, follow' },
+    { property: 'og:title', content: seoTitle },
+    { property: 'og:description', content: seoDescription },
+    {
+      property: 'og:url',
+      content: 'https://www.lexikongo.fr/documentation/for-devs',
+    },
+    { property: 'og:type', content: 'article' },
   ],
   script: [
     {
-      type: "application/ld+json",
-      children: JSON.stringify({
-        "@context": "https://schema.org",
-        "@type": "TechArticle",
-        headline: "Documentation pour les Développeurs",
-        description:
-          "Guide technique complet pour les développeurs travaillant sur Lexikongo, incluant l’architecture de la base de données, les API, et les détails de déploiement.",
-        author: {
-          "@type": "Batina",
-          name: "Lexikongo",
-        },
-        publisher: {
-          "@type": "Batina",
-          name: "Lexikongo",
-        },
-      }),
+      type: 'application/ld+json',
+      children: JSON.stringify(jsonLd),
     },
   ],
 });
 </script>
+
+<style scoped>
+.lk-page {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 1.5rem 1.25rem 2.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+/* Sections génériques */
+.lk-page__section {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.lk-doc-section {
+  background: var(--color-surface-elevated, #ffffff);
+  border-radius: 1rem;
+  padding: 1.2rem 1.1rem 1.3rem;
+  border: 1px solid var(--color-border-subtle, rgba(148, 163, 184, 0.35));
+}
+
+/* Header de section */
+.lk-doc-section__header {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.lk-doc-section__title {
+  margin: 0;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--color-text, #0f172a);
+}
+
+.lk-doc-section__subtitle {
+  margin: 0;
+  font-size: 0.9rem;
+  color: var(--color-text-muted, #6b7280);
+}
+
+/* Paragraphes & listes */
+.lk-doc-paragraph {
+  margin: 0;
+  font-size: 0.92rem;
+  line-height: 1.7;
+  color: var(--color-text-muted, #4b5563);
+}
+
+.lk-doc-list {
+  margin: 0.25rem 0 0;
+  padding-left: 1.2rem;
+  font-size: 0.9rem;
+  color: var(--color-text-muted, #4b5563);
+}
+
+.lk-doc-list li {
+  margin-bottom: 0.2rem;
+}
+
+/* Sous-titres */
+.lk-doc-subtitle {
+  margin: 0.6rem 0 0.15rem;
+  font-size: 0.98rem;
+  font-weight: 600;
+  color: var(--color-text, #111827);
+}
+
+/* Deux colonnes */
+.lk-doc-2col {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.lk-doc-2col__col {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Code block */
+.lk-code-block {
+  margin: 0.4rem 0 0.5rem;
+  padding: 0.75rem 0.9rem;
+  border-radius: 0.75rem;
+  background: #020617;
+  color: #e5e7eb;
+  font-size: 0.8rem;
+  line-height: 1.5;
+  overflow-x: auto;
+}
+
+/* Hero meta & side */
+.lk-hero-meta {
+  margin: 0.4rem 0 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.9rem;
+  color: var(--text-muted, #6b7280);
+}
+
+.lk-hero-meta i {
+  color: var(--primary, #0d6efd);
+}
+
+.lk-hero-side {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.lk-hero__logo {
+  max-width: 230px;
+  width: 100%;
+}
+
+/* Bloc stack */
+.lk-dev-stack {
+  border-radius: 0.9rem;
+  padding: 0.7rem 0.75rem;
+  background: var(--color-surface, #f9fafb);
+  border: 1px solid rgba(148, 163, 184, 0.5);
+}
+
+.lk-dev-stack__title {
+  margin: 0 0 0.35rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: var(--color-text, #111827);
+}
+
+.lk-dev-stack__title i {
+  color: var(--primary, #0d6efd);
+}
+
+.lk-dev-stack__list {
+  margin: 0;
+  padding-left: 1rem;
+  font-size: 0.86rem;
+  color: var(--color-text-muted, #4b5563);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .lk-page {
+    padding-inline: 1rem;
+  }
+
+  .lk-doc-section {
+    padding-inline: 1rem;
+  }
+
+  .lk-doc-2col {
+    grid-template-columns: 1fr;
+  }
+}
+</style>

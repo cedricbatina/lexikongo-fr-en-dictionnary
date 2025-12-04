@@ -589,7 +589,9 @@
         "save": "Enregistrer les modifications",
         "saving": "Enregistrement en cours…",
         "reset": "Réinitialiser",
-        "delete": "Supprimer cette soumission"
+        "delete": "Supprimer cette soumission",
+        "approve": "Approuver cette soumission",
+      "reject": "Rejeter cette soumission"
       },
       "confirmTitle": "Supprimer cette soumission ?",
       "confirmDelete": "Voulez-vous vraiment supprimer cette soumission ? Cette action est définitive.",
@@ -1079,7 +1081,342 @@
     "metaTitle": "Rechercher des verbes en Kikongo | Lexikongo",
     "metaDescription": "Recherchez des verbes en Kikongo (infinitif ku + racine) avec leurs traductions en français et en anglais dans le dictionnaire Lexikongo."
   }
+},
+"privacy": {
+  "page": {
+    "eyebrow": "Lexikongo · Confidentialité",
+    "title": "Politique de confidentialité",
+    "subtitle": "Découvrez comment nous protégeons vos données et vos contributions sur Lexikongo.",
+    "primaryCta": "Rechercher un mot",
+    "secondaryCta": "Nous contacter",
+    "metaHighlight": "Vos données et vos contributions sont traitées avec soin."
+  },
+  "meta": {
+    "title": "Politique de confidentialité | Lexikongo",
+    "description": "Politique de confidentialité de Lexikongo – dictionnaire Kikongo en ligne."
+  },
+  "sections": {
+    "intro": {
+      "title": "Protection de vos données",
+      "lead": "Cette page décrit comment Lexikongo collecte et utilise vos données lorsque vous consultez le dictionnaire ou contribuez au lexique."
+    },
+    "responsible": {
+      "title": "Responsable du traitement",
+      "body": "👉 Ici tu recolle le texte exact de l’ancien site (organisation, contact, etc.)."
+    },
+    "data": {
+      "title": "Données collectées",
+      "items": {
+        "account": "Données de compte : adresse e-mail, nom d’utilisateur et informations de profil.",
+        "usage": "Données d’usage : pages consultées, recherches effectuées, préférences d’affichage.",
+        "contributions": "Contenus de contribution : mots, verbes, traductions, commentaires soumis sur Lexikongo.",
+        "technical": "Données techniques : informations de navigateur, adresse IP raccourcie, cookies strictement nécessaires."
+      }
+    },
+    "purposes": {
+      "title": "Finalités de la collecte",
+      "body": "👉 Ici tu insères les finalités exactes de l’ancien texte (amélioration du service, modération, statistiques, etc.)."
+    },
+    "cookies": {
+      "title": "Cookies et traceurs",
+      "body": "👉 Texte de ta section cookies (techniques, mesure d’audience, choix de l’utilisateur)."
+    },
+    "rights": {
+      "title": "Vos droits",
+      "body": "👉 Texte concernant les droits d’accès, rectification, suppression, opposition, portabilité, etc."
+    },
+    "contact": {
+      "title": "Nous contacter",
+      "body": "👉 Coordonnées ou adresse e-mail que tu utilisais déjà pour les demandes RGPD."
+    },
+    "update": {
+      "title": "Mises à jour de cette politique",
+      "body": "👉 Phrase qui explique que la politique peut évoluer, avec la date de dernière mise à jour."
+    }
+  }
+},
+"faq": {
+  "page": {
+    "eyebrow": "Aide · FAQ",
+    "title": "Questions fréquentes",
+    "subtitle": "Comprenez en un coup d’œil comment fonctionne Lexikongo : comptes, rôles, contributions, modération et confidentialité.",
+    "meta": "Lexikongo est un dictionnaire collaboratif dédié au Kikongo : voici comment l’utiliser sereinement.",
+    "primaryCta": "Rechercher un mot ou un verbe",
+    "secondaryCta": "Découvrir l’espace contributeur"
+  },
+  "meta": {
+    "title": "FAQ Lexikongo – Questions fréquentes",
+    "description": "Tout savoir sur Lexikongo : comptes, rôles, contributions, validation des mots et verbes, confidentialité et prochaines évolutions."
+  },
+  "sections": {
+    "general": {
+      "title": "Général",
+      "description": "Les bases pour comprendre ce qu’est Lexikongo et à quoi sert la plateforme.",
+      "items": {
+        "whatIsLexikongo": {
+          "q": "Qu’est-ce que Lexikongo ?",
+          "a": "Lexikongo est un dictionnaire collaboratif dédié à la langue Kikongo, avec des traductions en français et en anglais, et une phonétique simplifiée pour faciliter l’apprentissage."
+        },
+        "whichLanguages": {
+          "q": "Quelles langues sont prises en charge ?",
+          "a": "Aujourd’hui, Lexikongo se concentre sur le Kikongo avec des traductions vers le français et l’anglais. D’autres langues pourront être ajoutées progressivement."
+        },
+        "whoIsItFor": {
+          "q": "À qui s’adresse Lexikongo ?",
+          "a": "Lexikongo s’adresse aux apprenants, aux locuteurs natifs, aux enseignants, aux chercheurs et à toute personne curieuse de découvrir la langue Kikongo."
+        },
+        "isItFree": {
+          "q": "L’utilisation de Lexikongo est-elle gratuite ?",
+          "a": "La consultation du lexique et la création d’un compte utilisateur sont actuellement gratuites. Vous pouvez soutenir le projet via les contributions et dons si vous le souhaitez."
+        }
+      }
+    },
+    "accounts": {
+      "title": "Comptes & rôles",
+      "description": "Comprendre la différence entre utilisateur, contributeur et administrateur.",
+      "items": {
+        "roles": {
+          "q": "Quels sont les rôles disponibles sur Lexikongo ?",
+          "a": {
+            "user": "• Utilisateur : peut consulter les mots, verbes et fiches publiques.",
+            "contributor": "• Contributeur : peut proposer de nouveaux mots et verbes qui seront validés par un administrateur.",
+            "admin": "• Administrateur : gère les soumissions, valide ou rejette les contenus et supervise la plateforme."
+          }
+        },
+        "needAccount": {
+          "q": "Ai-je besoin d’un compte pour utiliser Lexikongo ?",
+          "a": "Vous pouvez consulter le dictionnaire sans compte. En revanche, un compte est nécessaire pour proposer de nouveaux mots, verbes ou suivre vos soumissions."
+        },
+        "becomeContributor": {
+          "q": "Comment devenir contributeur ou contributrice ?",
+          "a": "Créez un compte, puis signalez votre intérêt pour contribuer. Selon les besoins du projet, un administrateur pourra vous attribuer le rôle de contributeur."
+        },
+        "emailVerification": {
+          "q": "Pourquoi dois-je vérifier mon adresse e-mail ?",
+          "a": "La vérification d’e-mail permet de sécuriser votre compte et de limiter les abus. Elle est utilisée uniquement pour l’authentification et la sécurité."
+        }
+      }
+    },
+    "contributions": {
+      "title": "Contributions : mots & verbes",
+      "description": "Tout ce qu’il faut savoir pour proposer des mots et des verbes en Kikongo.",
+      "items": {
+        "whatCanISubmit": {
+          "q": "Que puis-je proposer comme contribution ?",
+          "a": {
+            "words": "• Des mots (noms) : avec leur forme singulière, plurielle, classe nominale, phonétique et traductions.",
+            "verbs": "• Des verbes : avec l’infinitif, le radical verbal, le suffixe, la phonétique et les traductions."
+          }
+        },
+        "wordDetails": {
+          "q": "Quelles informations sont nécessaires pour un mot ?",
+          "a": "Idéalement : le singulier, le pluriel, la classe nominale, la phonétique et au moins une traduction en français ou en anglais."
+        },
+        "verbDetails": {
+          "q": "Quelles informations sont nécessaires pour un verbe ?",
+          "a": "L’infinitif, le radical verbal, le suffixe éventuel, la phonétique et au moins une traduction en français ou en anglais."
+        },
+        "differenceAdminContributor": {
+          "q": "Quelle est la différence entre un ajout admin et une contribution ?",
+          "a": "Les administrateurs peuvent ajouter des mots et verbes directement dans le dictionnaire. Les contributeurs, eux, envoient des soumissions qui passent par une étape de validation avant d’être publiées."
+        }
+      }
+    },
+    "moderation": {
+      "title": "Modération & validation",
+      "description": "Comment sont traitées les soumissions envoyées par les contributeurs.",
+      "items": {
+        "statuses": {
+          "q": "Que signifient les statuts « en attente », « approuvé », « rejeté » ?",
+          "a": {
+            "pending": "• En attente : la soumission a été reçue et doit encore être examinée par un administrateur.",
+            "approved": "• Approuvé : le mot ou le verbe a été validé et ajouté au dictionnaire public.",
+            "rejected": "• Rejeté : la soumission n’a pas été retenue (souvent avec une raison pour vous aider à l’améliorer)."
+          }
+        },
+        "howLong": {
+          "q": "Combien de temps prend la validation d’un mot ou d’un verbe ?",
+          "a": "Le délai dépend de l’activité des administrateurs et du volume de soumissions. L’objectif est de traiter les contributions dans des délais raisonnables, sans sacrifier la qualité linguistique."
+        },
+        "editSubmission": {
+          "q": "Puis-je modifier une soumission après l’avoir envoyée ?",
+          "a": "Tant qu’une soumission est en attente, il est possible de la corriger ou de la compléter via l’interface contributeur. Si elle est rejetée, vous pouvez généralement en proposer une nouvelle version améliorée."
+        },
+        "archiving": {
+          "q": "Que deviennent les soumissions après validation ou rejet ?",
+          "a": "Les soumissions approuvées ou rejetées sont archivées pendant une période limitée afin de garder un historique de modération, puis nettoyées pour alléger la base de données."
+        }
+      }
+    },
+    "privacy": {
+      "title": "Confidentialité & sécurité",
+      "description": "Vos données personnelles et la sécurité des comptes.",
+      "items": {
+        "whatData": {
+          "q": "Quelles données personnelles sont stockées ?",
+          "a": "Lexikongo stocke les informations nécessaires au fonctionnement du compte (nom d’utilisateur, e-mail, mot de passe chiffré, rôles et quelques métadonnées comme les dates de création et de connexion)."
+        },
+        "passwords": {
+          "q": "Comment mes mots de passe sont-ils protégés ?",
+          "a": "Les mots de passe sont chiffrés côté serveur à l’aide de bonnes pratiques de sécurité avant d’être enregistrés en base de données. Ils ne sont jamais stockés en clair."
+        },
+        "cookies": {
+          "q": "Comment fonctionne la connexion (cookies, jetons, etc.) ?",
+          "a": "La session utilise un jeton sécurisé (JWT) stocké dans un cookie HttpOnly afin de limiter les risques d’attaque côté navigateur."
+        },
+        "privacyPage": {
+          "q": "Où puis-je consulter la politique de confidentialité complète ?",
+          "a": "Vous pouvez consulter tous les détails sur la page dédiée : Politique de confidentialité / Confidentialité & données."
+        }
+      }
+    },
+    "future": {
+      "title": "Évolutions du projet",
+      "description": "Ce qui est prévu pour les prochaines versions de Lexikongo.",
+      "items": {
+        "newLanguages": {
+          "q": "De nouvelles langues seront-elles ajoutées ?",
+          "a": "Oui, la structure de Lexikongo permet d’ajouter d’autres langues de traduction à l’avenir afin de toucher un public encore plus large."
+        },
+        "notifications": {
+          "q": "Y aura-t-il des notifications pour les contributeurs ?",
+          "a": "Un système de notifications (par exemple pour signaler qu’une soumission est approuvée ou rejetée) fait partie des pistes d’amélioration prévues."
+        },
+        "statsAndTools": {
+          "q": "D’autres outils sont-ils prévus (statistiques, cours, etc.) ?",
+          "a": "Oui, l’objectif est d’enrichir Lexikongo avec des outils pédagogiques, des statistiques de contribution et, à terme, des fonctionnalités complémentaires pour l’apprentissage du Kikongo."
+        }
+      }
+    }
+  },
+  "cta": {
+    "title": "Envie de participer à l’aventure Lexikongo ?",
+    "subtitle": "Créez un compte, devenez contributeur et aidez-nous à enrichir le dictionnaire Kikongo pour les générations futures.",
+    "primary": "Créer un compte gratuit",
+    "secondary": "Découvrir l’espace contributeur"
+  }
 }
+,
+"documentation": {
+  "page": {
+    "eyebrow": "Lexikongo · Guides",
+    "title": "Documentation de Lexikongo",
+    "subtitle": "Retrouvez tous les guides pour comprendre, utiliser et contribuer au dictionnaire Kikongo.",
+    "metaHighlight": "Une documentation adaptée à chaque rôle : utilisateur, contributeur, administrateur, développeur.",
+    "primaryCta": "Rechercher un mot ou un verbe",
+    "secondaryCta": "Devenir contributeur"
+  },
+  "meta": {
+    "title": "Documentation Lexikongo",
+    "description": "Documentation complète de Lexikongo, organisée par profils : utilisateurs, contributeurs, administrateurs et développeurs."
+  },
+  "sections": {
+    "intro": {
+      "title": "Bienvenue dans la documentation de Lexikongo",
+      "lead": "Lexikongo est une plateforme collaborative pour la préservation et l’apprentissage du Kikongo.",
+      "body": "Cette documentation présente le fonctionnement du dictionnaire, les rôles des différents profils et la manière de contribuer à l’enrichissement du lexique."
+    },
+    "guides": {
+      "title": "Choisissez votre guide",
+      "lead": "Chaque rôle dispose de son propre guide détaillé.",
+      "users": {
+        "title": "Guide des utilisateurs",
+        "body": "Apprenez à rechercher des mots, consulter les fiches détaillées et profiter au mieux du dictionnaire.",
+        "link": "Ouvrir le guide des utilisateurs"
+      },
+      "contributors": {
+        "title": "Guide des contributeurs",
+        "body": "Découvrez comment proposer de nouveaux mots, verbes et traductions et suivre vos soumissions.",
+        "link": "Ouvrir le guide des contributeurs"
+      },
+      "admins": {
+        "title": "Guide des administrateurs",
+        "body": "Comprenez les outils de modération, de validation des soumissions et de gestion de la base.",
+        "link": "Ouvrir le guide des administrateurs"
+      },
+      "devs": {
+        "title": "Documentation développeurs",
+        "body": "Architecture technique, API, schéma de la base et bonnes pratiques pour contribuer au code.",
+        "link": "Ouvrir la doc développeur"
+      }
+    },
+    "help": {
+      "title": "Besoin d’aide supplémentaire ?",
+      "subtitle": "Si vous ne trouvez pas votre réponse dans la documentation, nous sommes là pour vous aider.",
+      "actions": {
+        "faq": "Consulter la FAQ",
+        "contact": "Nous contacter"
+      }
+    }
+  }
+}
+,
+"docContrib": {
+  "page": {
+    "eyebrow": "Lexikongo · Contributeurs",
+    "title": "Guide des contributeurs",
+    "subtitle": "Comprenez comment rejoindre la communauté Lexikongo, soumettre des mots et verbes et suivre vos contributions.",
+    "metaHighlight": "Préserver, enrichir et moderniser la langue Kikongo grâce à vos contributions.",
+    "primaryCta": "Créer un compte contributeur",
+    "secondaryCta": "Soutenir financièrement le projet"
+  },
+  "meta": {
+    "title": "Guide des contributeurs | Lexikongo",
+    "description": "Rejoignez la communauté des contributeurs Lexikongo pour enrichir le lexique Kikongo et participer à un projet culturel et éducatif ambitieux."
+  },
+  "side": {
+    "title": "Espace contributeur",
+    "text": "Accédez rapidement aux outils de soumission, au suivi des statuts et à la documentation associée."
+  }
+},
+"docAdmins": {
+  "page": {
+    "eyebrow": "Lexikongo · Administrateurs",
+    "title": "Guide des administrateurs",
+    "subtitle": "Comprenez vos responsabilités de modération, les outils disponibles et les bonnes pratiques pour maintenir la qualité du lexique.",
+    "metaHighlight": "Modérer, valider et archiver les contributions pour garantir un dictionnaire fiable.",
+    "primaryCta": "Accéder au tableau de bord admin",
+    "secondaryCta": "Voir le guide des contributeurs"
+  },
+  "meta": {
+    "title": "Guide des administrateurs | Lexikongo",
+    "description": "Guide complet pour les administrateurs de Lexikongo : conditions d’accès, modération des contributions, archivage et outils d’administration."
+  },
+  "side": {
+    "title": "Espace administrateur",
+    "text": "Accédez rapidement au tableau de bord, à la liste des soumissions en attente et aux outils de gestion.",
+    "actions": {
+      "dashboard": "Tableau de bord admin",
+      "pendings": "Soumissions en attente"
+    }
+  }
+},
+"docUsers": {
+  "page": {
+    "eyebrow": "Lexikongo · Utilisateurs",
+    "title": "Guide des utilisateurs",
+    "subtitle": "Découvrez les fonctionnalités accessibles à tous, et ce que vous débloquez en créant un compte sur Lexikongo.",
+    "metaHighlight": "Consulter le lexique Kikongo – Français – Anglais, avec ou sans compte.",
+    "primaryCta": "Explorer les expressions",
+    "secondaryCta": "Créer un compte"
+  },
+  "meta": {
+    "title": "Guide des utilisateurs | Lexikongo",
+    "description": "Guide pour les utilisateurs de Lexikongo : consultation du lexique, recherche d’expressions et avantages d’un compte utilisateur."
+  },
+  "side": {
+    "title": "Espace utilisateur",
+    "text": "Accédez rapidement à la recherche du lexique, créez un compte et préparez-vous à rejoindre la communauté.",
+    "actions": {
+      "explore": "Explorer les expressions",
+      "register": "Créer un compte"
+    }
+  }
+}
+
+
+
+
 
 
 
