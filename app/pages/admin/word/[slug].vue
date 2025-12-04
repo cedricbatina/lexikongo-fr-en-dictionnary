@@ -149,8 +149,8 @@
 <script setup>
 import { ref, onMounted, watch } from "vue";
 import { useRoute } from "vue-router";
-import { useHead } from "@vueuse/head"; // Pour le SEO
 
+import { useHead } from "#imports"; 
 const route = useRoute();
 const details = ref({});
 const type = ref(route.params.type);
