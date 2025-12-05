@@ -210,7 +210,7 @@
         <p class="lk-footer__credit">
           {{ t('footer.madeBy') }}
           <a
-            href="https://www.artfulbatina.com"
+            href="https://www.artfulbatinacreativestudios.fr"
             target="_blank"
             rel="noopener noreferrer"
             class="lk-footer__brand-link"

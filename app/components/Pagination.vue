@@ -331,10 +331,11 @@ function applyInputPage() {
   gap: 0.6rem;
 }
 
+/* Résumé X–Y sur Z */
 .app-pagination__summary {
   margin: 0;
   font-size: 0.85rem;
-  color: var(--lk-color-text-muted, #6b7280);
+  color: var(--color-text-muted, #6b7280);
 }
 
 /* Liste principale */
@@ -356,8 +357,8 @@ function applyInputPage() {
 .app-pagination__btn {
   border-radius: 999px;
   border: 1px solid transparent;
-  background: var(--lk-color-surface, #ffffff);
-  color: var(--lk-color-text-main, #374151);
+  background: var(--color-surface, #ffffff);
+  color: var(--color-text, #374151);
   padding: 0.32rem 0.8rem;
   font-size: 0.9rem;
   line-height: 1.2;
@@ -373,23 +374,22 @@ function applyInputPage() {
     transform 0.1s ease;
 }
 
+/* Précédent / Suivant */
 .app-pagination__btn--nav {
-  border-color: var(
-    --lk-color-border-subtle,
-    rgba(148, 163, 184, 0.7)
-  );
-  background: var(--lk-color-surface-muted, #f9fafb);
+  border-color: var(--color-border, rgba(148, 163, 184, 0.7));
+  background: var(--color-surface-muted, #f9fafb);
 }
 
+/* Boutons numéros */
 .app-pagination__btn--page {
   min-width: 2.25rem;
   justify-content: center;
 }
 
 .app-pagination__btn--page.app-pagination__btn--active {
-  background: var(--lk-color-primary, #0d6efd);
+  background: var(--primary, #0d6efd);
   color: #ffffff;
-  border-color: var(--lk-color-primary, #0d6efd);
+  border-color: var(--primary, #0d6efd);
   box-shadow: 0 10px 24px rgba(13, 110, 253, 0.25);
 }
 
@@ -403,9 +403,9 @@ function applyInputPage() {
 
 .app-pagination__btn--nav:hover,
 .app-pagination__btn--nav:focus-visible {
-  border-color: var(--lk-color-primary, #0d6efd);
-  color: var(--lk-color-primary, #0d6efd);
-  background: var(--lk-color-primary-soft, #eef2ff);
+  border-color: var(--primary, #0d6efd);
+  color: var(--primary, #0d6efd);
+  background: var(--primary-soft, #eef2ff);
 }
 
 /* Désactivé */
@@ -416,11 +416,11 @@ function applyInputPage() {
   transform: none;
 }
 
-/* Ellipses */
+/* Ellipses (…) */
 .app-pagination__ellipsis {
   padding: 0.32rem 0.3rem;
   font-size: 0.9rem;
-  color: var(--lk-color-text-subtle, #9ca3af);
+  color: var(--color-text-muted, #9ca3af);
 }
 
 /* Icône / texte */
@@ -449,7 +449,7 @@ function applyInputPage() {
   align-items: center;
   gap: 0.3rem;
   font-size: 0.85rem;
-  color: var(--lk-color-text-main, #4b5563);
+  color: var(--color-text, #4b5563);
 }
 
 .app-pagination__goto-input {
@@ -457,23 +457,24 @@ function applyInputPage() {
   padding: 0.18rem 0.35rem;
   border-radius: 0.5rem;
   border: 1px solid var(
-    --lk-color-border-subtle,
+    --color-border,
     rgba(148, 163, 184, 0.8)
   );
   font-size: 0.85rem;
   text-align: center;
   outline: none;
-  background-color: #ffffff;
+  background-color: var(--color-surface, #ffffff);
+  color: var(--color-text, #111827);
 }
 
 .app-pagination__goto-input:focus-visible {
-  border-color: var(--lk-color-primary, #0d6efd);
+  border-color: var(--primary, #0d6efd);
   box-shadow: 0 0 0 1px rgba(13, 110, 253, 0.35);
 }
 
 .app-pagination__goto-total {
   font-size: 0.85rem;
-  color: var(--lk-color-text-subtle, #9ca3af);
+  color: var(--color-text-muted, #9ca3af);
 }
 
 /* Responsive */
@@ -491,8 +492,9 @@ function applyInputPage() {
     justify-content: center;
   }
 
+  /* On ne garde que les icônes sur mobile pour gagner de la place */
   .app-pagination__text {
-    display: none; /* on garde les icônes pour Prev/Next */
+    display: none;
   }
 
   .app-pagination__btn--nav {
@@ -507,4 +509,12 @@ function applyInputPage() {
     width: 2.4rem;
   }
 }
+
+/* Sur très petit écran, on cache le "Aller à la page" pour éviter un layout cassé */
+@media (max-width: 480px) {
+  .app-pagination__item--goto {
+    display: none;
+  }
+}
+
 </style>

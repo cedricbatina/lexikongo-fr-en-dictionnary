@@ -1,6 +1,10 @@
 // nuxt.config.js — SSR first
 
-const SITE_URL = process.env.NUXT_PUBLIC_SITE_URL || "https://lexikongo.fr";
+const SITE_URL =
+  process.env.NUXT_PUBLIC_SITE_URL ||
+  process.env.BASE_URL ||
+  process.env.APP_URL ||
+  "https://lexikongo.fr";
 
 export default defineNuxtConfig({
   compatibilityDate: "2025-07-15",

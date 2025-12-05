@@ -411,3 +411,37 @@ a:focus-visible {
   color: #333;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
+
+/* Harmonisation des textes “bootstrap-like” avec le thème Lexikongo */
+
+/* Texte “par défaut” (souvent utilisé dans la doc/contribute/privacy) */
+.text-default {
+  color: var(--color-text);
+}
+
+/* Paragraphes “lead” (sous-titres / intro) */
+.lead {
+  color: var(--color-text-muted, #6b7280);
+}
+
+/* Optionnel : un peu de lisibilité sur les listes dans ces pages */
+.documentation p,
+.documentation li,
+.faq-page p,
+.faq-page li,
+.privacy-page p,
+.privacy-page li {
+  color: var(--color-text-muted, #6b7280);
+}
+
+.documentation h1,
+.documentation h2,
+.documentation h3,
+.faq-page h1,
+.faq-page h2,
+.faq-page h3,
+.privacy-page h1,
+.privacy-page h2,
+.privacy-page h3 {
+  color: var(--color-text);
+}

@@ -823,4 +823,30 @@ useHead({
     justify-content: center;
   }
 }
+.lk-doc-help {
+  margin-top: 1.5rem;
+  border-radius: 0.9rem;
+  padding: 0.9rem 1rem;
+  background: var(--color-surface-elevated, #111827);
+  border: 1px solid var(--color-border, rgba(148, 163, 184, 0.5));
+}
+.lk-contrib-cta__title {
+   margin: 0 0 0.35rem;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--color-text, #f9fafb);
+}
+.lk-doc-help__title {
+  margin: 0 0 0.35rem;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--color-text, #f9fafb);
+}
+
+.lk-doc-help__text {
+  margin: 0;
+  font-size: 0.9rem;
+  color: var(--color-text-muted, #9ca3af);
+}
+
 </style>
