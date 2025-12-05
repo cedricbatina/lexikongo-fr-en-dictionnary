@@ -34,7 +34,7 @@
     </main>
 
     <footer class="layout-footer">
-      <!-- Footer Lexikongo -->
+       <Footer/>
     </footer>
   </div>
 </template>

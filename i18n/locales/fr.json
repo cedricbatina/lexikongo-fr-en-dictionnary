@@ -1412,7 +1412,34 @@
       "register": "Créer un compte"
     }
   }
+},
+"footer": {
+  "tagline": "Un lexique kikongo–français–anglais collaboratif, vivant et accessible à tous.",
+  "sections": {
+    "discover": "Découvrir",
+    "community": "Communauté",
+    "legal": "Légal",
+    "social": "Réseaux sociaux"
+  },
+  "links": {
+    "home": "Accueil",
+    "searchWords": "Rechercher des mots",
+    "searchVerbs": "Rechercher des verbes",
+    "expressions": "Mots & verbes",
+    "contribute": "Contribuer sur Lexikongo",
+    "memberArea": "Espace membre",
+    "documentation": "Documentation",
+    "faq": "FAQ",
+    "privacy": "Mentions légales",
+    "terms": "Conditions d’utilisation",
+    "contact": "Contact",
+    "admin": "Espace admin"
+  },
+  "socialText": "Suivez Lexikongo sur les réseaux sociaux.",
+  "rights": "Tous droits réservés.",
+  "madeBy": "Site conçu et maintenu par"
 }
+
 
 
 

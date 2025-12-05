@@ -14,9 +14,9 @@ const staticRoutes = [
   "/wordlist-card",
   "/verbs",
   "/verblist-card",
-  "/search/verb/[slug]",
-  "/search/word/[slug]",
+  "/search",
   "/contribution",
+
 
   // Documentation : toutes les pages publiques
   "/documentation",
