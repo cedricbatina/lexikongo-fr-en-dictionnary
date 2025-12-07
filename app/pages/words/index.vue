@@ -44,16 +44,16 @@
     >
       <div class="lk-cta">
         <div class="lk-cta__text">
-          <h2
-            id="words-contribute-title"
-            class="lk-cta__title"
-          >
-            Vous ne trouvez pas un mot dans le lexique ?
-          </h2>
-          <p class="lk-cta__subtitle">
-            Lexikongo est un dictionnaire vivant. Proposez de nouveaux mots,
-            expressions ou verbes pour enrichir la langue Kikongo en ligne.
-          </p>
+         <h2
+  id="words-contribute-title"
+  class="lk-cta__title"
+>
+  {{ t('words.page.bottomCtaTitle') }}
+</h2>
+<p class="lk-cta__subtitle">
+  {{ t('words.page.bottomCtaText') }}
+</p>
+
         </div>
 
         <div class="lk-cta__actions">
@@ -203,6 +203,11 @@ useHead({
   margin-top: 0.5rem;
 }
 
+/* CTA */
+.lk-page__section--cta {
+  margin-top: 0.5rem;
+}
+
 .lk-cta {
   border-radius: 1rem;
   padding: 1rem 1.1rem;
@@ -211,26 +216,28 @@ useHead({
     rgba(13, 110, 253, 0.06),
     rgba(56, 189, 248, 0.08)
   );
-  border: 1px solid rgba(191, 219, 254, 0.9);
+  border: 1px solid var(--color-border, rgba(191, 219, 254, 0.9));
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
   gap: 0.9rem;
+  color: var(--color-text);
 }
 
 .lk-cta__title {
   margin: 0 0 0.25rem;
   font-size: 1.05rem;
   font-weight: 600;
-  color: #0f172a;
+  color: var(--color-text);
 }
 
 .lk-cta__subtitle {
   margin: 0;
   font-size: 0.9rem;
-  color: #475569;
+  color: var(--color-text-muted, #9ca3af);
 }
+
 
 .lk-cta__actions {
   display: flex;

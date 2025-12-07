@@ -206,31 +206,40 @@ useHead({
 .lk-cta {
   border-radius: 1rem;
   padding: 1rem 1.1rem;
+  /* on garde un léger gradient, mais on laisse le texte piloté par les vars */
   background: linear-gradient(
     135deg,
     rgba(13, 110, 253, 0.06),
     rgba(56, 189, 248, 0.08)
   );
-  border: 1px solid rgba(191, 219, 254, 0.9);
+  border: 1px solid var(--color-border, rgba(191, 219, 254, 0.9));
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
   gap: 0.9rem;
+  color: var(--color-text); /* ✅ texte lisible en light & dark */
 }
 
 .lk-cta__title {
   margin: 0 0 0.25rem;
   font-size: 1.05rem;
   font-weight: 600;
-  color: #0f172a;
+  color: var(--color-text); /* ✅ au lieu de #0f172a */
 }
 
 .lk-cta__subtitle {
   margin: 0;
   font-size: 0.9rem;
-  color: #475569;
+  color: var(--color-text-muted, #9ca3af); /* ✅ au lieu de #475569 */
 }
+
+.lk-cta__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
 
 .lk-cta__actions {
   display: flex;

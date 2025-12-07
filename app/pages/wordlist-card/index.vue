@@ -16,7 +16,7 @@
       <template #meta>
         <p class="lk-hero-meta">
           <i class="fas fa-language" aria-hidden="true"></i>
-          <span>Kikongo · Français · Anglais · Phonétique</span>
+          <span>{{ t('words.page.metaLanguages') }}</span>
         </p>
       </template>
 
@@ -150,11 +150,11 @@
           </header>
 
           <dl class="word-card__body">
-            <div class="word-card__row">
+            <div class="word-card__row word-card__row--fr">
               <dt>{{ t('words.list.column.fr') }}</dt>
               <dd>{{ truncateText(item.translation_fr, 80) }}</dd>
             </div>
-            <div class="word-card__row">
+            <div class="word-card__row word-card__row--en">
               <dt>{{ t('words.list.column.en') }}</dt>
               <dd>{{ truncateText(item.translation_en, 80) }}</dd>
             </div>
@@ -540,4 +540,23 @@ onMounted(() => {
     justify-content: center;
   }
 }
+/* Mise en valeur des traductions FR / EN dans les cartes */
+.word-card__row--fr dt {
+  color: var(--primary, #2563eb);
+}
+
+.word-card__row--fr dd {
+  color: var(--primary, #2563eb);
+  font-weight: 500;
+}
+
+.word-card__row--en dt {
+  color: var(--accent-en, #0d9488);
+}
+
+.word-card__row--en dd {
+  color: var(--accent-en, #0d9488);
+  font-weight: 500;
+}
+
 </style>

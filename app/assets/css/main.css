@@ -445,3 +445,13 @@ a:focus-visible {
 .privacy-page h3 {
   color: var(--color-text);
 }
+/* 🔆 Améliore la visibilité des chevrons haut/bas en mode sombre (Chrome / Edge / Safari) */
+[data-theme="dark"] .app-pagination__goto-input::-webkit-inner-spin-button,
+[data-theme="dark"] .app-pagination__goto-input::-webkit-outer-spin-button {
+  filter: invert(1);
+}
+
+/* Pour Firefox : on ne peut pas styler les chevrons, mais on améliore au moins le contraste du champ */
+[data-theme="dark"] .app-pagination__goto-input {
+  border-color: var(--primary, #0d6efd);
+}

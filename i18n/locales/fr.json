@@ -46,14 +46,17 @@
     "viewTable": "Vue tableau",
     "viewTableAria": "Afficher les mots sous forme de tableau",
     "viewDetails": "Voir la fiche",
-    "viewCards": "Vue cartes"
+    "viewCards": "Vue cartes",
+     "bottomCtaTitle": "Vous ne trouvez pas un mot dans le lexique ?",
+    "bottomCtaText": "Lexikongo est un dictionnaire vivant. Proposez de nouveaux mots, expressions ou verbes pour enrichir la langue Kikongo en ligne."
   },
    "page": {
       "eyebrow": "Lexikongo · Liste des mots en kikongo",
       "title": "Découvrir les mots en Kikongo",
       "subtitle": "Parcourez le lexique des mots en Kikongo avec leurs pluriels, transcriptions phonétiques et traductions en français et en anglais. Construit et enrichi par la communauté.",
       "primaryCta": "Commencer une recherche",
-      "secondaryCta": "Contribuer au dictionnaire"
+      "secondaryCta": "Contribuer au dictionnaire",
+      "metaLanguages": "Kikongo · Français · Anglais · Phonétique"
     },
      "meta": {
     "title": "Liste des mots en Kikongo – Lexikongo",

@@ -490,9 +490,10 @@ function applyInputPage() {
 
   .app-pagination__list {
     justify-content: center;
+    flex-wrap: wrap;
   }
 
-  /* On ne garde que les icônes sur mobile pour gagner de la place */
+  /* On ne garde que les icônes sur Prev/Next pour gagner de la place */
   .app-pagination__text {
     display: none;
   }
@@ -501,20 +502,126 @@ function applyInputPage() {
     padding-inline: 0.7rem;
   }
 
+  /* Label "Page" masqué sur mobile, mais on garde l'input + / total */
   .app-pagination__goto-label-text {
-    display: none; /* on garde juste l'input + / total */
+    display: none;
   }
 
   .app-pagination__goto-input {
     width: 2.4rem;
   }
+
+  .app-pagination__item--goto {
+    margin-left: 0;
+  }
 }
 
-/* Sur très petit écran, on cache le "Aller à la page" pour éviter un layout cassé */
+/* ✅ Sur très petit écran, on NE CACHE PLUS le goto,
+   mais on le centre proprement sous les boutons */
 @media (max-width: 480px) {
-  .app-pagination__item--goto {
-    display: none;
+  .app-pagination__list {
+    justify-content: center;
   }
+
+  .app-pagination__item--goto {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .app-pagination__goto {
+    justify-content: center;
+  }
+}
+/* Boutons de base */
+.app-pagination__btn {
+  border-radius: 999px;
+  border: 1px solid var(--border-subtle, rgba(148, 163, 184, 0.4));
+  background: var(--surface-elevated, #ffffff);
+  color: var(--text-default, #111827);
+  padding: 0.32rem 0.8rem;
+  font-size: 0.9rem;
+  line-height: 1.2;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  cursor: pointer;
+  transition:
+    background-color 0.15s ease,
+    color 0.15s ease,
+    border-color 0.15s ease,
+    box-shadow 0.15s ease,
+    transform 0.1s ease;
+}
+
+/* Précédent / Suivant : même base, juste un peu plus "chip" */
+.app-pagination__btn--nav {
+  background: var(--surface-elevated, #ffffff);
+}
+
+/* Boutons numéros */
+.app-pagination__btn--page {
+  min-width: 2.25rem;
+  justify-content: center;
+}
+
+.app-pagination__btn--page.app-pagination__btn--active {
+  background: var(--primary, #0d6efd);
+  color: #ffffff;
+  border-color: var(--primary, #0d6efd);
+  box-shadow: 0 10px 24px rgba(13, 110, 253, 0.25);
+}
+
+/* Hover / focus */
+.app-pagination__btn:hover,
+.app-pagination__btn:focus-visible {
+  outline: none;
+  transform: translateY(-1px);
+  box-shadow: 0 10px 22px rgba(15, 23, 42, 0.12);
+}
+
+/* Hover spécifique nav */
+.app-pagination__btn--nav:hover,
+.app-pagination__btn--nav:focus-visible {
+  border-color: var(--primary, #0d6efd);
+  color: var(--primary, #0d6efd);
+  background: var(--primary-soft, #eef2ff);
+}
+
+/* Désactivé */
+.app-pagination__btn--disabled {
+  cursor: default;
+  opacity: 0.5;
+  box-shadow: none;
+  transform: none;
+}
+
+/* 🔆 Améliore la visibilité des chevrons haut/bas en mode sombre (Chrome / Edge / Safari) */
+[data-theme="dark"] .app-pagination__goto-input::-webkit-inner-spin-button,
+[data-theme="dark"] .app-pagination__goto-input::-webkit-outer-spin-button {
+  filter: invert(1);
+}
+
+/* Pour Firefox : on ne peut pas styler les chevrons, mais on améliore au moins le contraste du champ */
+[data-theme="dark"] .app-pagination__goto-input {
+  border-color: var(--primary, #0d6efd);
+}
+/* 🔧 Supprimer les flèches natives (chevrons) du input[type=number] */
+.app-pagination__goto-input::-webkit-inner-spin-button,
+.app-pagination__goto-input::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.app-pagination__goto-input {
+  -moz-appearance: textfield; /* Firefox */
+  appearance: textfield;
+}
+
+/* 🌙 Contraste du champ en dark */
+[data-theme="dark"] .app-pagination__goto-input {
+  background-color: var(--surface-elevated, #020617);
+  color: var(--color-text, #e5e7eb);
+  border-color: var(--color-border, #475569);
 }
 
 </style>
