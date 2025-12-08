@@ -17,7 +17,7 @@ export default defineNuxtConfig({
 
   modules: [
     "@pinia/nuxt",
-    // ❌ "@nuxtjs/sitemap" est désactivé : on gère notre sitemap à la main
+   "@nuxtjs/sitemap",
     "@nuxtjs/robots",
     "@vite-pwa/nuxt",
     "@nuxtjs/i18n",

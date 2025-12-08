@@ -1,58 +1,52 @@
-import { readFileSync, existsSync } from "fs";
-import { resolve } from "path";
+// server/routes/sitemap.xml.get.js
+import { defineEventHandler } from "h3";
+import { useRuntimeConfig } from "#imports";
+import sitemapEntries from "../data/sitemapRoutes.json";
+
+// Petite fonction pour échapper les caractères XML
+function escapeXml(value) {
+  if (!value) return "";
+  return String(value)
+    .replace(/&/g, "&amp;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&apos;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;");
+}
 
 export default defineEventHandler((event) => {
-  // URL de base de ton site en prod
-  const baseUrl = process.env.PUBLIC_SITE_URL || "https://lexikongo.fr";
+  const config = useRuntimeConfig();
+  const baseUrl =
+    (config.public && config.public.siteUrl) || "https://lexikongo.fr";
 
-  const filePath = resolve(process.cwd(), "server/data/sitemapRoutes.json");
+  const routes = Array.isArray(sitemapEntries) ? sitemapEntries : [];
 
-  let entries = [];
-  if (existsSync(filePath)) {
-    try {
-      const raw = readFileSync(filePath, "utf8");
-      entries = JSON.parse(raw);
-    } catch (e) {
-      console.error("Erreur lecture sitemapRoutes.json:", e);
-    }
-  }
+  const urlsXml = routes
+    .map((entry) => {
+      const loc = new URL(entry.loc, baseUrl).toString();
+      const lastmod = entry.lastmod || new Date().toISOString();
+      const changefreq = entry.changefreq || "weekly";
+      const priority =
+        typeof entry.priority === "number" ? entry.priority : 0.5;
 
-  if (!Array.isArray(entries) || !entries.length) {
-    // Fallback minimal si jamais le JSON n'existe pas
-    entries = [
-      {
-        loc: "/",
-        lastmod: new Date().toISOString(),
-        changefreq: "weekly",
-        priority: 1.0,
-      },
-    ];
-  }
-
-  const urlsXml = entries
-    .map((e) => {
-      const loc = `${baseUrl}${e.loc}`;
-      const lastmod = e.lastmod
-        ? new Date(e.lastmod).toISOString()
-        : new Date().toISOString();
-
-      return `
-  <url>
-    <loc>${loc}</loc>
-    <lastmod>${lastmod}</lastmod>
-    <changefreq>${e.changefreq || "weekly"}</changefreq>
-    <priority>${e.priority ?? 0.8}</priority>
-  </url>`;
+      return [
+        "  <url>",
+        `    <loc>${escapeXml(loc)}</loc>`,
+        `    <lastmod>${escapeXml(lastmod)}</lastmod>`,
+        `    <changefreq>${escapeXml(changefreq)}</changefreq>`,
+        `    <priority>${priority}</priority>`,
+        "  </url>",
+      ].join("\n");
     })
-    .join("");
+    .join("\n");
 
-  const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
-<urlset
-  xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
->
-${urlsXml}
-</urlset>`;
+  const xml = [
+    '<?xml version="1.0" encoding="UTF-8"?>',
+    '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">',
+    urlsXml,
+    "</urlset>",
+  ].join("\n");
 
-  setHeader(event, "Content-Type", "application/xml; charset=utf-8");
-  return sitemap;
+  event.node.res.setHeader("Content-Type", "application/xml; charset=utf-8");
+  return xml;
 });

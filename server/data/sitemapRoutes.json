@@ -1,61 +1,109 @@
 [
   {
     "loc": "/",
-    "lastmod": "2025-12-04T10:15:35.908Z",
+    "lastmod": "2025-12-07T15:37:20.878Z",
     "changefreq": "weekly",
     "priority": 0.8
   },
   {
     "loc": "/expressions",
-    "lastmod": "2025-12-04T10:15:35.908Z",
+    "lastmod": "2025-12-07T15:37:20.878Z",
     "changefreq": "weekly",
     "priority": 0.8
   },
   {
     "loc": "/expressionlist-card",
-    "lastmod": "2025-12-04T10:15:35.908Z",
+    "lastmod": "2025-12-07T15:37:20.878Z",
     "changefreq": "weekly",
     "priority": 0.8
   },
   {
     "loc": "/words",
-    "lastmod": "2025-12-04T10:15:35.908Z",
+    "lastmod": "2025-12-07T15:37:20.878Z",
     "changefreq": "weekly",
     "priority": 0.8
   },
   {
     "loc": "/wordlist-card",
-    "lastmod": "2025-12-04T10:15:35.908Z",
+    "lastmod": "2025-12-07T15:37:20.878Z",
     "changefreq": "weekly",
     "priority": 0.8
   },
   {
     "loc": "/verbs",
-    "lastmod": "2025-12-04T10:15:35.908Z",
+    "lastmod": "2025-12-07T15:37:20.878Z",
     "changefreq": "weekly",
     "priority": 0.8
   },
   {
     "loc": "/verblist-card",
-    "lastmod": "2025-12-04T10:15:35.908Z",
+    "lastmod": "2025-12-07T15:37:20.878Z",
     "changefreq": "weekly",
     "priority": 0.8
   },
   {
     "loc": "/search",
-    "lastmod": "2025-12-04T10:15:35.908Z",
+    "lastmod": "2025-12-07T15:37:20.878Z",
     "changefreq": "weekly",
     "priority": 0.8
   },
   {
-    "loc": "/contributor",
-    "lastmod": "2025-12-04T10:15:35.908Z",
+    "loc": "/contribution",
+    "lastmod": "2025-12-07T15:37:20.878Z",
     "changefreq": "weekly",
     "priority": 0.8
   },
   {
     "loc": "/documentation",
-    "lastmod": "2025-12-04T10:15:35.908Z",
+    "lastmod": "2025-12-07T15:37:20.878Z",
+    "changefreq": "weekly",
+    "priority": 0.8
+  },
+  {
+    "loc": "/documentation/for-devs",
+    "lastmod": "2025-12-07T15:37:20.878Z",
+    "changefreq": "weekly",
+    "priority": 0.8
+  },
+  {
+    "loc": "/documentation/for-contributors",
+    "lastmod": "2025-12-07T15:37:20.878Z",
+    "changefreq": "weekly",
+    "priority": 0.8
+  },
+  {
+    "loc": "/documentation/for-admins",
+    "lastmod": "2025-12-07T15:37:20.878Z",
+    "changefreq": "weekly",
+    "priority": 0.8
+  },
+  {
+    "loc": "/documentation/for-users",
+    "lastmod": "2025-12-07T15:37:20.878Z",
+    "changefreq": "weekly",
+    "priority": 0.8
+  },
+  {
+    "loc": "/privacy",
+    "lastmod": "2025-12-07T15:37:20.878Z",
+    "changefreq": "weekly",
+    "priority": 0.8
+  },
+  {
+    "loc": "/faqs",
+    "lastmod": "2025-12-07T15:37:20.878Z",
+    "changefreq": "weekly",
+    "priority": 0.8
+  },
+  {
+    "loc": "/contribute",
+    "lastmod": "2025-12-07T15:37:20.878Z",
+    "changefreq": "weekly",
+    "priority": 0.8
+  },
+  {
+    "loc": "/contact",
+    "lastmod": "2025-12-07T15:37:20.878Z",
     "changefreq": "weekly",
     "priority": 0.8
   },
@@ -1273,7 +1321,7 @@
   },
   {
     "loc": "/details/word/buwela",
-    "lastmod": "2025-11-27T11:39:35.000Z",
+    "lastmod": "2025-12-04T21:06:50.000Z",
     "changefreq": "weekly",
     "priority": 0.9
   },
@@ -2064,8 +2112,14 @@
     "priority": 0.9
   },
   {
+    "loc": "/details/word/lunkika",
+    "lastmod": "2025-12-04T21:12:33.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
     "loc": "/details/verb/zonza",
-    "lastmod": "2024-11-19T21:18:19.000Z",
+    "lastmod": "2025-12-04T21:22:59.000Z",
     "changefreq": "weekly",
     "priority": 0.9
   },
@@ -2431,7 +2485,7 @@
   },
   {
     "loc": "/details/verb/safula",
-    "lastmod": "2025-02-02T00:11:13.000Z",
+    "lastmod": "2025-12-04T21:17:25.000Z",
     "changefreq": "weekly",
     "priority": 0.9
   },
@@ -2636,6 +2690,72 @@
   {
     "loc": "/details/verb/yela",
     "lastmod": "2025-12-03T23:34:39.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/verb/yekama",
+    "lastmod": "2025-12-04T21:12:39.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/verb/yambika",
+    "lastmod": "2025-12-04T21:12:43.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/verb/vinga",
+    "lastmod": "2025-12-04T21:12:47.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/verb/vinduna",
+    "lastmod": "2025-12-04T21:12:52.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/verb/vinduka",
+    "lastmod": "2025-12-04T21:12:55.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/verb/vola",
+    "lastmod": "2025-12-04T21:13:06.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/verb/vindana",
+    "lastmod": "2025-12-04T21:13:09.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/verb/vitidila",
+    "lastmod": "2025-12-04T21:13:11.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/verb/siamanana",
+    "lastmod": "2025-12-04T21:13:12.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/verb/buta",
+    "lastmod": "2025-12-04T21:13:14.000Z",
+    "changefreq": "weekly",
+    "priority": 0.9
+  },
+  {
+    "loc": "/details/verb/sikula",
+    "lastmod": "2025-12-04T21:13:17.000Z",
     "changefreq": "weekly",
     "priority": 0.9
   }
