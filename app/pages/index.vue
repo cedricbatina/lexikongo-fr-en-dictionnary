@@ -42,71 +42,87 @@
       </template>
 
       <!-- Colonne de droite -->
-      <template #side>
-        <aside class="home-side" aria-label="Accès rapide">
-          <!-- Carte “Contribuer” (toujours visible) -->
-          <section
-            class="home-card"
-            aria-labelledby="home-contrib-title"
-          >
-            <h2 id="home-contrib-title" class="home-card__title">
-              {{ t('home.cards.contribute.title') }}
-            </h2>
-            <p class="home-card__text">
-              {{ t('home.cards.contribute.body') }}
-            </p>
-            <NuxtLink
-              to="/documentation/for-contributors"
-              class="home-card__link"
-            >
-              <span>{{ t('home.cards.contribute.link') }}</span>
-              <i class="fas fa-arrow-right" aria-hidden="true"></i>
-            </NuxtLink>
-          </section>
+     <!-- Colonne de droite -->
+<template #side>
+  <aside class="home-side" aria-label="Accès rapide">
+    <!-- Carte “Contribuer” (toujours visible) -->
+    <section
+      class="home-card"
+      aria-labelledby="home-contrib-title"
+    >
+      <h2 id="home-contrib-title" class="home-card__title">
+        {{ t('home.cards.contribute.title') }}
+      </h2>
+      <p class="home-card__text">
+        {{ t('home.cards.contribute.body') }}
+      </p>
 
-          <!-- 🟢 Si NON connecté → carte “Se connecter” -->
-          <section
-            v-if="!isLoggedIn"
-            class="home-card home-card--muted"
-            aria-labelledby="home-login-title"
-          >
-            <h2 id="home-login-title" class="home-card__title">
-              {{ t('home.cards.login.title') }}
-            </h2>
-            <p class="home-card__text">
-              {{ t('home.cards.login.body') }}
-            </p>
-            <NuxtLink
-              to="/login"
-              class="home-card__link"
-            >
-              <span>{{ t('home.cards.login.link') }}</span>
-              <i class="fas fa-sign-in-alt" aria-hidden="true"></i>
-            </NuxtLink>
-          </section>
+      <div class="home-card__links">
+        <!-- 1️⃣ Contribuer au lexique (docs contributeurs) -->
+        <NuxtLink
+          to="/documentation/for-contributors"
+          class="home-card__link"
+          :aria-label="t('home.cards.contribute.lexiconAria')"
+        >
+          <span>{{ t('home.cards.contribute.lexiconCta') }}</span>
+          <i class="fas fa-arrow-right" aria-hidden="true"></i>
+        </NuxtLink>
 
-          <!-- 🟣 Si connecté → carte “Espace membre / Admin / Contrib” -->
-          <section
-            v-else
-            class="home-card home-card--muted"
-            aria-labelledby="home-account-title"
-          >
-            <h2 id="home-account-title" class="home-card__title">
-              {{ accountTitle }}
-            </h2>
-            <p class="home-card__text">
-              {{ accountBody }}
-            </p>
-            <NuxtLink
-              :to="accountLink"
-              class="home-card__link"
-            >
-              <span>{{ accountCtaLabel }}</span>
-              <i class="fas fa-arrow-right" aria-hidden="true"></i>
-            </NuxtLink>
-          </section>
-        </aside>
-      </template>
+        <!-- 2️⃣ Soutenir financièrement (page /contribute) -->
+        <NuxtLink
+          to="/contribute"
+          class="home-card__link home-card__link--secondary"
+          :aria-label="t('home.cards.contribute.supportAria')"
+        >
+          <span>{{ t('home.cards.contribute.supportCta') }}</span>
+          <i class="fas fa-donate" aria-hidden="true"></i>
+        </NuxtLink>
+      </div>
+    </section>
+
+    <!-- 🔒 cartes login / compte inchangées -->
+    <section
+      v-if="!isLoggedIn"
+      class="home-card home-card--muted"
+      aria-labelledby="home-login-title"
+    >
+      <h2 id="home-login-title" class="home-card__title">
+        {{ t('home.cards.login.title') }}
+      </h2>
+      <p class="home-card__text">
+        {{ t('home.cards.login.body') }}
+      </p>
+      <NuxtLink
+        to="/login"
+        class="home-card__link"
+      >
+        <span>{{ t('home.cards.login.link') }}</span>
+        <i class="fas fa-sign-in-alt" aria-hidden="true"></i>
+      </NuxtLink>
+    </section>
+
+    <section
+      v-else
+      class="home-card home-card--muted"
+      aria-labelledby="home-account-title"
+    >
+      <h2 id="home-account-title" class="home-card__title">
+        {{ accountTitle }}
+      </h2>
+      <p class="home-card__text">
+        {{ accountBody }}
+      </p>
+      <NuxtLink
+        :to="accountLink"
+        class="home-card__link"
+      >
+        <span>{{ accountCtaLabel }}</span>
+        <i class="fas fa-arrow-right" aria-hidden="true"></i>
+      </NuxtLink>
+    </section>
+  </aside>
+</template>
+
     </LkPageHero>
 
 
@@ -408,6 +424,16 @@ useSeoMeta({
   letter-spacing: 0.04em;
   text-transform: uppercase;
   color: var(--color-text);
+}
+.home-card__links {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.home-card__link--secondary {
+  opacity: 0.95;
+  font-size: 0.88rem;
 }
 
 </style>

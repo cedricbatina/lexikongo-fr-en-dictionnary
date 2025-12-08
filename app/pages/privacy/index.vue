@@ -1,3 +1,4 @@
+<!-- pages/privacy/index.vue -->
 <template>
   <main
     class="lk-page lk-page--privacy"
@@ -48,7 +49,7 @@
       </header>
 
       <article class="lk-privacy-article">
-        <!-- Section : responsable -->
+        <!-- Section : responsable du traitement -->
         <section
           class="lk-privacy-block"
           aria-labelledby="privacy-responsible-title"
@@ -58,6 +59,32 @@
           </h3>
           <p class="lk-privacy-block__text">
             {{ t('privacy.sections.responsible.body') }}
+          </p>
+        </section>
+
+        <!-- Section : hébergeur -->
+        <section
+          class="lk-privacy-block"
+          aria-labelledby="privacy-hosting-title"
+        >
+          <h3 id="privacy-hosting-title" class="lk-privacy-block__title">
+            {{ t('privacy.sections.hosting.title') }}
+          </h3>
+          <p class="lk-privacy-block__text">
+            {{ t('privacy.sections.hosting.body') }}
+          </p>
+        </section>
+
+        <!-- Section : bases légales et finalités -->
+        <section
+          class="lk-privacy-block"
+          aria-labelledby="privacy-legal-basis-title"
+        >
+          <h3 id="privacy-legal-basis-title" class="lk-privacy-block__title">
+            {{ t('privacy.sections.legalBasis.title') }}
+          </h3>
+          <p class="lk-privacy-block__text">
+            {{ t('privacy.sections.legalBasis.body') }}
           </p>
         </section>
 
@@ -85,16 +112,55 @@
           </ul>
         </section>
 
-        <!-- Section : finalités -->
+        <!-- Section : conservation -->
         <section
           class="lk-privacy-block"
-          aria-labelledby="privacy-purpose-title"
+          aria-labelledby="privacy-retention-title"
         >
-          <h3 id="privacy-purpose-title" class="lk-privacy-block__title">
-            {{ t('privacy.sections.purposes.title') }}
+          <h3 id="privacy-retention-title" class="lk-privacy-block__title">
+            {{ t('privacy.sections.retention.title') }}
           </h3>
           <p class="lk-privacy-block__text">
-            {{ t('privacy.sections.purposes.body') }}
+            {{ t('privacy.sections.retention.body') }}
+          </p>
+        </section>
+
+        <!-- Section : destinataires et sous-traitants -->
+        <section
+          class="lk-privacy-block"
+          aria-labelledby="privacy-recipients-title"
+        >
+          <h3 id="privacy-recipients-title" class="lk-privacy-block__title">
+            {{ t('privacy.sections.recipients.title') }}
+          </h3>
+          <p class="lk-privacy-block__text">
+            {{ t('privacy.sections.recipients.body') }}
+          </p>
+        </section>
+
+        <!-- Section : transferts hors UE -->
+        <section
+          class="lk-privacy-block"
+          aria-labelledby="privacy-transfers-title"
+        >
+          <h3 id="privacy-transfers-title" class="lk-privacy-block__title">
+            {{ t('privacy.sections.transfers.title') }}
+          </h3>
+          <p class="lk-privacy-block__text">
+            {{ t('privacy.sections.transfers.body') }}
+          </p>
+        </section>
+
+        <!-- Section : sécurité -->
+        <section
+          class="lk-privacy-block"
+          aria-labelledby="privacy-security-title"
+        >
+          <h3 id="privacy-security-title" class="lk-privacy-block__title">
+            {{ t('privacy.sections.security.title') }}
+          </h3>
+          <p class="lk-privacy-block__text">
+            {{ t('privacy.sections.security.body') }}
           </p>
         </section>
 
@@ -111,7 +177,7 @@
           </p>
         </section>
 
-        <!-- Section : droits -->
+        <!-- Section : droits RGPD -->
         <section
           class="lk-privacy-block"
           aria-labelledby="privacy-rights-title"
@@ -124,7 +190,7 @@
           </p>
         </section>
 
-        <!-- Section : contact -->
+        <!-- Section : contact RGPD -->
         <section
           class="lk-privacy-block"
           aria-labelledby="privacy-contact-title"
@@ -134,6 +200,19 @@
           </h3>
           <p class="lk-privacy-block__text">
             {{ t('privacy.sections.contact.body') }}
+          </p>
+        </section>
+
+        <!-- Section : loi applicable / juridiction -->
+        <section
+          class="lk-privacy-block"
+          aria-labelledby="privacy-law-title"
+        >
+          <h3 id="privacy-law-title" class="lk-privacy-block__title">
+            {{ t('privacy.sections.law.title') }}
+          </h3>
+          <p class="lk-privacy-block__text">
+            {{ t('privacy.sections.law.body') }}
           </p>
         </section>
 
@@ -180,7 +259,7 @@ const secondaryCta = computed(() => ({
   variant: 'ghost',
 }));
 
-// SEO
+// SEO de base
 const seoTitle =
   t('privacy.meta.title') ||
   'Lexikongo – Politique de confidentialité';
@@ -188,10 +267,10 @@ const seoDescription =
   t('privacy.meta.description') ||
   "Découvrez comment Lexikongo collecte, utilise et protège vos données lors de l'utilisation du dictionnaire Kikongo.";
 
-// JSON-LD
+// JSON-LD enrichi (PrivacyPolicy)
 const jsonLd = {
   '@context': 'https://schema.org',
-  '@type': 'WebPage',
+  '@type': 'PrivacyPolicy',
   name: 'Politique de confidentialité | Lexikongo',
   description: seoDescription,
   url: 'https://www.lexikongo.fr/privacy',
@@ -200,6 +279,25 @@ const jsonLd = {
     '@type': 'Organization',
     name: 'Lexikongo',
     url: 'https://www.lexikongo.fr',
+  },
+  provider: {
+    '@type': 'Organization',
+    name: 'Artful Batina Creative Studios',
+    url: 'https://www.artfulbatinacreativestudios.fr',
+  },
+  maintainer: {
+    '@type': 'Person',
+    name: 'Cédric Batina',
+    address: {
+      '@type': 'PostalAddress',
+      addressLocality: 'Gradignan',
+      addressCountry: 'FR',
+    },
+  },
+  hostingProvider: {
+    '@type': 'Organization',
+    name: 'Infomaniak Network SA',
+    url: 'https://www.infomaniak.com',
   },
 };
 
@@ -210,7 +308,7 @@ useHead({
     {
       name: 'keywords',
       content:
-        'Lexikongo, confidentialité, données personnelles, RGPD, cookies, dictionnaire Kikongo',
+        'Lexikongo, confidentialité, données personnelles, RGPD, cookies, dictionnaire Kikongo, politique de confidentialité',
     },
     { name: 'author', content: 'Lexikongo' },
     { name: 'robots', content: 'index, follow' },

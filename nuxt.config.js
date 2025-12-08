@@ -14,14 +14,14 @@ export default defineNuxtConfig({
   typescript: {
     typeCheck: false,
   },
+  devtools: { enabled: true },
 
-  modules: [
-    "@pinia/nuxt",
-   "@nuxtjs/sitemap",
-    "@nuxtjs/robots",
-    "@vite-pwa/nuxt",
-    "@nuxtjs/i18n",
-  ],
+  devServer: {
+    port: 3000,
+    host: "0.0.0.0",
+  },
+
+  modules: ["@pinia/nuxt", "@nuxtjs/robots", "@vite-pwa/nuxt", "@nuxtjs/i18n"],
 
   css: [
     "bootstrap/dist/css/bootstrap.css",

@@ -56,7 +56,9 @@
       "subtitle": "Parcourez le lexique des mots en Kikongo avec leurs pluriels, transcriptions phonétiques et traductions en français et en anglais. Construit et enrichi par la communauté.",
       "primaryCta": "Commencer une recherche",
       "secondaryCta": "Contribuer au dictionnaire",
-      "metaLanguages": "Kikongo · Français · Anglais · Phonétique"
+      "metaLanguages": "Kikongo · Français · Anglais · Phonétique",
+       "bottomCtaTitle": "Vous ne trouvez pas un mot dans le lexique ?",
+    "bottomCtaText": "Lexikongo est un dictionnaire vivant. Proposez de nouveaux mots, expressions ou verbes pour enrichir la langue Kikongo en ligne."
     },
      "meta": {
     "title": "Liste des mots en Kikongo – Lexikongo",
@@ -92,7 +94,12 @@
       "contribute": {
         "title": "Contribuer au lexique",
         "body": "Ajoutez de nouveaux mots, verbes ou expressions et aidez la communauté à enrichir la base.",
-        "link": "Accéder à l’espace contributeur"
+        "link": "Accéder à l’espace contributeur",
+          "lexiconCta": "Accéder à l’espace contributeur",
+      "lexiconAria": "Accéder à la documentation et à l’espace contributeur Lexikongo",
+      "supportCta": "Faire un don / soutenir Lexikongo",
+      "supportAria": "Accéder à la page de contributions et de dons pour Lexikongo"
+        
       },
       "login": {
         "title": "Se connecter",
@@ -219,6 +226,28 @@
     "viewTable": "Vue tableau",
     "viewTableAria": "Afficher les verbes sous forme de tableau",
     "viewDetails": "Voir le verbe"
+  },
+   "common": {
+    "unknownVerb": "verbe inconnu"
+  },
+  "search": {
+    "results": {
+      "ariaLabel": "Résultats de recherche pour les verbes",
+      "caption": "Liste des verbes correspondant à votre recherche",
+      "columns": {
+        "infinitive": "Infinitif",
+        "phonetic": "Phonétique",
+        "fr": "Français",
+        "en": "Anglais"
+      },
+      "rowAria": "Voir les détails du verbe {verb}",
+      "empty": "Aucun verbe trouvé pour votre recherche.",
+      "errors": {
+        "missingSlug": "Une erreur s'est produite : identifiant du verbe introuvable.",
+        "invalidPage": "Numéro de page invalide.",
+        "unexpectedFormat": "Format de données inattendu. Veuillez réessayer."
+      }
+    }
   }
  
   },
@@ -292,7 +321,28 @@
       "infinitive": "Infinitif",
       "root": "Radical verbal",
       "suffix": "Suffixe",
-      "editCta": "Éditer ce verbe"
+      "editCta": "Éditer ce verbe",
+       "search": {
+    "form": {
+      "ariaLabel": "Formulaire de recherche de verbes dans le dictionnaire",
+      "label": {
+        "search": "Recherche de verbes",
+        "language": "Langue de recherche pour les verbes"
+      },
+      "ariaSearchInput": "Champ de recherche de verbes",
+      "ariaLanguageSelect": "Sélection de la langue de recherche pour les verbes",
+      "placeholder": "Rechercher un verbe en {language}",
+      "languageOptions": {
+        "kikongo": "Kikongo",
+        "fr": "Français",
+        "en": "Anglais"
+      },
+      "buttons": {
+        "search": "Rechercher",
+        "clear": "Effacer"
+      }
+    }
+  }
     }
   },
   "common.lang.fr": "Français",
@@ -343,7 +393,7 @@
       },
     "subtitle": "Connectez-vous pour accéder à votre espace Lexikongo.",
     "identifierLabel": "Email ou nom d'utilisateur",
-    "identifierPlaceholder": "Entrez votre email ou nom d’utilisateur",
+    "identifierPlaceholder": "Entrez votre email Ex: kimbangu{'@'}gmail.com",
     "passwordLabel": "Mot de passe",
     "passwordPlaceholder": "Entrez votre mot de passe",
     "submit": "Connexion",
@@ -724,7 +774,52 @@
         "title": "Tableau de bord administrateur · Lexikongo",
         "description": "Accédez au tableau de bord administrateur Lexikongo pour modérer les soumissions, gérer les mots, verbes et comptes utilisateurs."
       }
+    },
+     "users": {
+    "page": {
+      "eyebrow": "Administration · Utilisateurs",
+      "title": "Gestion des utilisateurs",
+      "subtitle": "Consultez les comptes, leurs rôles et le statut de vérification des emails.",
+      "meta": "Seuls les administrateurs autorisés peuvent consulter et modifier ces informations."
+    },
+    "meta": {
+      "title": "Administration – Utilisateurs | Lexikongo",
+      "description": "Tableau de gestion des utilisateurs Lexikongo (comptes, rôles, vérification email)."
+    },
+      "search": {
+      "label": "Filtrer les utilisateurs",
+      "placeholder": "Rechercher par nom, email ou rôle…",
+      "count": "{0} utilisateur·rice·s au total"
+    },
+    "states": {
+      "loading": "Chargement des utilisateurs…",
+      "error": "Impossible de récupérer la liste des utilisateurs. Veuillez réessayer plus tard.",
+      "emptySearch": "Aucun compte ne correspond à votre recherche.",
+      "emptyAll": "Aucun utilisateur n’a encore été enregistré."
+    },
+    "table": {
+       "title": "Liste des comptes",
+      "subtitle": "Vue d’ensemble des utilisateurs inscrits sur Lexikongo.",
+      "caption": "Tableau d’administration des comptes utilisateurs Lexikongo.",
+      "columns": {
+        "id": "ID",
+        "username": "Nom d’utilisateur",
+        "email": "Email",
+        "role": "Rôle(s)",
+        "createdAt": "Créé le",
+        "verified": "Email vérifié"
+      },
+      "rowAria": "Voir la fiche du compte {username}",
+      "role": {
+        "none": "Aucun rôle"
+      },
+      "verified": {
+        "yes": "Vérifié",
+        "no": "Non vérifié"
+      }
     }
+  
+  }
   
   },
   
@@ -1083,61 +1178,125 @@
     "paginationAria": "Pagination des résultats de recherche de verbes",
     "metaTitle": "Rechercher des verbes en Kikongo | Lexikongo",
     "metaDescription": "Recherchez des verbes en Kikongo (infinitif ku + racine) avec leurs traductions en français et en anglais dans le dictionnaire Lexikongo."
-  }
+  },
+    "form": {
+      "labelSearch": "Recherche",
+      "placeholder": "Rechercher en {language}",
+
+      "aria": {
+        "searchForm": "Formulaire de recherche",
+        "searchInput": "Champ de recherche",
+        "languageSelect": "Sélection de la langue de recherche",
+        "submit": "Lancer la recherche",
+        "clear": "Effacer la recherche"
+      },
+
+      "language": {
+        "kikongo": "Kikongo",
+        "fr": "Français",
+        "en": "Anglais"
+      },
+
+      "button": {
+        "search": "Rechercher",
+        "clear": "Effacer"
+      }
+    }
 },
 "privacy": {
   "page": {
-    "eyebrow": "Lexikongo · Confidentialité",
+    "eyebrow": "Lexikongo · Données & vie privée",
     "title": "Politique de confidentialité",
-    "subtitle": "Découvrez comment nous protégeons vos données et vos contributions sur Lexikongo.",
-    "primaryCta": "Rechercher un mot",
-    "secondaryCta": "Nous contacter",
-    "metaHighlight": "Vos données et vos contributions sont traitées avec soin."
+    "subtitle": "Comment Lexikongo collecte, utilise et protège vos données personnelles.",
+    "metaHighlight": "Lexikongo est hébergé en Europe et respecte le RGPD.",
+    "primaryCta": "Rechercher dans le dictionnaire",
+    "secondaryCta": "Nous contacter"
   },
+
   "meta": {
     "title": "Politique de confidentialité | Lexikongo",
-    "description": "Politique de confidentialité de Lexikongo – dictionnaire Kikongo en ligne."
+    "description": "Découvrez comment Lexikongo collecte, utilise et protège vos données personnelles lors de l’utilisation du dictionnaire Kikongo – Français / Anglais & phonétique."
   },
+
   "sections": {
     "intro": {
-      "title": "Protection de vos données",
-      "lead": "Cette page décrit comment Lexikongo collecte et utilise vos données lorsque vous consultez le dictionnaire ou contribuez au lexique."
+      "title": "Protection de vos données sur Lexikongo",
+      "lead": "La présente politique de confidentialité explique de manière claire et transparente comment le site lexikongo.fr collecte, utilise et protège vos données personnelles, conformément au Règlement Général sur la Protection des Données (RGPD) et au droit français en vigueur."
     },
+
     "responsible": {
       "title": "Responsable du traitement",
-      "body": "👉 Ici tu recolle le texte exact de l’ancien site (organisation, contact, etc.)."
+      "body": "Le responsable du traitement des données collectées via le site lexikongo.fr est Artful Batina Creative Studios (représenté par Cédric Batina), établi à Gradignan (France). Lexikongo est une initiative éditoriale indépendante, dédiée à la préservation et à la valorisation de la langue Kikongo.\n\nPour toute question relative à vos données personnelles ou à cette politique, vous pouvez écrire à : contact (at) lexikongo.fr."
     },
+
+    "hosting": {
+      "title": "Hébergement du site",
+      "body": "L’hébergement du site et des bases de données Lexikongo est assuré par Infomaniak Network SA, prestataire basé en Suisse, dans des centres de données situés sur le territoire suisse. La Suisse bénéficie d’une décision d’adéquation de la Commission européenne, ce qui signifie qu’elle offre un niveau de protection des données personnelles considéré comme équivalent à celui de l’Union européenne.\n\nInfomaniak fournit l’infrastructure matérielle, les sauvegardes et une partie des journaux techniques nécessaires au bon fonctionnement et à la sécurité du service."
+    },
+
+    "legalBasis": {
+      "title": "Bases légales et finalités du traitement",
+      "body": "Lexikongo traite vos données personnelles pour plusieurs finalités :\n\n• Fournir le service de dictionnaire en ligne (consultation, recherche, affichage des mots, verbes et expressions).\n• Gérer la création, l’authentification et le suivi des comptes utilisateurs (connexion, sécurité, rôles, historique minimal).\n• Permettre la contribution au lexique (soumission, validation, modération et publication des contenus proposés par la communauté).\n• Assurer la sécurité du site, prévenir les usages frauduleux, lutter contre les abus et améliorer la stabilité technique.\n• Répondre à vos demandes envoyées via les formulaires de contact ou d’assistance.\n\nLes principales bases légales au sens du RGPD sont :\n• L’exécution du contrat (fourniture du service lorsque vous créez un compte et utilisez Lexikongo en tant qu’utilisateur inscrit).\n• L’intérêt légitime de Lexikongo (sécurisation de la plateforme, amélioration continue, lutte contre la fraude et les abus).\n• Le consentement, lorsque celui-ci est nécessaire pour certaines fonctionnalités optionnelles (par exemple, une éventuelle newsletter ou certains cookies non essentiels si nous en ajoutons à l’avenir)."
+    },
+
     "data": {
-      "title": "Données collectées",
+      "title": "Données personnelles collectées",
       "items": {
-        "account": "Données de compte : adresse e-mail, nom d’utilisateur et informations de profil.",
-        "usage": "Données d’usage : pages consultées, recherches effectuées, préférences d’affichage.",
-        "contributions": "Contenus de contribution : mots, verbes, traductions, commentaires soumis sur Lexikongo.",
-        "technical": "Données techniques : informations de navigateur, adresse IP raccourcie, cookies strictement nécessaires."
+        "account": "Données de compte : pseudonyme / nom d’utilisateur, adresse e-mail, mot de passe chiffré, rôles (utilisateur, contributeur, admin), paramètres de langue, dates de création et de mise à jour du compte.",
+        "usage": "Données d’usage : pages consultées, recherches effectuées dans le dictionnaire, préférences d’affichage, ainsi que certaines informations techniques fournies par votre navigateur (type de navigateur, système d’exploitation, horodatages). Des journaux techniques (logs) peuvent contenir votre adresse IP tronquée ou pseudonymisée.",
+        "contributions": "Données de contribution : mots, verbes, expressions et autres contenus que vous proposez, ainsi que leurs métadonnées (date de soumission, statut de modération, historique des validations ou rejets).",
+        "technical": "Données techniques et cookies : jetons d’authentification (JWT) stockés dans des cookies sécurisés, identifiants de session, préférences (langue, vue, filtres), informations liées à la sécurité (tentatives de connexion, blocage d’adresses IP en cas d’abus)."
       }
     },
-    "purposes": {
-      "title": "Finalités de la collecte",
-      "body": "👉 Ici tu insères les finalités exactes de l’ancien texte (amélioration du service, modération, statistiques, etc.)."
+
+    "retention": {
+      "title": "Durée de conservation des données",
+      "body": "Lexikongo applique des durées de conservation proportionnées aux finalités poursuivies :\n\n• Compte utilisateur : vos données de compte sont conservées tant que votre compte est actif. En cas d’inactivité prolongée ou de demande de suppression, certaines informations peuvent être archivées pendant une durée limitée (par exemple jusqu’à 3 ans) pour des raisons légales ou de preuve.\n• Contributions (mots, verbes, expressions) : les contenus publiés peuvent être conservés de manière durable afin de préserver la cohérence du dictionnaire. En cas de retrait, les données peuvent être pseudonymisées ou anonymisées lorsque cela est possible.\n• Journaux techniques et sécurité : les journaux de connexion et de sécurité sont conservés pendant une durée limitée (généralement quelques mois) afin de détecter les incidents, prévenir les abus et améliorer la stabilité du service.\n• Cookies et jetons : le jeton d’accès (JWT) a une durée de vie courte (environ 15 minutes), tandis que le jeton de rafraîchissement peut être valable jusqu’à 14 jours. Au-delà, une nouvelle authentification vous sera demandée."
     },
+
+    "recipients": {
+      "title": "Destinataires et sous-traitants",
+      "body": "L’accès à vos données personnelles est limité aux seules personnes et organismes qui en ont besoin pour accomplir leurs missions :\n\n• L’éditeur et mainteneur de Lexikongo (Artful Batina Creative Studios / Cédric Batina), pour le développement, la maintenance, la sécurité et l’administration éditoriale de la plateforme.\n• L’hébergeur Infomaniak Network SA, pour la fourniture de l’infrastructure technique, des sauvegardes et des journaux d’accès.\n• Le cas échéant, certains prestataires spécialisés (par exemple, prestataire de paiement pour les contributions financières ou outils d’envoi d’e-mails), soumis à des obligations de confidentialité et de sécurité.\n\nLexikongo ne revend ni ne loue vos données personnelles. Les transmissions à des tiers se font uniquement dans le cadre des finalités décrites dans cette politique ou pour répondre à des obligations légales (requêtes d’une autorité compétente, décisions de justice, etc.)."
+    },
+
+    "transfers": {
+      "title": "Transferts de données hors Union européenne",
+      "body": "Les données liées à Lexikongo sont principalement hébergées en Suisse, auprès d’Infomaniak Network SA. La Suisse bénéficie d’une décision d’adéquation de la Commission européenne, ce qui signifie qu’elle offre un niveau de protection des données personnelles équivalent à celui de l’Union européenne.\n\nSi certains prestataires techniques (par exemple, services de paiement ou d’e-mailing) sont situés en dehors de l’Union européenne ou de pays reconnus comme adéquats, Lexikongo veille à ce que des garanties appropriées soient mises en place (clauses contractuelles types, encadrement contractuel renforcé, mesures techniques complémentaires) afin de protéger vos données."
+    },
+
+    "security": {
+      "title": "Mesures de sécurité",
+      "body": "Lexikongo met en œuvre des mesures techniques et organisationnelles raisonnables pour protéger vos données contre la perte, l’accès non autorisé, la divulgation ou la destruction :\n\n• Communication chiffrée entre votre navigateur et le site (HTTPS / TLS).\n• Stockage des mots de passe sous forme hachée et non en clair.\n• Gestion de rôles (utilisateur, contributeur, administrateur) pour limiter l’accès aux données sensibles.\n• Journalisation des événements techniques importants (erreurs, connexions, actions sensibles) pour détecter les anomalies.\n• Mises à jour régulières des composants techniques utilisés par la plateforme.\n\nAucune mesure n’offrant une sécurité absolue, nous vous recommandons également d’utiliser un mot de passe robuste et de ne pas le réutiliser sur d’autres sites."
+    },
+
     "cookies": {
-      "title": "Cookies et traceurs",
-      "body": "👉 Texte de ta section cookies (techniques, mesure d’audience, choix de l’utilisateur)."
+      "title": "Cookies, JWT et autres traceurs",
+      "body": "Lexikongo utilise principalement des cookies et des jetons (JWT) strictement nécessaires au fonctionnement du site et à la sécurité des comptes :\n\n• Cookies d’authentification : lors de votre connexion, un jeton d’accès (JWT) est stocké dans un cookie HTTPOnly et sécurisé, valable environ 15 minutes, permettant de vérifier que vous êtes bien connecté.\n• Cookie de rafraîchissement : un jeton de rafraîchissement, également stocké dans un cookie sécurisé, peut prolonger votre session jusqu’à 14 jours pour éviter de ressaisir trop fréquemment vos identifiants.\n• Cookies de préférences : certains cookies peuvent mémoriser vos choix (langue d’interface, options d’affichage) afin d’améliorer votre confort d’utilisation.\n\nAucun cookie publicitaire n’est utilisé. Si des outils de mesure d’audience ou d’analyse sont ajoutés à l’avenir, cette section sera mise à jour pour détailler leur fonctionnement et vous permettrait, le cas échéant, de les accepter ou de les refuser."
     },
+
     "rights": {
-      "title": "Vos droits",
-      "body": "👉 Texte concernant les droits d’accès, rectification, suppression, opposition, portabilité, etc."
+      "title": "Vos droits sur vos données (RGPD)",
+      "body": "Conformément au RGPD et à la loi Informatique et Libertés, vous disposez notamment des droits suivants :\n\n• Droit d’accès : obtenir la confirmation qu’un traitement de données vous concernant est effectué et en recevoir une copie.\n• Droit de rectification : demander la correction de données inexactes ou incomplètes (par exemple, votre pseudonyme ou votre adresse e-mail).\n• Droit à l’effacement : demander la suppression de certaines données vous concernant, dans les limites prévues par la loi (par exemple, suppression de votre compte).\n• Droit d’opposition : vous opposer, pour des motifs légitimes, à certains traitements fondés sur l’intérêt légitime.\n• Droit à la limitation du traitement : demander la suspension temporaire de certains traitements lorsque vous contestez l’exactitude des données ou la licéité du traitement.\n• Droit à la portabilité : recevoir, lorsque cela est applicable, les données que vous avez fournies dans un format structuré, couramment utilisé et lisible par machine.\n\nCertaines contributions publiques (mots, verbes, expressions) peuvent être conservées sous une forme pseudonymisée ou anonymisée afin de préserver la cohérence éditoriale du dictionnaire tout en respectant vos droits."
     },
+
     "contact": {
-      "title": "Nous contacter",
-      "body": "👉 Coordonnées ou adresse e-mail que tu utilisais déjà pour les demandes RGPD."
+      "title": "Exercer vos droits ou poser une question",
+      "body": "Pour toute question relative à vos données personnelles, ou pour exercer vos droits (accès, rectification, suppression, opposition, etc.), vous pouvez nous contacter à l’adresse suivante : contact (at) lexikongo.fr.\n\nAfin de faciliter le traitement de votre demande, nous vous invitons à préciser les éléments suivants :\n• L’adresse e-mail utilisée sur Lexikongo.\n• Le ou les droits que vous souhaitez exercer.\n\nNous pouvons être amenés à vous demander des informations complémentaires pour vérifier votre identité. Une réponse vous sera apportée dans un délai indicatif d’un mois. Si vous estimez, après nous avoir contactés, que vos droits ne sont pas respectés, vous pouvez déposer une réclamation auprès de l’autorité de contrôle compétente : la CNIL (cnil.fr) en France."
     },
+
+    "law": {
+      "title": "Loi applicable et juridiction compétente",
+      "body": "La présente politique de confidentialité est soumise au droit français et au RGPD. En cas de difficulté persistante relative à la protection de vos données personnelles et après démarche auprès de Lexikongo et, le cas échéant, de la CNIL, les tribunaux français seront seuls compétents. À titre indicatif, le tribunal matériellement et territorialement compétent est celui de Bordeaux, compte tenu de l’établissement du responsable du traitement à Gradignan (France)."
+    },
+
     "update": {
       "title": "Mises à jour de cette politique",
-      "body": "👉 Phrase qui explique que la politique peut évoluer, avec la date de dernière mise à jour."
+      "body": "La présente politique de confidentialité peut être amenée à évoluer pour refléter les développements du service Lexikongo, l’évolution de la réglementation ou la mise en place de nouvelles fonctionnalités (par exemple, de nouveaux modes de contribution ou de nouveaux partenariats).\n\nNous vous invitons à la consulter régulièrement. En cas de modification importante, une information pourra être affichée de manière visible sur le site. Date de dernière mise à jour : 8 décembre 2025."
     }
   }
-},
+}
+
+,
 "faq": {
   "page": {
     "eyebrow": "Aide · FAQ",
@@ -1441,7 +1600,95 @@
   "socialText": "Suivez Lexikongo sur les réseaux sociaux.",
   "rights": "Tous droits réservés.",
   "madeBy": "Site conçu et maintenu par"
+},
+"contact": {
+  "page": {
+    "eyebrow": "Support · Contact",
+    "title": "Contactez l’équipe Lexikongo",
+    "subtitle": "Une question, une suggestion ou une idée de partenariat ? Envoyez-nous un message, nous lisons chaque demande avec attention.",
+    "ctaFaq": "Consulter la FAQ",
+    "ctaDocs": "Voir la documentation",
+    "meta": "Contact · Support · Partenariats"
+  },
+  "form": {
+    "title": "Envoyez-nous un message",
+    "subtitle": "Remplissez ce formulaire, nous reviendrons vers vous par e-mail dès que possible.",
+    "fields": {
+      "name": {
+        "label": "Nom complet",
+        "placeholder": "Votre nom ou nom complet"
+      },
+      "email": {
+        "label": "Adresse e-mail",
+        "placeholder": "Ex: kimbangu{'@'}gmail.com"
+      },
+      "message": {
+        "label": "Message",
+        "placeholder": "Expliquez-nous votre question, votre suggestion ou votre projet…"
+      }
+    },
+    "actions": {
+      "submit": "Envoyer le message",
+      "submitting": "Envoi en cours…"
+    },
+    "success": "Merci, votre message a bien été envoyé. Nous vous répondrons par e-mail.",
+    "errors": {
+      "required": "Merci de remplir tous les champs obligatoires.",
+      "generic": "Une erreur est survenue lors de l’envoi du message. Veuillez réessayer un peu plus tard."
+    }
+  },
+  "why": {
+    "title": "Pourquoi nous contacter ?",
+    "p1": "Lexikongo est une plateforme collaborative dédiée à la préservation et à la transmission de la langue Kikongo. Vos retours, corrections et suggestions nous aident à améliorer le dictionnaire au quotidien.",
+    "p2": "Vous pouvez aussi nous écrire pour toute demande de partenariat, de projet pédagogique, d’intégration technique ou d’accompagnement autour de la langue Kikongo.",
+    "caption": "Lexikongo – un pont vivant entre le Kikongo, le français et l’anglais."
+  }
+},
+"contribute": {
+  "page": {
+    "eyebrow": "Lexikongo · Soutien",
+    "title": "Soutenir Lexikongo",
+    "subtitle": "Transformons ensemble Lexikongo en une ressource incontournable pour préserver et transmettre la langue Kikongo.",
+    "meta": "Contributions financières et soutien à la plateforme Lexikongo."
+  },
+  "meta": {
+    "title": "Soutenir Lexikongo · Contributions",
+    "description": "Apportez votre soutien à Lexikongo pour préserver, documenter et moderniser la langue Kikongo (dictionnaire Kikongo – Français/Anglais & phonétique)."
+  },
+  "payments": {
+    "title": "Choisissez une méthode de paiement",
+    "subtitle": "Carte bancaire, PayPal ou autres moyens : sélectionnez la solution qui vous convient pour soutenir notre mission."
+  },
+  "bank": {
+    "title": "Virement bancaire",
+    "subtitle": "Vous pouvez aussi nous soutenir par virement direct. Toutes les informations bancaires sont indiquées ci-dessous."
+  },
+  "other": {
+    "title": "Autres façons de nous soutenir",
+    "subtitle": "Même sans don financier, vous pouvez aider Lexikongo à grandir et à toucher plus de locuteurs et d’apprenants.",
+    "blocks": {
+      "contact": {
+        "title": "Contribuer avec vos idées",
+        "text": "Suggestions de fonctionnalités, projets pédagogiques, partenariats culturels… écrivez-nous pour construire Lexikongo à plusieurs.",
+        "cta": "Nous écrire",
+        "aria": "Contactez-nous pour proposer votre aide ou vos idées"
+      },
+      "share": {
+        "title": "Partager Lexikongo autour de vous",
+        "text": "Envoyez Lexikongo à vos proches, enseignants, étudiants et associations. Plus le site est utilisé, plus le Kikongo gagne en visibilité."
+      },
+      "contributors": {
+        "title": "Rejoindre les contributeurs",
+        "text": "Créez un compte, proposez des mots et des verbes, corrigez et enrichissez le dictionnaire avec la communauté Lexikongo.",
+        "cta": "Devenir contributeur",
+        "aria": "Aller à la page d'inscription pour devenir contributeur Lexikongo"
+      }
+    }
+  }
 }
+
+
+
 
 
 
