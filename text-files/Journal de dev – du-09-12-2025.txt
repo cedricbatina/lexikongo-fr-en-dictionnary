@@ -1,0 +1,228 @@
+Journal de dev – 09/12/2025
+1. Administration · Liste des utilisateurs
+
+Création / finalisation de la page pages/admin/users/index.vue :
+
+Intégration avec le design Lexikongo (LkPageHero, LkActionsBar, carte « Liste des comptes »).
+
+SEO basique admin avec useSeoMeta + robots: noindex, nofollow.
+
+Refonte complète de components/UserList.vue :
+
+Fetch des données via GET /api/admin/users (nouvelle route SSR).
+
+Recherche full-text locale sur username, email et les rôles.
+
+Pagination côté client (pageSize = 5) avec components/Pagination.vue.
+
+Navigation clavier + souris vers les fiches :
+
+Construction d’URL comme /admin/user/{user_id}-{slug-username}.
+
+Design premium :
+
+Toolbar de recherche (pill, compteur « X utilisateur·rice·s au total »).
+
+Tableau responsive, lignes survolées, alternance de fonds clair.
+
+Badges de rôle et chip “email vérifié / non vérifié” compatibles light/dark, basés sur les variables CSS globales.
+
+2. Administration · Fiche utilisateur
+
+Page pages/admin/user/[userIdSlug].vue :
+
+Extraction de l’ID numérique depuis l’URL :userIdSlug (10-tusikila-kinuani-kia-batina → 10).
+
+Chargement SSR avec useAsyncData via GET /api/admin/users/:id.
+
+Affichage détaillé :
+
+ID interne, username, email, dates created_at, updated_at, last_seen, previous_seen.
+
+Liste des rôles provenant de user_roles (admin, contributor, user, etc.).
+
+Statut de vérification de l’email + message de sécurité (mot de passe hashé).
+
+Actions dans le hero :
+
+Bouton « Modifier le compte » → /admin/edit/user/[userIdSlug].
+
+Bouton « Supprimer le compte » avec confirmation.
+
+Suppression :
+
+Utilisation de confirmStore.ask() + LkConfirmModal.
+
+Appel DELETE /api/admin/users/:id puis redirection vers /admin/users.
+
+Style adapté au thème (claire/sombre) avec les mêmes principes que les autres pages Lexikongo.
+
+i18n (fr.json) pour admin.user.* :
+
+Textes pour : titres de page, labels de champs, sections (account, roles, security), états (loading, error, notFound), actions (edit, delete, confirmations), et messages de suppression :
+
+admin.user.states.deleted
+
+admin.user.states.deleteError
+
+3. Administration · Édition utilisateur
+
+Page pages/admin/edit/user/[userIdSlug].vue (mise en place aujourd’hui) :
+
+Récupération des données actuelles via GET /api/admin/users/:id.
+
+Formulaire d’édition :
+
+username, email, cases à cocher pour les rôles (admin, contributor, user).
+
+Toggle / switch pour email_verified.
+
+Soumission :
+
+Appel PUT /api/admin/users/:id pour mettre à jour l’utilisateur.
+
+Redirection vers la fiche /admin/user/[userIdSlug] après succès (avec place prévue pour un toast de confirmation).
+
+Style cohérent avec les autres formulaires (pills, cartes, labels propres).
+
+4. Backend · API Admin Users
+
+Les fichiers exacts peuvent légèrement varier, mais la logique est la suivante.
+
+GET /api/admin/users (server/api/admin/users/index.get.js) :
+
+Protégé par require-auth + require-admin.
+
+Jointure users + user_roles + roles pour renvoyer:
+
+user_id, username, email, created_at, email_verified, roles: [].
+
+GET /api/admin/users/:id :
+
+Récupération d’un user spécifique + ses rôles.
+
+Renvoi de tous les champs utiles pour la fiche et l’édition :
+
+user_id, username, email, created_at, updated_at, last_seen, previous_seen, email_verified, roles.
+
+PUT /api/admin/users/:id :
+
+Mise à jour de username, email, email_verified.
+
+Synchronisation des rôles dans user_roles (ajout/suppression selon le payload).
+
+DELETE /api/admin/users/:id :
+
+Suppression de l’utilisateur et de ses user_roles (et autres dépendances si besoin plus tard).
+
+Utilisé par la fiche admin avec le confirm modal.
+
+5. Page « Contribuer » (dons)
+
+Page pages/contribute.vue :
+
+Refonte complète de la structure :
+
+Hero réutilisable (LkPageHero) + LkActionsBar.
+
+3 sections :
+
+Paiement en ligne (Stripe, PayPal, Mobile Money) → PaymentForm.
+
+Virement bancaire → BankTransfer.
+
+Autres façons de soutenir (contact, partage, rejoindre les contributeurs).
+
+SEO avancé avec useSeoMeta :
+
+contribute.meta.title, contribute.meta.description, OpenGraph, Twitter Card, image contribute-banner.webp.
+
+Intégration des scripts externes dans useHead :
+
+Google Pay (placeholder).
+
+SDK PayPal : https://www.paypal.com/sdk/js?client-id=....
+
+6. Paiements · Stripe, PayPal, virement & Mobile Money (UI)
+
+Nouveau components/PaymentForm.vue :
+
+UI premium Lexikongo :
+
+Choix de méthode sous forme de pills : Carte bancaire (Stripe), PayPal, Mobile Money.
+
+Champ montant + presets rapides (5, 10, 20 €).
+
+Cartes / panels propres pour chaque méthode.
+
+Stripe :
+
+Utilise public.stripePublicKey ou public.stripeKey.
+
+Initialisation via loadStripe.
+
+Montant converti en centimes.
+
+Appel de l’endpoint backend POST /api/payments/stripe-intent.
+
+confirmCardPayment + messages de succès/erreur i18n.
+
+PayPal :
+
+Utilise public.paypalClientId (cohérent avec useHead).
+
+Rendu des boutons dans #paypal-button-container lorsque le SDK est dispo.
+
+Montant synchronisé avec le montant choisi (fallback à 10 €).
+
+Mobile Money :
+
+Panel informatif “coming soon”.
+
+CTA vers /contact pour organiser un paiement Mobile Money avec l’équipe.
+
+Messages globaux :
+
+successMessage pour paiements OK.
+
+globalError, stripeError, paypalError pour gérer les différents cas d’erreur.
+
+Nouveau server/api/payments/stripe-intent.post.js :
+
+Création d’un PaymentIntent Stripe :
+
+Lecture du montant (en centimes) depuis le body.
+
+Validations : min 1 €, max 10 000 € (configurable).
+
+Utilise runtimeConfig.stripeSecretKey (ou process.env.STRIPE_SECRET_KEY).
+
+Renvoie { clientSecret } au frontend.
+
+Gestion des erreurs avec createError et logs serveur.
+
+Nouveau components/BankTransfer.vue :
+
+UI clean, responsive, sans Bootstrap :
+
+dl avec Bénéficiaire, IBAN, BIC, Référence.
+
+Boutons Copier l’IBAN et Copier le BIC via navigator.clipboard.
+
+Message temporaire « IBAN copié… / BIC copié… ».
+
+Texte final expliquant d’envoyer un mail à info@lexikongo.fr avec les détails du virement.
+
+7. i18n · Contribute & Bank
+
+Ajout / extension de la section contribute dans fr.json :
+
+contribute.page.* : hero, meta.
+
+contribute.meta.* : titres/description SEO.
+
+contribute.payments.* : textes pour PaymentForm (titres, labels, erreurs, succès, descriptions Stripe/PayPal/Mobile).
+
+contribute.bank.* : textes pour BankTransfer (bénéficiaire, IBAN, BIC, copier…, message après virement).
+
+contribute.other.* : blocs Contact, Partage, Contributeurs (titres, textes, CTA, aria-labels).

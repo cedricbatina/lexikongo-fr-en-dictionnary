@@ -176,7 +176,7 @@
               }}
             </p>
             <NuxtLink
-              to="/admin/admin-users"
+              to="/admin/users"
               class="admin-access-card__link"
             >
               <span>

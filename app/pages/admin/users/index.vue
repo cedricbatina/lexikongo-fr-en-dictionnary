@@ -63,6 +63,7 @@ import UserList from '@/components/UserList.vue';
 
 const { t } = useI18n();
 
+
 // SEO basique côté admin (suffisant)
 useSeoMeta({
   title: () => t('admin.users.meta.title'),

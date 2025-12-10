@@ -1,313 +1,1034 @@
+<!-- components/PaymentForm.vue -->
 <template>
-  <div class="payment-methods">
-    <!-- Sélection des méthodes de paiement -->
-    <div class="form-group mb-4">
-      <label for="payment-method-select" class="form-label">
-        Choisissez une méthode de paiement :
-      </label>
-      <select
-        id="payment-method-select"
-        v-model="selectedMethod"
-        class="form-select"
-        @change="resetPaymentForms"
-        aria-label="Sélectionnez une méthode de paiement"
+  <section class="payment">
+    <!-- Choix du montant -->
+    <header class="payment__header">
+      <div class="payment__amount-group">
+        <label
+          class="payment__amount-label"
+          for="contribute-amount"
+        >
+          {{ t('contribute.payments.amountLabel') }}
+        </label>
+        <div class="payment__amount-row">
+          <input
+            id="contribute-amount"
+            v-model.number="amount"
+            type="number"
+            min="1"
+            step="1"
+            class="payment__amount-input"
+            :placeholder="t('contribute.payments.amountPlaceholder')"
+          />
+          <span class="payment__currency">€</span>
+        </div>
+        <p class="payment__amount-hint">
+          {{ t('contribute.payments.amountHint') }}
+        </p>
+      </div>
+
+      <div class="payment__presets" aria-label="Montants rapides">
+        <button
+          v-for="preset in [5, 10, 20]"
+          :key="preset"
+          type="button"
+          class="payment__preset-btn"
+          @click="amount = preset"
+        >
+          {{ preset }} €
+        </button>
+      </div>
+    </header>
+
+    <!-- Onglets méthodes -->
+    <nav
+      class="payment__tabs"
+      aria-label="Méthodes de contribution"
+    >
+      <button
+        v-for="method in methods"
+        :key="method.id"
+        type="button"
+        class="payment__tab"
+        :class="{ 'payment__tab--active': selectedMethod === method.id }"
+        @click="onSelectMethod(method.id)"
       >
-        <option value="">Sélectionnez une méthode</option>
-        <option value="stripe">Carte Bancaire</option>
-        <option value="paypal">PayPal</option>
-        <option value="googlepay">Google Pay</option>
-        <option value="virement">Virement Bancaire</option>
-      </select>
-    </div>
+        <i :class="method.icon" aria-hidden="true"></i>
+        <span>{{ t(method.labelKey) }}</span>
+      </button>
+    </nav>
 
-    <!-- Formulaire Stripe -->
-    <div v-if="selectedMethod === 'stripe'" class="stripe-container">
-      <h3 class="text-primary">
-        <i class="fas fa-credit-card me-2"></i> Paiement par carte bancaire
-      </h3>
-      <form @submit.prevent="processStripePayment" aria-live="polite">
-        <div class="form-group mb-3">
-          <label for="stripe-amount">Montant (€)</label>
-          <input
-            id="stripe-amount"
-            v-model="amount"
-            type="number"
-            min="1"
-            class="form-control"
-            placeholder="Entrez le montant"
-            required
-          />
-          <small id="stripe-amount-help" class="form-text text-muted">
-            Montant minimum : 1€.
-          </small>
-        </div>
-        <div id="stripe-card-element" class="stripe-element-container"></div>
-        <div v-if="stripeError" class="text-danger mt-2">{{ stripeError }}</div>
-        <button
-          type="submit"
-          class="btn btn-primary mt-3"
-          :disabled="isProcessing"
+    <!-- Messages globaux -->
+    <p
+      v-if="successMessage"
+      class="payment__message payment__message--success"
+      role="status"
+    >
+      {{ successMessage }}
+    </p>
+    <p
+      v-if="globalError"
+      class="payment__message payment__message--error"
+      role="alert"
+    >
+      {{ globalError }}
+    </p>
+
+    <!-- Contenu des méthodes -->
+    <div class="payment__body">
+      <!-- Stripe -->
+      <section
+        v-if="selectedMethod === 'stripe'"
+        class="payment__panel"
+        aria-label="Paiement par carte bancaire via Stripe"
+      >
+        <h3 class="payment__panel-title">
+          {{ t('contribute.payments.stripe.title') }}
+        </h3>
+        <p class="payment__panel-text">
+          {{ t('contribute.payments.stripe.text') }}
+        </p>
+
+        <form
+          class="payment__form"
+          @submit.prevent="onStripeSubmit"
         >
-          <span v-if="isProcessing">Traitement en cours...</span>
-          <span v-else>Payer avec Stripe</span>
-        </button>
-      </form>
-      <p class="secure-payment mt-3">
-        <i class="fas fa-lock secure-icon"></i>
-        <span>Paiement 100% sécurisé via Stripe</span>
-      </p>
-    </div>
+          <div
+            ref="stripeCardContainer"
+            class="payment__stripe-card"
+            id="stripe-card-element"
+          ></div>
 
-    <!--<div v-if="selectedMethod === 'stripe'" class="stripe-container">
-      <h3 class="text-primary">
-        <i class="fas fa-credit-card me-2"></i> Paiement par carte bancaire
-      </h3>
-      <form @submit.prevent="processStripePayment" aria-live="polite">
-        <div class="form-group mb-3">
-          <label for="stripe-amount">Montant (€)</label>
-          <input
-            id="stripe-amount"
-            v-model="amount"
-            type="number"
-            min="1"
-            class="form-control"
-            placeholder="Entrez le montant"
-            required
-          />
-          <small id="stripe-amount-help" class="form-text text-muted">
-            Montant minimum : 1€.
-          </small>
-        </div>
+          <p
+            v-if="stripeError"
+            class="payment__field-error"
+            role="alert"
+          >
+            {{ stripeError }}
+          </p>
+
+          <button
+            type="submit"
+            class="payment__primary-btn"
+            :disabled="stripeLoading || !stripeReady || !amountValid"
+          >
+            <span v-if="stripeLoading">
+              {{ t('contribute.payments.stripe.processing') }}
+            </span>
+            <span v-else>
+              {{ t('contribute.payments.stripe.cta', { amount: displayAmount }) }}
+            </span>
+          </button>
+
+          <p class="payment__secure">
+            <i class="fas fa-lock" aria-hidden="true"></i>
+            <span>{{ t('contribute.payments.stripe.secure') }}</span>
+          </p>
+        </form>
+      </section>
+
+      <!-- PayPal -->
+      <section
+        v-else-if="selectedMethod === 'paypal'"
+        class="payment__panel"
+        aria-label="Paiement via PayPal"
+      >
+        <h3 class="payment__panel-title">
+          {{ t('contribute.payments.paypal.title') }}
+        </h3>
+        <p class="payment__panel-text">
+          {{ t('contribute.payments.paypal.text') }}
+        </p>
+
         <div
-          ref="stripeCardElement"
-          class="stripe-element-container form-control mt-3"
-          id="stripe-card-element"
+          id="paypal-button-container"
+          class="payment__paypal-buttons"
         ></div>
-        <div v-if="stripeError" class="text-danger mt-2">{{ stripeError }}</div>
-        <button
-          type="submit"
-          class="btn btn-primary mt-3"
-          :disabled="isProcessing"
+
+        <p
+          v-if="paypalError"
+          class="payment__field-error"
+          role="alert"
         >
-          <span v-if="isProcessing">Traitement en cours...</span>
-          <span v-else>Payer avec Stripe</span>
-        </button>
-      </form>
-      <p class="secure-payment">
-        <i class="fas fa-lock secure-icon"></i>
-        Paiement 100% sécurisé avec Stripe
-      </p>
-    </div>-->
+          {{ paypalError }}
+        </p>
+      </section>
 
-    <!-- Bouton PayPal -->
-    <div v-if="selectedMethod === 'paypal'" class="paypal-form mt-4">
-      <h3 class="text-primary">
-        <i class="fab fa-paypal me-2"></i> Paiement via PayPal
-      </h3>
-      <div v-if="paypalReady" id="paypal-button-container"></div>
-      <p v-else class="text-danger mt-3">
-        PayPal n'est pas disponible pour le moment.
-      </p>
-    </div>
+      <!-- Virement bancaire (IBAN/BIC) -->
+      <section
+        v-else-if="selectedMethod === 'bank'"
+        class="payment__panel"
+        aria-label="Virement bancaire"
+      >
+        <h3 class="payment__panel-title">
+          {{ t('contribute.bank.title') }}
+        </h3>
+        <p class="payment__panel-text">
+          {{ t('contribute.bank.subtitle') }}
+        </p>
 
-    <!-- Bouton Google Pay -->
-    <div v-if="selectedMethod === 'googlepay'" class="googlepay-form mt-4">
-      <h3 class="text-primary">
-        <i class="fab fa-google-pay me-2"></i> Paiement avec Google Pay
-      </h3>
-      <div v-if="googlePayReady" id="googlepay-button-container"></div>
-      <p v-else class="text-muted mt-3">
-        Google Pay n'est pas encore configuré. Veuillez réessayer plus tard.
-      </p>
-    </div>
+        <dl class="bank__details">
+          <div class="bank__row">
+            <dt>{{ t('contribute.bank.beneficiaryLabel') }}</dt>
+            <dd>@rtful Batina Creative Studios</dd>
+          </div>
 
-    <!-- Bouton Virement -->
-    <div v-if="selectedMethod === 'virement'" class="bank-transfer mt-4">
-      <h3 class="text-primary">
-        <i class="fas fa-university me-2"></i> Virement Bancaire
-      </h3>
-      <BankTransfer />
-    </div>
+          <div class="bank__row">
+            <dt>IBAN</dt>
+            <dd class="bank__value">
+              <span class="bank__code">FR76 1741 8000 0100 0083 0001 392</span>
+              <button
+                type="button"
+                class="bank__copy-btn"
+                @click="copyToClipboard('FR76 1741 8000 0100 0083 0001 392', 'IBAN')"
+              >
+                {{ t('contribute.bank.copyIban') }}
+              </button>
+            </dd>
+          </div>
 
-    <!-- Feedback global -->
-    <div v-if="stripeError || !googlePayReady" class="alert alert-danger mt-3">
-      {{
-        stripeError || "Certaines méthodes de paiement ne sont pas disponibles."
-      }}
+          <div class="bank__row">
+            <dt>BIC</dt>
+            <dd class="bank__value">
+              <span class="bank__code">SNNNFR22XXX</span>
+              <button
+                type="button"
+                class="bank__copy-btn"
+                @click="copyToClipboard('SNNNFR22XXX', 'BIC')"
+              >
+                {{ t('contribute.bank.copyBic') }}
+              </button>
+            </dd>
+          </div>
+
+          <div class="bank__row">
+            <dt>{{ t('contribute.bank.referenceLabel') }}</dt>
+            <dd>{{ t('contribute.bank.referenceValue') }}</dd>
+          </div>
+        </dl>
+
+        <p
+          v-if="copiedText"
+          class="bank__copy-feedback"
+        >
+          {{ copiedText }}
+        </p>
+
+        <p class="bank__hint">
+          {{ t('contribute.bank.afterTransfer') }}
+          <a href="mailto:info@lexikongo.fr">
+            info@lexikongo.fr
+          </a>
+        </p>
+      </section>
+
+      <!-- Mobile Money -->
+      <section
+        v-else-if="selectedMethod === 'mobile'"
+        class="payment__panel"
+        aria-label="Paiement par Mobile Money"
+      >
+        <h3 class="payment__panel-title">
+          {{ t('contribute.mobile.title') }}
+        </h3>
+        <p class="payment__panel-text">
+          {{ t('contribute.mobile.text') }}
+        </p>
+
+        <form
+          class="payment__form"
+          @submit.prevent="onMobileMoneySubmit"
+        >
+          <div class="payment__field">
+            <label for="mobile-name">
+              {{ t('contribute.mobile.nameLabel') }}
+            </label>
+            <input
+              id="mobile-name"
+              v-model="mobileForm.name"
+              type="text"
+              autocomplete="name"
+            />
+          </div>
+
+          <div class="payment__field">
+            <label for="mobile-phone">
+              {{ t('contribute.mobile.phoneLabel') }}
+            </label>
+            <input
+              id="mobile-phone"
+              v-model="mobileForm.phone"
+              type="tel"
+              autocomplete="tel"
+            />
+          </div>
+
+          <div class="payment__field">
+            <label for="mobile-country">
+              {{ t('contribute.mobile.countryLabel') }}
+            </label>
+            <input
+              id="mobile-country"
+              v-model="mobileForm.country"
+              type="text"
+              placeholder="RDC, Congo, Angola…"
+            />
+          </div>
+
+          <div class="payment__field">
+            <label for="mobile-operator">
+              {{ t('contribute.mobile.operatorLabel') }}
+            </label>
+            <input
+              id="mobile-operator"
+              v-model="mobileForm.operator"
+              type="text"
+              placeholder="Orange Money, Airtel Money, M-Pesa…"
+            />
+          </div>
+
+          <div class="payment__field">
+            <label for="mobile-amount">
+              {{ t('contribute.mobile.amountLabel') }}
+            </label>
+            <input
+              id="mobile-amount"
+              v-model.number="mobileForm.amount"
+              type="number"
+              min="1"
+              step="1"
+            />
+          </div>
+
+          <div class="payment__field">
+            <label for="mobile-message">
+              {{ t('contribute.mobile.noteLabel') }}
+            </label>
+            <textarea
+              id="mobile-message"
+              v-model="mobileForm.message"
+              rows="3"
+            />
+          </div>
+
+          <p
+            v-if="mobileError"
+            class="payment__field-error"
+            role="alert"
+          >
+            {{ mobileError }}
+          </p>
+
+          <button
+            type="submit"
+            class="payment__primary-btn"
+            :disabled="mobileLoading"
+          >
+            <span v-if="mobileLoading">
+              {{ t('contribute.mobile.processing') }}
+            </span>
+            <span v-else>
+              {{ t('contribute.mobile.cta') }}
+            </span>
+          </button>
+
+          <p class="payment__mobile-hint">
+            {{ t('contribute.mobile.hint') }}
+          </p>
+        </form>
+      </section>
     </div>
-  </div>
+  </section>
 </template>
-<script setup>
-import { ref, onMounted, watch, nextTick } from "vue";
-import { loadStripe } from "@stripe/stripe-js";
-import { useRuntimeConfig } from "#app";
 
+<script setup>
+import { ref, computed, onMounted, watch } from 'vue';
+import { useRuntimeConfig } from '#imports';
+import { useI18n } from 'vue-i18n';
+import { loadStripe } from '@stripe/stripe-js';
+
+const { t } = useI18n();
 const config = useRuntimeConfig();
-const stripeKey = config.public.stripeKey; // Clé publique Stripe
-const selectedMethod = ref("stripe"); // Par défaut, "stripe" est sélectionné
-const amount = ref("");
+
+const stripePublicKey =
+  config.public.stripePublicKey || config.public.stripeKey || '';
+const paypalClientId = config.public.paypalClientId || '';
+
+// montant
+const amount = ref(10);
+
+// méthodes
+const methods = [
+  {
+    id: 'stripe',
+    labelKey: 'contribute.payments.methods.stripe',
+    icon: 'fas fa-credit-card',
+  },
+  {
+    id: 'paypal',
+    labelKey: 'contribute.payments.methods.paypal',
+    icon: 'fab fa-paypal',
+  },
+  {
+    id: 'bank',
+    labelKey: 'contribute.payments.methods.bank',
+    icon: 'fas fa-university',
+  },
+  {
+    id: 'mobile',
+    labelKey: 'contribute.payments.methods.mobile',
+    icon: 'fas fa-mobile-alt',
+  },
+];
+
+const selectedMethod = ref('stripe');
+
+// États globaux
+const successMessage = ref('');
+const globalError = ref('');
+
+// Stripe
 const stripe = ref(null);
 const stripeElements = ref(null);
 const stripeCardElement = ref(null);
-const stripeError = ref("");
-const isProcessing = ref(false);
+const stripeCardContainer = ref(null);
+const stripeReady = ref(false);
+const stripeLoading = ref(false);
+const stripeError = ref('');
 
-// Fonction pour traiter le paiement
-const processStripePayment = async () => {
-  try {
-    if (!amount.value || parseFloat(amount.value) < 1) {
-      stripeError.value = "Veuillez entrer un montant valide.";
-      return;
-    }
+// PayPal
+const paypalReady = ref(false);
+const paypalError = ref('');
 
-    isProcessing.value = true;
-    stripeError.value = "";
+// Mobile money
+const mobileForm = ref({
+  name: '',
+  phone: '',
+  country: '',
+  operator: '',
+  amount: null,
+  message: '',
+});
+const mobileLoading = ref(false);
+const mobileError = ref('');
 
-    const { clientSecret } = await $fetch("/api/create-payment-intent", {
-      method: "POST",
-      body: { amount: parseFloat(amount.value) },
-    });
+// Bank copy
+const copiedText = ref('');
 
-    const { error } = await stripe.value.confirmCardPayment(clientSecret, {
-      payment_method: {
-        card: stripeCardElement.value,
-      },
-    });
+// helpers montant
+const amountValid = computed(
+  () => typeof amount.value === 'number' && amount.value >= 1
+);
+const displayAmount = computed(() =>
+  amountValid.value ? amount.value.toFixed(0) : '…'
+);
 
-    if (error) {
-      stripeError.value = error.message;
-    } else {
-      alert("Paiement réussi ! Merci pour votre contribution.");
-    }
-  } catch (error) {
-    stripeError.value = "Une erreur est survenue. Veuillez réessayer.";
-    console.error("Erreur Stripe :", error);
-  } finally {
-    isProcessing.value = false;
+// sélection méthode
+const onSelectMethod = (methodId) => {
+  selectedMethod.value = methodId;
+  successMessage.value = '';
+  globalError.value = '';
+
+  if (methodId === 'stripe') {
+    initStripe();
+  } else if (methodId === 'paypal') {
+    initPaypal();
   }
 };
 
-// Réinitialisation des formulaires
-const resetPaymentForms = async () => {
-  switch (selectedMethod.value) {
-    case "stripe":
-      await initializeStripe();
-      break;
-    case "paypal":
-      await loadPayPalSdk(); // Charger le SDK PayPal
-      break;
-    case "googlepay":
-      console.log("Google Pay ready to initialize"); // Exemple pour Google Pay
-      break;
-    default:
-      console.warn("Méthode de paiement inconnue");
+// INIT STRIPE
+let stripeInitOnce = false;
+
+const initStripe = async () => {
+  if (!stripePublicKey) {
+    stripeError.value = t('contribute.payments.stripe.misconfigured');
+    stripeReady.value = false;
+    return;
   }
-};
 
-// Initialisation Stripe
-const initializeStripe = async () => {
   try {
-    if (!stripeKey) {
-      throw new Error(
-        "Clé publique Stripe manquante. Vérifiez votre configuration."
-      );
+    if (!stripeInitOnce) {
+      stripe.value = await loadStripe(stripePublicKey);
+      stripeInitOnce = true;
     }
-
-    stripe.value = await loadStripe(stripeKey);
     if (!stripe.value) {
-      throw new Error("Erreur lors du chargement de Stripe.");
+      throw new Error('Stripe init failed');
     }
 
-    stripeElements.value = stripe.value.elements();
-    stripeCardElement.value = stripeElements.value.create("card", {
+    if (!stripeElements.value) {
+      stripeElements.value = stripe.value.elements();
+    }
+
+    // nettoie ancien élément si besoin
+    if (stripeCardElement.value) {
+      stripeCardElement.value.unmount();
+      stripeCardElement.value = null;
+    }
+
+    stripeCardElement.value = stripeElements.value.create('card', {
       style: {
         base: {
-          color: "#32325d",
-          fontFamily: "'Helvetica Neue', Helvetica, sans-serif",
-          fontSize: "16px",
-          "::placeholder": {
-            color: "#aab7c4",
+          color: '#111827',
+          fontFamily: 'system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI"',
+          fontSize: '16px',
+          '::placeholder': {
+            color: '#9ca3af',
           },
         },
       },
     });
-    stripeCardElement.value.mount("#stripe-card-element");
 
-    await nextTick();
+    await nextTickIfNeeded();
 
-    const stripeCardContainer = document.querySelector("#stripe-card-element");
-    if (!stripeCardContainer) {
-      throw new Error("Élément #stripe-card-element introuvable dans le DOM.");
+    if (!stripeCardContainer.value) {
+      throw new Error('#stripe-card-element container missing');
     }
 
-    stripeCardElement.value.mount("#stripe-card-element");
-    console.log("Stripe Element 'card' monté avec succès.");
-  } catch (error) {
-    console.error("Erreur lors de l'initialisation de Stripe :", error);
-    stripeError.value = error.message || "Erreur lors de l'initialisation.";
+    stripeCardElement.value.mount(stripeCardContainer.value);
+    stripeReady.value = true;
+    stripeError.value = '';
+  } catch (err) {
+    console.error('Erreur init Stripe :', err);
+    stripeError.value =
+      err?.message ||
+      t('contribute.payments.stripe.initError');
+    stripeReady.value = false;
   }
 };
 
-// Surveille les changements dans le mode de paiement
-watch(selectedMethod, async (method) => {
-  if (method === "stripe") {
-    await initializeStripe();
-  }
-});
+const nextTickIfNeeded = () =>
+  new Promise((resolve) => requestAnimationFrame(resolve));
 
-// Initialisation au chargement de la page
-onMounted(async () => {
-  if (selectedMethod.value === "stripe") {
-    await initializeStripe();
+// submit Stripe
+const onStripeSubmit = async () => {
+  if (!stripe.value || !stripeCardElement.value || !amountValid.value) {
+    stripeError.value = t('contribute.payments.stripe.missing');
+    return;
+  }
+
+  stripeLoading.value = true;
+  stripeError.value = '';
+  successMessage.value = '';
+  globalError.value = '';
+
+  try {
+    const body = {
+      amount: amount.value, // euros
+    };
+
+    const { clientSecret } = await $fetch('/api/payments/stripe-intent', {
+      method: 'POST',
+      body,
+    });
+
+    const { error, paymentIntent } =
+      await stripe.value.confirmCardPayment(clientSecret, {
+        payment_method: {
+          card: stripeCardElement.value,
+        },
+      });
+
+    if (error) {
+      console.error('Stripe error:', error);
+      stripeError.value = error.message || 'Stripe error';
+      return;
+    }
+
+    if (paymentIntent && paymentIntent.status === 'succeeded') {
+      successMessage.value = t('contribute.payments.stripe.success');
+      amount.value = 10;
+    } else {
+      globalError.value = t('contribute.payments.stripe.unknownStatus');
+    }
+  } catch (err) {
+    console.error('Stripe submit error :', err);
+    globalError.value =
+      t('contribute.payments.stripe.serverError');
+  } finally {
+    stripeLoading.value = false;
+  }
+};
+
+// INIT PAYPAL
+let paypalInitStarted = false;
+
+const initPaypal = async () => {
+  if (!paypalClientId) {
+    paypalError.value = t('contribute.payments.paypal.misconfigured');
+    paypalReady.value = false;
+    return;
+  }
+
+  // si PayPal déjà sur la page (script dans <head>), on fonce
+  if (typeof window !== 'undefined' && window.paypal && !paypalReady.value) {
+    renderPaypalButtons();
+    return;
+  }
+
+  if (paypalInitStarted) return;
+  paypalInitStarted = true;
+
+  try {
+    const script = document.createElement('script');
+    script.src = `https://www.paypal.com/sdk/js?client-id=${paypalClientId}&currency=EUR`;
+    script.async = true;
+
+    script.onload = () => {
+      renderPaypalButtons();
+    };
+
+    script.onerror = () => {
+      paypalError.value = t('contribute.payments.paypal.loadError');
+      paypalReady.value = false;
+    };
+
+    document.head.appendChild(script);
+  } catch (err) {
+    console.error('PayPal init error :', err);
+    paypalError.value = t('contribute.payments.paypal.loadError');
+    paypalReady.value = false;
+  }
+};
+
+const renderPaypalButtons = () => {
+  if (!window.paypal) return;
+
+  const container = document.getElementById('paypal-button-container');
+  if (!container) return;
+
+  // nettoie éventuel contenu
+  container.innerHTML = '';
+
+  window.paypal
+    .Buttons({
+      createOrder: (data, actions) => {
+        const value =
+          amountValid.value && amount.value
+            ? amount.value.toFixed(2)
+            : '10.00';
+
+        return actions.order.create({
+          purchase_units: [
+            {
+              amount: {
+                value,
+              },
+            },
+          ],
+        });
+      },
+      onApprove: (data, actions) => {
+        return actions.order.capture().then((details) => {
+          successMessage.value = t('contribute.payments.paypal.success', {
+            name: details?.payer?.name?.given_name || '',
+          });
+          paypalError.value = '';
+        });
+      },
+      onError: (err) => {
+        console.error('PayPal error :', err);
+        paypalError.value =
+          t('contribute.payments.paypal.error') +
+          (err?.message ? ` (${err.message})` : '');
+      },
+    })
+    .render('#paypal-button-container');
+
+  paypalReady.value = true;
+};
+
+// MOBILE MONEY
+const onMobileMoneySubmit = async () => {
+  mobileError.value = '';
+  successMessage.value = '';
+  globalError.value = '';
+
+  if (!mobileForm.value.name || !mobileForm.value.phone) {
+    mobileError.value = t('contribute.mobile.missingFields');
+    return;
+  }
+
+  try {
+    mobileLoading.value = true;
+
+    await $fetch('/api/contribute/mobile-money-request', {
+      method: 'POST',
+      body: {
+        ...mobileForm.value,
+        suggestedAmount: amountValid.value ? amount.value : null,
+      },
+    });
+
+    successMessage.value = t('contribute.mobile.success');
+    mobileForm.value = {
+      name: '',
+      phone: '',
+      country: '',
+      operator: '',
+      amount: null,
+      message: '',
+    };
+  } catch (err) {
+    console.error('Mobile money error :', err);
+    mobileError.value = t('contribute.mobile.error');
+  } finally {
+    mobileLoading.value = false;
+  }
+};
+
+// COPY IBAN/BIC
+const copyToClipboard = (text, field) => {
+  if (typeof navigator === 'undefined' || !navigator.clipboard) {
+    copiedText.value = '';
+    return;
+  }
+  navigator.clipboard
+    .writeText(text)
+    .then(() => {
+      copiedText.value =
+        field === 'IBAN'
+          ? t('contribute.bank.ibanCopied')
+          : t('contribute.bank.bicCopied');
+      setTimeout(() => {
+        copiedText.value = '';
+      }, 2000);
+    })
+    .catch((err) => {
+      console.error('Clipboard error :', err);
+    });
+};
+
+// watchers
+watch(
+  () => selectedMethod.value,
+  (method) => {
+    if (method === 'stripe') {
+      initStripe();
+    } else if (method === 'paypal') {
+      initPaypal();
+    }
+  }
+);
+
+onMounted(() => {
+  if (selectedMethod.value === 'stripe') {
+    initStripe();
   }
 });
 </script>
 
-
 <style scoped>
-.payment-methods {
+.payment {
   display: flex;
   flex-direction: column;
+  gap: 1rem;
+}
+
+/* HEADER montant */
+.payment__header {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  justify-content: space-between;
+}
+
+.payment__amount-group {
+  flex: 1 1 180px;
+  min-width: 180px;
+}
+
+.payment__amount-label {
+  display: block;
+  font-size: 0.8rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--text-muted, #6b7280);
+  margin-bottom: 0.25rem;
+}
+
+.payment__amount-row {
+  display: flex;
   align-items: center;
-  gap: 2rem;
+  gap: 0.35rem;
 }
 
-.payment-methods h3 {
-  font-size: 1.5rem;
-  margin-bottom: 1rem;
+.payment__amount-input {
+  flex: 1 1 auto;
+  border-radius: 999px;
+  border: 1px solid var(--border-subtle, rgba(148, 163, 184, 0.6));
+  padding: 0.4rem 0.9rem;
+  font-size: 0.95rem;
+  background: var(--surface-default, #f9fafb);
+  color: var(--text-default, #111827);
+  outline: none;
 }
 
-.payment-methods .form-group {
-  width: 100%;
-  max-width: 400px;
+.payment__amount-input:focus-visible {
+  border-color: var(--primary, #2563eb);
+  box-shadow: 0 0 0 1px rgba(37, 99, 235, 0.4);
 }
 
-.stripe-container {
-  max-width: 500px;
-  margin: 0 auto;
-  padding: 20px;
-  border: 1px solid #ddd;
-  border-radius: 10px;
-  background: #f9f9f9;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-.stripe-element-container {
-  padding: 12px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  background-color: white;
-}
-
-.secure-payment {
-  margin-top: 10px;
+.payment__currency {
   font-size: 0.9rem;
-  color: #4caf50;
+  color: var(--text-muted, #6b7280);
 }
 
-.secure-icon {
-  margin-right: 5px;
-  font-size: 1.2rem;
-  color: #4caf50;
+.payment__amount-hint {
+  margin: 0.2rem 0 0;
+  font-size: 0.8rem;
+  color: var(--text-muted, #6b7280);
+}
+
+/* presets */
+.payment__presets {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  align-items: center;
+}
+
+.payment__preset-btn {
+  border-radius: 999px;
+  border: 1px solid rgba(148, 163, 184, 0.8);
+  padding: 0.25rem 0.65rem;
+  font-size: 0.85rem;
+  background: var(--surface-default, #f3f4f6);
+  color: var(--text-default, #111827);
+  cursor: pointer;
+}
+
+.payment__preset-btn:hover,
+.payment__preset-btn:focus-visible {
+  background: rgba(37, 99, 235, 0.1);
+  border-color: var(--primary, #2563eb);
+}
+
+/* TABS */
+.payment__tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  background: var(--surface-default, rgba(15, 23, 42, 0.04));
+  padding: 0.35rem;
+  border-radius: 999px;
+}
+
+.payment__tab {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  padding: 0.35rem 0.7rem;
+  font-size: 0.85rem;
+  background: transparent;
+  color: var(--text-muted, #6b7280);
+  cursor: pointer;
+}
+
+.payment__tab i {
+  font-size: 0.9rem;
+}
+
+.payment__tab--active {
+  background: var(--surface-elevated, #ffffff);
+  border-color: var(--border-subtle, rgba(148, 163, 184, 0.9));
+  color: var(--primary, #2563eb);
+  box-shadow: 0 10px 22px rgba(15, 23, 42, 0.12);
+}
+
+/* messages globaux */
+.payment__message {
+  margin: 0;
+  font-size: 0.85rem;
+}
+
+.payment__message--success {
+  color: #15803d;
+}
+
+.payment__message--error {
+  color: #b91c1c;
+}
+
+/* Panel */
+.payment__body {
+  border-radius: 0.9rem;
+  border: 1px solid rgba(148, 163, 184, 0.5);
+  background: var(--surface-default, #f9fafb);
+  padding: 0.9rem 0.95rem;
+}
+
+.payment__panel-title {
+  margin: 0 0 0.3rem;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-default, #111827);
+}
+
+.payment__panel-text {
+  margin: 0 0 0.6rem;
+  font-size: 0.9rem;
+  color: var(--text-muted, #4b5563);
+}
+
+/* Form générique */
+.payment__form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.payment__field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  font-size: 0.9rem;
+}
+
+.payment__field label {
+  font-size: 0.84rem;
+  color: var(--text-muted, #6b7280);
+}
+
+.payment__field input,
+.payment__field textarea {
+  border-radius: 0.6rem;
+  border: 1px solid var(--border-subtle, rgba(148, 163, 184, 0.8));
+  padding: 0.4rem 0.6rem;
+  font-size: 0.9rem;
+  background: var(--surface-elevated, #ffffff);
+  color: var(--text-default, #111827);
+  outline: none;
+}
+
+.payment__field input:focus-visible,
+.payment__field textarea:focus-visible {
+  border-color: var(--primary, #2563eb);
+  box-shadow: 0 0 0 1px rgba(37, 99, 235, 0.4);
+}
+
+.payment__field-error {
+  margin: 0;
+  font-size: 0.82rem;
+  color: #b91c1c;
+}
+
+/* Stripe card container */
+.payment__stripe-card {
+  border-radius: 0.6rem;
+  border: 1px solid var(--border-subtle, rgba(148, 163, 184, 0.9));
+  padding: 0.55rem 0.7rem;
+  background: var(--surface-elevated, #ffffff);
+}
+
+/* Bouton principal */
+.payment__primary-btn {
+  border-radius: 999px;
+  border: 1px solid transparent;
+  padding: 0.4rem 0.95rem;
+  font-size: 0.9rem;
+  font-weight: 500;
+  background: var(--primary, #2563eb);
+  color: #ffffff;
+  cursor: pointer;
+}
+
+.payment__primary-btn:disabled {
+  opacity: 0.7;
+  cursor: default;
+}
+
+/* Secure text */
+.payment__secure {
+  margin: 0.35rem 0 0;
+  font-size: 0.8rem;
+  color: var(--text-muted, #6b7280);
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+/* PayPal container */
+.payment__paypal-buttons {
+  margin-top: 0.5rem;
+}
+
+/* Bank */
+.bank__details {
+  margin: 0.2rem 0 0.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  font-size: 0.9rem;
+}
+
+.bank__row {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+}
+
+.bank__row dt {
+  font-size: 0.82rem;
+  color: var(--text-muted, #6b7280);
+}
+
+.bank__row dd {
+  margin: 0;
+}
+
+.bank__value {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  align-items: center;
+}
+
+.bank__code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+    'Liberation Mono', 'Courier New', monospace;
+  font-size: 0.9rem;
+}
+
+.bank__copy-btn {
+  border-radius: 999px;
+  border: 1px solid rgba(148, 163, 184, 0.9);
+  padding: 0.18rem 0.65rem;
+  font-size: 0.8rem;
+  background: var(--surface-default, #f3f4f6);
+  color: var(--text-default, #111827);
+  cursor: pointer;
+}
+
+.bank__copy-feedback {
+  margin: 0.25rem 0 0;
+  font-size: 0.82rem;
+  color: #15803d;
+}
+
+.bank__hint {
+  margin: 0.5rem 0 0;
+  font-size: 0.85rem;
+  color: var(--text-muted, #4b5563);
+}
+
+.bank__hint a {
+  color: var(--primary, #2563eb);
+}
+
+/* Mobile money hint */
+.payment__mobile-hint {
+  margin: 0.3rem 0 0;
+  font-size: 0.82rem;
+  color: var(--text-muted, #6b7280);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .payment__tabs {
+    justify-content: flex-start;
+    overflow-x: auto;
+  }
 }
 </style>

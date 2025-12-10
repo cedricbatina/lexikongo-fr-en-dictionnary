@@ -1,4 +1,4 @@
-<!-- pages/contribute.vue -->
+<!-- pages/contribute/index.vue -->
 <template>
   <main
     class="lk-page lk-page--contribute"
@@ -28,145 +28,124 @@
       </template>
     </LkPageHero>
 
-    <!-- 1️⃣ Bloc paiement en ligne -->
+    <!-- Section principale en 2 colonnes -->
     <section
-      class="lk-page__section lk-page__section--payments"
-      aria-labelledby="contribute-payments-title"
+      class="lk-page__section lk-page__section--contribute-grid"
+      aria-label="Soutenir Lexikongo"
     >
-      <header class="section-header">
-        <h2
-          id="contribute-payments-title"
-          class="section-header__title"
-        >
-          {{ t('contribute.payments.title') }}
-        </h2>
-        <p class="section-header__subtitle">
-          {{ t('contribute.payments.subtitle') }}
-        </p>
-      </header>
-
-      <div class="support-card">
-        <PaymentForm />
-      </div>
-    </section>
-
-    <!-- 2️⃣ Bloc virement bancaire -->
-    <section
-      class="lk-page__section lk-page__section--bank"
-      aria-labelledby="contribute-bank-title"
-    >
-      <header class="section-header section-header--center">
-        <h2
-          id="contribute-bank-title"
-          class="section-header__title"
-        >
-          {{ t('contribute.bank.title') }}
-        </h2>
-        <p class="section-header__subtitle">
-          {{ t('contribute.bank.subtitle') }}
-        </p>
-      </header>
-
-      <div class="bank-card">
-        <BankTransfer />
-      </div>
-    </section>
-
-    <!-- 3️⃣ Autres façons de soutenir -->
-    <section
-      class="lk-page__section lk-page__section--other"
-      aria-labelledby="contribute-other-title"
-    >
-      <header class="section-header section-header--center">
-        <h2
-          id="contribute-other-title"
-          class="section-header__title"
-        >
-          {{ t('contribute.other.title') }}
-        </h2>
-        <p class="section-header__subtitle">
-          {{ t('contribute.other.subtitle') }}
-        </p>
-      </header>
-
-           <div class="contribute-other__grid">
-        <!-- Bloc contact -->
-        <article class="contribute-card">
-          <h3 class="contribute-card__title">
-            {{ t('contribute.other.blocks.contact.title') }}
-          </h3>
-          <p class="contribute-card__text">
-            {{ t('contribute.other.blocks.contact.text') }}
-          </p>
-          <NuxtLink
-            to="/contact"
-            class="contribute-card__cta"
-            :aria-label="t('contribute.other.blocks.contact.aria')"
-          >
-            <i class="fas fa-envelope" aria-hidden="true"></i>
-            <span>{{ t('contribute.other.blocks.contact.cta') }}</span>
-          </NuxtLink>
-        </article>
-
-        <!-- Bloc partage -->
-        <article class="contribute-card">
-          <h3 class="contribute-card__title">
-            {{ t('contribute.other.blocks.share.title') }}
-          </h3>
-          <p class="contribute-card__text">
-            {{ t('contribute.other.blocks.share.text') }}
-          </p>
-
-          <div class="contribute-share">
-            <a
-              :href="shareFacebook"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="contribute-share__btn contribute-share__btn--facebook"
-              aria-label="Partager Lexikongo sur Facebook"
+      <div class="contribute-grid">
+        <!-- Colonne gauche : autres façons de soutenir -->
+        <div class="contribute-grid__left">
+          <header class="section-header">
+            <h2
+              id="contribute-other-title"
+              class="section-header__title"
             >
-              <i class="fab fa-facebook-f" aria-hidden="true"></i>
-            </a>
-            <a
-              :href="shareTwitter"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="contribute-share__btn contribute-share__btn--twitter"
-              aria-label="Partager Lexikongo sur X (Twitter)"
-            >
-              <i class="fab fa-twitter" aria-hidden="true"></i>
-            </a>
-            <a
-              :href="shareLinkedIn"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="contribute-share__btn contribute-share__btn--linkedin"
-              aria-label="Partager Lexikongo sur LinkedIn"
-            >
-              <i class="fab fa-linkedin-in" aria-hidden="true"></i>
-            </a>
+              {{ t('contribute.other.title') }}
+            </h2>
+            <p class="section-header__subtitle">
+              {{ t('contribute.other.subtitle') }}
+            </p>
+          </header>
+
+          <div class="contribute-other__grid">
+            <!-- Bloc contact -->
+            <article class="contribute-card">
+              <h3 class="contribute-card__title">
+                {{ t('contribute.other.blocks.contact.title') }}
+              </h3>
+              <p class="contribute-card__text">
+                {{ t('contribute.other.blocks.contact.text') }}
+              </p>
+              <NuxtLink
+                to="/contact"
+                class="contribute-card__cta"
+                :aria-label="t('contribute.other.blocks.contact.aria')"
+              >
+                <i class="fas fa-envelope" aria-hidden="true"></i>
+                <span>{{ t('contribute.other.blocks.contact.cta') }}</span>
+              </NuxtLink>
+            </article>
+
+            <!-- Bloc partage -->
+            <article class="contribute-card">
+              <h3 class="contribute-card__title">
+                {{ t('contribute.other.blocks.share.title') }}
+              </h3>
+              <p class="contribute-card__text">
+                {{ t('contribute.other.blocks.share.text') }}
+              </p>
+
+              <div class="contribute-share">
+                <a
+                  :href="shareFacebook"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="contribute-share__btn contribute-share__btn--facebook"
+                  aria-label="Partager Lexikongo sur Facebook"
+                >
+                  <i class="fab fa-facebook-f" aria-hidden="true"></i>
+                </a>
+                <a
+                  :href="shareTwitter"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="contribute-share__btn contribute-share__btn--twitter"
+                  aria-label="Partager Lexikongo sur X (Twitter)"
+                >
+                  <i class="fab fa-twitter" aria-hidden="true"></i>
+                </a>
+                <a
+                  :href="shareLinkedIn"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="contribute-share__btn contribute-share__btn--linkedin"
+                  aria-label="Partager Lexikongo sur LinkedIn"
+                >
+                  <i class="fab fa-linkedin-in" aria-hidden="true"></i>
+                </a>
+              </div>
+            </article>
+
+            <!-- Bloc rejoindre les contributeurs -->
+            <article class="contribute-card">
+              <h3 class="contribute-card__title">
+                {{ t('contribute.other.blocks.contributors.title') }}
+              </h3>
+              <p class="contribute-card__text">
+                {{ t('contribute.other.blocks.contributors.text') }}
+              </p>
+              <NuxtLink
+                to="/register"
+                class="contribute-card__cta"
+                :aria-label="t('contribute.other.blocks.contributors.aria')"
+              >
+                <i class="fas fa-users" aria-hidden="true"></i>
+                <span>{{ t('contribute.other.blocks.contributors.cta') }}</span>
+              </NuxtLink>
+            </article>
           </div>
-        </article>
+        </div>
 
-        <!-- Bloc rejoindre les contributeurs -->
-        <article class="contribute-card">
-          <h3 class="contribute-card__title">
-            {{ t('contribute.other.blocks.contributors.title') }}
-          </h3>
-          <p class="contribute-card__text">
-            {{ t('contribute.other.blocks.contributors.text') }}
-          </p>
-          <NuxtLink
-            to="/register"
-            class="contribute-card__cta"
-            :aria-label="t('contribute.other.blocks.contributors.aria')"
-          >
-            <i class="fas fa-users" aria-hidden="true"></i>
-            <span>{{ t('contribute.other.blocks.contributors.cta') }}</span>
-          </NuxtLink>
-        </article>
+        <!-- Colonne droite : paiements (Stripe / PayPal / Virement / Mobile Money) -->
+        <div class="contribute-grid__right">
+          <header class="section-header section-header--right">
+            <h2
+              id="contribute-payments-title"
+              class="section-header__title"
+            >
+              {{ t('contribute.payments.title') }}
+            </h2>
+            <p class="section-header__subtitle">
+              {{ t('contribute.payments.subtitle') }}
+            </p>
+          </header>
+
+          <div class="support-card">
+            <PaymentForm />
+          </div>
+        </div>
       </div>
-
     </section>
   </main>
 </template>
@@ -179,7 +158,6 @@ import { useI18n } from 'vue-i18n';
 import LkPageHero from '@/components/LkPageHero.vue';
 import LkActionsBar from '@/components/LkActionsBar.vue';
 import PaymentForm from '@/components/PaymentForm.vue';
-import BankTransfer from '@/components/BankTransfer.vue';
 
 const { t } = useI18n();
 const config = useRuntimeConfig();
@@ -187,8 +165,9 @@ const config = useRuntimeConfig();
 const siteUrl = config.public.siteUrl || 'https://www.lexikongo.fr';
 const pageUrl = `${siteUrl}/contribute`;
 
-// ⚡ SEO puissant
-const seoTitle = t('contribute.meta.title') || 'Soutenez Lexikongo | Contributions';
+// ⚡ SEO
+const seoTitle =
+  t('contribute.meta.title') || 'Soutenez Lexikongo | Contributions';
 const seoDescription =
   t('contribute.meta.description') ||
   "Apportez votre soutien à Lexikongo pour préserver et valoriser la langue Kikongo (dictionnaire Kikongo – Français/Anglais & phonétique).";
@@ -208,7 +187,7 @@ useSeoMeta({
   twitterImage: `${siteUrl}/images/contribute-banner.webp`,
 });
 
-// 🔗 Liens de partage dynamiques
+// 🔗 Liens de partage
 const encodedUrl = encodeURIComponent(pageUrl);
 const encodedTitle = encodeURIComponent(
   'Lexikongo — Dictionnaire Kikongo · FR/EN & phonétique'
@@ -226,7 +205,7 @@ const shareLinkedIn = computed(
     `https://www.linkedin.com/sharing/share-offsite/?url=${encodedUrl}`
 );
 
-// Script PayPal / Google Pay (optionnels)
+// Script PayPal (SDK) optionnel (on garde)
 const paypalClientId = config.public.paypalClientId;
 
 useHead({
@@ -244,7 +223,7 @@ useHead({
     ...(paypalClientId
       ? [
           {
-            src: `https://www.paypal.com/sdk/js?client-id=${paypalClientId}`,
+            src: `https://www.paypal.com/sdk/js?client-id=${paypalClientId}&currency=EUR`,
             async: true,
           },
         ]
@@ -307,6 +286,24 @@ useHead({
   gap: 1rem;
 }
 
+/* GRID principale */
+.lk-page__section--contribute-grid {
+  padding-inline: 0.15rem;
+}
+
+.contribute-grid {
+  display: grid;
+  gap: 1.25rem;
+}
+
+/* 2 colonnes sur desktop */
+@media (min-width: 900px) {
+  .contribute-grid {
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.1fr);
+    align-items: flex-start;
+  }
+}
+
 /* Headers de section */
 .section-header {
   display: flex;
@@ -314,55 +311,31 @@ useHead({
   gap: 0.3rem;
 }
 
-.section-header--center {
-  text-align: center;
-  align-items: center;
+.section-header--right {
+  text-align: left;
 }
 
 .section-header__title {
   margin: 0;
   font-size: 1.2rem;
   font-weight: 650;
-  color: var(--text-default);
+  color: var(--text-default, #020617);
 }
 
 .section-header__subtitle {
   margin: 0;
   font-size: 0.95rem;
-  color: var(--text-muted);
+  color: var(--text-muted, #6b7280);
   max-width: 44rem;
 }
 
-/* Carte de support (paiement) */
-.support-card {
-  max-width: 640px;
-  width: 100%;
-  border-radius: 1rem;
-  border: 1px solid var(--border-subtle, rgba(148, 163, 184, 0.5));
-  background: var(--surface-elevated, #020617);
-  padding: 1.2rem 1.4rem;
-  margin: 0 auto;
-}
-
-/* Carte virement */
-.bank-card {
-  max-width: 640px;
-  width: 100%;
-  margin: 0 auto;
-  padding: 1.2rem 1.4rem;
-  border-radius: 1rem;
-  border: 1px solid var(--border-subtle, rgba(148, 163, 184, 0.5));
-  background: radial-gradient(circle at 0 0, rgba(37, 99, 235, 0.08), transparent),
-    var(--surface-elevated, #020617);
-}
-
-/* Section “autres façons de soutenir” */
+/* Colonne gauche – cartes */
 .contribute-other__grid {
   display: grid;
-  gap: 1rem;
+  gap: 0.9rem;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 640px) and (max-width: 899px) {
   .contribute-other__grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
@@ -371,7 +344,7 @@ useHead({
 .contribute-card {
   border-radius: 1rem;
   border: 1px solid rgba(148, 163, 184, 0.5);
-  background: var(--surface-elevated, #020617);
+  background: var(--surface-elevated, #ffffff);
   padding: 0.9rem 1rem;
   display: flex;
   flex-direction: column;
@@ -382,16 +355,16 @@ useHead({
   margin: 0;
   font-size: 1rem;
   font-weight: 600;
-  color: var(--text-default);
+  color: var(--text-default, #111827);
 }
 
 .contribute-card__text {
   margin: 0;
   font-size: 0.9rem;
-  color: var(--text-muted);
+  color: var(--text-muted, #4b5563);
 }
 
-/* CTA contact */
+/* CTA contact / contributeur·rice */
 .contribute-card__cta {
   margin-top: 0.4rem;
   align-self: flex-start;
@@ -400,11 +373,11 @@ useHead({
   gap: 0.4rem;
   padding: 0.35rem 0.9rem;
   border-radius: 999px;
-  border: 1px solid var(--border-subtle);
+  border: 1px solid var(--border-subtle, rgba(148, 163, 184, 0.7));
   text-decoration: none;
   font-size: 0.9rem;
-  background: var(--surface-default);
-  color: var(--primary);
+  background: var(--surface-default, #f9fafb);
+  color: var(--primary, #2563eb);
   transition:
     background-color 0.15s ease,
     box-shadow 0.15s ease,
@@ -413,7 +386,7 @@ useHead({
 
 .contribute-card__cta:hover {
   background: rgba(37, 99, 235, 0.08);
-  border-color: var(--primary);
+  border-color: var(--primary, #2563eb);
   transform: translateY(-1px);
 }
 
@@ -459,14 +432,24 @@ useHead({
   opacity: 0.9;
 }
 
+/* Colonne droite – carte de paiement */
+.support-card {
+  width: 100%;
+  border-radius: 1rem;
+  border: 1px solid var(--border-subtle, rgba(148, 163, 184, 0.6));
+  background: radial-gradient(circle at 0 0, rgba(37, 99, 235, 0.08), transparent),
+    var(--surface-elevated, #ffffff);
+  padding: 1.2rem 1.4rem;
+  box-shadow: 0 18px 40px rgba(15, 23, 42, 0.09);
+}
+
 /* Responsive */
 @media (max-width: 768px) {
   .lk-page {
     padding-inline: 1rem;
   }
 
-  .support-card,
-  .bank-card {
+  .support-card {
     padding: 1rem 1.05rem;
   }
 }

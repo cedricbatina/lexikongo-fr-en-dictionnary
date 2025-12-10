@@ -623,7 +623,9 @@
       }
     },
       "common": {
-      "mustBeLoggedIn": "Vous devez être connecté en tant qu’administrateur pour accéder à cette page."
+      "mustBeLoggedIn": "Vous devez être connecté en tant qu’administrateur pour accéder à cette page.",
+    "cancel": "Annuler"
+
     },
     "editPendingWord": {
       "eyebrow": "Espace admin · Mots en attente",
@@ -783,13 +785,13 @@
       "meta": "Seuls les administrateurs autorisés peuvent consulter et modifier ces informations."
     },
     "meta": {
-      "title": "Administration – Utilisateurs | Lexikongo",
-      "description": "Tableau de gestion des utilisateurs Lexikongo (comptes, rôles, vérification email)."
-    },
+        "title": "Administration · Utilisateurs",
+        "description": "Liste des comptes enregistrés sur Lexikongo (accès réservé aux administrateurs)."
+      },
       "search": {
-      "label": "Filtrer les utilisateurs",
-      "placeholder": "Rechercher par nom, email ou rôle…",
-      "count": "{0} utilisateur·rice·s au total"
+       "label": "Filtrer les utilisateurs",
+        "placeholder": "Rechercher par nom, email ou rôle…",
+        "count": "{count} utilisateur·rice·s au total"
     },
     "states": {
       "loading": "Chargement des utilisateurs…",
@@ -806,7 +808,7 @@
         "username": "Nom d’utilisateur",
         "email": "Email",
         "role": "Rôle(s)",
-        "createdAt": "Créé le",
+        "createdAt": "Date de création",
         "verified": "Email vérifié"
       },
       "rowAria": "Voir la fiche du compte {username}",
@@ -819,9 +821,64 @@
       }
     }
   
-  }
-  
   },
+   "user": {
+      "backToList": "Retour à la liste des utilisateurs",
+      "page": {
+        "eyebrow": "Administration · Fiche utilisateur",
+        "subtitle": "Détails du compte, rôles et activité récente.",
+        "meta": "Gestion avancée d’un compte utilisateur (réservée aux administrateurs)."
+      },
+      "meta": {
+        "title": "Compte de {username}",
+        "description": "Détails du compte Lexikongo de {username}."
+      },
+      "sections": {
+        "account": "Informations du compte",
+        "roles": "Rôles & permissions",
+        "security": "Sécurité"
+      },
+      "labels": {
+        "id": "Identifiant interne",
+        "username": "Nom d’utilisateur",
+        "email": "Adresse email",
+        "createdAt": "Créé le",
+        "updatedAt": "Mis à jour le",
+        "lastSeen": "Dernière connexion",
+        "previousSeen": "Connexion précédente",
+        "roles": "Rôles attribués",
+        "noRoles": "Aucun rôle attribué",
+        "verifiedYes": "Email vérifié",
+        "verifiedNo": "Email non vérifié",
+        "unknownUser": "Utilisateur inconnu",
+        "noEmail": "Email non renseigné"
+      },
+      "actions": {
+        "edit": "Modifier le compte",
+        "delete": "Supprimer le compte",
+        "deleteConfirmTitle": "Supprimer ce compte ?",
+        "deleteConfirmBody": "Vous êtes sur le point de supprimer le compte « {username} ». Cette action est potentiellement définitive.",
+        "deleteConfirmCta": "Oui, supprimer"
+        
+      },
+      "security": {
+        "passwordHint": "Le mot de passe est stocké de manière sécurisée (hash en base de données)."
+      },
+        "states": {
+        "loading": "Chargement des informations du compte…",
+        "error": "Impossible de charger les informations de cet utilisateur.",
+        "notFound": "Cet utilisateur n’existe pas ou n’est plus disponible.",
+        "deleteError": "Une erreur est survenue lors de la suppression du compte. Veuillez réessayer plus tard.",
+         "updated": "Le compte utilisateur a bien été mis à jour.",
+        "updateError": "Impossible de mettre à jour ce compte utilisateur.",
+        "deleted": "Le compte utilisateur a bien été supprimé."
+      },
+       "common": {
+    "cancel": "Annuler"
+  }
+    }
+  },
+ 
   
 "contributor": {
   "addVerb": {
@@ -1644,48 +1701,168 @@
     "caption": "Lexikongo – un pont vivant entre le Kikongo, le français et l’anglais."
   }
 },
-"contribute": {
-  "page": {
-    "eyebrow": "Lexikongo · Soutien",
-    "title": "Soutenir Lexikongo",
-    "subtitle": "Transformons ensemble Lexikongo en une ressource incontournable pour préserver et transmettre la langue Kikongo.",
-    "meta": "Contributions financières et soutien à la plateforme Lexikongo."
-  },
-  "meta": {
-    "title": "Soutenir Lexikongo · Contributions",
-    "description": "Apportez votre soutien à Lexikongo pour préserver, documenter et moderniser la langue Kikongo (dictionnaire Kikongo – Français/Anglais & phonétique)."
-  },
-  "payments": {
-    "title": "Choisissez une méthode de paiement",
-    "subtitle": "Carte bancaire, PayPal ou autres moyens : sélectionnez la solution qui vous convient pour soutenir notre mission."
-  },
-  "bank": {
-    "title": "Virement bancaire",
-    "subtitle": "Vous pouvez aussi nous soutenir par virement direct. Toutes les informations bancaires sont indiquées ci-dessous."
-  },
-  "other": {
-    "title": "Autres façons de nous soutenir",
-    "subtitle": "Même sans don financier, vous pouvez aider Lexikongo à grandir et à toucher plus de locuteurs et d’apprenants.",
-    "blocks": {
-      "contact": {
-        "title": "Contribuer avec vos idées",
-        "text": "Suggestions de fonctionnalités, projets pédagogiques, partenariats culturels… écrivez-nous pour construire Lexikongo à plusieurs.",
-        "cta": "Nous écrire",
-        "aria": "Contactez-nous pour proposer votre aide ou vos idées"
+  "contribute": {
+    "page": {
+      "eyebrow": "Soutenir Lexikongo",
+      "title": "Contribuer à Lexikongo",
+      "subtitle": "Vos contributions nous aident à maintenir, enrichir et faire rayonner le dictionnaire Kikongo.",
+      "meta": "Choisissez le moyen de soutien qui vous convient : carte bancaire, PayPal, virement ou Mobile Money."
+    },
+
+    "meta": {
+      "title": "Soutenir Lexikongo | Contributions & dons",
+      "description": "Soutenez le dictionnaire Lexikongo (Kikongo – Français/Anglais & phonétique) via carte bancaire, PayPal, virement bancaire ou Mobile Money."
+    },
+
+    "payments": {
+      "title": "Soutien en ligne",
+      "subtitle": "Un petit montant régulier ou ponctuel a un impact réel sur l’hébergement, la maintenance et les nouvelles fonctionnalités.",
+
+      "amountLabel": "Montant de votre soutien",
+      "amountPlaceholder": "Choisissez ou saisissez un montant…",
+      "amountHint": "Vous pouvez ajuster le montant à tout moment. À partir de 1 €.",
+
+      "methodLabel": "Moyen de paiement",
+      "methodHelp": "Sélectionnez la méthode qui vous convient le mieux.",
+      "notAvailable": "Ce moyen de paiement n’est pas disponible pour le moment.",
+
+      "methods": {
+        "stripe": "Carte bancaire (Stripe)",
+        "paypal": "PayPal",
+        "bank": "Virement bancaire",
+        "mobile": "Mobile Money"
       },
-      "share": {
-        "title": "Partager Lexikongo autour de vous",
-        "text": "Envoyez Lexikongo à vos proches, enseignants, étudiants et associations. Plus le site est utilisé, plus le Kikongo gagne en visibilité."
+
+      "stripe": {
+        "title": "Paiement par carte bancaire",
+        "text": "Réglez votre contribution par carte bancaire via notre partenaire Stripe.",
+        "processing": "Traitement du paiement…",
+        "cta": "Payer {amount} € avec Stripe",
+        "secure": "Paiement 100 % sécurisé via Stripe.",
+        "misconfigured": "Le paiement par carte bancaire n’est pas disponible pour le moment (configuration manquante).",
+        "initError": "Impossible d’initialiser le formulaire de carte bancaire. Veuillez réessayer plus tard.",
+        "missing": "Le formulaire de carte n’est pas correctement initialisé. Rafraîchissez la page et réessayez.",
+        "success": "Merci pour votre soutien ! Votre paiement par carte a été confirmé.",
+        "unknownStatus": "Le paiement a été créé mais son statut est inconnu. Merci de vérifier votre relevé bancaire.",
+        "serverError": "Une erreur est survenue lors de la création du paiement. Veuillez réessayer dans quelques instants.",
+        "invalidAmount": "Merci d’indiquer un montant valide (au moins 1 €)."
       },
-      "contributors": {
-        "title": "Rejoindre les contributeurs",
-        "text": "Créez un compte, proposez des mots et des verbes, corrigez et enrichissez le dictionnaire avec la communauté Lexikongo.",
-        "cta": "Devenir contributeur",
-        "aria": "Aller à la page d'inscription pour devenir contributeur Lexikongo"
+
+      "paypal": {
+        "title": "Paiement avec PayPal",
+        "text": "Utilisez votre compte PayPal pour soutenir Lexikongo en quelques clics.",
+        "misconfigured": "PayPal n’est pas disponible pour le moment (configuration manquante).",
+        "loadError": "Impossible de charger les boutons PayPal. Veuillez réessayer plus tard.",
+        "success": "Merci pour votre soutien, {name} ! Votre paiement PayPal a été confirmé.",
+        "error": "Une erreur est survenue avec PayPal. Veuillez réessayer."
+      }
+    },
+
+    "bank": {
+      "title": "Virement bancaire",
+      "subtitle": "Vous pouvez effectuer un virement depuis votre banque vers notre compte dédié aux contributions.",
+
+      "beneficiaryLabel": "Bénéficiaire",
+      "ibanLabel": "IBAN",
+      "bicLabel": "BIC",
+      "copyIban": "Copier l’IBAN",
+      "copyBic": "Copier le BIC",
+      "referenceLabel": "Référence du virement",
+      "referenceValue": "Votre email ou identifiant utilisateur Lexikongo",
+      "afterTransfer": "Une fois votre virement effectué, merci de nous envoyer un email avec les détails de votre paiement à",
+      "ibanCopied": "IBAN copié dans le presse-papiers.",
+      "bicCopied": "BIC copié dans le presse-papiers."
+    },
+
+    "mobile": {
+      "title": "Paiement par Mobile Money",
+      "subtitle": "Pour les pays d’Afrique centrale (RDC, Congo, Angola, etc.), vous pouvez nous envoyer une demande de contribution via Mobile Money.",
+
+      "nameLabel": "Nom / Prénom",
+      "phoneLabel": "Numéro de téléphone Mobile Money",
+      "countryLabel": "Pays",
+      "operatorLabel": "Opérateur (Orange Money, Airtel Money, M-Pesa…)",
+      "amountLabel": "Montant (devise locale ou €)",
+      "noteLabel": "Message (facultatif)",
+
+      "hint": "Nous vous répondrons par email ou message (WhatsApp / SMS) avec les instructions précises pour finaliser votre contribution.",
+      "cta": "Envoyer une demande Mobile Money",
+      "processing": "Envoi de votre demande…",
+
+      "missingFields": "Merci de renseigner au minimum votre nom et votre numéro de téléphone.",
+      "success": "Merci ! Votre demande Mobile Money a bien été transmise. Nous reviendrons vers vous pour finaliser le paiement.",
+      "error": "Une erreur est survenue lors de l’envoi de la demande Mobile Money. Veuillez réessayer plus tard."
+    },
+
+    "other": {
+      "title": "Autres façons de soutenir",
+      "subtitle": "Même sans contribution financière, vous pouvez beaucoup aider Lexikongo.",
+
+      "blocks": {
+        "contact": {
+          "title": "Nous contacter",
+          "text": "Vous représentez une institution, une association, une école ou un partenaire potentiel ? Parlons-en.",
+          "cta": "Écrire à l’équipe Lexikongo",
+          "aria": "Contacter l’équipe Lexikongo pour discuter d’un partenariat ou d’un soutien."
+        },
+
+        "share": {
+          "title": "Partager Lexikongo",
+          "text": "Parlez de Lexikongo autour de vous, sur les réseaux sociaux, dans vos groupes et communautés.",
+          "facebookAria": "Partager Lexikongo sur Facebook",
+          "twitterAria": "Partager Lexikongo sur X (Twitter)",
+          "linkedinAria": "Partager Lexikongo sur LinkedIn"
+        },
+
+        "contributors": {
+          "title": "Rejoindre les contributeurs",
+          "text": "Vous pouvez aussi contribuer en proposant de nouveaux mots, verbes ou exemples en Kikongo.",
+          "cta": "Créer un compte contributeur",
+          "aria": "Créer un compte pour contribuer au dictionnaire Lexikongo."
+        }
       }
     }
   }
-}
+,
+
+   "userEdit": {
+      "page": {
+        "eyebrow": "Administration · Utilisateur",
+        "subtitle": "Modifier les informations du compte utilisateur.",
+        "meta": "Veillez à ne modifier les informations que si cela est strictement nécessaire.",
+        "titleFallback": "Modifier un compte utilisateur"
+      },
+
+      "meta": {
+        "title": "Lexikongo · Modifier le compte {username}",
+        "description": "Éditez les informations et les rôles du compte {username}."
+      },
+
+      "sections": {
+        "account": "Informations du compte"
+      },
+
+      "placeholders": {
+        "username": "Ex. : Tusikila Kinuani Kia Batina",
+        "email": "Ex: kimbangu{'@'}gmail.com"
+      },
+
+      "hints": {
+        "roles": "L’absence de rôle spécifique équivaut à un rôle « utilisateur » classique."
+      },
+
+      "actions": {
+        "save": "Enregistrer les modifications"
+      },
+
+      "errors": {
+        "usernameRequired": "Le nom d’utilisateur est obligatoire.",
+        "emailRequired": "L’adresse email est obligatoire.",
+        "emailInvalid": "L’adresse email n’est pas valide.",
+        "submit": "Impossible de sauvegarder les modifications pour le moment."
+      }
+    }
+  
 
 
 

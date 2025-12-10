@@ -1,0 +1,569 @@
+<!-- pages/admin/user/[slug].vue -->
+<template>
+  <main
+    class="lk-page lk-page--admin-user"
+    aria-labelledby="admin-user-title"
+  >
+    <!-- En-tête / breadcrumb -->
+    <header class="admin-user-header">
+      <div class="admin-user-header__top">
+        <NuxtLink
+          to="/admin/users"
+          class="admin-user-back"
+        >
+          <i class="fas fa-arrow-left" aria-hidden="true"></i>
+          <span>Retour à la liste des utilisateurs</span>
+        </NuxtLink>
+
+        <span class="admin-user-id">
+          #{{ user.value?.user_id ?? '—' }}
+        </span>
+      </div>
+
+      <div class="admin-user-header__main">
+        <div class="admin-user-header__identity">
+          <h1 id="admin-user-title" class="admin-user-title">
+            {{ user.value?.username || 'Utilisateur inconnu' }}
+          </h1>
+          <p class="admin-user-subtitle">
+            <i class="fas fa-envelope" aria-hidden="true"></i>
+            <span>{{ user.value?.email || 'Email non renseigné' }}</span>
+          </p>
+        </div>
+
+        <div class="admin-user-header__badges" aria-label="Statut du compte">
+          <span
+            v-if="user.value?.email_verified"
+            class="admin-chip admin-chip--success"
+          >
+            <i class="fas fa-check-circle" aria-hidden="true"></i>
+            <span>Email vérifié</span>
+          </span>
+          <span
+            v-else
+            class="admin-chip admin-chip--warning"
+          >
+            <i class="fas fa-exclamation-circle" aria-hidden="true"></i>
+            <span>Email non vérifié</span>
+          </span>
+
+          <span class="admin-chip admin-chip--muted">
+            <i class="fas fa-user-clock" aria-hidden="true"></i>
+            <span>Créé le {{ formatDateTime(user.value?.created_at) }}</span>
+          </span>
+        </div>
+      </div>
+    </header>
+
+    <!-- États : chargement / erreur -->
+    <section
+      v-if="pending"
+      class="admin-user-state admin-user-state--loading"
+      role="status"
+      aria-live="polite"
+    >
+      <i class="fas fa-circle-notch fa-spin" aria-hidden="true"></i>
+      <span>Chargement des informations utilisateur…</span>
+    </section>
+
+    <section
+      v-else-if="error"
+      class="admin-user-state admin-user-state--error"
+      role="alert"
+    >
+      <i class="fas fa-triangle-exclamation" aria-hidden="true"></i>
+      <div>
+        <p>Impossible de charger cet utilisateur.</p>
+        <p class="admin-user-state__details">
+          {{ errorMessage }}
+        </p>
+      </div>
+    </section>
+
+    <!-- Contenu principal -->
+    <section
+      v-else
+      class="admin-user-content"
+      aria-label="Détails du compte utilisateur"
+    >
+      <div class="admin-user-grid">
+        <!-- Colonne gauche : Infos du compte -->
+        <article class="admin-card" aria-label="Informations du compte">
+          <h2 class="admin-card__title">
+            <i class="fas fa-id-card" aria-hidden="true"></i>
+            <span>Informations du compte</span>
+          </h2>
+
+          <dl class="admin-data-list">
+            <div class="admin-data-list__row">
+              <dt>Identifiant interne</dt>
+              <dd>#{{ user.value?.user_id }}</dd>
+            </div>
+            <div class="admin-data-list__row">
+              <dt>Nom d’utilisateur</dt>
+              <dd>{{ user.value?.username }}</dd>
+            </div>
+            <div class="admin-data-list__row">
+              <dt>Adresse email</dt>
+              <dd>{{ user.value?.email }}</dd>
+            </div>
+            <div class="admin-data-list__row">
+              <dt>Créé le</dt>
+              <dd>{{ formatDateTime(user.value?.created_at) }}</dd>
+            </div>
+            <div class="admin-data-list__row">
+              <dt>Dernière connexion</dt>
+              <dd>{{ formatDateTime(user.value?.last_seen) }}</dd>
+            </div>
+            <div class="admin-data-list__row">
+              <dt>Connexion précédente</dt>
+              <dd>{{ formatDateTime(user.value?.previous_seen) }}</dd>
+            </div>
+          </dl>
+        </article>
+
+        <!-- Colonne droite : Rôles & sécurité -->
+        <article class="admin-card" aria-label="Rôles et sécurité">
+          <h2 class="admin-card__title">
+            <i class="fas fa-user-shield" aria-hidden="true"></i>
+            <span>Rôles &amp; permissions</span>
+          </h2>
+
+          <section class="admin-card__section" aria-label="Rôles attribués">
+            <h3 class="admin-card__section-title">Rôles attribués</h3>
+            <p
+              v-if="!rolesList.length"
+              class="admin-card__muted"
+            >
+              Aucun rôle spécifique n’est associé à ce compte
+              (accès standard utilisateur).
+            </p>
+            <div
+              v-else
+              class="admin-roles"
+            >
+              <span
+                v-for="role in rolesList"
+                :key="role"
+                class="admin-role-chip"
+              >
+                <i
+                  :class="roleIcon(role)"
+                  aria-hidden="true"
+                ></i>
+                <span>{{ role }}</span>
+              </span>
+            </div>
+          </section>
+
+          <section class="admin-card__section" aria-label="Sécurité du compte">
+            <h3 class="admin-card__section-title">Sécurité</h3>
+            <ul class="admin-checklist">
+              <li class="admin-checklist__item">
+                <i
+                  :class="user.value?.email_verified
+                    ? 'fas fa-check-circle admin-checklist__icon--ok'
+                    : 'fas fa-circle-xmark admin-checklist__icon--warn'"
+                  aria-hidden="true"
+                ></i>
+                <span>
+                  Email de contact
+                  <strong>{{ user.value?.email }}</strong>
+                  {{ user.value?.email_verified ? 'vérifié.' : 'non vérifié.' }}
+                </span>
+              </li>
+              <li class="admin-checklist__item">
+                <i class="fas fa-lock admin-checklist__icon" aria-hidden="true"></i>
+                <span>
+                  Le mot de passe est stocké de manière sécurisée (hash en base de données).
+                </span>
+              </li>
+            </ul>
+          </section>
+        </article>
+      </div>
+    </section>
+  </main>
+</template>
+
+<script setup>
+import { computed } from 'vue';
+import { useRoute, useAsyncData, useSeoMeta } from '#imports';
+
+const route = useRoute();
+
+/**
+ * Paramètre de route :
+ * /admin/user/12-artful-batina
+ * → on extrait l’ID avant le 1er "-"
+ */
+const rawSlug = route.params.slug;
+const idPart = String(rawSlug || '').split('-')[0];
+const userId = Number.parseInt(idPart, 10);
+
+// ⚠️ fallback simple si l’ID est invalide
+if (!Number.isFinite(userId) || userId <= 0) {
+  throw createError({
+    statusCode: 400,
+    statusMessage: "Identifiant utilisateur invalide dans l’URL.",
+  });
+}
+
+// Récupération des infos via l’API admin
+const {
+  data: user,
+  pending,
+  error,
+} = await useAsyncData(
+  `admin-user-${userId}`,
+  () => $fetch(`/api/admin/users/${userId}`)
+);
+
+// Liste des rôles (ARRAY) à partir d'un champ "roles" retourné par l'API
+const rolesList = computed(() => {
+  const raw = user.value?.roles;
+  if (!raw) return [];
+  if (Array.isArray(raw)) return raw;
+  return String(raw)
+    .split(',')
+    .map((r) => r.trim())
+    .filter(Boolean);
+});
+
+// Message d’erreur lisible
+const errorMessage = computed(() => {
+  if (!error.value) return '';
+  return error.value?.statusMessage || 'Erreur inconnue.';
+});
+
+// Icône en fonction du rôle
+function roleIcon(role) {
+  const r = role.toLowerCase();
+  if (r.includes('admin')) return 'fas fa-crown';
+  if (r.includes('contrib')) return 'fas fa-pen-nib';
+  if (r.includes('moder')) return 'fas fa-shield-halved';
+  return 'fas fa-user-tag';
+}
+
+// Format datetime FR lisible
+function formatDateTime(value) {
+  if (!value) return '—';
+  const date = new Date(value);
+  if (Number.isNaN(date.getTime())) return '—';
+
+  return date.toLocaleString('fr-FR', {
+    day: '2-digit',
+    month: 'short',
+    year: 'numeric',
+    hour: '2-digit',
+    minute: '2-digit',
+  });
+}
+
+// SEO : admin → noindex par prudence
+useSeoMeta({
+  title: () =>
+    user.value
+      ? `Admin · Utilisateur ${user.value.username} | Lexikongo`
+      : 'Admin · Utilisateur | Lexikongo',
+  description: () =>
+    user.value
+      ? `Fiche administrateur de l’utilisateur ${user.value.username} sur Lexikongo.`
+      : 'Fiche administrateur utilisateur sur Lexikongo.',
+  robots: 'noindex, nofollow',
+});
+</script>
+
+<style scoped>
+.lk-page {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 1.5rem 1.25rem 2.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+}
+
+/* HEADER */
+.admin-user-header {
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+}
+
+.admin-user-header__top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.admin-user-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.9rem;
+  color: var(--primary);
+  text-decoration: none;
+}
+
+.admin-user-back:hover {
+  text-decoration: underline;
+}
+
+.admin-user-id {
+  font-size: 0.8rem;
+  padding: 0.15rem 0.5rem;
+  border-radius: 999px;
+  border: 1px solid var(--border-subtle, rgba(148, 163, 184, 0.7));
+  color: var(--text-muted, #6b7280);
+}
+
+.admin-user-header__main {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  align-items: flex-end;
+  justify-content: space-between;
+}
+
+.admin-user-header__identity {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.admin-user-title {
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: 650;
+  color: var(--text-default, #0f172a);
+}
+
+.admin-user-subtitle {
+  margin: 0;
+  font-size: 0.9rem;
+  color: var(--text-muted, #6b7280);
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.admin-user-subtitle i {
+  color: var(--primary, #0d6efd);
+}
+
+.admin-user-header__badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  justify-content: flex-end;
+}
+
+.admin-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0.18rem 0.65rem;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  border: 1px solid transparent;
+}
+
+.admin-chip--success {
+  background: rgba(34, 197, 94, 0.08);
+  border-color: rgba(34, 197, 94, 0.6);
+  color: #16a34a;
+}
+
+.admin-chip--warning {
+  background: rgba(249, 115, 22, 0.08);
+  border-color: rgba(249, 115, 22, 0.6);
+  color: #ea580c;
+}
+
+.admin-chip--muted {
+  background: var(--surface-elevated, #020617);
+  border-color: var(--border-subtle, rgba(148, 163, 184, 0.7));
+  color: var(--text-muted, #6b7280);
+}
+
+/* ÉTATS */
+.admin-user-state {
+  border-radius: 0.9rem;
+  padding: 0.9rem 1rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 0.92rem;
+}
+
+.admin-user-state--loading {
+  background: rgba(59, 130, 246, 0.08);
+  border: 1px solid rgba(59, 130, 246, 0.45);
+  color: var(--primary, #0d6efd);
+}
+
+.admin-user-state--error {
+  background: rgba(248, 113, 113, 0.12);
+  border: 1px solid rgba(248, 113, 113, 0.7);
+  color: #b91c1c;
+}
+
+.admin-user-state__details {
+  margin: 0.15rem 0 0;
+  font-size: 0.85rem;
+}
+
+/* CONTENU */
+.admin-user-content {
+  border-radius: 1rem;
+  border: 1px solid var(--border-subtle, rgba(148, 163, 184, 0.45));
+  background: var(--surface-default, #020617);
+  padding: 1.2rem 1.3rem;
+}
+
+.admin-user-grid {
+  display: grid;
+  gap: 1rem;
+}
+
+@media (min-width: 900px) {
+  .admin-user-grid {
+    grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+  }
+}
+
+/* CARTES */
+.admin-card {
+  border-radius: 0.9rem;
+  padding: 1rem 1.05rem;
+  background: var(--surface-elevated, #020617);
+  border: 1px solid rgba(148, 163, 184, 0.45);
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.admin-card__title {
+  margin: 0;
+  font-size: 1.02rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  color: var(--text-default, #e5e7eb);
+}
+
+.admin-card__title i {
+  color: var(--primary, #0d6efd);
+}
+
+.admin-card__section {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  margin-top: 0.35rem;
+}
+
+.admin-card__section-title {
+  margin: 0;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-default, #e5e7eb);
+}
+
+.admin-card__muted {
+  margin: 0;
+  font-size: 0.86rem;
+  color: var(--text-muted, #9ca3af);
+}
+
+/* DATA LIST */
+.admin-data-list {
+  margin: 0;
+  padding: 0;
+}
+
+.admin-data-list__row {
+  display: grid;
+  grid-template-columns: minmax(0, 9rem) minmax(0, 1fr);
+  gap: 0.5rem;
+  padding-block: 0.3rem;
+  border-bottom: 1px solid rgba(31, 41, 55, 0.7);
+}
+
+.admin-data-list__row:last-child {
+  border-bottom: none;
+}
+
+.admin-data-list__row dt {
+  font-size: 0.83rem;
+  font-weight: 500;
+  color: var(--text-muted, #9ca3af);
+}
+
+.admin-data-list__row dd {
+  margin: 0;
+  font-size: 0.9rem;
+  color: var(--text-default, #e5e7eb);
+}
+
+/* RÔLES */
+.admin-roles {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.admin-role-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0.2rem 0.65rem;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  background: rgba(37, 99, 235, 0.12);
+  color: #e5e7eb;
+  border: 1px solid rgba(37, 99, 235, 0.6);
+}
+
+/* CHECKLIST */
+.admin-checklist {
+  margin: 0.2rem 0 0;
+  padding-left: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.admin-checklist__item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.45rem;
+  font-size: 0.87rem;
+  color: var(--text-default, #e5e7eb);
+}
+
+.admin-checklist__icon {
+  margin-top: 0.1rem;
+  color: var(--text-muted, #9ca3af);
+}
+
+.admin-checklist__icon--ok {
+  margin-top: 0.1rem;
+  color: #16a34a;
+}
+
+.admin-checklist__icon--warn {
+  margin-top: 0.1rem;
+  color: #f97316;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .lk-page {
+    padding-inline: 1rem;
+  }
+}
+</style>
