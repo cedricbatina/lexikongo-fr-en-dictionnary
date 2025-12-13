@@ -63,6 +63,8 @@ export default defineNuxtConfig({
     // privées (serveur uniquement)
     stripeSecretKey: process.env.STRIPE_SECRET_KEY,
     paypalClientSecret: process.env.PAYPAL_CLIENT_SECRET,
+    paypalSecret: process.env.PAYPAL_SECRET,
+    paypalEnv: process.env.PAYPAL_ENV || "sandbox", // 'sandbox' ou 'live'
     smtpPassword: process.env.SMTP_PASS,
 
     // publiques (exposées au client)
@@ -73,13 +75,19 @@ export default defineNuxtConfig({
         process.env.NUXT_PUBLIC_SITE_DESC ||
         "Dictionnaire Kikongo · FR/EN & phonétique",
       defaultLocale: process.env.NUXT_PUBLIC_DEFAULT_LOCALE || "fr",
-
+    
       // Paiements
+      companyName: process.env.NUXT_PUBLIC_COMPANY_NAME || "",
+      companySiret: process.env.NUXT_PUBLIC_SIRET || "",
+      bankHolder: process.env.NUXT_PUBLIC_BANK_HOLDER || "CÉDRIC BATINA",
+      bankIban: process.env.NUXT_PUBLIC_BANK_IBAN || "",
+      bankBic: process.env.NUXT_PUBLIC_BANK_BIC || ""
+      ,
       stripePublishableKey:
-        process.env.NUXT_PUBLIC_STRIPE_PUBLISHABLE_KEY || "",
+        process.env.NUXT_PUBLIC_STRIPE_PUBLISHABLE_KEY ||  process.env.NUXT_PUBLIC_STRIPE_PUBLISHABLE_KEY ||  "",
       paypalClientId: process.env.NUXT_PUBLIC_PAYPAL_CLIENT_ID || "",
       paypalWebhookId: process.env.PAYPAL_WEBHOOK_ID || "",
-
+      
       // SMTP (métadonnées non sensibles côté client si besoin d’affichage)
       smtpHost: process.env.SMTP_HOST || "",
       smtpPort: parseInt(process.env.SMTP_PORT || "587", 10),
@@ -192,6 +200,13 @@ export default defineNuxtConfig({
 
   // ------- Imports / Devtools / Expérimental -------
   imports: { autoImport: true },
+
   devtools: { enabled: true },
+
+  devServer: {
+    port: 3000,
+    host: "0.0.0.0",
+  },
+
   experimental: { typedPages: true },
 });

@@ -76,13 +76,13 @@
       {{ globalError }}
     </p>
 
-    <!-- PANELS (v-show au lieu de v-if => évite les bugs de remount Stripe/PayPal) -->
+    <!-- PANELS -->
     <div class="payment__body">
       <!-- STRIPE -->
       <section
+        v-if="selectedMethod === 'stripe'"
         class="payment__panel"
         aria-label="Paiement par carte bancaire via Stripe"
-        v-show="selectedMethod === 'stripe'"
       >
         <h3 class="payment__panel-title">{{ t('contribute.payments.stripe.title') }}</h3>
         <p class="payment__panel-text">{{ t('contribute.payments.stripe.text') }}</p>
@@ -112,9 +112,9 @@
 
       <!-- PAYPAL -->
       <section
+        v-else-if="selectedMethod === 'paypal'"
         class="payment__panel"
         aria-label="Paiement via PayPal"
-        v-show="selectedMethod === 'paypal'"
       >
         <h3 class="payment__panel-title">{{ t('contribute.payments.paypal.title') }}</h3>
         <p class="payment__panel-text">{{ t('contribute.payments.paypal.text') }}</p>
@@ -126,12 +126,8 @@
         </p>
       </section>
 
-      <!-- BANK -->
-      <section
-        class="payment__panel"
-        aria-label="Virement bancaire"
-        v-show="selectedMethod === 'bank'"
-      >
+      <!-- VIREMENT BANCAIRE (EI) -->
+      <section v-else-if="selectedMethod === 'bank'" class="payment__panel" aria-label="Virement bancaire">
         <h3 class="payment__panel-title">{{ t('contribute.bank.title') }}</h3>
         <p class="payment__panel-text">{{ t('contribute.bank.subtitle') }}</p>
 
@@ -139,63 +135,39 @@
           <div class="bank__row">
             <dt>{{ t('contribute.bank.beneficiaryLabel') }}</dt>
             <dd class="bank__value">
-              <span class="bank__text">{{ companyName }}</span>
-              <button
-                type="button"
-                class="bank__icon-btn"
-                :aria-label="t('contribute.bank.copyBeneficiary')"
-                @click="copyToClipboard(companyName, 'BENEFICIARY')"
-                title="Copier"
-              >
-                <i class="far fa-copy" aria-hidden="true"></i>
-              </button>
-            </dd>
-          </div>
-  <div class="bank__row">
-            <dt>SIRET</dt>
-            <dd class="bank__value">
-              <span class="bank__text">{{ companySiret }}</span>
-              <button
-                type="button"
-                class="bank__icon-btn"
-                :aria-label="t('contribute.bank.copySiret')"
-                @click="copyToClipboard(companySiret, 'SIRET')"
-                title="Copier"
-              >
-                <i class="far fa-copy" aria-hidden="true"></i>
-              </button>
-            </dd>
-          </div>
-          <div class="bank__row">
-            <dt>{{ t('contribute.bank.holderLabel') }}</dt>
-            <dd class="bank__value">
-              <span class="bank__text">{{ bankHolder }}</span>
-              <button
-                type="button"
-                class="bank__icon-btn"
-                :aria-label="t('contribute.bank.copyHolder')"
-                @click="copyToClipboard(bankHolder, 'HOLDER')"
-                title="Copier"
-              >
-                <i class="far fa-copy" aria-hidden="true"></i>
+              <span>{{ companyName }}</span>
+              <button type="button" class="bank__copy-btn" @click="copyToClipboard(companyName, 'BENEFICIARY')">
+                {{ t('contribute.bank.copyBeneficiary') }}
               </button>
             </dd>
           </div>
 
-        
+          <div class="bank__row">
+            <dt>{{ t('contribute.bank.holderLabel') }}</dt>
+            <dd class="bank__value">
+              <span>{{ bankHolder }}</span>
+              <button type="button" class="bank__copy-btn" @click="copyToClipboard(bankHolder, 'HOLDER')">
+                {{ t('contribute.bank.copyHolder') }}
+              </button>
+            </dd>
+          </div>
+
+          <div class="bank__row">
+            <dt>SIRET</dt>
+            <dd class="bank__value">
+              <span>{{ companySiret }}</span>
+              <button type="button" class="bank__copy-btn" @click="copyToClipboard(companySiret, 'SIRET')">
+                {{ t('contribute.bank.copySiret') }}
+              </button>
+            </dd>
+          </div>
 
           <div class="bank__row">
             <dt>IBAN</dt>
             <dd class="bank__value">
               <span class="bank__code">{{ bankIban }}</span>
-              <button
-                type="button"
-                class="bank__icon-btn"
-                :aria-label="t('contribute.bank.copyIban')"
-                @click="copyToClipboard(bankIban, 'IBAN')"
-                title="Copier"
-              >
-                <i class="far fa-copy" aria-hidden="true"></i>
+              <button type="button" class="bank__copy-btn" @click="copyToClipboard(bankIban, 'IBAN')">
+                {{ t('contribute.bank.copyIban') }}
               </button>
             </dd>
           </div>
@@ -204,14 +176,8 @@
             <dt>BIC</dt>
             <dd class="bank__value">
               <span class="bank__code">{{ bankBic }}</span>
-              <button
-                type="button"
-                class="bank__icon-btn"
-                :aria-label="t('contribute.bank.copyBic')"
-                @click="copyToClipboard(bankBic, 'BIC')"
-                title="Copier"
-              >
-                <i class="far fa-copy" aria-hidden="true"></i>
+              <button type="button" class="bank__copy-btn" @click="copyToClipboard(bankBic, 'BIC')">
+                {{ t('contribute.bank.copyBic') }}
               </button>
             </dd>
           </div>
@@ -230,11 +196,11 @@
         </p>
       </section>
 
-      <!-- MOBILE -->
+      <!-- MOBILE MONEY (demande) -->
       <section
+        v-else-if="selectedMethod === 'mobile'"
         class="payment__panel"
         aria-label="Paiement par Mobile Money"
-        v-show="selectedMethod === 'mobile'"
       >
         <h3 class="payment__panel-title">{{ t('contribute.mobile.title') }}</h3>
         <p class="payment__panel-text">{{ t('contribute.mobile.text') }}</p>
@@ -254,7 +220,9 @@
               autocomplete="tel"
               placeholder="+242 06 66 57 3XX"
             />
-            <small class="payment__helper">MTN Congo (format recommandé : +242 …)</small>
+            <small class="payment__helper">
+              MTN Congo (format recommandé : +242 …)
+            </small>
           </div>
 
           <div class="payment__field">
@@ -277,7 +245,7 @@
 </template>
 
 <script setup>
-import { ref, computed, onMounted, watch, onBeforeUnmount, nextTick } from 'vue'
+import { ref, computed, onMounted, watch, onBeforeUnmount } from 'vue'
 import { useRuntimeConfig } from '#imports'
 import { useI18n } from 'vue-i18n'
 import { loadStripe } from '@stripe/stripe-js'
@@ -318,6 +286,31 @@ const globalError = ref('')
 const amountValid = computed(() => typeof amount.value === 'number' && amount.value >= 1)
 const displayAmount = computed(() => (amountValid.value ? amount.value.toFixed(0) : '…'))
 
+// helpers timing DOM
+const waitForEl = (id, timeout = 2500) =>
+  new Promise((resolve) => {
+    if (typeof document === 'undefined') return resolve(null)
+    const start = Date.now()
+    const tick = () => {
+      const el = document.getElementById(id)
+      if (el) return resolve(el)
+      if (Date.now() - start > timeout) return resolve(null)
+      requestAnimationFrame(tick)
+    }
+    tick()
+  })
+
+const waitForRef = (refObj, timeout = 2500) =>
+  new Promise((resolve) => {
+    const start = Date.now()
+    const tick = () => {
+      if (refObj?.value) return resolve(refObj.value)
+      if (Date.now() - start > timeout) return resolve(null)
+      requestAnimationFrame(tick)
+    }
+    tick()
+  })
+
 // Stripe
 const stripe = ref(null)
 const stripeElements = ref(null)
@@ -326,7 +319,16 @@ const stripeCardContainer = ref(null)
 const stripeReady = ref(false)
 const stripeLoading = ref(false)
 const stripeError = ref('')
+
 let stripeInitOnce = false
+
+const teardownStripe = () => {
+  stripeReady.value = false
+  if (stripeCardElement.value) {
+    try { stripeCardElement.value.unmount() } catch {}
+    stripeCardElement.value = null
+  }
+}
 
 const initStripe = async () => {
   stripeError.value = ''
@@ -345,12 +347,13 @@ const initStripe = async () => {
     if (!stripe.value) throw new Error('Stripe init failed')
     if (!stripeElements.value) stripeElements.value = stripe.value.elements()
 
-    if (!stripeCardElement.value) {
-      stripeCardElement.value = stripeElements.value.create('card')
-      await nextTick()
-      stripeCardElement.value.mount(stripeCardContainer.value)
-    }
+    teardownStripe()
+    stripeCardElement.value = stripeElements.value.create('card')
 
+    const container = await waitForRef(stripeCardContainer, 4000)
+    if (!container) throw new Error('Stripe container missing')
+
+    stripeCardElement.value.mount(container)
     stripeReady.value = true
   } catch (err) {
     stripeError.value = err?.message || t('contribute.payments.stripe.initError')
@@ -403,8 +406,18 @@ const onStripeSubmit = async () => {
 // PayPal
 const paypalReady = ref(false)
 const paypalError = ref('')
+
 let paypalScriptPromise = null
 let paypalRendered = false
+
+const teardownPaypal = () => {
+  paypalReady.value = false
+  paypalRendered = false
+  if (typeof document !== 'undefined') {
+    const container = document.getElementById('paypal-button-container')
+    if (container) container.innerHTML = ''
+  }
+}
 
 const loadPaypalScript = () => {
   if (paypalScriptPromise) return paypalScriptPromise
@@ -482,6 +495,9 @@ const initPaypal = async () => {
 
   try {
     await loadPaypalScript()
+    const el = await waitForEl('paypal-button-container', 4000)
+    if (!el) throw new Error('paypal container missing')
+
     if (!paypalRendered) renderPaypalButtons()
   } catch (err) {
     paypalError.value = t('contribute.payments.paypal.loadError')
@@ -509,7 +525,12 @@ const copyToClipboard = (text, field) => {
 }
 
 // Mobile money
-const mobileForm = ref({ name: '', phone: '', operator: 'MTN' })
+const mobileForm = ref({
+  name: '',
+  phone: '',
+  operator: 'MTN',
+})
+
 const mobileLoading = ref(false)
 const mobileError = ref('')
 
@@ -546,7 +567,13 @@ const onMobileMoneySubmit = async () => {
   }
 }
 
+// select method
 const onSelectMethod = (methodId) => {
+  if (selectedMethod.value === methodId) return
+
+  if (selectedMethod.value === 'stripe') teardownStripe()
+  if (selectedMethod.value === 'paypal') teardownPaypal()
+
   selectedMethod.value = methodId
   successMessage.value = ''
   globalError.value = ''
@@ -563,13 +590,12 @@ watch(
 )
 
 onMounted(async () => {
-  // Preload Stripe so it never breaks on tab switching.
-  await initStripe()
+  if (selectedMethod.value === 'stripe') await initStripe()
 })
 
 onBeforeUnmount(() => {
-  const c = typeof document !== 'undefined' ? document.getElementById('paypal-button-container') : null
-  if (c) c.innerHTML = ''
+  teardownStripe()
+  teardownPaypal()
 })
 </script>
 
@@ -926,97 +952,4 @@ onBeforeUnmount(() => {
     align-items: flex-start;
   }
 }
-.bank__icon-btn {
-  border-radius: 999px;
-  border: 1px solid rgba(148, 163, 184, 0.9);
-  padding: 0.18rem 0.55rem;
-  font-size: 0.85rem;
-  background: var(--surface-default, #f3f4f6);
-  color: var(--text-default, #111827);
-  cursor: pointer;
-  line-height: 1;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.bank__icon-btn:hover,
-.bank__icon-btn:focus-visible {
-  background: rgba(37, 99, 235, 0.1);
-  border-color: var(--primary, #2563eb);
-}
-
-.bank__text {
-  overflow-wrap: anywhere;
-}
-.bank__details {
-  margin-top: 0.6rem;
-  background: var(--surface-elevated, #ffffff);
-  border: 1px solid rgba(148, 163, 184, 0.35);
-  border-radius: 1rem;
-  padding: 0.85rem 0.9rem;
-  box-shadow: 0 18px 30px rgba(15, 23, 42, 0.06);
-}
-
-.bank__row {
-  display: grid;
-  grid-template-columns: 160px 1fr;
-  gap: 0.6rem;
-  align-items: center;
-  padding: 0.55rem 0;
-}
-
-.bank__row + .bank__row {
-  border-top: 1px dashed rgba(148, 163, 184, 0.35);
-}
-
-.bank__row dt {
-  margin: 0;
-  font-size: 0.82rem;
-  color: var(--text-muted, #6b7280);
-}
-
-.bank__row dd {
-  margin: 0;
-}
-
-.bank__value {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 0.6rem;
-  min-width: 0;
-}
-
-.bank__code {
-  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-  font-size: 0.92rem;
-  padding: 0.35rem 0.55rem;
-  border-radius: 0.7rem;
-  background: rgba(15, 23, 42, 0.04);
-  border: 1px solid rgba(148, 163, 184, 0.35);
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-
-.bank__icon-btn {
-  width: 2.15rem;
-  height: 2.15rem;
-  border-radius: 0.8rem;
-  border: 1px solid rgba(148, 163, 184, 0.5);
-  background: rgba(15, 23, 42, 0.02);
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-}
-
-.bank__icon-btn:hover,
-.bank__icon-btn:focus-visible {
-  border-color: var(--primary, #2563eb);
-  background: rgba(37, 99, 235, 0.08);
-}
-
 </style>
-

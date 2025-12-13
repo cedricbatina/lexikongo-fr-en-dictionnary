@@ -1708,7 +1708,6 @@
       "subtitle": "Vos contributions nous aident à maintenir, enrichir et faire rayonner le dictionnaire Kikongo.",
       "meta": "Choisissez le moyen de soutien qui vous convient : carte bancaire, PayPal, virement ou Mobile Money."
     },
-
     "meta": {
       "title": "Soutenir Lexikongo | Contributions & dons",
       "description": "Soutenez le dictionnaire Lexikongo (Kikongo – Français/Anglais & phonétique) via carte bancaire, PayPal, virement bancaire ou Mobile Money."
@@ -1725,12 +1724,17 @@
       "methodLabel": "Moyen de paiement",
       "methodHelp": "Sélectionnez la méthode qui vous convient le mieux.",
       "notAvailable": "Ce moyen de paiement n’est pas disponible pour le moment.",
+       "emailLabel": "Adresse email (optionnelle)",
+    "emailHint": "Pour envoyer un reçu ou vous contacter si besoin.",
+    "anonymousLabel": "Afficher ce don comme anonyme",
+    "emailPlaceholder": "Ex: kimpa-vita{'@'}gmail.com",
 
       "methods": {
         "stripe": "Carte bancaire (Stripe)",
         "paypal": "PayPal",
         "bank": "Virement bancaire",
         "mobile": "Mobile Money"
+   
       },
 
       "stripe": {
@@ -1762,7 +1766,7 @@
       "title": "Virement bancaire",
       "subtitle": "Vous pouvez effectuer un virement depuis votre banque vers notre compte dédié aux contributions.",
 
-      "beneficiaryLabel": "Bénéficiaire",
+      "beneficiaryLabel": " Bénéficiaire ",
       "ibanLabel": "IBAN",
       "bicLabel": "BIC",
       "copyIban": "Copier l’IBAN",
@@ -1771,7 +1775,16 @@
       "referenceValue": "Votre email ou identifiant utilisateur Lexikongo",
       "afterTransfer": "Une fois votre virement effectué, merci de nous envoyer un email avec les détails de votre paiement à",
       "ibanCopied": "IBAN copié dans le presse-papiers.",
-      "bicCopied": "BIC copié dans le presse-papiers."
+      "bicCopied": "BIC copié dans le presse-papiers.",
+      "holderLabel": "Titulaire du compte",
+      "copyBeneficiary": "Copier le bénéficiaire",
+      "copyHolder": "Copier le titulaire",
+      "copySiret": "Copier le SIRET",
+      "beneficiaryCopied": "Bénéficiaire copié ✅",
+      "holderCopied": "Titulaire copié ✅",
+      "siretCopied": "SIRET copié ✅",
+      "copied": "Copié ✅"
+     
     },
 
     "mobile": {
@@ -1784,7 +1797,7 @@
       "operatorLabel": "Opérateur (Orange Money, Airtel Money, M-Pesa…)",
       "amountLabel": "Montant (devise locale ou €)",
       "noteLabel": "Message (facultatif)",
-
+       "text": "Pour les pays d’Afrique centrale (RDC, Congo, Angola, etc.), vous pouvez nous envoyer une demande de contribution via Mobile Money.",
       "hint": "Nous vous répondrons par email ou message (WhatsApp / SMS) avec les instructions précises pour finaliser votre contribution.",
       "cta": "Envoyer une demande Mobile Money",
       "processing": "Envoi de votre demande…",

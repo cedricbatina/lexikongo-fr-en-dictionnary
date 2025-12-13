@@ -226,3 +226,45 @@ contribute.payments.* : textes pour PaymentForm (titres, labels, erreurs, succè
 contribute.bank.* : textes pour BankTransfer (bénéficiaire, IBAN, BIC, copier…, message après virement).
 
 contribute.other.* : blocs Contact, Partage, Contributeurs (titres, textes, CTA, aria-labels).
+
+[2025-12-10] Admin utilisateurs & début page Contribuer
+
+- Admin / Liste des utilisateurs
+  - Nouvelle page /admin/users avec LkPageHero et design cohérent Lexikongo.
+  - Composant <UserList> refondu :
+    - Récupération des users via /api/admin/users (middleware require-auth + require-admin).
+    - Recherche par username, email, rôle.
+    - Pagination via le composant Pagination.
+    - Badges “rôle” et “email vérifié” compatibles light/dark (CSS avec variables).
+    - Navigation vers /admin/user/[userIdSlug] avec slug généré à partir du username.
+
+- Admin / Fiche utilisateur
+  - Nouvelle page /admin/user/[userIdSlug].vue :
+    - Chargement des données via /api/admin/users/[id].get.js.
+    - Affichage des infos principales : id, username, email, created_at, updated_at, last_seen, previous_seen, rôles, statut email vérifié.
+    - Boutons “Modifier le compte” (/admin/edit/user/[userIdSlug]) et “Supprimer le compte” avec confirmStore.
+  - API côté serveur :
+    - /api/admin/users/[id].get.js : retourne un utilisateur + ses rôles.
+    - /api/admin/users/[id].delete.js : suppression d’un compte utilisateur (admin-only).
+  - i18n :
+    - Textes pour la fiche admin.user.* + messages de suppression :
+      - admin.user.actions.deleteConfirmTitle
+      - admin.user.actions.deleteConfirmBody
+      - admin.user.actions.deleteConfirmCta
+      - common.cancel
+
+- Admin / Édition utilisateur
+  - Page /admin/edit/user/[userIdSlug].vue :
+    - Formulaire d’édition des infos de base (username, email) et des rôles.
+    - Validation simple côté UI et envoi vers /api/admin/users/[id].put.js.
+  - API /api/admin/users/[id].put.js pour maj du compte + rôles.
+
+- Page Contribute
+  - Mise en place de pages/contribute/index.vue avec LkPageHero, bloc “Soutien en ligne”, bloc virement, bloc “Autres façons de soutenir”.
+  - Préparation de la refonte du PaymentForm (Stripe, PayPal, Mobile Money, virement) et des textes i18n contribute.*.
+
+TODO prochain jour :
+- Finaliser PaymentForm premium (Stripe branché avec /api/payments/stripe-intent, PayPal, Mobile Money).
+- Repenser la disposition de la page Contribute en layout 2 colonnes (paiement à droite, “autres façons de soutenir” à gauche).
+- Intégrer les infos de BankTransfer directement dans le bloc de paiement et n’afficher chaque moyen qu’au clic (Stripe par défaut).
+
