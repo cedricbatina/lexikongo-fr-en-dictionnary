@@ -1,685 +1,1752 @@
 {
-  "app.name": "Lexikongo — Kikongo 词典",
-  "app.tagline": "Kikongo · 法语 · 英语 · 音标",
-
-  "home.title": "Lexikongo — Kikongo 词典",
-  "home.description": "在线 Kikongo 词典：单词、动词和表达，附法语和英语翻译，以及发音和音标。",
-  "home.keywords": "lexikongo, kikongo 词典, kikongo 法语, kikongo 英语, kikongo 词汇, kikongo 音标",
-
+  "app.name": "@@0@@ — 基孔戈语词典",
+  "app.tagline": "基孔戈语 · 法语 · 英语 · 音标",
+  "home.title": "@@0@@ — 基孔戈语词典",
+  "home.description": "基孔戈语词典 : , , , 翻译和 , 与发音和 .",
+  "home.keywords": ", 词典 , , , ,",
   "layout.contact.phone": "电话",
-  "layout.contact.email": "电子邮箱",
-
+  "layout.contact.email": "邮箱",
   "nav.home": "首页",
   "nav.verbs": "动词",
-  "nav.words": "单词",
+  "nav.words": "词条",
   "nav.expressions": "表达",
   "nav.login": "登录",
   "nav.logout": "退出登录",
-  "nav.profile": "我的资料",
-  "nav.dashboard": "控制面板",
-  "nav.contributor": "贡献者专区",
-  "nav.admin": "后台管理",
-  "nav.profileTitle": "查看我的资料",
-  "nav.connectedAs": "当前登录为",
-  "nav.openMenu": "打开菜单",
-  "nav.closeMenu": "关闭菜单",
+  "nav.profile": "我的个人资料",
+  "nav.dashboard": "控制台",
+  "nav.contributor": "贡献者空间",
+  "nav.admin": "管理",
+  "nav.profileTitle": "我的个人资料",
+  "nav.connectedAs": "已登录",
+  "nav.openMenu": "打开",
+  "nav.closeMenu": "关闭",
   "nav.contribute": "参与贡献",
-
-  "verbs.index.title": "Kikongo 动词",
-  "verbs.index.description": "Kikongo 动词列表，包含法语和英语翻译以及音标转写。",
-  "verbs.index.keywords": "kikongo 动词, kikongo 变位, 动词词典",
-
-  "verbs.detail.title": "Kikongo 动词：{verb}",
-  "verbs.detail.description": "Kikongo 动词「{verb}」的释义、例句以及法语和英语翻译。",
-  "verbs.detail.keywords": "kikongo 动词 {verb}, kikongo 词典, kikongo 变位",
-
-  "words.index.title": "Kikongo 单词",
-  "words.index.description": "Kikongo 词汇表：单词、释义、法语和英语翻译以及音标。",
-  "words.index.keywords": "kikongo 单词, kikongo 词汇, kikongo 词汇表",
-
-  "words.detail.title": "Kikongo 单词：{word}",
-  "words.detail.description": "Kikongo 单词「{word}」的释义以及法语和英语翻译。",
-  "words.detail.keywords": "kikongo 单词 {word}, kikongo 词典, kikongo 词汇",
-
-  "expressions.index.title": "Kikongo 表达",
-  "expressions.index.description": "Kikongo 中的惯用语和实用短语，附法语和英语翻译。",
-  "expressions.index.keywords": "kikongo 表达, kikongo 短语, kikongo 会话",
-
+  "verbs.index.title": "动词",
+  "verbs.index.description": "的与翻译 , 和 .",
+  "verbs.index.keywords": ", , 词典的",
+  "verbs.detail.title": "动词 : @@0@@",
+  "verbs.detail.description": "释义, 示例和翻译的 « @@0@@ » 和 .",
+  "verbs.detail.keywords": "@@0@@, 词典 ,",
+  "words.index.title": "词条",
+  "words.index.description": ": , , 翻译和 , 和 .",
+  "words.index.keywords": ", ,",
+  "words.detail.title": "词条 : @@0@@",
+  "words.detail.description": "释义和翻译的 « @@0@@ » 和 .",
+  "words.detail.keywords": "@@0@@, 词典 ,",
+  "words": {
+    "cards": {
+      "titleSuffix": "–",
+      "viewTable": "",
+      "viewTableAria": "的",
+      "viewDetails": "",
+      "viewCards": "",
+      "bottomCtaTitle": "您在 ?",
+      "bottomCtaText": "@@0@@ 词典 . 的 , 或用于语言 @@1@@ ."
+    },
+    "page": {
+      "eyebrow": "@@0@@ · 的",
+      "title": "@@0@@",
+      "subtitle": "的 @@0@@ 与 , 和翻译和 . 和通过 .",
+      "primaryCta": "",
+      "secondaryCta": "参与贡献到词典",
+      "metaLanguages": "基孔戈语 · 法语 · 英语 · 音标",
+      "bottomCtaTitle": "您在 ?",
+      "bottomCtaText": "@@0@@ 词典 . 的 , 或用于语言 @@1@@ ."
+    },
+    "meta": {
+      "title": "的 @@1@@ – @@0@@",
+      "description": "的 @@0@@ 与 , 和翻译和 ."
+    }
+  },
+  "expressions.index.title": "表达",
+  "expressions.index.description": "表达和与翻译和 .",
+  "expressions.index.keywords": ", ,",
   "login.title": "登录",
-  "login.description": "登录以管理个人资料并为词典做出贡献。",
+  "login.description": "-您用于您的个人资料和到词典.",
   "register.title": "注册",
-  "register.description": "创建账号，为 Lexikongo 词典做出贡献。",
-  "profile.title": "我的资料",
-  "profile.description": "查看并更新你的 Lexikongo 账号信息。",
-
+  "register.description": "账户用于到词典 @@0@@.",
+  "profile.title": "我的个人资料",
+  "profile.description": "和的您的账户 @@0@@.",
   "home": {
     "hero": {
-      "badge": "Kikongo 词典 · FR · EN",
-      "subtitle": "Kikongo · 法语 · 英语词典，附音标。一个用于学习、探索并共同保护 Kikongo 语言遗产的活跃资源库。",
-      "ctaWords": "浏览单词",
-      "ctaVerbs": "探索动词",
-      "hintPrefix": "你也可以浏览",
-      "hintExpressions": "表达",
-      "hintSeparator": "或查看",
-      "hintDoc": "贡献者文档",
-      "sideAria": "快速访问和附加信息"
+      "badge": "基孔戈语词典 · ·",
+      "subtitle": "基孔戈语词典 · 法语 · 英语与 . 用于 , 和到 .",
+      "ctaWords": "",
+      "ctaVerbs": "",
+      "hintPrefix": "您",
+      "hintExpressions": "",
+      "hintSeparator": "或",
+      "hintDoc": "",
+      "sideAria": "和"
     },
     "cards": {
       "contribute": {
-        "title": "参与完善词汇库",
-        "body": "添加新的单词、动词或表达，帮助社区丰富数据库。",
-        "link": "进入贡献者专区"
+        "title": "参与贡献到",
+        "body": "的 , 或和 .",
+        "link": "'",
+        "lexiconCta": "'",
+        "lexiconAria": "和 ' @@0@@",
+        "supportCta": "/ @@0@@",
+        "supportAria": "页面的和的用于 @@0@@"
       },
       "login": {
         "title": "登录",
-        "body": "查看你的控制面板、提交记录和贡献活动。",
+        "body": "您的的 , 您的和您的 .",
         "link": "登录"
+      },
+      "account": {
+        "adminTitle": "",
+        "adminBody": "到的和的的词典 (, , …).",
+        "adminCta": "打开的"
       }
     },
     "seo": {
-      "title": "Lexikongo — Kikongo · 法语 · 英语词典",
-      "description": "Lexikongo 是一部在线 Kikongo · 法语 · 英语词典，附音标。探索 Kikongo 单词、动词和表达，并为语言保护做出贡献。",
-      "ogTitle": "Lexikongo — 在线 Kikongo 词典",
-      "ogDescription": "一个用于发现、练习和传承 Kikongo 语言的现代资源：单词、动词、表达和音标。"
+      "title": "@@0@@ — 基孔戈语词典 · 法语 · 英语",
+      "description": "@@0@@ 词典 @@1@@ · 法语 · 英语与 . , 和的 @@2@@ 和的语言.",
+      "ogTitle": "@@0@@ — 基孔戈语词典",
+      "ogDescription": "用于 , 和语言 : , , 和 ."
     },
     "lastExpressions": {
-  "loading": "正在加载最新贡献…",
-  "error": "无法获取最新贡献。",
-  "total": "{total} 条新表达",
-  "details": "其中包含 {words} 个名词和 {verbs} 个动词！"
-}
-
-
+      "loading": "加载中的 …",
+      "error": "无法的 .",
+      "total": "@@0@@",
+      "details": "@@0@@ 和 @@1@@ !"
+    }
   },
-  "common.langLine": "基孔戈语 · 法语 · 英语 · 音标"
-,"layout.header.logoAlt": "站点标志"
-,
-    "words.list.title": "单词列表",
-  "words.list.subtitle": "浏览基孔戈语单词，包括复数形式、音标以及对应的法语和英语翻译。",
-  "words.list.count": "{n} 个词条 | {n} 个词条",
-  "words.list.searchLabel": "搜索单词",
-  "words.list.searchPlaceholder": "单词、复数形式、法语或英语翻译…",
-  "words.list.viewCards": "卡片视图",
-  "words.list.viewCardsAria": "以卡片形式显示单词",
-  "words.list.loading": "正在加载单词…",
-  "words.list.empty": "目前没有找到任何单词。",
-  "words.list.caption": "每一行展示一个基孔戈语单词（单数和复数）、其音标以及对应的法语和英语翻译。",
-  "words.list.column.singular": "单词",
-  "words.list.column.plural": "复数",
+  "common.langLine": "基孔戈语 · 法语 · 英语 · 音标",
+  "layout.header.logoAlt": "",
+  "words.list.title": "的",
+  "words.list.subtitle": ", 与 , 和翻译和 .",
+  "words.list.count": "@@0@@ | @@1@@",
+  "words.list.searchLabel": "搜索",
+  "words.list.searchPlaceholder": "词条, , 翻译或 …",
+  "words.list.viewCards": "",
+  "words.list.viewCardsAria": "的",
+  "words.list.loading": "加载中的 …",
+  "words.list.empty": "用于 .",
+  "words.list.caption": "到 , 到 , 他的 , 他的翻译和 .",
+  "words.list.column.singular": "词条",
+  "words.list.column.plural": "",
   "words.list.column.phonetic": "音标",
   "words.list.column.fr": "法语",
   "words.list.column.en": "英语",
-  "words.list.rowAria": "查看单词 {word} 的详细信息",
-  "words.cards.titleSuffix": "– 卡片视图",
-"words.cards.viewTable": "表格视图",
-"words.cards.viewTableAria": "以表格形式显示单词",
-"words": {
-  "cards": {
-    "titleSuffix": "– 卡片视图",
-    "viewTable": "表格视图",
-    "viewTableAria": "以表格形式显示单词",
-    "viewDetails": "查看词条",
-    "viewCards": "卡片视图"
-  },
-    "page": {
-      "eyebrow": "Lexikongo · 基孔戈语单词列表",
-      "title": "探索基孔戈语单词",
-      "subtitle": "浏览基孔戈语单词及其复数形式、音标和法语、英语翻译。由社区共同建设和丰富。",
-      "primaryCta": "开始搜索",
-      "secondaryCta": "为词典做出贡献"
-    },
-     "meta": {
-    "title": "基孔戈语词汇列表 – Lexikongo",
-    "description": "查看基孔戈语词汇列表，包括其复数形式、音标转写，以及对应的法语和英语翻译。"
-  }
-}
-,
-
-  "verbs.list.title": "动词列表",
-  "verbs.list.subtitle.prefix": "浏览带有助词",
-  "verbs.list.subtitle.suffix": "的不定式基孔戈语动词，以及其发音和法语、英语翻译。",
-  "verbs.list.count": "数据库中有 {n} 个动词 | 数据库中有 {n} 个动词",
-  "verbs.list.searchLabel": "搜索动词",
-  "verbs.list.searchPlaceholder": "动词，法语或英语翻译…",
-  "verbs.list.viewCards": "卡片视图",
-  "verbs.list.viewCardsAria": "以卡片形式显示动词",
-  "verbs.list.loading": "正在加载动词…",
-  "verbs.list.empty": "目前没有找到任何动词。",
-  "verbs.list.caption": "每一行显示一个带 ku 的基孔戈语不定式动词，它的音标，以及对应的法语和英语翻译。",
+  "words.list.rowAria": "的 @@0@@",
+  "words.cards.titleSuffix": "–",
+  "words.cards.viewTable": "",
+  "words.cards.viewCards": "银行卡",
+  "words.cards.viewTableAria": "的",
+  "verbs.list.title": "的",
+  "verbs.list.subtitle.prefix": ", 与",
+  "verbs.list.subtitle.suffix": "的 ', 和翻译和 .",
+  "verbs.list.count": "@@0@@ | @@1@@",
+  "verbs.list.searchLabel": "搜索",
+  "verbs.list.searchPlaceholder": "动词, 翻译或 …",
+  "verbs.list.viewCards": "",
+  "verbs.list.viewCardsAria": "的",
+  "verbs.list.loading": "加载中的 …",
+  "verbs.list.empty": "用于 .",
+  "verbs.list.caption": "', 他的他的翻译和 .",
   "verbs.list.column.verb": "动词",
   "verbs.list.column.phonetic": "音标",
   "verbs.list.column.fr": "法语",
   "verbs.list.column.en": "英语",
-  "verbs.list.rowAria": "查看动词 ku {verb} 的详细信息",
-  "verbs.cards.titleSuffix": "– 卡片视图",
-"verbs.cards.viewTable": "表格视图",
-"verbs.cards.viewTableAria": "以表格形式显示动词",
-"verbs.list.viewOneVerb": "查看动词",
-"expressions.list.title": "所有表达",
-"expressions.list.subtitle": "一目了然浏览基孔戈语的单词和动词，以及它们的音标和法语、英语翻译。",
-"expressions.list.count": "显示 {n} 条表达",
-
-"expressions.list.filterAll": "全部",
-"expressions.list.filterWords": "单词",
-"expressions.list.filterVerbs": "动词",
-
-"expressions.list.searchLabel": "搜索",
-"expressions.list.searchPlaceholder": "单词、动词、法语或英语翻译…",
-
-"expressions.list.viewCards": "卡片视图",
-"expressions.list.viewCardsAria": "以卡片形式显示表达",
-
-"expressions.list.loading": "正在加载表达…",
-"expressions.list.empty": "没有找到符合条件的表达。",
-"expressions.list.caption": "每一行表示一个基孔戈语的单词或动词，以及其音标和法语、英语翻译。",
-
-"expressions.list.column.type": "类型",
-"expressions.list.column.expression": "表达",
-"expressions.list.column.phonetic": "音标",
-"expressions.list.column.fr": "法语",
-"expressions.list.column.en": "英语",
-
-"expressions.list.badge.word": "单词",
-"expressions.list.badge.verb": "动词",
-
-"expressions.list.rowAriaWord": "查看单词 {word} 的详细信息",
-"expressions.list.rowAriaVerb": "查看动词 ku {verb} 的详细信息",
-"expressions.cards.titleSuffix": "– 卡片视图",
-"expressions.cards.viewTable": "表格视图",
-"expressions.cards.viewTableAria": "返回表达的表格视图",
-"expressions.cards.viewDetails": "查看详情",
-
-"expressions.cards.subtitle": "一目了然浏览 Kikongo 语中的单词和动词，以及它们的音标和法语、英语翻译。",
-"expressions.cards.count": "{n} 条表达 | {n} 条表达",
-"expressions.cards.cta": "查看条目",
-
+  "verbs.list.rowAria": "的 @@0@@",
+  "verbs.cards.titleSuffix": "–",
+  "verbs.cards.viewTable": "",
+  "verbs.cards.viewTableAria": "的",
+  "verbs.list.viewOneVerb": "",
+  "expressions.list.title": "",
+  "expressions.list.subtitle": "' 'œ他和 , 与和翻译和 .",
+  "expressions.list.count": "@@0@@ | @@1@@",
+  "expressions.list.filterAll": "全部",
+  "expressions.list.filterWords": "词条",
+  "expressions.list.filterVerbs": "动词",
+  "expressions.list.searchLabel": "搜索",
+  "expressions.list.searchPlaceholder": "词条, , 翻译或 …",
+  "expressions.list.viewCards": "",
+  "expressions.list.viewCardsAria": "的",
+  "expressions.list.loading": "加载中的 …",
+  "expressions.list.empty": "用于这些 .",
+  "expressions.list.caption": ", , 与他的和他的翻译和 .",
+  "expressions.list.column.type": "",
+  "expressions.list.column.expression": "表达",
+  "expressions.list.column.phonetic": "音标",
+  "expressions.list.column.fr": "法语",
+  "expressions.list.column.en": "英语",
+  "expressions.list.badge.word": "词条",
+  "expressions.list.badge.verb": "动词",
+  "expressions.list.rowAriaWord": "的 @@0@@",
+  "expressions.list.rowAriaVerb": "的 @@0@@",
+  "expressions.cards.viewDetails": "",
+  "expressions.cards.titleSuffix": "–",
+  "expressions.cards.subtitle": "' 'œ他和 @@0@@, 与和翻译和 .",
+  "expressions.cards.count": "@@0@@ | @@1@@",
+  "expressions.cards.viewTable": "",
+  "expressions.cards.viewTableAria": "的",
+  "expressions.cards.cta": "",
   "verbs": {
     "page": {
-      "eyebrow": "Lexikongo · 基孔戈语动词列表",
-      "title": "动词列表",
-      "subtitle": "浏览基孔戈语动词及其音标转写，以及对应的法语和英语翻译。非常适合学习、复习和编写教学资料。",
-      "ctaTitle": "没找到你要查的动词？",
-      "ctaText": "通过提交新的基孔戈语动词、它们的翻译和用法示例，帮助丰富词库。每一份贡献都在帮助社区学习并传承这门语言。",
-      "ctaButton": "成为贡献者"
+      "eyebrow": "@@0@@ . 的 @@1@@",
+      "title": "的",
+      "subtitle": "@@0@@ 与和翻译和 . 用于 ', 和的 .",
+      "ctaTitle": "您您 ?",
+      "ctaText": "的 @@0@@, 与翻译和示例 '. 和语言.",
+      "ctaButton": ""
     },
     "meta": {
-      "title": "基孔戈语动词列表 – Lexikongo",
-      "description": "探索基孔戈语动词的读音以及其法语和英语翻译，是学习和教授这门语言的实用工具。"
+      "title": "的 @@1@@ – @@0@@",
+      "description": "的 @@0@@ 与和翻译和 . 用于和语言."
     },
-     "cards": {
-    "titleSuffix": "– 卡片视图",
-    "viewTable": "表格视图",
-    "viewTableAria": "以表格形式显示动词",
-    "viewDetails": "查看动词"
-  }
+    "cards": {
+      "titleSuffix": "–",
+      "viewTable": "",
+      "viewTableAria": "的",
+      "viewDetails": ""
+    },
+    "common": {
+      "unknownVerb": ""
+    },
+    "search": {
+      "results": {
+        "ariaLabel": "结果的用于",
+        "caption": "的您的",
+        "columns": {
+          "infinitive": "",
+          "phonetic": "音标",
+          "fr": "法语",
+          "en": "英语"
+        },
+        "rowAria": "的 @@0@@",
+        "empty": "用于您的 .",
+        "errors": {
+          "missingSlug": "错误 ' : 的 .",
+          "invalidPage": "号码的页面 .",
+          "unexpectedFormat": "的数据 . 请重试."
+        }
+      }
+    }
   },
-  
   "expressions": {
     "page": {
-      "eyebrow": "Lexikongo · 基孔戈语单词和动词列表",
-      "title": "基孔戈语单词和动词列表",
-      "subtitle": "浏览 Lexikongo 数据库中的基孔戈语单词和动词，以及它们的音标转写和法语、英语翻译。",
-      "ctaSearch": "开始搜索",
-      "ctaContribute": "为词典做贡献",
+      "eyebrow": "@@0@@ · 的 &",
+      "title": "的和 @@0@@",
+      "subtitle": "的和的 @@0@@, 与和翻译和 .",
+      "ctaSearch": "",
+      "ctaContribute": "参与贡献到词典",
       "metaLanguages": "基孔戈语 · 法语 · 英语 · 音标",
-      "listTitle": "所有表达条目",
-      "listSubtitle": "当前在 Lexikongo 词典中可用的所有基孔戈语单词和动词条目总览。",
-      "bottomCtaTitle": "找不到你要查的表达？",
-      "bottomCtaText": "通过添加新的基孔戈语单词或动词及其翻译和用法示例，帮助丰富这个词汇表。"
+      "listTitle": "",
+      "listSubtitle": "' 的和的 @@1@@ 在词典 @@0@@.",
+      "bottomCtaTitle": "您 ' 您 ?",
+      "bottomCtaText": "的或 @@0@@, 与翻译和示例 '."
     },
     "meta": {
-      "title": "基孔戈语单词和动词列表 – Lexikongo",
-      "description": "探索基孔戈语单词和动词，以及它们的音标和法语、英语翻译。"
+      "title": "的和 @@1@@ – @@0@@",
+      "description": "的和 @@0@@ 与和翻译和 ."
     },
-     "cards": {
-      "titleSuffix": "– 卡片视图",
-      "subtitle": "一目了然浏览基孔戈语的单词和动词及其发音，以及对应的法语和英语翻译。",
-      "count": "找到 {count} 条表达",
-      "viewTable": "表格视图",
-      "viewTableAria": "以表格形式显示表达",
-      "cta": "查看详情"
+    "cards": {
+      "titleSuffix": "–",
+      "subtitle": "' 'œ他和 @@0@@, 与和翻译和 .",
+      "count": "@@0@@ | @@1@@",
+      "viewTable": "",
+      "viewTableAria": "的",
+      "cta": ""
+    }
+  },
+  "details": {
+    "common": {
+      "loading": "加载中的 …",
+      "backToList": "的",
+      "author": "",
+      "unknown": "",
+      "createdAt": "日期的",
+      "kikongoData": "数据",
+      "phonetic": "音标",
+      "translations": "翻译",
+      "fr": "法语",
+      "en": "英语",
+      "translationHint": "翻译的 , 通过的 .",
+      "backExpressions": "的 &",
+      "searchWords": "搜索的",
+      "searchVerbs": "搜索的"
+    },
+    "word": {
+      "label": "词条",
+      "subtitle": "' 与他的 , 他的和他的翻译.",
+      "singular": "",
+      "plural": "",
+      "nominalClass": "",
+      "root": "",
+      "numberVariability": {
+        "label": "的",
+        "singular_only": "",
+        "plural_only": "",
+        "invariable": "",
+        "variable": "",
+        "singularOnly": "",
+        "pluralOnly": ""
+      },
+      "editCta": "此"
+    },
+    "verb": {
+      "label": "动词",
+      "subtitle": "' 与他的 , 他的和他的翻译.",
+      "infinitive": "",
+      "root": "",
+      "suffix": "",
+      "editCta": "此",
+      "search": {
+        "form": {
+          "ariaLabel": "的的在词典",
+          "label": {
+            "search": "搜索的",
+            "language": "语言的用于"
+          },
+          "ariaSearchInput": "的的",
+          "ariaLanguageSelect": "的语言的用于",
+          "placeholder": "搜索 @@0@@",
+          "languageOptions": {
+            "kikongo": "@@0@@",
+            "fr": "法语",
+            "en": "英语"
+          },
+          "buttons": {
+            "search": "搜索",
+            "clear": ""
+          }
+        }
+      }
     }
   },
   "common.lang.fr": "法语",
-"common.lang.en": "英语",
- "actionsBar": {
+  "common.lang.en": "英语",
+  "actionsBar": {
     "global": {
-      "ariaLabel": "字典的快速操作和快捷方式"
+      "ariaLabel": "和的词典"
     },
     "admin": {
-      "title": "管理员操作",
-      "ariaLabel": "Lexikongo 管理员操作",
-      "addWord": "添加单词",
-      "addVerb": "添加动词",
-      "addUser": "添加用户"
+      "title": "",
+      "ariaLabel": "@@0@@",
+      "addWord": "添加",
+      "addVerb": "添加",
+      "addUser": "添加"
     },
     "contrib": {
-      "title": "贡献者操作",
-      "ariaLabel": "Lexikongo 贡献者操作",
-      "addWord": "添加单词",
-      "addVerb": "添加动词",
-      "board": "贡献者空间",
-        "dashboard": {
-    "actions": {
-      "submissions": {
-        "title": "管理你的贡献",
-        "text": "查看你提交的所有单词和动词，并进行修改或补充说明。",
-        "link": "查看你的贡献"
-      }
-    }
-  }
+      "title": "",
+      "ariaLabel": "@@0@@",
+      "addWord": "添加",
+      "addVerb": "添加",
+      "board": "贡献者空间"
     },
     "shortcuts": {
-      "title": "搜索和列表快捷方式",
-      "ariaLabel": "搜索和列表的快捷方式",
-      "searchWords": "搜索单词",
-      "searchVerbs": "搜索动词",
-      "listWords": "单词列表",
-      "listVerbs": "动词列表",
-      "listExpressions": "单词和动词列表",
-      "contribute": "在 Lexikongo 上贡献"
+      "title": "的和",
+      "ariaLabel": "的和",
+      "searchWords": "搜索的",
+      "searchVerbs": "搜索的",
+      "listWords": "的",
+      "listVerbs": "的",
+      "listExpressions": "的 &",
+      "contribute": "参与贡献在 @@0@@"
     },
     "common": {
-      "backHome": "返回首页"
+      "backHome": "返回 '"
     }
-  }, 
+  },
   "pageHero": {
-  "sideAria": "快捷访问和附加信息"
-},
-"auth": {
-      "login": {
-        "title": "登录",
-        "subtitle": "登录以访问你的 Lexikongo 空间。",
-        "identifierLabel": "邮箱或用户名",
-        "identifierPlaceholder": "请输入邮箱或用户名",
-        "passwordLabel": "密码",
-        "passwordPlaceholder": "请输入密码",
-        "submit": "登录",
-        "submitting": "正在登录…",
-        "registerLink": "创建账户",
-        "forgotLink": "忘记密码？",
-        "showPassword": "显示密码",
-        "hidePassword": "隐藏密码",
-        "showPasswordText": "显示",
-        "hidePasswordText": "隐藏",
-        "error": {
-          "requiredFields": "请填写所有字段。",
-          "generic": "登录失败，请检查你的账号信息。"
-        },
-"heroDescription": "登录你的 Lexikongo 空间，参与构建基孔戈语词典，管理你的投稿，并关注项目的发展。",
-"kicker": "会员空间 · 登录",
-"pageTitle": "登录 Lexikongo",
-"sideAria": "关于账号信息以及登录 Lexikongo 的优势",
-"sideBenefit1": "提交新的基孔戈语单词、动词和表达。",
-"sideBenefit2": "跟踪你的贡献及其审核状态。",
-"sideBenefit3": "帮助构建一个鲜活且协作的基孔戈语词典。",
-"sideTitle": "为什么要登录？",
-"meta": {
-  "title": "登录 · Lexikongo",
-  "description": "登录你的 Lexikongo 空间，提交新的基孔戈语单词、动词或表达，管理你的贡献，并关注协作词典的演变。"
-},
-"metaSecurity": "你的电子邮箱仅用于管理你的账号并激活你的 Lexikongo 个人资料。"
-
-      },
-       "register": {
+    "sideAria": "和"
+  },
+  "auth": {
+    "login": {
+      "title": "登录",
       "meta": {
-        "title": "注册 · Lexikongo",
-        "description": "创建你的 Lexikongo 帐号，提交基孔戈语的词汇、动词和表达，并跟踪你的贡献。"
+        "title": "登录 · @@0@@",
+        "description": "-您您的账户 @@0@@ 用于到词典 , 您的和您的 ."
       },
-      "pageTitle": "创建帐号",
-      "intro": "加入 Lexikongo 社区，一起完善词典并保存你的收藏。",
-      "emailConfirmLabel": "邮箱验证",
-      "emailConfirmHint": "注册完成后，你会收到一封包含验证链接的邮件。点击链接后，你的帐号将会被激活。",
-      "title": "注册",
-      "subtitle": "创建帐号以访问你的 Lexikongo 空间。",
-      "usernameLabel": "用户名",
-      "usernamePlaceholder": "请选择一个用户名",
-      "emailLabel": "电子邮箱地址",
-      "emailPlaceholder": "请输入有效的邮箱地址",
+      "subtitle": "-您用于您的 @@0@@.",
+      "identifierLabel": "邮箱或姓名 '",
+      "identifierPlaceholder": "您的邮箱 : @@0@@.",
       "passwordLabel": "密码",
-      "passwordPlaceholder": "请选择一个安全的密码",
-      "submit": "创建我的帐号",
-      "loginLink": "已经有帐号？登录",
-      "success": "注册成功！请检查邮箱并激活你的帐号。",
+      "passwordPlaceholder": "您的的",
+      "submit": "登录",
+      "submitting": "登录…",
+      "registerLink": "创建账户",
+      "forgotLink": "密码 ?",
+      "showPassword": "的",
+      "hidePassword": "的",
+      "showPasswordText": "",
+      "hidePasswordText": "",
       "error": {
-        "requiredFields": "请填写所有必填字段。",
-        "generic": "创建帐号时出错，请稍后再试。"
+        "requiredFields": "请全部 .",
+        "generic": "的 . 请您的 ."
+      },
+      "kicker": "@@0@@ · 会员空间",
+      "pageTitle": "登录您的账户 @@0@@",
+      "heroDescription": "-您用于的 , 和 , 您的和您的 .",
+      "sideAria": "的和您的 @@0@@",
+      "metaSecurity": "您的地址 - 的您的账户和 ' 的您的个人资料 @@0@@.",
+      "sideTitle": "您的 @@0@@",
+      "sideBenefit1": "您的到词典 .",
+      "sideBenefit2": "' 的您的和 .",
+      "sideBenefit3": "更多您的 ."
+    },
+    "register": {
+      "meta": {
+        "title": "注册 · @@0@@",
+        "description": "账户 @@0@@ 用于的 , 和 @@1@@ 和您的 ."
+      },
+      "pageTitle": "创建账户",
+      "intro": "@@0@@ 用于到词典和您的 .",
+      "emailConfirmLabel": "确认通过 -",
+      "emailConfirmHint": "'注册, 您 - 的确认. 您的账户您 .",
+      "title": "注册",
+      "subtitle": "您的账户用于您的 @@0@@.",
+      "usernameLabel": "姓名 '",
+      "usernamePlaceholder": "姓名 '",
+      "emailLabel": "地址 -",
+      "emailPlaceholder": "地址 -",
+      "passwordLabel": "密码",
+      "passwordPlaceholder": "的安全",
+      "submit": "创建我的账户",
+      "loginLink": "账户 ? 登录",
+      "success": "注册 ! 您的用于您的账户.",
+      "error": {
+        "requiredFields": "请全部必填.",
+        "generic": "错误 '注册. 请重试."
       }
     }
-    },
-    
-"profile": {
-  "eyebrow": "会员区域 · 个人资料",
-  "title": "用户资料",
-  "subtitle": "管理你的 Lexikongo 账户信息。",
-  "sideAria": "账户摘要、角色以及 Lexikongo 词典快捷方式",
-  "fallbackName": "Lexikongo 用户",
-  "actions": {
-    "expressions": "浏览词汇和动词",
-     "editProfile": "编辑我的资料",
+  },
+  "profile": {
+    "eyebrow": "会员空间 · 个人资料",
+    "title": "个人资料",
+    "subtitle": "的您的账户 @@0@@.",
+    "sideAria": "的账户, 和的词典 @@0@@",
+    "fallbackName": "@@0@@",
+    "actions": {
+      "expressions": "&",
+      "editProfile": "编辑我的个人资料",
       "deleteAccount": "删除我的账户"
-  },
-  "meta": {
-    "title": "用户资料 | Lexikongo",
-    "description": "查看并管理你的 Lexikongo 账户信息（资料、角色和安全）。",
-    "ogTitle": "用户资料 – Lexikongo",
-    "ogDescription": "Lexikongo 会员区域：资料、角色和账户信息。"
-  },
-  "metaSecurity": "你的个人信息会保持私密，绝不会被分享。",
-  "summary": {
-    "title": "账户摘要",
-    "username": "用户名",
-    "email": "电子邮箱地址",
-    "emailUnknown": "未填写",
-    "memberSince": "会员自",
-    "roles": "角色",
-    "editProfile": "编辑我的个人资料"
-  },
-  "memberSince": {
-    "unknown": "日期未知"
-  },
-  "section": {
-    "account": {
-      "title": "账户信息",
-      "subtitle": "这些信息来自你当前的 Lexikongo 账户。",
-      "username": "用户名",
-      "usernameHint": "此名称可能会显示在你公开贡献的内容旁边。",
-      "email": "电子邮箱地址",
-      "emailUnknown": "未填写",
-      "emailHint": "我们仅将其用于登录和账户安全。"
+    },
+    "meta": {
+      "title": "个人资料 | @@0@@",
+      "description": "和的您的账户 @@0@@ (个人资料, 和安全).",
+      "ogTitle": "个人资料 – @@0@@",
+      "ogDescription": "会员空间 @@0@@ : 个人资料, 和的账户."
+    },
+    "metaSecurity": "您的和 .",
+    "summary": {
+      "title": "的账户",
+      "username": "姓名 '",
+      "email": "地址 -",
+      "emailUnknown": "",
+      "memberSince": "",
+      "roles": "",
+      "editProfile": "编辑我的个人资料"
+    },
+    "memberSince": {
+      "unknown": "日期"
+    },
+    "section": {
+      "account": {
+        "title": "的账户",
+        "subtitle": "这些的您的账户 @@0@@ .",
+        "username": "姓名 '",
+        "usernameHint": "此姓名的您的 .",
+        "email": "地址 -",
+        "emailUnknown": "",
+        "emailHint": "我们 ' 用于和安全的您的账户."
+      },
+      "roles": {
+        "title": "和",
+        "subtitle": "您在 @@0@@."
+      },
+      "security": {
+        "title": "安全的账户",
+        "subtitle": "您的账户与的和 ."
+      }
+    },
+    "roleLabels": {
+      "user": "",
+      "contributor": "",
+      "admin": ""
     },
     "roles": {
-      "title": "角色和权限",
-      "subtitle": "角色决定你在 Lexikongo 上可以执行的操作。"
+      "user": {
+        "desc": "词典和的 ."
+      },
+      "contributor": {
+        "desc": "的 , 和 @@0@@."
+      },
+      "admin": {
+        "desc": ", 和的词典."
+      }
     },
-    "security": {
-      "title": "账户安全",
-      "subtitle": "使用强且唯一的密码来保护你的账户。"
-    }
-  },
-  "roleLabels": {
-    "user": "用户",
-    "contributor": "贡献者",
-    "admin": "管理员"
-  },
-  "roles": {
-    "user": {
-      "desc": "可以查看词典并使用搜索工具。"
-    },
-    "contributor": {
-      "desc": "可以提交新的 Kikongo 单词、动词和表达。"
-    },
-    "admin": {
-      "desc": "可以管理用户、内容以及词典配置。"
-    }
-  },
     "delete": {
       "title": "删除我的账户",
-      "message": "此操作不可撤销。您的 Lexikongo 账户及相关信息将被永久删除，无法恢复。",
-      "confirm": "永久删除我的账户",
+      "message": "此 . 您的账户 @@0@@ 和您的 . 此 .",
+      "confirm": "删除我的账户",
       "cancel": "取消",
-      "success": "您的账户已成功删除。",
-      "error": "删除账户时发生错误，请稍后重试。"
+      "success": "您的账户与成功.",
+      "error": "错误的的您的账户. 请重试."
     }
-},
-"details": {
-  "common": {
-    "loading": "正在加载词条…",
-    "backToList": "返回表达列表",
-    "author": "作者",
-    "unknown": "未知",
-    "createdAt": "创建日期",
-    "kikongoData": "基孔戈语数据",
-    "phonetic": "音标",
-    "translations": "翻译",
-    "fr": "法语",
-    "en": "英语",
-    "translationHint": "翻译中可能包含多个意义细微差别，用逗号分隔。",
-    "backExpressions": "查看单词和动词列表",
-    "searchWords": "搜索单词",
-    "searchVerbs": "搜索动词"
   },
-  "word": {
-    "label": "单词",
-    "subtitle": "基孔戈语单词的详细词条，包括音标、名词类别及其翻译。",
-    "singular": "单数",
-    "plural": "复数",
-    "nominalClass": "名词类别",
-    "root": "词根",
-    "numberVariability": {
-      "label": "数的变化",
-      "singular_only": "仅单数",
-      "plural_only": "仅复数",
-      "invariable": "数不变",
-      "variable": "数可变"
-    },
-    "editCta": "编辑此词"
-  },
-  "verb": {
-    "label": "动词",
-    "subtitle": "基孔戈语动词的详细词条，包括音标、词根及其翻译。",
-    "infinitive": "不定式",
-    "root": "词根",
-    "suffix": "词尾",
-    "editCta": "编辑此动词"
-  }
-},
- "contributor": {
-    "addWord": {
-      "eyebrow": "贡献者空间 · 词条",
-      "title": "提交新词",
-      "subtitle": "添加一个基孔戈语单词，并填写它的名词类别以及对应的法语和/或英语释义。",
-      "helpRequired": "带有 * 标记的字段为必填项。",
-      "sections": {
-        "word": "基孔戈语单词",
-        "translations": "翻译",
-        "translationsHint": "请至少添加一条法语或英语翻译。"
+  "contrib": {
+    "dashboard": {
+      "hero": {
+        "eyebrow": "会员空间 ·",
+        "titleWithName": "贡献者空间 · @@0@@",
+        "description": "的 , 和和您的 .",
+        "sideAria": "和",
+        "meta": "的的词典.",
+        "actionsAria": "@@0@@ ( )",
+        "ctaWords": "",
+        "ctaVerbs": ""
       },
-      "fields": {
-        "singular": {
-          "label": "单数形式"
+      "actions": {
+        "title": "参与贡献到词典",
+        "intro": "此您或在 @@0@@.",
+        "words": {
+          "title": "",
+          "text": "与他的翻译和他的 .",
+          "link": "到"
         },
-        "plural": {
-          "label": "复数形式",
-          "hint": "如果该词没有特别的复数形式，可以留空。"
+        "submissions": {
+          "title": "您的",
+          "text": "全部和您 , 用于或 .",
+          "link": "您的"
         },
-        "phonetic": {
-          "label": "发音 / 音标",
-          "placeholder": "/…/",
-          "hint": "可以填写近似读音（IPA 或简单标注）。"
+        "verbs": {
+          "title": "",
+          "text": "或 .",
+          "link": "到"
         },
-        "classId": {
-          "label": "名词类别",
-          "placeholderSelect": "— 请选择一个类别 —",
-          "placeholderInput": "名词类别 ID",
-          "hint": "选择或填写与该词对应的名词类别。"
+        "expressions": {
+          "title": "",
+          "text": "的 , 或 .",
+          "link": "到"
         },
-        "meaningFr": {
-          "label": "法语"
-        },
-        "meaningEn": {
-          "label": "英语"
+        "doc": {
+          "title": "",
+          "text": "您的和 .",
+          "link": ""
         }
       },
-      "actions": {
-        "submit": "提交词条",
-        "submitting": "正在提交…",
-        "cancel": "取消并返回贡献者空间"
+      "summary": {
+        "title": "的您的账户",
+        "intro": "的您的个人资料.",
+        "username": "姓名 '",
+        "role": "",
+        "roleLabel": "",
+        "memberSince": "",
+        "memberSinceUnknown": "日期",
+        "fallbackName": "@@0@@"
       },
-      "errors": {
-        "singularRequired": "单数形式为必填项。",
-        "classIdRequired": "名词类别为必填项。",
-        "classIdInvalid": "名词类别必须是有效的标识符。",
-        "translationsRequired": "请至少添加一条法语或英语翻译。",
-        "mustBeLoggedIn": "提交词条前需要先登录。"
-      },
-      "messages": {
-        "success": "您的词条已保存，感谢您的贡献！",
-        "errorGeneric": "提交词条时发生错误。"
+      "seo": {
+        "title": "贡献者空间 – @@0@@",
+        "description": "和您的在词典 @@0@@."
       }
-    },
-      "addVerb": {
-    "eyebrow": "贡献者空间 · 动词",
-    "title": "提交新动词",
-    "subtitle": "添加一个基孔戈语动词，填写它的词根、可能的派生形式，以及对应的法语和/或英语释义。",
-    "helpRequired": "带有 * 标记的字段为必填项。",
-    "sections": {
-      "verb": "基孔戈语动词",
-      "translations": "翻译",
-      "translationsHint": "请至少添加一条法语或英语翻译。"
-    },
-    "fields": {
-      "name": {
-        "label": "动词（基础形式）"
-      },
-      "root": {
-        "label": "词根",
-        "hint": "例如，不带前缀或后缀的动词词干。"
-      },
-      "suffix": {
-        "label": "词尾 / 后缀",
-        "hint": "如果该动词没有特殊词尾，可以留空。"
-      },
-      "phonetic": {
-        "label": "发音 / 音标",
-        "placeholder": "/…/",
-        "hint": "可以填写近似读音（IPA 或简单标注）。"
-      },
-      "flags": {
-        "label": "动词类型",
-        "active": "基础 / 主动动词",
-        "derived": "派生动词",
-        "hint": "如果该动词是由其他动词派生而来，请勾选“派生动词”。"
-      },
-      "derivedFrom": {
-        "label": "源动词（如为派生动词）",
-        "placeholder": "源动词 ID 或内部标识",
-        "hint": "可选：填写该动词所派生自的源动词（若知道，可使用 ID 或内部编码）。"
-      },
-      "derivedVerbType": {
-        "label": "派生类型",
-        "placeholder": "派生动词类型或 ID",
-        "hint": "可选：如已知，可说明派生类型（如使役、互相、反身等）。"
-      },
-      "meaningFr": {
-        "label": "法语"
-      },
-      "meaningEn": {
-        "label": "英语"
-      }
-    },
-    "actions": {
-      "submit": "提交动词",
-      "submitting": "正在提交…",
-      "cancel": "取消并返回贡献者空间"
-    },
-    "errors": {
-      "nameRequired": "动词为必填项。",
-      "rootRequired": "动词词根为必填项。",
-      "translationsRequired": "请至少添加一条法语或英语翻译。",
-      "mustBeLoggedIn": "提交动词前需要先登录。"
-    },
-    "messages": {
-      "success": "您的动词已保存，感谢您的贡献！",
-      "errorGeneric": "提交动词时发生错误。"
     }
   },
-    "submissions": {
-    "hero": {
-      "eyebrow": "贡献者空间 · 贡献记录",
-      "title": "你的贡献",
-      "subtitle": "查看你在 Lexikongo 提交的所有单词和动词。",
-      "meta": "在审核通过之前，你可以修改或删除这些待审核的贡献。",
-      "ctaAddWord": "提交新单词",
-      "ctaAddVerb": "提交新动词"
-    },
-    "seo": {
-      "title": "你的贡献 – Lexikongo",
-      "description": "在 Lexikongo 字典中查看并管理你提交的单词和动词。"
-    },
-    "sections": {
-      "words": {
-        "title": "已提交的单词",
-        "intro": "你提交到字典中的单词列表。",
-        "loading": "正在加载你提交的单词…",
-        "empty": "你还没有提交任何单词。",
-        "error": "无法获取你提交的单词。",
-        "caption": "贡献者提交的单词列表。"
-      },
-      "verbs": {
-        "title": "已提交的动词",
-        "intro": "你提交到字典中的动词列表。",
-        "loading": "正在加载你提交的动词…",
-        "empty": "你还没有提交任何动词。",
-        "error": "无法获取你提交的动词。",
-        "caption": "贡献者提交的动词列表。"
+  "admin": {
+    "verb": {
+      "add": {
+        "title": "添加",
+        "subtitle": "与他的和他的翻译和 .",
+        "meta": "· 的",
+        "legendKikongo": "数据",
+        "legendTranslations": "翻译",
+        "fields": {
+          "infinitive": "",
+          "root": "",
+          "suffix": "",
+          "phonetic": "音标",
+          "translationFr": "法语",
+          "translationEn": "英语"
+        },
+        "placeholders": {
+          "infinitive": ", …",
+          "root": "",
+          "suffix": "-, -…",
+          "phonetic": "[]…",
+          "translationFr": "通过的 …",
+          "translationEn": "…"
+        },
+        "actions": {
+          "submit": "保存",
+          "reset": "",
+          "saving": "…"
+        },
+        "messages": {
+          "success": "动词与成功.",
+          "errorRequiredInfinitive": "' 的必填.",
+          "errorGeneric": "错误的 ' 的 ."
+        },
+        "seoTitle": "· 添加 – @@0@@",
+        "seoDescription": "控制台 · ' (, , 翻译)."
       }
     },
-    "table": {
-      "headers": {
-        "word": "单词",
-        "class": "类别",
-        "translations": "翻译",
-        "status": "状态",
-        "createdAt": "创建时间",
-        "updatedAt": "更新时间",
-        "actions": "操作",
-        "verb": "动词",
-        "root": "词根"
+    "common": {
+      "mustBeLoggedIn": "您已登录 ' 用于此页面.",
+      "cancel": "取消"
+    },
+    "editPendingWord": {
+      "eyebrow": "· 词条待处理",
+      "title": "",
+      "subtitle": "' 通过的 .",
+      "meta": {
+        "label": "管理 · 的待处理",
+        "title": "· – @@0@@",
+        "description": "页面 ' 用于通过 (, , , 和翻译).",
+        "submittedAtLabel": ""
+      },
+      "help": "您 , , 的和翻译或 .",
+      "reviewNotice": "' 或的页面的的待处理.",
+      "cardTitleFallback": "词条",
+      "actions": {
+        "save": "保存",
+        "saving": "…",
+        "reset": "",
+        "delete": "删除此",
+        "approve": "批准此",
+        "reject": "此"
+      },
+      "confirmTitle": "删除此 ?",
+      "confirmDelete": "-您此 ? 此 .",
+      "deleted": ".",
+      "success": "很好 .",
+      "errors": {
+        "generic": "错误的的此待处理.",
+        "requiredSingular": "谢谢的到更少 .",
+        "requiredClassId": "谢谢 ' .",
+        "translationRequired": "谢谢的到更少翻译 ( 或 ).",
+        "delete": "错误的的 ."
+      }
+    },
+    "managePendings": {
+      "eyebrow": "·",
+      "title": "待处理",
+      "subtitle": "和和通过 .",
+      "meta": {
+        "label": "管理 · 待处理",
+        "title": "· 待处理 – @@0@@",
+        "description": "的的和待处理的 (, , ).",
+        "submittedAtLabel": ""
+      },
+      "help": "通过 ( / ), 和 , ' 用于的的 .",
+      "reviewNotice": "', 的或的页面 ' .",
+      "loading": "加载中的待处理…",
+      "empty": "这些 .",
+      "successApproved": "和到词典.",
+      "successRejected": ".",
+      "deleted": ".",
+      "confirmDeleteTitle": "删除此 ?",
+      "confirmDeleteMessage": "-您此 ? 此 .",
+      "unknownUser": "",
+      "count": "@@0@@",
+      "countWords": "@@0@@ ()",
+      "countVerbs": "@@0@@ ()",
+      "actions": {
+        "editWord": "",
+        "editVerb": "",
+        "approve": "批准",
+        "reject": "",
+        "delete": "删除"
+      },
+      "search": {
+        "label": "搜索在",
+        "placeholder": "搜索通过 , 翻译或 …"
+      },
+      "pagination": {
+        "prev": "上一步",
+        "next": "下一步",
+        "info": "页面 @@0@@ / @@1@@"
+      },
+      "error": {
+        "generic": "无法的待处理用于 ."
+      },
+      "errors": {
+        "generic": "无法的此 .",
+        "delete": "无法的此 .",
+        "notPending": "此 ' 更多 « 待处理 »."
+      }
+    },
+    "hero": {
+      "eyebrow": "· 控制台",
+      "title": "控制台 @@0@@",
+      "description": ", 词典和 ' 的 .",
+      "sideAria": "的和的 @@0@@",
+      "ctaWords": "",
+      "ctaVerbs": "",
+      "meta": "控制台 @@0@@",
+      "actionsAria": "的用于"
+    },
+    "dashboard": {
+      "hero": {
+        "eyebrow": "· 控制台",
+        "title": "控制台 @@0@@",
+        "description": ", 词典和 ' 的 .",
+        "sideAria": "的和的 @@0@@",
+        "ctaWords": "",
+        "ctaVerbs": "",
+        "meta": "控制台 @@0@@",
+        "actionsAria": "的用于"
+      },
+      "access": {
+        "title": "",
+        "intro": "用于和 .",
+        "words": {
+          "title": "词条的词典",
+          "text": ", 和的 .",
+          "link": "打开的"
+        },
+        "verbs": {
+          "title": "动词的词典",
+          "text": ", 和 .",
+          "link": "打开的"
+        },
+        "users": {
+          "title": "",
+          "text": ", 和的 .",
+          "link": "打开的"
+        },
+        "submissions": {
+          "title": "",
+          "text": ", 和的和的 .",
+          "link": "打开的"
+        }
+      },
+      "stats": {
+        "title": "",
+        "intro": "的 - 的词典和的 .",
+        "usersLabel": "账户",
+        "usersHint": "' 在 @@0@@.",
+        "wordsLabel": "词条",
+        "wordsHint": "' 的 .",
+        "verbsLabel": "动词",
+        "verbsHint": "的 ."
+      },
+      "session": {
+        "text": "已登录 '.",
+        "logout": "退出登录"
+      },
+      "seo": {
+        "title": "控制台 · @@0@@",
+        "description": "到的 @@0@@ 用于 , , 和 ."
+      }
+    },
+    "users": {
+      "page": {
+        "eyebrow": "管理 ·",
+        "title": "的",
+        "subtitle": ", 和的的 .",
+        "meta": "和这些 ."
+      },
+      "meta": {
+        "title": "管理 ·",
+        "description": "的在 @@0@@ ( 到 )."
+      },
+      "search": {
+        "label": "",
+        "placeholder": "搜索通过姓名, 邮箱或 …",
+        "count": "@@0@@ ·· 到"
+      },
+      "states": {
+        "loading": "加载中的 …",
+        "error": "无法的的 . 请重试更多 .",
+        "emptySearch": "账户您的 .",
+        "emptyAll": "' ."
+      },
+      "table": {
+        "title": "的",
+        "subtitle": "' 的在 @@0@@.",
+        "caption": "' 的 @@0@@.",
+        "columns": {
+          "id": "",
+          "username": "姓名 '",
+          "email": "邮箱",
+          "role": "()",
+          "createdAt": "日期的",
+          "verified": "邮箱"
+        },
+        "rowAria": "的账户 @@0@@",
+        "role": {
+          "none": ""
+        },
+        "verified": {
+          "yes": "",
+          "no": ""
+        }
+      }
+    },
+    "user": {
+      "backToList": "返回的",
+      "page": {
+        "eyebrow": "管理 ·",
+        "subtitle": "的账户, 和 .",
+        "meta": "' 账户 ( 到 )."
+      },
+      "meta": {
+        "title": "账户的 @@0@@",
+        "description": "的账户 @@0@@ 的 @@0@@."
+      },
+      "sections": {
+        "account": "的账户",
+        "roles": "&",
+        "security": "安全"
       },
       "labels": {
-        "fr": "法语",
-        "en": "英语"
+        "id": "",
+        "username": "姓名 '",
+        "email": "地址邮箱",
+        "createdAt": "",
+        "updatedAt": "",
+        "lastSeen": "",
+        "previousSeen": "登录上一步",
+        "roles": "",
+        "noRoles": "",
+        "verifiedYes": "邮箱",
+        "verifiedNo": "邮箱",
+        "unknownUser": "",
+        "noEmail": "邮箱"
       },
-      "noTranslations": "尚未填写翻译",
-      "wordPlural": "复数形式：{plural}",
-      "verbSuffix": "词尾：{suffix}",
       "actions": {
-        "edit": "编辑",
+        "edit": "编辑账户",
+        "delete": "删除账户",
+        "deleteConfirmTitle": "删除此账户 ?",
+        "deleteConfirmBody": "您在的账户 « @@0@@ ». 此 .",
+        "deleteConfirmCta": ","
+      },
+      "security": {
+        "passwordHint": "的的 ( 的数据)."
+      },
+      "states": {
+        "loading": "加载中的的账户…",
+        "error": "无法的的此 .",
+        "notFound": "此 ' 或 ' 更多 .",
+        "deleteError": "错误的的账户. 请重试更多 .",
+        "updated": "账户很好 .",
+        "updateError": "无法的此账户 .",
+        "deleted": "账户很好 ."
+      },
+      "common": {
+        "cancel": "取消"
+      }
+    }
+  },
+  "contributor": {
+    "addVerb": {
+      "eyebrow": "贡献者空间 · 动词",
+      "title": "",
+      "cardTitleFallback": "的",
+      "subtitle": "与他的 , 他的和他的翻译.",
+      "meta": {
+        "label": "· 的",
+        "title": "· – @@0@@",
+        "description": "用于通过 ' @@0@@."
+      },
+      "helpRequired": "' (*) 必填. 谢谢的到更少翻译.",
+      "reviewNotice": "您的通过 ' @@0@@ 在词典.",
+      "sections": {
+        "kikongo": "",
+        "translations": "翻译",
+        "derived": "动词",
+        "derivedOptional": "可选"
+      },
+      "fields": {
+        "infinitive": "(无 « »)",
+        "root": "",
+        "suffix": "",
+        "phonetic": "音标",
+        "translationFr": "翻译",
+        "translationEn": "翻译",
+        "derivedVerb": "此 '",
+        "derivedFrom": "的的",
+        "derivedVerbType": "的"
+      },
+      "hints": {
+        "infinitive": "' 无 « » (. , …).",
+        "root": "(. -, -…).",
+        "phonetic": "您的和的用于发音.",
+        "translationFr": "您 , 通过的 .",
+        "translationEn": "您 , 通过的 .",
+        "derivedVerb": "此 ' ( ).",
+        "derivedFrom": "的的 , 您 (, ).",
+        "derivedVerbType": "的 (, , .), 您 ."
+      },
+      "actions": {
+        "saving": "发送的您的 …",
+        "submit": "此",
+        "reset": ""
+      },
+      "success": "谢谢 ! 您的和通过 .",
+      "errors": {
+        "missingCore": "谢谢的到更少 ' 和 .",
+        "missingUser": "您已登录用于 .",
+        "missingTranslations": "谢谢的到更少翻译 ( 或 ).",
+        "generic": "错误的 '发送的您的的 ."
+      }
+    },
+    "errors": {
+      "mustBeLoggedIn": "您已登录用于 ."
+    },
+    "addWord": {
+      "eyebrow": "贡献者空间 · 词条",
+      "title": "",
+      "cardTitleFallback": "的",
+      "subtitle": "与他的 , 他的和他的翻译.",
+      "meta": {
+        "label": "· 的",
+        "title": "· – @@0@@",
+        "description": "用于与 , 和翻译和 ."
+      },
+      "helpRequired": "' (*) 必填. 谢谢的到更少翻译.",
+      "reviewNotice": "您的通过 ' @@0@@ 在词典.",
+      "placeholders": {
+        "singular": ", …",
+        "plural": ", …",
+        "classId": "…",
+        "phonetic": "[]…",
+        "translationFr": "通过的 …",
+        "translationEn": "…",
+        "baseWordSearch": "搜索的 …",
+        "baseVerbSearch": "搜索的 …"
+      },
+      "hints": {
+        "singular": "到 , '他 ( 的 ).",
+        "plural": "您 . , 您此 .",
+        "classId": ".",
+        "numberVariability": "可选 : ' '到 , 到 , 或 '他 .",
+        "translationFr": "您 , 通过的或在 .",
+        "translationEn": "您 , 通过的或在 .",
+        "phonetic": "您和用于发音.",
+        "derivedWord": "此 ' 或 ' (姓名 ', 结果, , .).",
+        "numberVariabilityShort": ": / (/). : (, , .).",
+        "derivedFromVerb": "搜索的在词典 ( « … » 或翻译).",
+        "baseWordSearch": "的 (, 或 ) 结果.",
+        "baseVerbSearch": "的 (, 或 ) 结果."
+      },
+      "numberVariability": {
+        "default": "— 通过 —"
+      },
+      "actions": {
+        "submit": "此",
+        "saving": "发送的您的 …",
+        "reset": "",
+        "viewSubmission": "您的"
+      },
+      "errors": {
+        "requiredSingular": "谢谢的到更少的 .",
+        "requiredClassId": "谢谢 ' (到 ).",
+        "translationRequired": "谢谢的到更少翻译 ( 或 ).",
+        "generic": "错误的 '发送的您的的 . 谢谢的重试更多 ."
+      },
+      "success": "谢谢 ! 您的和通过 .",
+      "sections": {
+        "kikongo": "",
+        "translations": "翻译",
+        "derived": "词条",
+        "derivedOptional": "可选"
+      },
+      "fields": {
+        "derivedWord": "此 ' 或 '",
+        "derivedFromWord": "词条的在词典",
+        "derivedFromVerb": "动词的 ( )"
+      },
+      "details": {
+        "word": {
+          "nominalClass": "",
+          "numberVariability": {
+            "label": "的",
+            "variable": "(/ )",
+            "singularOnly": "",
+            "pluralOnly": "",
+            "invariable": ""
+          }
+        },
+        "common": {
+          "phonetic": "音标"
+        }
+      },
+      "baseWordNoResults": "此用于 '.",
+      "baseWordSelected": "词条的 : @@0@@",
+      "baseVerbNoResults": "此用于 '.",
+      "baseVerbSelected": "动词的 : @@0@@"
+    },
+    "submissions": {
+      "eyebrow": "贡献者空间 ·",
+      "title": "您的",
+      "subtitle": "' 的您的和 .",
+      "meta": {
+        "label": "的",
+        "title": "· – @@0@@",
+        "description": "和您的的和 ( 待处理, , ).",
+        "createdAt": "",
+        "decidedAt": "",
+        "adminReason": "的 :",
+        "reviewedBy": "通过 @@0@@"
+      },
+      "help": "您您的通过 ( / ) 和通过 ( 待处理, , ).",
+      "reviewNotice": "通过 ' @@0@@, 您的词典.",
+      "mustBeLoggedIn": "您已登录用于您的 .",
+      "loading": "加载中的您的 …",
+      "empty": "您 ' 的或的 .",
+      "error": {
+        "generic": "无法的您的用于 ."
+      },
+      "filters": {
+        "status": "",
+        "type": ""
+      },
+      "status": {
+        "all": "全部",
+        "pending": "待处理",
+        "approved": "",
+        "rejected": ""
+      },
+      "types": {
+        "all": "词条 &",
+        "word": "词条",
+        "verb": "动词"
+      },
+      "search": {
+        "label": "搜索在您的",
+        "placeholder": "搜索通过 , , 翻译或 …"
+      },
+      "badges": {
+        "word": "词条",
+        "verb": "动词"
+      },
+      "count": "@@0@@",
+      "actions": {
+        "edit": "/",
         "delete": "删除"
       }
     },
-    "status": {
-      "pending": "待审核"
+    "editPendingWord": {
+      "eyebrow": "贡献者空间 ·",
+      "title": "编辑",
+      "subtitle": "或的您的通过 ' @@0@@.",
+      "meta": {
+        "label": "' 待处理",
+        "title": "编辑 | @@0@@",
+        "description": "您在 @@0@@ (, , , 与的和翻译).",
+        "submittedAtLabel": ""
+      },
+      "confirmTitle": "删除此 ?",
+      "help": "您 , , , 的和翻译.",
+      "reviewNotice": "待处理. 或 , 她 ' 的您的 .",
+      "cardTitleFallback": "词条待处理",
+      "locked": "此和 ' 更多 .",
+      "loading": "加载中的您的 …",
+      "actions": {
+        "save": "保存",
+        "saving": "…",
+        "reset": "",
+        "delete": "删除此",
+        "backToSubmissions": "返回我的"
+      },
+      "success": "的您的很好和通过 ' @@0@@.",
+      "deleted": "您的很好 .",
+      "confirmDelete": "-您此 ? 此 .",
+      "error": {
+        "generic": "无法的此 .",
+        "delete": "无法的此 ."
+      },
+      "errors": {
+        "generic": "错误的的您的 .",
+        "mustBeLoggedIn": "您已登录用于此 .",
+        "requiredSingular": "谢谢的到更少 .",
+        "requiredClassId": "谢谢 ' .",
+        "translationRequired": "谢谢的到更少翻译 ( 或 ).",
+        "notEditable": "此 ' 更多 (她或 )."
+      }
     },
-    "messages": {
-      "deleteConfirmWord": "确定要删除单词「{word}」吗？此操作不可恢复。",
-      "deleteConfirmVerb": "确定要删除动词「{verb}」吗？此操作不可恢复。",
-      "deleteSuccessWord": "单词贡献已删除。",
-      "deleteSuccessVerb": "动词贡献已删除。",
-      "deleteError": "删除时发生错误。"
+    "editPendingVerb": {
+      "eyebrow": "贡献者空间 ·",
+      "title": "编辑",
+      "subtitle": "或的您的通过 ' @@0@@.",
+      "meta": {
+        "label": "' 待处理",
+        "title": "编辑 | @@0@@",
+        "description": "您在 @@0@@ (, , , 和翻译).",
+        "submittedAtLabel": ""
+      },
+      "help": "您 ', , , 的和翻译.",
+      "reviewNotice": "待处理. 或 , 她 ' 的您的 .",
+      "cardTitleFallback": "动词待处理",
+      "locked": "此和 ' 更多 .",
+      "loading": "加载中的您的 …",
+      "actions": {
+        "save": "保存",
+        "saving": "…",
+        "reset": "",
+        "delete": "删除此的",
+        "confirmDelete": "删除"
+      },
+      "errors": {
+        "generic": "错误的的您的 .",
+        "notEditable": "此 ' 更多 (她或 ).",
+        "missingName": "谢谢 ' ' 的 (无 « »).",
+        "missingRoot": "谢谢 ' .",
+        "missingTranslations": "谢谢的到更少翻译 ( 或 ).",
+        "delete": "无法的此 ."
+      },
+      "success": "的您的很好和通过 ' @@0@@.",
+      "confirmTitle": "删除此 ?",
+      "confirmDelete": "-您此 ? 此 .",
+      "deleted": "您的的 ."
     }
-  }
   },
-  "admin": {
-  "word": {
-    "add": {
-      "meta": "管理 · 新增词语",
-      "pageTitle": "管理 · 新增词语",
-      "submit": "创建此词语",
-      "saving": "正在保存…",
-      "reset": "重置",
-      "success": "词语创建成功。",
-      "errorRequiredSingular": "单数形式为必填。",
-      "errorSave": "创建词语时出错。",
-      "seoTitle": "管理 · 新增词语 – Lexikongo",
-      "seoDescription": "管理面板 · 新增一条基孔戈词语（形式、名词类别、音标、翻译）。"
+  "common": {
+    "actions": {
+      "delete": "删除",
+      "cancel": "取消"
+    }
+  },
+  "pagination": {
+    "ariaLabel": "的结果",
+    "prev": "上一步",
+    "next": "下一步",
+    "gotoLabel": "页面",
+    "gotoAriaLabel": "页面 (1 @@0@@)",
+    "summary": "@@0@@–@@1@@ 在 @@2@@ 结果()",
+    "summaryNoPageSize": "@@0@@ 结果()",
+    "empty": "结果"
+  },
+  "layout": {
+    "skipToContent": "到",
+    "theme": {
+      "light": "",
+      "dark": ""
+    }
+  },
+  "search": {
+    "word": {
+      "eyebrow": "搜索 · 词条",
+      "title": "搜索",
+      "subtitle": "通过 , 或翻译 / .",
+      "metaKikongo": "基孔戈语 · 法语 · 英语 · 音标",
+      "formTitle": "",
+      "formSubtitle": "到更少的或的他的翻译.",
+      "inputLabel": "词条或翻译",
+      "inputPlaceholder": ". , , …",
+      "hint": "' 在 , 和翻译 /.",
+      "loading": "加载中的 …",
+      "idle": "用于 .",
+      "emptyForQuery": "« @@0@@ ».",
+      "resultsCount": "@@0@@ 结果 | @@1@@ 结果",
+      "resultsCaption": "结果的的",
+      "paginationAria": "的结果的的",
+      "metaTitle": "搜索的 @@1@@ | @@0@@",
+      "metaDescription": "搜索的 @@1@@ 与翻译 , 和在词典 @@0@@."
+    },
+    "verb": {
+      "eyebrow": "搜索 · 动词",
+      "title": "搜索",
+      "subtitle": "通过 ( + ) 或通过翻译 / .",
+      "metaKikongo": "动词 · · · 音标",
+      "formTitle": "",
+      "formSubtitle": "到更少的或的他的翻译.",
+      "inputLabel": "动词或翻译",
+      "inputPlaceholder": ". , , …",
+      "hint": "' 在 ' 和翻译 /.",
+      "loading": "加载中的 …",
+      "idle": "用于 .",
+      "emptyForQuery": "« @@0@@ ».",
+      "resultsCount": "@@0@@ 结果 | @@1@@ 结果",
+      "resultsCaption": "结果的的",
+      "paginationAria": "的结果的的",
+      "metaTitle": "搜索的 @@1@@ | @@0@@",
+      "metaDescription": "搜索的 @@1@@ ( + ) 与翻译和在词典 @@0@@."
+    },
+    "form": {
+      "labelSearch": "搜索",
+      "placeholder": "搜索 @@0@@",
+      "aria": {
+        "searchForm": "的",
+        "searchInput": "的",
+        "languageSelect": "的语言的",
+        "submit": "",
+        "clear": ""
+      },
+      "language": {
+        "kikongo": "@@0@@",
+        "fr": "法语",
+        "en": "英语"
+      },
+      "button": {
+        "search": "搜索",
+        "clear": ""
+      }
+    }
+  },
+  "privacy": {
+    "page": {
+      "eyebrow": "@@0@@ · 数据 & 私密",
+      "title": "隐私政策",
+      "subtitle": "@@0@@ , 和您的数据 .",
+      "metaHighlight": "@@0@@ 和 .",
+      "primaryCta": "搜索在词典",
+      "secondaryCta": "我们"
+    },
+    "meta": {
+      "title": "隐私政策 | @@0@@",
+      "description": "@@0@@ , 和您的数据的 ' 的词典 @@1@@ – 法语 / 英语 & ."
+    },
+    "sections": {
+      "intro": {
+        "title": "的您的数据在 @@0@@",
+        "lead": "的的和 . , 和您的数据 , 到在的数据 () 和到 ."
+      },
+      "responsible": {
+        "title": "的处理中",
+        "body": "的处理中的数据 . ( 通过 ), (). @@0@@ , 和的语言 @@1@@. 用于您的数据或此 , 您 : () .."
+      },
+      "hosting": {
+        "title": "的",
+        "body": "' 的和的的数据 @@0@@ 通过他的, , 在的的数据在 . ' ' 的 , 此 '她的的数据的 ' . ' , 和的到和安全的 ."
+      },
+      "legalBasis": {
+        "title": "和的处理中",
+        "body": "@@0@@ 您的数据用于 : • 的词典 (, , 的 , 和 ).\n• , ' 和的 (, 安全, , ).\n• 到 (, , 和的通过 ).\n• 安全的 , , 和 .\n• 您的的或 '. 到的 :\n• ' 的 ( 的您账户和 @@1@@ ' ).\n• ' 的 @@2@@ ( 的 , , 和 ).\n• , - 用于可选 (通过示例, 或我们 ')."
+      },
+      "data": {
+        "title": "数据",
+        "items": {
+          "account": "数据的账户 : / 姓名 ', 地址 -, 的 , (, , ), 的语言, 的和的的账户.",
+          "usage": "数据 ' : 页面 , 在词典, ', 通过您的 ( 的 , ', ). 的 () 您的地址或 .",
+          "contributions": "数据的 : , , 和您 , (日期的 , 的 , 的或 ).",
+          "technical": "数据和 : ' (@@0@@) 在的 , 的 , (语言, , ), 安全 ( 的 , ' ')."
+        }
+      },
+      "retention": {
+        "title": "的的数据",
+        "body": "@@0@@ 的的到 : • 账户 : 您的数据的账户您的账户 . ' 或的的 , (通过示例 ' 3 ) 用于的或的 .\n• (, , ) : 的的的词典. 的 , 数据或 .\n• 和安全 : 的和的安全 ( ) 的 , 和的 .\n• 和 : ' (@@1@@) 的 ( 15 ), 的 ' 14 . 到-, 您 ."
+      },
+      "recipients": {
+        "title": "和 -",
+        "body": "' 您的数据到和用于 : • ' 和的 @@0@@ ( / ), 用于 , , 安全和 ' 的 .\n• ' 他的, 用于的 ' , 的和的 '.\n• , (通过示例, 的支付用于或 '发送 '-), 的的和的安全. @@1@@ 您的数据 . 的在的在此或用于的 ( ' , 的 , .)."
+      },
+      "transfers": {
+        "title": "的数据",
+        "body": "数据 @@0@@ , ' 他的. ' ' 的 , 此 '她的的数据的 ' . (通过示例, 的支付或 '-) 的 ' 或的国家 , @@1@@ 此的 ( , , ) 的您的数据."
+      },
+      "security": {
+        "title": "的安全",
+        "body": "@@0@@ œ 的和用于您的数据 , ' , 或 : • 您的和 ( / ).\n• 的的和 .\n• 的 (, , ) 用于 ' 到数据 .\n• 的 (, , ) 用于 .\n• 的通过 . ' 安全 , 我们您 ' 的和的在 ' ."
+      },
+      "cookies": {
+        "title": ", @@0@@ 和",
+        "body": "@@0@@ 的和的 (@@1@@) 到的和安全的 : • ' : 的您的 , ' (@@2@@) 在和安全, 15 , 的您很好已登录.\n• 的 : 的 , 在安全, 您的 ' 14 用于的太您的 .\n• 的 : 您的 (语言 ', ') ' 您的 '. ' . 的的 ' 或 ' ', 此用于和您 , , 的或的拒绝."
+      },
+      "rights": {
+        "title": "您的在您的数据 ()",
+        "body": "到和和 , 您的下一步 : • ' : 确认 ' 处理中的数据您和 .\n• 的 : 的数据或 (通过示例, 您的或您的地址 -).\n• ' : 的数据您 , 在通过 (通过示例, 的您的账户).\n• ' : 您 , 用于的 , 在 ' .\n• 的处理中 : 的您 ' 的数据或的处理中.\n• : , , 数据您在 , 和通过 . (, , ) 或的的词典全部您的 ."
+      },
+      "contact": {
+        "title": "您的或",
+        "body": "用于您的数据 , 或用于您的 (, , , , .), 您我们 '地址下一步 : () .. 的处理中的您的 , 我们您下一步 :\n• '地址 - 在 @@0@@.\n• 或您 . 我们您的用于您的 . 您在 ' . 您 , 我们 , 您的 , 您的 ' 的 : (.) ."
+      },
+      "law": {
+        "title": "和",
+        "body": "的到和到 . 的的您的数据和的 @@0@@ 和, , 的 , . 标题 , 和的 , 账户的 ' 的的处理中 ()."
+      },
+      "update": {
+        "title": "的此",
+        "body": "的用于的 @@0@@, ' 的或的 (通过示例, 的的或的 ). 我们您 . 的 , 的在 . 日期的 : 8 2025."
+      }
+    }
+  },
+  "faq": {
+    "page": {
+      "eyebrow": "· 常见问题",
+      "title": "",
+      "subtitle": "'œ他 @@0@@ : , , , 和 .",
+      "meta": "@@0@@ 词典到 @@1@@ : ' .",
+      "primaryCta": "搜索或",
+      "secondaryCta": "'"
+    },
+    "meta": {
+      "title": "常见问题 @@0@@ –",
+      "description": "全部在 @@0@@ : , , , 的和 , 和 ."
+    },
+    "sections": {
+      "general": {
+        "title": "",
+        "description": "用于此 ' @@0@@ 和 .",
+        "items": {
+          "whatIsLexikongo": {
+            "q": "'-此 @@0@@ ?",
+            "a": "@@0@@ 词典语言 @@1@@, 与的翻译和 , 和用于 '."
+          },
+          "whichLanguages": {
+            "q": "语言 ?",
+            "a": "', @@0@@ 在 @@1@@ 与的翻译和 '. ' 语言 ."
+          },
+          "whoIsItFor": {
+            "q": "'地址 @@0@@ ?",
+            "a": "@@0@@ '地址到 , 到 , 到 , 到和的语言 @@1@@."
+          },
+          "isItFree": {
+            "q": "' 的 @@0@@ -她 ?",
+            "a": "的和 ' 账户 . 您和您 ."
+          }
+        }
+      },
+      "accounts": {
+        "title": "账户 &",
+        "description": ", 和 .",
+        "items": {
+          "roles": {
+            "q": "在 @@0@@ ?",
+            "a": {
+              "user": "• : , 和 .",
+              "contributor": "• : 的和通过 .",
+              "admin": "• : , 或和 ."
+            }
+          },
+          "needAccount": {
+            "q": "-我 ' 账户用于 @@0@@ ?",
+            "a": "您词典无账户. , 账户用于的 , 或您的 ."
+          },
+          "becomeContributor": {
+            "q": "或 ?",
+            "a": "账户, 您的用于 . 的 , 您的 ."
+          },
+          "emailVerification": {
+            "q": "-我我的地址 - ?",
+            "a": "'- 的您的账户和的 . 她用于 ' 和安全."
+          }
+        }
+      },
+      "contributions": {
+        "title": ": &",
+        "description": "全部此 '他用于的和的 @@0@@.",
+        "items": {
+          "whatCanISubmit": {
+            "q": "-我 ?",
+            "a": {
+              "words": "• 的 () : 与 , , , 和翻译.",
+              "verbs": "• 的 : 与 ', , , 和翻译."
+            }
+          },
+          "wordDetails": {
+            "q": "用于 ?",
+            "a": ": , , , 和到更少翻译或 ."
+          },
+          "verbDetails": {
+            "q": "用于 ?",
+            "a": "', , , 和到更少翻译或 ."
+          },
+          "differenceAdminContributor": {
+            "q": "和 ?",
+            "a": "的和在词典. , , 的通过的 ' ."
+          }
+        }
+      },
+      "moderation": {
+        "title": "&",
+        "description": "通过 .",
+        "items": {
+          "statuses": {
+            "q": "« 待处理 », « », « » ?",
+            "a": {
+              "pending": "• 待处理 : 和通过 .",
+              "approved": "• : 或和到词典 .",
+              "rejected": "• : ' ( 与用于您 ')."
+            }
+          },
+          "howLong": {
+            "q": "的 ' 或 ' ?",
+            "a": "的 ' 的和的的 . ' 的在的 , 无 ."
+          },
+          "editSubmission": {
+            "q": "-我 ' ?",
+            "a": "' 待处理, 他的或的 ' . 她 , 您 ."
+          },
+          "archiving": {
+            "q": "或 ?",
+            "a": "或的的 , 用于的数据."
+          }
+        }
+      },
+      "privacy": {
+        "title": "& 安全",
+        "description": "您的数据和安全的 .",
+        "items": {
+          "whatData": {
+            "q": "数据 ?",
+            "a": "@@0@@ 到的账户 (姓名 ', -, 的 , 和的和的 )."
+          },
+          "passwords": {
+            "q": "我的的 - ?",
+            "a": "的 ' 的的安全 ' 的数据. ."
+          },
+          "cookies": {
+            "q": "(, , .) ?",
+            "a": "安全 (@@0@@) 在的 ' ."
+          },
+          "privacyPage": {
+            "q": "-我的 ?",
+            "a": "您全部在页面 : 隐私政策 / & 数据."
+          }
+        }
+      },
+      "future": {
+        "title": "的",
+        "description": "此用于的 @@0@@.",
+        "items": {
+          "newLanguages": {
+            "q": "的语言 - ?",
+            "a": ", 的 @@0@@ ' ' 语言的翻译 ' 的更多 ."
+          },
+          "notifications": {
+            "q": "--他的用于 ?",
+            "a": "的 (通过示例用于 ' 或 ) 的 ' ."
+          },
+          "statsAndTools": {
+            "q": "' - (, , .) ?",
+            "a": ", ' ' @@0@@ 与的 , 的的和, , 的用于 ' 的 @@1@@."
+          }
+        }
+      }
+    },
+    "cta": {
+      "title": "的 ' @@0@@ ?",
+      "subtitle": "账户, 和 -我们词典 @@0@@ 用于 .",
+      "primary": "创建账户",
+      "secondary": "'"
+    }
+  },
+  "documentation": {
+    "page": {
+      "eyebrow": "@@0@@ ·",
+      "title": "文档的 @@0@@",
+      "subtitle": "全部用于 , 和到词典 @@0@@.",
+      "metaHighlight": ": , , , .",
+      "primaryCta": "搜索或",
+      "secondaryCta": ""
+    },
+    "meta": {
+      "title": "文档 @@0@@",
+      "description": "文档的 @@0@@, 通过 : , , 和 ."
+    },
+    "sections": {
+      "intro": {
+        "title": "在的 @@0@@",
+        "lead": "@@0@@ 用于和 ' 的 @@1@@.",
+        "body": "此的词典, 的和的 ' 的 ."
+      },
+      "guides": {
+        "title": "您的",
+        "lead": "的他的 .",
+        "users": {
+          "title": "的",
+          "body": "的 , 和到的词典.",
+          "link": "打开的"
+        },
+        "contributors": {
+          "title": "的",
+          "body": "的 , 和翻译和您的 .",
+          "link": "打开的"
+        },
+        "admins": {
+          "title": "的",
+          "body": "的 , 的的和的的 .",
+          "link": "打开的"
+        },
+        "devs": {
+          "title": "文档",
+          "body": ", @@0@@, 的和用于到 .",
+          "link": "打开"
+        }
+      },
+      "help": {
+        "title": "' ?",
+        "subtitle": "您您的在 , 我们用于您 .",
+        "actions": {
+          "faq": "常见问题",
+          "contact": "我们"
+        }
+      }
+    }
+  },
+  "docContrib": {
+    "page": {
+      "eyebrow": "@@0@@ ·",
+      "title": "的",
+      "subtitle": "@@0@@, 的和和您的 .",
+      "metaHighlight": ", 和语言 @@0@@ 您的 .",
+      "primaryCta": "创建账户",
+      "secondaryCta": ""
+    },
+    "meta": {
+      "title": "的 | @@0@@",
+      "description": "的 @@0@@ 用于 @@1@@ 和和 ."
+    },
+    "side": {
+      "title": "贡献者空间",
+      "text": "到的 , 到的和 ."
+    }
+  },
+  "docAdmins": {
+    "page": {
+      "eyebrow": "@@0@@ ·",
+      "title": "的",
+      "subtitle": "您的的 , 和用于的 .",
+      "metaHighlight": ", 和用于词典 .",
+      "primaryCta": "到的",
+      "secondaryCta": "的"
+    },
+    "meta": {
+      "title": "的 | @@0@@",
+      "description": "用于的 @@0@@ : ', 的 , 和 '."
+    },
+    "side": {
+      "title": "",
+      "text": "到的 , 的待处理和到的 .",
+      "actions": {
+        "dashboard": "控制台",
+        "pendings": "待处理"
+      }
+    }
+  },
+  "docUsers": {
+    "page": {
+      "eyebrow": "@@0@@ ·",
+      "title": "的",
+      "subtitle": "全部, 和此您账户在 @@0@@.",
+      "metaHighlight": "@@0@@ – 法语 – 英语, 与或无账户.",
+      "primaryCta": "",
+      "secondaryCta": "创建账户"
+    },
+    "meta": {
+      "title": "的 | @@0@@",
+      "description": "用于的 @@0@@ : 的 , ' 和 ' 账户 ."
+    },
+    "side": {
+      "title": "",
+      "text": "的 , 账户和 -您 .",
+      "actions": {
+        "explore": "",
+        "register": "创建账户"
+      }
+    }
+  },
+  "footer": {
+    "tagline": "–– , 和全部.",
+    "sections": {
+      "discover": "",
+      "community": "",
+      "legal": "",
+      "social": ""
+    },
+    "links": {
+      "home": "首页",
+      "searchWords": "搜索的",
+      "searchVerbs": "搜索的",
+      "expressions": "词条 &",
+      "contribute": "参与贡献在 @@0@@",
+      "memberArea": "会员空间",
+      "documentation": "文档",
+      "faq": "常见问题",
+      "privacy": "法律声明",
+      "terms": "使用条款",
+      "contact": "联系我们",
+      "admin": ""
+    },
+    "socialText": "@@0@@ 在 .",
+    "rights": "全部 .",
+    "madeBy": "和通过"
+  },
+  "contact": {
+    "page": {
+      "eyebrow": "· 联系我们",
+      "title": "联系我们 ' @@0@@",
+      "subtitle": ", 或的 ? -我们消息, 我们与 .",
+      "ctaFaq": "常见问题",
+      "ctaDocs": "",
+      "meta": "联系我们 · ·"
+    },
+    "form": {
+      "title": "-我们消息",
+      "subtitle": "此 , 我们您通过 - .",
+      "fields": {
+        "name": {
+          "label": "姓名",
+          "placeholder": "您的姓名或姓名"
+        },
+        "email": {
+          "label": "地址 -",
+          "placeholder": ": @@0@@."
+        },
+        "message": {
+          "label": "消息",
+          "placeholder": "-我们您的 , 您的或您的 …"
+        }
+      },
+      "actions": {
+        "submit": "发送消息",
+        "submitting": "发送 …"
+      },
+      "success": "谢谢，您的消息已成功发送。我们将通过电子邮件回复您。",
+      "errors": {
+        "required": "谢谢的全部必填.",
+        "generic": "发送消息时发生错误。请稍后重试。"
+      }
+    },
+    "why": {
+      "title": "我们 ?",
+      "p1": "@@0@@ 和的语言 @@1@@. 您的 , 和我们词典到 .",
+      "p2": "您我们用于的 , 的 , ' 或 ' 的语言 @@0@@.",
+      "caption": "@@0@@ – @@1@@, 和 '."
+    }
+  },
+  "contribute": {
+    "page": {
+      "eyebrow": "@@0@@",
+      "title": "参与贡献 @@0@@",
+      "subtitle": "您的我们 , 和词典 @@0@@.",
+      "meta": "的您 : 银行卡银行, @@1@@, 转账或 @@0@@."
+    },
+    "meta": {
+      "title": "@@0@@ | &",
+      "description": "词典 @@1@@ (@@2@@ – 法语/英语 & ) 银行卡银行, @@3@@, 转账银行或 @@0@@."
+    },
+    "payments": {
+      "title": "",
+      "subtitle": "金额或在 ', 和 .",
+      "amountLabel": "金额的您的",
+      "amountPlaceholder": "或金额…",
+      "amountHint": "您金额全部 . 的 1 @@0@@.",
+      "methodLabel": "的支付",
+      "methodHelp": "您 .",
+      "notAvailable": "此的支付 ' 用于 .",
+      "emailLabel": "地址邮箱 (可选)",
+      "emailHint": "用于发送收据或您 .",
+      "anonymousLabel": "此匿名",
+      "emailPlaceholder": ": -@@0@@.",
+      "methods": {
+        "stripe": "银行卡银行 (@@0@@)",
+        "paypal": "@@0@@",
+        "bank": "转账银行",
+        "mobile": "@@0@@"
+      },
+      "stripe": {
+        "title": "支付通过银行卡银行",
+        "text": "您的通过银行卡银行 @@0@@.",
+        "processing": "处理中的支付…",
+        "cta": "支付 @@0@@ @@1@@ 与 @@0@@",
+        "secure": "支付 100 % 安全 @@0@@.",
+        "misconfigured": "目前无法使用银行卡支付（缺少配置）。",
+        "initError": "无法 ' 的银行卡银行. 请重试更多 .",
+        "missing": "的银行卡 ' . 页面和 .",
+        "success": "谢谢用于您的 ! 您的支付通过银行卡 .",
+        "unknownStatus": "支付他的 . 谢谢的您的银行.",
+        "serverError": "错误的的支付. 请重试在 .",
+        "invalidAmount": "谢谢 ' 金额 (到更少 1 @@0@@)."
+      },
+      "paypal": {
+        "title": "支付与 @@0@@",
+        "text": "您的账户 @@1@@ 用于 @@0@@ .",
+        "misconfigured": "目前无法使用 PayPal（缺少配置）。",
+        "loadError": "无法的 @@0@@. 请重试更多 .",
+        "success": "谢谢用于您的 , @@0@@ ! 您的支付 @@0@@ .",
+        "error": "错误与 @@0@@. 请重试."
+      }
+    },
+    "bank": {
+      "title": "转账银行",
+      "subtitle": "您转账您的银行账户到 .",
+      "beneficiaryLabel": "",
+      "ibanLabel": "@@0@@",
+      "bicLabel": "@@0@@",
+      "copyIban": "复制 '@@0@@",
+      "copyBic": "复制 @@0@@",
+      "referenceLabel": "的转账",
+      "referenceValue": "您的邮箱或 @@0@@",
+      "afterTransfer": "您的转账 , 谢谢的我们发送邮箱与的您的支付",
+      "ibanCopied": "@@0@@ 在 -.",
+      "bicCopied": "@@0@@ 在 -.",
+      "holderLabel": "的账户",
+      "copyBeneficiary": "复制",
+      "copyHolder": "复制",
+      "copySiret": "复制 @@0@@",
+      "beneficiaryCopied": "✅",
+      "holderCopied": "✅",
+      "siretCopied": "@@0@@ ✅",
+      "copied": "✅"
+    },
+    "mobile": {
+      "title": "支付通过 @@0@@",
+      "subtitle": "用于国家 ' (@@3@@, @@2@@, @@1@@, .), 您我们发送的 @@0@@.",
+      "nameLabel": "姓名 / 名",
+      "phoneLabel": "号码的电话 @@0@@",
+      "countryLabel": "国家",
+      "operatorLabel": "(@@1@@ @@2@@, @@0@@ @@3@@, -…)",
+      "amountLabel": "金额 ( 或 @@0@@)",
+      "noteLabel": "消息 (可选)",
+      "text": "用于国家 ' (@@3@@, @@2@@, @@1@@, .), 您我们发送的 @@0@@.",
+      "hint": "我们您通过邮箱或消息 (@@0@@ / @@1@@) 与用于您的 .",
+      "cta": "发送 @@0@@",
+      "processing": "发送的您的 …",
+      "missingFields": "谢谢的到您的姓名和您的号码的电话.",
+      "success": "谢谢！您的 Mobile Money 请求已成功提交。我们会联系您完成付款。",
+      "error": "发送 Mobile Money 请求时发生错误。请稍后重试。"
+    },
+    "other": {
+      "title": "的",
+      "subtitle": "无 , 您 @@0@@.",
+      "blocks": {
+        "contact": {
+          "title": "我们",
+          "text": "您 , , 或 ? -.",
+          "cta": "' @@0@@",
+          "aria": "联系我们 ' @@0@@ 用于 ' 或 ' ."
+        },
+        "share": {
+          "title": "分享 @@0@@",
+          "text": "的 @@0@@ 的您, 在 , 在您的和 .",
+          "facebookAria": "分享 @@0@@ 在",
+          "twitterAria": "分享 @@0@@ 在 ()",
+          "linkedinAria": "分享 @@0@@ 在"
+        },
+        "contributors": {
+          "title": "",
+          "text": "您的 , 或示例 @@0@@.",
+          "cta": "创建账户",
+          "aria": "创建账户用于到词典 @@0@@."
+        }
+      }
+    }
+  },
+  "userEdit": {
+    "page": {
+      "eyebrow": "管理 ·",
+      "subtitle": "编辑的账户 .",
+      "meta": ".",
+      "titleFallback": "编辑账户"
+    },
+    "meta": {
+      "title": "@@0@@ · 编辑账户 @@0@@",
+      "description": "和的账户 @@0@@."
+    },
+    "sections": {
+      "account": "的账户"
     },
     "placeholders": {
-      "translationFr": "法语含义，用逗号分隔",
-      "translationEn": "英语含义，用逗号分隔"
+      "username": ". :",
+      "email": ": @@0@@."
+    },
+    "hints": {
+      "roles": "' 的 « » ."
+    },
+    "actions": {
+      "save": "保存"
+    },
+    "errors": {
+      "usernameRequired": "姓名 ' 必填.",
+      "emailRequired": "'地址邮箱必填.",
+      "emailInvalid": "'地址邮箱 ' .",
+      "submit": "无法的用于 ."
     }
   }
 }
-
-
-
-
-
-
-
-
-
-}
-
-

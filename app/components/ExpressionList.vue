@@ -191,7 +191,7 @@
             <!-- Expression -->
             <td class="expr-list__cell expr-list__cell--expr">
               <template v-if="expr.type === 'verb'">
-                <span class="expr-list__ku">ku</span>
+                <span class="expr-list__ku">ko</span>
                 <span class="expr-list__main expr-list__main--verb">
                   {{ expr.singular || '—' }}
                 </span>

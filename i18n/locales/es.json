@@ -1,692 +1,1752 @@
 {
   "app.name": "Lexikongo — Diccionario Kikongo",
   "app.tagline": "Kikongo · Francés · Inglés · Fonética",
-
   "home.title": "Lexikongo — Diccionario Kikongo",
-  "home.description": "Diccionario de kikongo en línea: palabras, verbos, expresiones, traducciones al francés e inglés, con pronunciación y fonética.",
-  "home.keywords": "lexikongo, diccionario kikongo, kikongo francés, kikongo inglés, léxico kikongo, fonética kikongo",
-
+  "home.description": "Diccionario Kikongo en ligne: mots, verbes, expressions, traducciones en français et en anglais, avec pronunciación et phonétique.",
+  "home.keywords": "lexikongo, diccionario kikongo, kikongo français, kikongo anglais, lexique kikongo, phonétique kikongo",
   "layout.contact.phone": "Teléfono",
-  "layout.contact.email": "Correo electrónico",
-
+  "layout.contact.email": "Correo",
   "nav.home": "Inicio",
   "nav.verbs": "Verbos",
   "nav.words": "Palabras",
-  "nav.expressions": "Expresiones",
+  "nav.expressions": "Expresións",
   "nav.login": "Iniciar sesión",
   "nav.logout": "Cerrar sesión",
-  "nav.profile": "Mi perfil",
+  "nav.profile": "Mon profil",
   "nav.dashboard": "Panel",
-  "nav.contributor": "Área de colaboradores",
+  "nav.contributor": "Área de colaborador",
   "nav.admin": "Administración",
-  "nav.profileTitle": "Ver mi perfil",
-  "nav.connectedAs": "Conectado como",
-  "nav.openMenu": "Abrir menú",
-  "nav.closeMenu": "Cerrar menú",
+  "nav.profileTitle": "Voir mon profil",
+  "nav.connectedAs": "Connecté en tant que",
+  "nav.openMenu": "Abrir le menu",
+  "nav.closeMenu": "Cerrar le menu",
   "nav.contribute": "Contribuir",
-
   "verbs.index.title": "Verbos en kikongo",
-  "verbs.index.description": "Lista de verbos en kikongo con su traducción al francés, al inglés y su transcripción fonética.",
-  "verbs.index.keywords": "verbos kikongo, conjugación kikongo, diccionario de verbos",
-
-  "verbs.detail.title": "Verbo en kikongo: {verb}",
-  "verbs.detail.description": "Definición, ejemplos y traducciones del verbo en kikongo «{verb}» al francés y al inglés.",
-  "verbs.detail.keywords": "verbo kikongo {verb}, diccionario kikongo, conjugación kikongo",
-
+  "verbs.index.description": "Liste des verbes kikongo avec leur traducción en français, en anglais et la phonétique.",
+  "verbs.index.keywords": "verbes kikongo, conjugaison kikongo, diccionario de verbes",
+  "verbs.detail.title": "Verbo kikongo: {verb}",
+  "verbs.detail.description": "Definición, ejemplos et traducciones du verbe kikongo « {verb} » en français et en anglais.",
+  "verbs.detail.keywords": "verbe kikongo {verb}, diccionario kikongo, conjugaison kikongo",
   "words.index.title": "Palabras en kikongo",
-  "words.index.description": "Léxico de kikongo: palabras, significados, traducciones al francés y al inglés, y fonética.",
-  "words.index.keywords": "palabras kikongo, vocabulario kikongo, léxico kikongo",
-
-  "words.detail.title": "Palabra en kikongo: {word}",
-  "words.detail.description": "Definición y traducciones de la palabra en kikongo «{word}» al francés y al inglés.",
-  "words.detail.keywords": "palabra kikongo {word}, diccionario kikongo, vocabulario kikongo",
-
-  "expressions.index.title": "Expresiones en kikongo",
-  "expressions.index.description": "Expresiones idiomáticas y frases útiles en kikongo con traducciones al francés y al inglés.",
-  "expressions.index.keywords": "expresiones kikongo, frases kikongo, conversación en kikongo",
-
+  "words.index.description": "Lexique kikongo: mots, sens, traducciones en français et en anglais, et phonétique.",
+  "words.index.keywords": "mots kikongo, vocabulaire kikongo, lexique kikongo",
+  "words.detail.title": "Palabra kikongo: {word}",
+  "words.detail.description": "Definición et traducciones du mot kikongo « {word} » en français et en anglais.",
+  "words.detail.keywords": "mot kikongo {word}, diccionario kikongo, vocabulaire kikongo",
+  "words": {
+    "cards": {
+      "titleSuffix": "– vue cartes",
+      "viewTable": "Vue tableau",
+      "viewTableAria": "Afficher les mots sous forme de tableau",
+      "viewDetails": "Voir la fiche",
+      "viewCards": "Vue cartes",
+      "bottomCtaTitle": "Vous ne trouvez pas un mot dans le lexique ?",
+      "bottomCtaText": "Lexikongo est un diccionario vivant. Proposez de nouveaux mots, expressions ou verbes pour enrichir la idioma Kikongo en ligne."
+    },
+    "page": {
+      "eyebrow": "Lexikongo · Liste des mots en kikongo",
+      "title": "Découvrir les mots en Kikongo",
+      "subtitle": "Parcourez le lexique des mots en Kikongo avec leurs pluriels, transcriptions phonétiques et traducciones en français et en anglais. Construit et enrichi par la communauté.",
+      "primaryCta": "Commencer une recherche",
+      "secondaryCta": "Contribuir au diccionario",
+      "metaLanguages": "Kikongo · Francés · Inglés · Fonética",
+      "bottomCtaTitle": "Vous ne trouvez pas un mot dans le lexique ?",
+      "bottomCtaText": "Lexikongo est un diccionario vivant. Proposez de nouveaux mots, expressions ou verbes pour enrichir la idioma Kikongo en ligne."
+    },
+    "meta": {
+      "title": "Liste des mots en Kikongo – Lexikongo",
+      "description": "Découvrez la liste des mots en Kikongo avec leurs pluriels, transcriptions phonétiques et traducciones en français et en anglais."
+    }
+  },
+  "expressions.index.title": "Expresións en kikongo",
+  "expressions.index.description": "Expresións idiomatiques et phrases utiles en kikongo avec traducción en français et en anglais.",
+  "expressions.index.keywords": "expressions kikongo, phrases kikongo, conversation kikongo",
   "login.title": "Iniciar sesión",
-  "login.description": "Inicia sesión para gestionar tu perfil y contribuir al diccionario.",
-  "register.title": "Crear cuenta",
-  "register.description": "Crea una cuenta para contribuir al diccionario Lexikongo.",
-  "profile.title": "Mi perfil",
-  "profile.description": "Consulta y actualiza la información de tu cuenta Lexikongo.",
-
+  "login.description": "Connectez-vous pour gérer votre profil et contribuer au diccionario.",
+  "register.title": "Inscription",
+  "register.description": "Créez un compte pour contribuer au diccionario Lexikongo.",
+  "profile.title": "Mon profil",
+  "profile.description": "Consultez et mettez à jour les informations de votre compte Lexikongo.",
   "home": {
     "hero": {
       "badge": "Diccionario Kikongo · FR · EN",
-      "subtitle": "Diccionario Kikongo · Francés · Inglés con fonética. Una base viva para aprender, explorar y contribuir al patrimonio lingüístico kikongo.",
-      "ctaWords": "Explorar palabras",
-      "ctaVerbs": "Descubrir verbos",
-      "hintPrefix": "También puedes explorar",
-      "hintExpressions": "las expresiones",
-      "hintSeparator": "o consultar",
-      "hintDoc": "la documentación para colaboradores",
-      "sideAria": "Acceso rápido e información adicional"
+      "subtitle": "Diccionario Kikongo · Francés · Inglés avec phonétique. Une base vivante pour apprendre, explorer et contribuer au patrimoine linguistique kikongo.",
+      "ctaWords": "Explorer les mots",
+      "ctaVerbs": "Découvrir les verbes",
+      "hintPrefix": "Vous pouvez aussi parcourir",
+      "hintExpressions": "les expressions",
+      "hintSeparator": "ou consulter",
+      "hintDoc": "la documentation colaborador",
+      "sideAria": "Accès rapide et informations complémentaires"
     },
     "cards": {
       "contribute": {
-        "title": "Contribuir al léxico",
-        "body": "Añade nuevas palabras, verbos o expresiones y ayuda a la comunidad a enriquecer la base de datos.",
-        "link": "Acceder al área de colaboradores"
+        "title": "Contribuir au lexique",
+        "body": "Ajoutez de nouveaux mots, verbes ou expressions et aidez la communauté à enrichir la base.",
+        "link": "Accéder à l'espace colaborador",
+        "lexiconCta": "Accéder à l'espace colaborador",
+        "lexiconAria": "Accéder à la documentation et à l'espace colaborador Lexikongo",
+        "supportCta": "Faire un don / soutenir Lexikongo",
+        "supportAria": "Accéder à la página de contributions et de dons pour Lexikongo"
       },
       "login": {
         "title": "Iniciar sesión",
-        "body": "Accede a tu panel, tus propuestas y tu actividad.",
+        "body": "Retrouvez votre tableau de bord, vos propositions et votre activité.",
         "link": "Iniciar sesión"
+      },
+      "account": {
+        "adminTitle": "Espace administrador",
+        "adminBody": "Accédez aux outils de modération et de gestion du diccionario (mots, verbes, usuarios…).",
+        "adminCta": "Abrir le tableau de bord admin"
       }
     },
     "seo": {
       "title": "Lexikongo — Diccionario Kikongo · Francés · Inglés",
-      "description": "Lexikongo es un diccionario en línea Kikongo · Francés · Inglés con fonética. Explora palabras, verbos y expresiones en kikongo y contribuye a la preservación de la lengua.",
-      "ogTitle": "Lexikongo — Diccionario Kikongo en línea",
-      "ogDescription": "Un recurso moderno para descubrir, practicar y transmitir la lengua kikongo: palabras, verbos, expresiones y fonética."
+      "description": "Lexikongo est un diccionario en ligne Kikongo · Francés · Inglés avec phonétique. Explorez les mots, verbes et expressions du Kikongo et contribuez à la préservation de la idioma.",
+      "ogTitle": "Lexikongo — Diccionario Kikongo en ligne",
+      "ogDescription": "Une ressource moderne pour découvrir, pratiquer et transmettre la idioma kikongo: mots, verbes, expressions et phonétique."
     },
     "lastExpressions": {
-  "loading": "Cargando las últimas contribuciones…",
-  "error": "No se pueden recuperar las últimas contribuciones.",
-  "total": "{total} nuevas expresiones",
-  "details": "de las cuales {words} son palabras y {verbs} son verbos."
-}
-
-   
-
-
+      "loading": "Cargando des dernières contributions…",
+      "error": "No se pudo obtener les dernières contributions.",
+      "total": "{total} nouvelles expressions",
+      "details": "dont {words} mots et {verbs} verbes !"
+    }
   },
-  "common.langLine": "Kikongo · Francés · Inglés · Fonética"
-,
-"layout.header.logoAlt": "Logotipo del sitio"
-,
-   "words.list.title": "Lista de palabras",
-  "words.list.subtitle": "Explora las palabras en kikongo con su plural, fonética y traducciones al francés y al inglés.",
-  "words.list.count": "{n} palabra en la base de datos | {n} palabras en la base de datos",
-  "words.list.searchLabel": "Buscar una palabra",
-  "words.list.searchPlaceholder": "Palabra, plural, traducción FR o EN…",
-  "words.list.viewCards": "Vista en tarjetas",
-  "words.list.viewCardsAria": "Mostrar las palabras como tarjetas",
-  "words.list.loading": "Cargando palabras…",
-  "words.list.empty": "Ninguna palabra encontrada por el momento.",
-  "words.list.caption": "Cada fila muestra una palabra en kikongo en singular y plural, su transcripción fonética y sus traducciones al francés y al inglés.",
+  "common.langLine": "Kikongo · Francés · Inglés · Fonética",
+  "layout.header.logoAlt": "Site logo",
+  "words.list.title": "Liste des mots",
+  "words.list.subtitle": "Explorez les mots en kikongo, avec leur pluriel, leur phonétique et leurs traducciones en français et en anglais.",
+  "words.list.count": "{n} mot en base | {n} mots en base",
+  "words.list.searchLabel": "Buscar un mot",
+  "words.list.searchPlaceholder": "Palabra, pluriel, traducción FR ou EN…",
+  "words.list.viewCards": "Vue cartes",
+  "words.list.viewCardsAria": "Afficher les mots sous forme de cartes",
+  "words.list.loading": "Cargando des mots…",
+  "words.list.empty": "Ninguno mot trouvé pour le moment.",
+  "words.list.caption": "Chaque ligne présente un mot en kikongo au singulier, au pluriel, sa transcription phonétique, ainsi que ses traducciones en français et en anglais.",
   "words.list.column.singular": "Palabra",
-  "words.list.column.plural": "Plural",
+  "words.list.column.plural": "Pluriel",
   "words.list.column.phonetic": "Fonética",
   "words.list.column.fr": "Francés",
   "words.list.column.en": "Inglés",
-  "words.list.rowAria": "Ver detalles de la palabra {word}",
-  "words.cards.titleSuffix": "– vista de tarjetas",
-"words.cards.viewTable": "Vista en tabla",
-"words.cards.viewTableAria": "Mostrar las palabras en forma de tabla",
-"words": {
-  "cards": {
-    "titleSuffix": "– vista de tarjetas",
-    "viewTable": "Vista de tabla",
-    "viewTableAria": "Mostrar las palabras en forma de tabla",
-    "viewDetails": "Ver la ficha",
-"viewCards": "Vista en tarjetas",
- "root": "Raíz",
-    "numberVariability": {
-      "label": "Variabilidad del número",
-      "singular_only": "Solo singular",
-      "plural_only": "Solo plural",
-      "invariable": "Invariable",
-      "variable": "Variable"
-    },
-    "editCta": "Editar esta palabra"
-
-  },
-   "page": {
-      "eyebrow": "Lexikongo · Lista de palabras en kikongo",
-      "title": "Descubrir las palabras en kikongo",
-      "subtitle": "Explora las palabras en kikongo con sus plurales, transcripción fonética y traducciones al francés y al inglés. Un recurso construido y enriquecido por la comunidad.",
-      "primaryCta": "Empezar una búsqueda",
-      "secondaryCta": "Contribuir al diccionario"
-    },
-    "meta": {
-    "title": "Lista de palabras en kikongo – Lexikongo",
-    "description": "Descubra la lista de palabras en kikongo con sus formas en plural, transcripciones fonéticas y traducciones al francés y al inglés."
-  }
-}
-,
- "verbs.list.title": "Lista de verbos",
-  "verbs.list.subtitle.prefix": "Explora los verbos en kikongo con la partícula",
-  "verbs.list.subtitle.suffix": "del infinitivo, su fonética y sus traducciones al francés y al inglés.",
-  "verbs.list.count": "{n} verbo en la base de datos | {n} verbos en la base de datos",
-  "verbs.list.searchLabel": "Buscar un verbo",
-  "verbs.list.searchPlaceholder": "Verbo, traducción FR o EN…",
-  "verbs.list.viewCards": "Vista de tarjetas",
-  "verbs.list.viewCardsAria": "Mostrar los verbos como tarjetas",
-  "verbs.list.loading": "Cargando verbos…",
-  "verbs.list.empty": "No se han encontrado verbos por el momento.",
-  "verbs.list.caption": "Cada fila muestra un verbo en kikongo en infinitivo (con ku), su transcripción fonética y sus traducciones al francés y al inglés.",
+  "words.list.rowAria": "Voir la fiche du mot {word}",
+  "words.cards.titleSuffix": "– vue cartes",
+  "words.cards.viewTable": "Vue tableau",
+  "words.cards.viewCards": "Vue carte",
+  "words.cards.viewTableAria": "Afficher les mots sous forme de tableau",
+  "verbs.list.title": "Liste des verbes",
+  "verbs.list.subtitle.prefix": "Explorez les verbes en kikongo, avec la particule",
+  "verbs.list.subtitle.suffix": "de l'infinitif, leur phonétique et leurs traducciones en français et en anglais.",
+  "verbs.list.count": "{n} verbe en base | {n} verbes en base",
+  "verbs.list.searchLabel": "Buscar un verbe",
+  "verbs.list.searchPlaceholder": "Verbo, traducción FR ou EN…",
+  "verbs.list.viewCards": "Vue cartes",
+  "verbs.list.viewCardsAria": "Afficher les verbes sous forme de cartes",
+  "verbs.list.loading": "Cargando des verbes…",
+  "verbs.list.empty": "Ninguno verbe trouvé pour le moment.",
+  "verbs.list.caption": "Chaque ligne présente un verbe en kikongo à l'infinitif, sa transcription phonétique ainsi que ses traducciones en français et en anglais.",
   "verbs.list.column.verb": "Verbo",
   "verbs.list.column.phonetic": "Fonética",
   "verbs.list.column.fr": "Francés",
   "verbs.list.column.en": "Inglés",
-  "verbs.list.rowAria": "Ver la ficha del verbo ku {verb}",
-  "verbs.cards.titleSuffix": "– vista de tarjetas",
-"verbs.cards.viewTable": "Vista en tabla",
-"verbs.cards.viewTableAria": "Mostrar los verbos en forma de tabla",
-"expressions.list.title": "Todas las expresiones",
-"expressions.list.subtitle": "Explora de un vistazo las palabras y los verbos en kikongo, con su fonética y sus traducciones al francés y al inglés.",
-"expressions.list.count": "{n} expresión mostrada | {n} expresiones mostradas",
-
-"expressions.list.filterAll": "Todos",
-"expressions.list.filterWords": "Palabras",
-"expressions.list.filterVerbs": "Verbos",
-
-"expressions.list.searchLabel": "Buscar",
-"expressions.list.searchPlaceholder": "Palabra, verbo, traducción FR o EN…",
-
-"expressions.list.viewCards": "Vista de tarjetas",
-"expressions.list.viewCardsAria": "Mostrar las expresiones en forma de tarjetas",
-
-"expressions.list.loading": "Cargando expresiones…",
-"expressions.list.empty": "No se han encontrado expresiones para estos criterios.",
-"expressions.list.caption": "Cada fila representa una palabra o un verbo en kikongo, con su transcripción fonética y sus traducciones al francés y al inglés.",
-
-"expressions.list.column.type": "Tipo",
-"expressions.list.column.expression": "Expresión",
-"expressions.list.column.phonetic": "Fonética",
-"expressions.list.column.fr": "Francés",
-"expressions.list.column.en": "Inglés",
-
-"expressions.list.badge.word": "Palabra",
-"expressions.list.badge.verb": "Verbo",
-
-"expressions.list.rowAriaWord": "Ver la ficha de la palabra {word}",
-"expressions.list.rowAriaVerb": "Ver la ficha del verbo ku {verb}",
-"expressions.cards.titleSuffix": "– vista de tarjetas",
-"expressions.cards.viewTable": "Vista de tabla",
-"expressions.cards.viewTableAria": "Volver a la vista de tabla de las expresiones",
-"expressions.cards.viewDetails": "Ver ficha",
-
-"expressions.cards.subtitle": "Explore de un vistazo las palabras y los verbos en kikongo, con su fonética y sus traducciones al francés y al inglés.",
-"expressions.cards.count": "{n} expresión encontrada | {n} expresiones encontradas",
-"expressions.cards.cta": "Ver ficha",
-
+  "verbs.list.rowAria": "Voir la fiche du verbe ku {verb}",
+  "verbs.cards.titleSuffix": "– vue cartes",
+  "verbs.cards.viewTable": "Vue tableau",
+  "verbs.cards.viewTableAria": "Afficher les verbes sous forme de tableau",
+  "verbs.list.viewOneVerb": "Voir le verbe",
+  "expressions.list.title": "Toutes les expressions",
+  "expressions.list.subtitle": "Explorez d'un coup d'œil les mots et les verbes en kikongo, avec leur phonétique et leurs traducciones en français et en anglais.",
+  "expressions.list.count": "{n} expression affichée | {n} expressions affichées",
+  "expressions.list.filterAll": "Todos",
+  "expressions.list.filterWords": "Palabras",
+  "expressions.list.filterVerbs": "Verbos",
+  "expressions.list.searchLabel": "Buscar",
+  "expressions.list.searchPlaceholder": "Palabra, verbe, traducción FR ou EN…",
+  "expressions.list.viewCards": "Vue cartes",
+  "expressions.list.viewCardsAria": "Afficher les expressions sous forme de cartes",
+  "expressions.list.loading": "Cargando des expressions…",
+  "expressions.list.empty": "Ninguna expression trouvée pour ces critères.",
+  "expressions.list.caption": "Chaque ligne représente soit un mot, soit un verbe en kikongo, avec sa transcription phonétique et ses traducciones en français et en anglais.",
+  "expressions.list.column.type": "Type",
+  "expressions.list.column.expression": "Expresión",
+  "expressions.list.column.phonetic": "Fonética",
+  "expressions.list.column.fr": "Francés",
+  "expressions.list.column.en": "Inglés",
+  "expressions.list.badge.word": "Palabra",
+  "expressions.list.badge.verb": "Verbo",
+  "expressions.list.rowAriaWord": "Voir la fiche du mot {word}",
+  "expressions.list.rowAriaVerb": "Voir la fiche du verbe ku {verb}",
+  "expressions.cards.viewDetails": "Voir la fiche",
+  "expressions.cards.titleSuffix": "– vue cartes",
+  "expressions.cards.subtitle": "Parcourez d'un coup d'œil les mots et les verbes en Kikongo, avec leur phonétique et leurs traducciones en français et en anglais.",
+  "expressions.cards.count": "{n} expression trouvée | {n} expressions trouvées",
+  "expressions.cards.viewTable": "Vue tableau",
+  "expressions.cards.viewTableAria": "Afficher les expressions sous forme de tableau",
+  "expressions.cards.cta": "Voir la fiche",
   "verbs": {
     "page": {
-      "eyebrow": "Lista de verbos en kikongo",
-      "title": "Lista de verbos",
-      "subtitle": "Explora los verbos en kikongo con su transcripción fonética y sus traducciones al francés y al inglés. Ideal para el aprendizaje, la revisión y la elaboración de materiales didácticos.",
-      "ctaTitle": "¿No encuentras el verbo que buscas?",
-      "ctaText": "Ayuda a enriquecer el léxico contribuyendo con nuevos verbos en kikongo, sus traducciones y ejemplos de uso. Cada contribución ayuda a la comunidad a aprender y transmitir la lengua.",
-      "ctaButton": "Conviértete en colaborador"
+      "eyebrow": "Lexikongo . Liste des verbes en Kikongo",
+      "title": "Liste des verbes",
+      "subtitle": "Explorez les verbes en Kikongo avec leur phonétique et leurs traducciones en français et en anglais. Idéal pour l'apprentissage, la révision et la préparation de supports pédagogiques.",
+      "ctaTitle": "Vous ne trouvez pas le verbe que vous cherchez ?",
+      "ctaText": "Contribuez à enrichir le lexique en proposant de nouveaux verbes en Kikongo, avec leurs traducciones et ejemplos d'usage. Chaque contribution ayuda la communauté à mieux apprendre et transmettre la idioma.",
+      "ctaButton": "Devenir colaborador"
     },
     "meta": {
-      "title": "Lista de verbos en kikongo – Lexikongo",
-      "description": "Explora los verbos en kikongo con su fonética y sus traducciones al francés y al inglés. Una herramienta útil para aprender y enseñar la lengua."
+      "title": "Liste des verbes en Kikongo – Lexikongo",
+      "description": "Découvrez la liste des verbes en Kikongo avec leur phonétique et leurs traducciones en français et en anglais. Outil idéal pour apprendre et enseigner la idioma."
     },
-      "cards": {
-    "titleSuffix": "– vista de tarjetas",
-    "viewTable": "Vista de tabla",
-    "viewTableAria": "Mostrar los verbos en forma de tabla",
-    "viewDetails": "Ver el verbo"
-  }
+    "cards": {
+      "titleSuffix": "– vue cartes",
+      "viewTable": "Vue tableau",
+      "viewTableAria": "Afficher les verbes sous forme de tableau",
+      "viewDetails": "Voir le verbe"
+    },
+    "common": {
+      "unknownVerb": "verbe inconnu"
+    },
+    "search": {
+      "results": {
+        "ariaLabel": "Resultados de recherche pour les verbes",
+        "caption": "Liste des verbes correspondant à votre recherche",
+        "columns": {
+          "infinitive": "Infinitif",
+          "phonetic": "Fonética",
+          "fr": "Francés",
+          "en": "Inglés"
+        },
+        "rowAria": "Voir les détails du verbe {verb}",
+        "empty": "Ninguno verbe trouvé pour votre recherche.",
+        "errors": {
+          "missingSlug": "Une erreur s'est produite: identifiant du verbe introuvable.",
+          "invalidPage": "Numéro de página invalide.",
+          "unexpectedFormat": "Format de données inattendu. Por favor réessayer."
+        }
+      }
+    }
   },
-  
   "expressions": {
     "page": {
-      "eyebrow": "Lexikongo · Lista de palabras y verbos en kikongo",
-      "title": "Lista de palabras y verbos en kikongo",
-      "subtitle": "Descubre las palabras y los verbos en kikongo de la base de datos de Lexikongo, con su transcripción fonética y sus traducciones al francés y al inglés.",
-      "ctaSearch": "Empezar una búsqueda",
-      "ctaContribute": "Contribuir al diccionario",
+      "eyebrow": "Lexikongo · Liste des mots & verbes",
+      "title": "Liste des mots et verbes en Kikongo",
+      "subtitle": "Découvrez la liste des mots et des verbes en Kikongo, avec leur phonétique et leurs traducciones en français et en anglais.",
+      "ctaSearch": "Commencer une recherche",
+      "ctaContribute": "Contribuir au diccionario",
       "metaLanguages": "Kikongo · Francés · Inglés · Fonética",
-      "listTitle": "Todas las expresiones",
-      "listSubtitle": "Vista general de todas las palabras y verbos en kikongo actualmente disponibles en el diccionario Lexikongo.",
-      "bottomCtaTitle": "¿No encuentras la expresión que buscas?",
-      "bottomCtaText": "Ayuda a enriquecer el léxico añadiendo nuevas palabras o verbos en kikongo con sus traducciones y ejemplos de uso."
+      "listTitle": "Toutes les expressions",
+      "listSubtitle": "Vue d'ensemble des mots et des verbes en Kikongo actuellement présents dans le diccionario Lexikongo.",
+      "bottomCtaTitle": "Vous ne trouvez pas l'expression que vous cherchez ?",
+      "bottomCtaText": "Contribuez à enrichir le lexique en ajoutant de nouveaux mots ou verbes en Kikongo, avec leurs traducciones et ejemplos d'usage."
     },
     "meta": {
-      "title": "Lista de palabras y verbos en kikongo – Lexikongo",
-      "description": "Descubre la lista completa de palabras y verbos en kikongo con su fonética y sus traducciones al francés y al inglés."
+      "title": "Liste des mots et verbes en Kikongo – Lexikongo",
+      "description": "Découvrez la liste complète des mots et verbes en Kikongo avec leur phonétique et leurs traducciones en français et en anglais."
     },
-      "cards": {
-      "titleSuffix": "– vista de tarjetas",
-      "subtitle": "Explore de un vistazo las palabras y los verbos en kikongo, con su fonética y sus traducciones al francés y al inglés.",
-      "count": "{count} expresión encontrada | {count} expresiones encontradas",
-      "viewTable": "Vista de tabla",
-      "viewTableAria": "Mostrar las expresiones en forma de tabla",
-      "cta": "Ver ficha"
+    "cards": {
+      "titleSuffix": "– vue cartes",
+      "subtitle": "Parcourez d'un coup d'œil les mots et les verbes en Kikongo, avec leur phonétique et leurs traducciones en français et en anglais.",
+      "count": "{count} expression affichée | {count} expressions affichées",
+      "viewTable": "Vue tableau",
+      "viewTableAria": "Afficher les expressions sous forme de tableau",
+      "cta": "Voir la fiche"
+    }
+  },
+  "details": {
+    "common": {
+      "loading": "Cargando de la fiche…",
+      "backToList": "Revenir à la liste des expressions",
+      "author": "Auteur",
+      "unknown": "Inconnu",
+      "createdAt": "Fecha de création",
+      "kikongoData": "Données en kikongo",
+      "phonetic": "Fonética",
+      "translations": "Traducciones",
+      "fr": "Francés",
+      "en": "Inglés",
+      "translationHint": "Les traducciones peuvent proposer plusieurs nuances de sens, séparées par des virgules.",
+      "backExpressions": "Voir la liste des mots & verbes",
+      "searchWords": "Buscar des mots",
+      "searchVerbs": "Buscar des verbes"
+    },
+    "word": {
+      "label": "Palabra",
+      "subtitle": "Fiche détaillée d'un mot en kikongo avec sa phonétique, sa classe nominale et ses traducciones.",
+      "singular": "Singulier",
+      "plural": "Pluriel",
+      "nominalClass": "Classe nominale",
+      "root": "Racine possible",
+      "numberVariability": {
+        "label": "Variabilité du nombre",
+        "singular_only": "Singulier uniquement",
+        "plural_only": "Pluriel uniquement",
+        "invariable": "Invariable",
+        "variable": "Variable",
+        "singularOnly": "Singulier uniquement",
+        "pluralOnly": "Pluriel uniquement"
+      },
+      "editCta": "Éditer ce mot"
+    },
+    "verb": {
+      "label": "Verbo",
+      "subtitle": "Fiche détaillée d'un verbe en kikongo avec sa phonétique, son radical verbal et ses traducciones.",
+      "infinitive": "Infinitif",
+      "root": "Radical verbal",
+      "suffix": "Suffixe",
+      "editCta": "Éditer ce verbe",
+      "search": {
+        "form": {
+          "ariaLabel": "Formulaire de recherche de verbes dans le diccionario",
+          "label": {
+            "search": "Búsqueda de verbes",
+            "language": "Idioma de recherche pour les verbes"
+          },
+          "ariaSearchInput": "Champ de recherche de verbes",
+          "ariaLanguageSelect": "Sélection de la idioma de recherche pour les verbes",
+          "placeholder": "Buscar un verbe en {language}",
+          "languageOptions": {
+            "kikongo": "Kikongo",
+            "fr": "Francés",
+            "en": "Inglés"
+          },
+          "buttons": {
+            "search": "Buscar",
+            "clear": "Effacer"
+          }
+        }
+      }
     }
   },
   "common.lang.fr": "Francés",
-"common.lang.en": "Inglés",
-
+  "common.lang.en": "Inglés",
   "actionsBar": {
     "global": {
-      "ariaLabel": "Acciones rápidas y accesos directos del diccionario"
+      "ariaLabel": "Actions rapides et raccourcis du diccionario"
     },
     "admin": {
-      "title": "Acciones de administrador",
-      "ariaLabel": "Acciones de administrador de Lexikongo",
-      "addWord": "Añadir una palabra",
-      "addVerb": "Añadir un verbo",
+      "title": "Actions administrador",
+      "ariaLabel": "Actions administrador Lexikongo",
+      "addWord": "Añadir un mot",
+      "addVerb": "Añadir un verbe",
       "addUser": "Añadir un usuario"
     },
     "contrib": {
-      "title": "Acciones de colaborador",
-      "ariaLabel": "Acciones de colaborador de Lexikongo",
-      "addWord": "Añadir una palabra",
-      "addVerb": "Añadir un verbo",
-      "board": "Espacio del colaborador",
-      "submissions": {
-        "title": "Gestionar tus contribuciones",
-        "text": "Consulta todas las palabras y verbos que has propuesto para editarlos o completarlos.",
-        "link": "Ver tus contribuciones"
-      }
+      "title": "Actions colaborador",
+      "ariaLabel": "Actions colaborador Lexikongo",
+      "addWord": "Añadir un mot",
+      "addVerb": "Añadir un verbe",
+      "board": "Área de colaborador"
     },
     "shortcuts": {
-      "title": "Atajos de búsqueda y listas",
-      "ariaLabel": "Atajos de búsqueda y listas",
-      "searchWords": "Buscar palabras",
-      "searchVerbs": "Buscar verbos",
-      "listWords": "Lista de palabras",
-      "listVerbs": "Lista de verbos",
-      "listExpressions": "Lista de palabras y verbos",
-      "contribute": "Contribuir en Lexikongo"
+      "title": "Raccourcis de recherche et listes",
+      "ariaLabel": "Raccourcis de recherche et listes",
+      "searchWords": "Buscar des mots",
+      "searchVerbs": "Buscar des verbes",
+      "listWords": "Liste des mots",
+      "listVerbs": "Liste des verbes",
+      "listExpressions": "Liste de mots & verbes",
+      "contribute": "Contribuir sur Lexikongo"
     },
     "common": {
-      "backHome": "Volver a la página de inicio"
+      "backHome": "Volver à l'accueil"
     }
   },
   "pageHero": {
-  "sideAria": "Acceso rápido e información adicional"
-},
- "auth": {
-      "login": {
-        "title": "Iniciar sesión",
-        "subtitle": "Inicia sesión para acceder a tu espacio Lexikongo.",
-        "identifierLabel": "Correo electrónico o nombre de usuario",
-        "identifierPlaceholder": "Introduce tu correo electrónico o nombre de usuario",
-        "passwordLabel": "Contraseña",
-        "passwordPlaceholder": "Introduce tu contraseña",
-        "submit": "Iniciar sesión",
-        "submitting": "Iniciando sesión…",
-        "registerLink": "Crear cuenta",
-        "forgotLink": "¿Has olvidado tu contraseña?",
-        "showPassword": "Mostrar contraseña",
-        "hidePassword": "Ocultar contraseña",
-        "showPasswordText": "Mostrar",
-        "hidePasswordText": "Ocultar",
-        "error": {
-          "requiredFields": "Por favor, rellena todos los campos.",
-          "generic": "Error al iniciar sesión. Comprueba tus credenciales."
-        },
-   
-"heroDescription": "Accede a tu espacio Lexikongo para contribuir al diccionario de kikongo, gestionar tus propuestas y seguir la evolución del proyecto.",
-"kicker": "Espacio miembro · Inicio de sesión",
-"pageTitle": "Inicio de sesión en Lexikongo",
-"sideAria": "Información sobre la cuenta y las ventajas de conectarse a Lexikongo",
-"sideBenefit1": "Proponer nuevas palabras, verbos y expresiones en kikongo.",
-"sideBenefit2": "Seguir tus contribuciones y su estado de validación.",
-"sideBenefit3": "Ayudar a construir un diccionario de kikongo vivo y colaborativo.",
-"sideTitle": "¿Por qué conectarse?",
-"meta": {
-  "title": "Inicio de sesión · Lexikongo",
-  "description": "Inicia sesión en tu espacio Lexikongo para proponer nuevas palabras, verbos o expresiones en kikongo, gestionar tus contribuciones y seguir la evolución del diccionario colaborativo."
-},
-"metaSecurity": "Tu dirección de correo electrónico se utiliza únicamente para gestionar tu cuenta y activar tu perfil de Lexikongo."
-
-      },
-       "register": {
+    "sideAria": "Accès rapide et informations complémentaires"
+  },
+  "auth": {
+    "login": {
+      "title": "Iniciar sesión",
       "meta": {
-        "title": "Crear cuenta · Lexikongo",
-        "description": "Crea tu cuenta de Lexikongo para proponer palabras, verbos y expresiones en kikongo y hacer seguimiento de tus contribuciones."
+        "title": "Iniciar sesión · Lexikongo",
+        "description": "Connectez-vous à votre compte Lexikongo pour contribuer au diccionario kikongo, gérer vos ajouts et retrouver vos favoris."
       },
-      "pageTitle": "Crear una cuenta",
-      "intro": "Únete a la comunidad de Lexikongo para contribuir al diccionario y guardar tus favoritos.",
-      "emailConfirmLabel": "Confirmación por correo electrónico",
-      "emailConfirmHint": "Después de registrarte, recibirás un correo electrónico con un enlace de confirmación. Tu cuenta se activará en cuanto hagas clic en él.",
-      "title": "Registro",
-      "subtitle": "Crea tu cuenta para acceder a tu espacio Lexikongo.",
-      "usernameLabel": "Nombre de usuario",
-      "usernamePlaceholder": "Elige un nombre de usuario",
-      "emailLabel": "Dirección de correo electrónico",
-      "emailPlaceholder": "Introduce una dirección de correo electrónico válida",
+      "subtitle": "Connectez-vous pour accéder à votre espace Lexikongo.",
+      "identifierLabel": "Correo ou nom d'usuario",
+      "identifierPlaceholder": "Entrez votre email Ex: kimbangu{'@'}gmail.com",
       "passwordLabel": "Contraseña",
-      "passwordPlaceholder": "Elige una contraseña segura",
-      "submit": "Crear mi cuenta",
-      "loginLink": "¿Ya tienes una cuenta? Inicia sesión",
-      "success": "Registro correcto. Revisa tu bandeja de entrada para activar tu cuenta.",
+      "passwordPlaceholder": "Entrez votre mot de passe",
+      "submit": "Iniciar sesión",
+      "submitting": "Iniciar sesión…",
+      "registerLink": "Crear un compte",
+      "forgotLink": "Contraseña oublié ?",
+      "showPassword": "Afficher le mot de passe",
+      "hidePassword": "Cacher le mot de passe",
+      "showPasswordText": "Voir",
+      "hidePasswordText": "Cacher",
       "error": {
-        "requiredFields": "Por favor, rellena todos los campos obligatorios.",
-        "generic": "Se ha producido un error al crear tu cuenta. Inténtalo de nuevo."
+        "requiredFields": "Por favor remplir todos les champs.",
+        "generic": "Échec de la connexion. Por favor vérifier vos identifiants."
+      },
+      "kicker": "Lexikongo · Área de miembro",
+      "pageTitle": "Iniciar sesión à votre compte Lexikongo",
+      "heroDescription": "Connectez-vous pour proposer des mots, verbes et expressions en kikongo, suivre vos contributions et retrouver vos favoris.",
+      "sideAria": "Formulaire de connexion et accès à votre espace Lexikongo",
+      "metaSecurity": "Votre adresse e-mail sert uniquement à la gestion de votre compte et à l'activation de votre profil Lexikongo.",
+      "sideTitle": "Retrouvez votre espace Lexikongo",
+      "sideBenefit1": "Poursuivez vos contributions au diccionario kikongo.",
+      "sideBenefit2": "Consultez l'historique de vos ajouts et modifications.",
+      "sideBenefit3": "Retrouvez plus rapidement vos entrées favorites."
+    },
+    "register": {
+      "meta": {
+        "title": "Inscription · Lexikongo",
+        "description": "Créez un compte Lexikongo pour proposer des mots, verbes et expressions en Kikongo et suivre vos contributions."
+      },
+      "pageTitle": "Crear un compte",
+      "intro": "Rejoignez la communauté Lexikongo pour contribuer au diccionario et retrouver vos favoris.",
+      "emailConfirmLabel": "Confirmation par e-mail",
+      "emailConfirmHint": "Après l'inscription, vous recevrez un e-mail contenant un lien de confirmation. Votre compte sera activé dès que vous aurez cliqué dessus.",
+      "title": "Inscription",
+      "subtitle": "Créez votre compte pour accéder à votre espace Lexikongo.",
+      "usernameLabel": "Nom d'usuario",
+      "usernamePlaceholder": "Choisissez un nom d'usuario",
+      "emailLabel": "Adresse e-mail",
+      "emailPlaceholder": "Entrez une adresse e-mail valide",
+      "passwordLabel": "Contraseña",
+      "passwordPlaceholder": "Choisissez un mot de passe sécurisé",
+      "submit": "Crear mon compte",
+      "loginLink": "Déjà un compte ? Iniciar sesión",
+      "success": "Inscription réussie ! Vérifiez votre boîte mail pour activer votre compte.",
+      "error": {
+        "requiredFields": "Por favor remplir todos les champs obligatorios.",
+        "generic": "Une erreur est survenue pendant l'inscription. Por favor réessayer."
       }
     }
+  },
+  "profile": {
+    "eyebrow": "Área de miembro · Perfil",
+    "title": "Perfil usuario",
+    "subtitle": "Gérez les informations de votre compte Lexikongo.",
+    "sideAria": "Résumé du compte, roles et raccourcis du diccionario Lexikongo",
+    "fallbackName": "Usuario Lexikongo",
+    "actions": {
+      "expressions": "Explorer les mots & verbes",
+      "editProfile": "Editar mon profil",
+      "deleteAccount": "Eliminar mon compte"
     },
-    "profile": {
-  "eyebrow": "Área de miembro · Perfil",
-  "title": "Perfil de usuario",
-  "subtitle": "Gestiona la información de tu cuenta Lexikongo.",
-  "sideAria": "Resumen de la cuenta, roles y accesos directos del diccionario Lexikongo",
-  "fallbackName": "Usuario de Lexikongo",
-  "actions": {
-    "expressions": "Explorar palabras y verbos",
-    "editProfile": "Editar mi perfil",
-      "deleteAccount": "Eliminar mi cuenta"
-    
-  },
-  "meta": {
-    "title": "Perfil de usuario | Lexikongo",
-    "description": "Consulta y gestiona la información de tu cuenta Lexikongo (perfil, roles y seguridad).",
-    "ogTitle": "Perfil de usuario – Lexikongo",
-    "ogDescription": "Área de miembro de Lexikongo: perfil, roles e información de la cuenta."
-  },
-  "metaSecurity": "Tu información personal permanece privada y nunca se comparte.",
-  "summary": {
-    "title": "Resumen de la cuenta",
-    "username": "Nombre de usuario",
-    "email": "Dirección de correo electrónico",
-    "emailUnknown": "No indicada",
-    "memberSince": "Miembro desde",
-    "roles": "Roles",
-    "editProfile": "Editar mi perfil"
-  },
-  "memberSince": {
-    "unknown": "Fecha desconocida"
-  },
-  "section": {
-    "account": {
-      "title": "Información de la cuenta",
-      "subtitle": "Estos datos proceden de tu cuenta actual de Lexikongo.",
-      "username": "Nombre de usuario",
-      "usernameHint": "Este nombre puede aparecer junto a tus posibles contribuciones públicas.",
-      "email": "Dirección de correo electrónico",
-      "emailUnknown": "No indicada",
-      "emailHint": "Solo la utilizamos para el inicio de sesión y la seguridad de tu cuenta."
+    "meta": {
+      "title": "Perfil usuario | Lexikongo",
+      "description": "Consultez et gérez les informations de votre compte Lexikongo (profil, roles et sécurité).",
+      "ogTitle": "Perfil usuario – Lexikongo",
+      "ogDescription": "Área de miembro Lexikongo: profil, roles et informations de compte."
+    },
+    "metaSecurity": "Vos informations personnelles restent privées et ne sont jamais partagées.",
+    "summary": {
+      "title": "Résumé du compte",
+      "username": "Nom d'usuario",
+      "email": "Adresse e-mail",
+      "emailUnknown": "No renseignée",
+      "memberSince": "Membre depuis",
+      "roles": "Roles",
+      "editProfile": "Editar mon profil"
+    },
+    "memberSince": {
+      "unknown": "Fecha inconnue"
+    },
+    "section": {
+      "account": {
+        "title": "Informations du compte",
+        "subtitle": "Ces informations proviennent de votre compte Lexikongo actuel.",
+        "username": "Nom d'usuario",
+        "usernameHint": "Ce nom peut apparaître à côté de vos éventuelles contributions publiques.",
+        "email": "Adresse e-mail",
+        "emailUnknown": "No renseignée",
+        "emailHint": "Nous l'utilisons uniquement pour la connexion et la sécurité de votre compte."
+      },
+      "roles": {
+        "title": "Roles et permissions",
+        "subtitle": "Les roles déterminent les actions que vous pouvez effectuer sur Lexikongo."
+      },
+      "security": {
+        "title": "Sécurité du compte",
+        "subtitle": "Protégez votre compte avec un mot de passe robuste et unique."
+      }
+    },
+    "roleLabels": {
+      "user": "Usuario",
+      "contributor": "Colaborador",
+      "admin": "Administrador"
     },
     "roles": {
-      "title": "Roles y permisos",
-      "subtitle": "Los roles determinan las acciones que puedes realizar en Lexikongo."
-    },
-    "security": {
-      "title": "Seguridad de la cuenta",
-      "subtitle": "Protege tu cuenta con una contraseña robusta y única."
-    }
-  },
-  "roleLabels": {
-    "user": "Usuario",
-    "contributor": "Colaborador",
-    "admin": "Administrador"
-  },
-  "roles": {
-    "user": {
-      "desc": "Puede consultar el diccionario y utilizar las herramientas de búsqueda."
-    },
-    "contributor": {
-      "desc": "Puede proponer nuevas palabras, verbos y expresiones en kikongo."
-    },
-    "admin": {
-      "desc": "Puede gestionar los usuarios, los contenidos y la configuración del diccionario."
-    }
-  },
-   "delete": {
-      "title": "Eliminar mi cuenta",
-      "message": "Esta acción es definitiva. Tu cuenta de Lexikongo y la información asociada se eliminarán. Esta operación no se puede deshacer.",
-      "confirm": "Eliminar mi cuenta de forma permanente",
-      "cancel": "Cancelar",
-      "success": "Tu cuenta se ha eliminado correctamente.",
-      "error": "Se ha producido un error al eliminar tu cuenta. Inténtalo de nuevo."
-    }
-},
-"details": {
-  "common": {
-    "loading": "Cargando la ficha…",
-    "backToList": "Volver a la lista de expresiones",
-    "author": "Autor",
-    "unknown": "Desconocido",
-    "createdAt": "Fecha de creación",
-    "kikongoData": "Datos en kikongo",
-    "phonetic": "Fonética",
-    "translations": "Traducciones",
-    "fr": "Francés",
-    "en": "Inglés",
-    "translationHint": "Las traducciones pueden proponer varios matices de significado, separados por comas.",
-    "backExpressions": "Ver la lista de palabras y verbos",
-    "searchWords": "Buscar palabras",
-    "searchVerbs": "Buscar verbos"
-  },
-  "word": {
-    "label": "Palabra",
-    "subtitle": "Ficha detallada de una palabra en kikongo con su fonética, su clase nominal y sus traducciones.",
-    "singular": "Singular",
-    "plural": "Plural",
-    "nominalClass": "Clase nominal",
-    "root": "Raíz",
-    "numberVariability": {
-      "label": "Variabilidad del número",
-      "singular_only": "Solo singular",
-      "plural_only": "Solo plural",
-      "invariable": "Invariable",
-      "variable": "Variable"
-    },
-    "editCta": "Editar esta palabra"
-  },
-  "verb": {
-    "label": "Verbo",
-    "subtitle": "Ficha detallada de un verbo en kikongo con su fonética, su raíz y sus traducciones.",
-    "infinitive": "Infinitivo",
-    "root": "Raíz",
-    "suffix": "Sufijo",
-    "editCta": "Editar este verbo"
-  }
-},
- "contributor": {
-    "addWord": {
-      "eyebrow": "Espacio de colaboradores · Palabra",
-      "title": "Proponer una nueva palabra",
-      "subtitle": "Añade una palabra en kikongo con su clase nominal y sus traducciones al francés y/o al inglés.",
-      "helpRequired": "Los campos marcados con * son obligatorios.",
-      "sections": {
-        "word": "Palabra en kikongo",
-        "translations": "Traducciones",
-        "translationsHint": "Añade al menos una traducción en francés o en inglés."
+      "user": {
+        "desc": "Peut consulter le diccionario et utiliser les outils de recherche."
       },
-      "fields": {
-        "singular": {
-          "label": "Singular"
+      "contributor": {
+        "desc": "Peut proposer de nouveaux mots, verbes et expressions en Kikongo."
+      },
+      "admin": {
+        "desc": "Peut gérer les usuarios, les contenus et la configuration du diccionario."
+      }
+    },
+    "delete": {
+      "title": "Eliminar mon compte",
+      "message": "Cette action est définitive. Votre compte Lexikongo et vos informations associées seront supprimés. Cette opération ne peut pas être annulée.",
+      "confirm": "Eliminar définitivement mon compte",
+      "cancel": "Cancelar",
+      "success": "Votre compte a été supprimé avec succès.",
+      "error": "Une erreur est survenue lors de la suppression de votre compte. Por favor réessayer."
+    }
+  },
+  "contrib": {
+    "dashboard": {
+      "hero": {
+        "eyebrow": "Área de miembro · Colaborador",
+        "titleWithName": "Área de colaborador · {name}",
+        "description": "Proposez de nouveaux mots, verbes et expressions en kikongo et suivez vos contributions.",
+        "sideAria": "Raccourcis colaborador et actions rapides",
+        "meta": "Chaque contribution est relue avant publication afin de préserver la qualité du diccionario.",
+        "actionsAria": "Actions rapides Lexikongo (mode colaborador)",
+        "ctaWords": "Explorer les mots",
+        "ctaVerbs": "Explorer les verbes"
+      },
+      "actions": {
+        "title": "Contribuir au diccionario",
+        "intro": "Choisissez ce que vous souhaitez proposer ou améliorer sur Lexikongo.",
+        "words": {
+          "title": "Proposer un mot",
+          "text": "Ajoutez un nouveau mot en kikongo avec sa traducción et sa phonétique.",
+          "link": "Accéder aux mots"
         },
-        "plural": {
-          "label": "Plural",
-          "hint": "Déjalo vacío si la palabra no tiene una forma plural específica."
+        "submissions": {
+          "title": "Gérer vos contributions",
+          "text": "Retrouvez todos les mots et verbes que vous avez proposés, pour les modifier ou les compléter.",
+          "link": "Voir vos contributions"
         },
-        "phonetic": {
-          "label": "Fonética",
-          "placeholder": "/…/",
-          "hint": "Puedes indicar la pronunciación aproximada (AFI o notación sencilla)."
+        "verbs": {
+          "title": "Proposer un verbe",
+          "text": "Ajoutez un verbe ou proposez une meilleure conjugaison.",
+          "link": "Accéder aux verbes"
         },
-        "classId": {
-          "label": "Clase nominal",
-          "placeholderSelect": "— Seleccionar una clase —",
-          "placeholderInput": "ID de la clase nominal",
-          "hint": "Elige o introduce la clase nominal asociada a esta palabra."
+        "expressions": {
+          "title": "Proposer une expression",
+          "text": "Partagez des expressions idiomatiques, proverbes ou tournures fréquentes.",
+          "link": "Accéder aux expressions"
         },
-        "meaningFr": {
-          "label": "Francés"
-        },
-        "meaningEn": {
-          "label": "Inglés"
+        "doc": {
+          "title": "Lire la documentation",
+          "text": "Découvrez comment structurer vos propositions et les bonnes pratiques.",
+          "link": "Voir la documentation"
         }
       },
-      "actions": {
-        "submit": "Enviar la propuesta",
-        "submitting": "Enviando…",
-        "cancel": "Cancelar y volver al espacio de colaboradores"
+      "summary": {
+        "title": "Résumé de votre compte",
+        "intro": "Un rappel des informations principales liées à votre profil.",
+        "username": "Nom d'usuario",
+        "role": "Rol",
+        "roleLabel": "Colaborador",
+        "memberSince": "Membre depuis",
+        "memberSinceUnknown": "Fecha inconnue",
+        "fallbackName": "Colaborador Lexikongo"
       },
-      "errors": {
-        "singularRequired": "El singular es obligatorio.",
-        "classIdRequired": "La clase nominal es obligatoria.",
-        "classIdInvalid": "La clase nominal debe ser un identificador válido.",
-        "translationsRequired": "Añade al menos una traducción en francés o en inglés.",
-        "mustBeLoggedIn": "Debes iniciar sesión para proponer una palabra."
-      },
-      "messages": {
-        "success": "Tu propuesta se ha guardado. ¡Gracias por tu contribución!",
-        "errorGeneric": "Se ha producido un error al enviar la propuesta."
+      "seo": {
+        "title": "Área de colaborador – Lexikongo",
+        "description": "Proposez et suivez vos contributions dans le diccionario kikongo Lexikongo."
       }
-    },
-      "addVerb": {
-    "eyebrow": "Espacio de colaboradores · Verbo",
-    "title": "Proponer un nuevo verbo",
-    "subtitle": "Añade un verbo en kikongo con su raíz, sus posibles formas derivadas y sus traducciones al francés y/o al inglés.",
-    "helpRequired": "Los campos marcados con * son obligatorios.",
-    "sections": {
-      "verb": "Verbo en kikongo",
-      "translations": "Traducciones",
-      "translationsHint": "Añade al menos una traducción en francés o en inglés."
-    },
-    "fields": {
-      "name": {
-        "label": "Verbo (forma base)"
-      },
-      "root": {
-        "label": "Raíz",
-        "hint": "Por ejemplo, la base del verbo sin prefijos ni sufijos."
-      },
-      "suffix": {
-        "label": "Sufijo",
-        "hint": "Déjalo vacío si el verbo no tiene un sufijo específico."
-      },
-      "phonetic": {
-        "label": "Fonética",
-        "placeholder": "/…/",
-        "hint": "Puedes indicar la pronunciación aproximada (AFI o notación sencilla)."
-      },
-      "flags": {
-        "label": "Tipo de verbo",
-        "active": "Verbo base / activo",
-        "derived": "Verbo derivado",
-        "hint": "Marca «verbo derivado» si este verbo se forma a partir de otro."
-      },
-      "derivedFrom": {
-        "label": "Verbo de origen (si es derivado)",
-        "placeholder": "ID o referencia del verbo de origen",
-        "hint": "Opcional: indica el verbo del que se deriva este (ID o código interno, si lo conoces)."
-      },
-      "derivedVerbType": {
-        "label": "Tipo de derivación",
-        "placeholder": "ID o tipo de verbo derivado",
-        "hint": "Opcional: indica el tipo de derivación (causativo, recíproco, etc.) si lo conoces."
-      },
-      "meaningFr": {
-        "label": "Francés"
-      },
-      "meaningEn": {
-        "label": "Inglés"
-      }
-    },
-    "actions": {
-      "submit": "Enviar la propuesta",
-      "submitting": "Enviando…",
-      "cancel": "Cancelar y volver al espacio de colaboradores"
-    },
-    "errors": {
-      "nameRequired": "El verbo es obligatorio.",
-      "rootRequired": "La raíz del verbo es obligatoria.",
-      "translationsRequired": "Añade al menos una traducción en francés o en inglés.",
-      "mustBeLoggedIn": "Debes iniciar sesión para proponer un verbo."
-    },
-    "messages": {
-      "success": "Tu propuesta se ha guardado. ¡Gracias por tu contribución!",
-      "errorGeneric": "Se ha producido un error al enviar el verbo."
     }
   },
-   "submissions": {
-    "hero": {
-      "eyebrow": "Espacio de colaboradores · Contribuciones",
-      "title": "Tus contribuciones",
-      "subtitle": "Consulta todas las palabras y verbos que has propuesto en Lexikongo.",
-      "meta": "Las contribuciones pendientes pueden modificarse o eliminarse mientras no hayan sido validadas.",
-      "ctaAddWord": "Proponer una palabra",
-      "ctaAddVerb": "Proponer un verbo"
-    },
-    "seo": {
-      "title": "Tus contribuciones – Lexikongo",
-      "description": "Consulta y gestiona tus contribuciones (palabras y verbos) en el diccionario Lexikongo."
-    },
-    "sections": {
-      "words": {
-        "title": "Palabras propuestas",
-        "intro": "Lista de palabras que has enviado al diccionario.",
-        "loading": "Cargando tus palabras propuestas…",
-        "empty": "Todavía no has propuesto ninguna palabra.",
-        "error": "No se han podido recuperar tus palabras propuestas.",
-        "caption": "Lista de palabras propuestas por el colaborador."
-      },
-      "verbs": {
-        "title": "Verbos propuestos",
-        "intro": "Lista de verbos que has enviado al diccionario.",
-        "loading": "Cargando tus verbos propuestos…",
-        "empty": "Todavía no has propuesto ningún verbo.",
-        "error": "No se han podido recuperar tus verbos propuestos.",
-        "caption": "Lista de verbos propuestos por el colaborador."
+  "admin": {
+    "verb": {
+      "add": {
+        "title": "Añadir un verbe en kikongo",
+        "subtitle": "Ajoutez un nouveau verbe en kikongo avec sa phonétique et ses traducciones en français et en anglais.",
+        "meta": "Admin · Ajout de verbe",
+        "legendKikongo": "Données en kikongo",
+        "legendTranslations": "Traducciones",
+        "fields": {
+          "infinitive": "Infinitif",
+          "root": "Radical verbal",
+          "suffix": "Suffixe",
+          "phonetic": "Fonética",
+          "translationFr": "Francés",
+          "translationEn": "Inglés"
+        },
+        "placeholders": {
+          "infinitive": "longa, bala…",
+          "root": "Radical verbal",
+          "suffix": "-a, -ama…",
+          "phonetic": "[lónga]…",
+          "translationFr": "Sens FR séparés par des virgules…",
+          "translationEn": "EN meanings separated by commas…"
+        },
+        "actions": {
+          "submit": "Guardar le verbe",
+          "reset": "Réinitialiser le formulaire",
+          "saving": "Enregistrement…"
+        },
+        "messages": {
+          "success": "Verbo ajouté avec succès.",
+          "errorRequiredInfinitive": "L'infinitif du verbe est obligatorio.",
+          "errorGeneric": "Une erreur est survenue lors de l'ajout du verbe."
+        },
+        "seoTitle": "Admin · Añadir un verbe en kikongo – Lexikongo",
+        "seoDescription": "Panel admin · ajout d'un verbe en kikongo (infinitif, phonétique, traducciones)."
       }
     },
-    "table": {
-      "headers": {
-        "word": "Palabra",
-        "class": "Clase",
-        "translations": "Traducciones",
-        "status": "Estado",
-        "createdAt": "Creado el",
-        "updatedAt": "Modificado el",
-        "actions": "Acciones",
-        "verb": "Verbo",
-        "root": "Raíz"
+    "common": {
+      "mustBeLoggedIn": "Vous devez être connecté en tant qu'administrador pour accéder à cette página.",
+      "cancel": "Cancelar"
+    },
+    "editPendingWord": {
+      "eyebrow": "Espace admin · Palabras en pendiente",
+      "title": "Éditer un mot proposé",
+      "subtitle": "Corrigez les informations d'un mot soumis par un colaborador avant de prendre une décision.",
+      "meta": {
+        "label": "Administración · Édition de mot en pendiente",
+        "title": "Admin · Éditer un mot proposé – Lexikongo",
+        "description": "Página d'administration pour éditer un mot en kikongo soumis par un colaborador (forme, classe nominale, phonétique, dérivations et traducciones).",
+        "submittedAtLabel": "Soumis le"
+      },
+      "help": "Vous pouvez ajuster la forme en kikongo, la classe nominale, les liens de dérivation et les traducciones avant validation ou rejet.",
+      "reviewNotice": "Les décisions d'approbation ou de rejet se feront depuis la página de gestion des soumissions en pendiente.",
+      "cardTitleFallback": "Palabra en kikongo proposé",
+      "actions": {
+        "save": "Guardar les modifications",
+        "saving": "Enregistrement en cours…",
+        "reset": "Réinitialiser",
+        "delete": "Eliminar cette soumission",
+        "approve": "Aprobar cette soumission",
+        "reject": "Rejeter cette soumission"
+      },
+      "confirmTitle": "Eliminar cette soumission ?",
+      "confirmDelete": "Voulez-vous vraiment supprimer cette soumission ? Cette action est définitive.",
+      "deleted": "La soumission a été supprimée.",
+      "success": "Les modifications ont bien été enregistrées.",
+      "errors": {
+        "generic": "Error lors de la mise à jour de ce mot en pendiente.",
+        "requiredSingular": "Gracias de renseigner au moins le singulier.",
+        "requiredClassId": "Gracias d'indiquer la classe nominale.",
+        "translationRequired": "Gracias de proposer au moins une traducción (FR ou EN).",
+        "delete": "Error lors de la suppression de la soumission."
+      }
+    },
+    "managePendings": {
+      "eyebrow": "Espace admin · Soumissions",
+      "title": "Soumissions en pendiente",
+      "subtitle": "Visualisez et filtrez les mots et verbes proposés par les colaboradores.",
+      "meta": {
+        "label": "Administración · Soumissions en pendiente",
+        "title": "Admin · Soumissions en pendiente – Lexikongo",
+        "description": "Liste des soumissions de mots et verbes en kikongo en pendiente de modération (filtres, recherche, pagination).",
+        "submittedAtLabel": "Soumis le"
+      },
+      "help": "Filtrez par type (mot / verbe), statut et recherche, puis ouvrez la fiche d'édition admin pour décider du sort de chaque soumission.",
+      "reviewNotice": "Les actions d'approbation, de rejet ou de suppression se font depuis les páginas d'édition détaillées.",
+      "loading": "Cargando des soumissions en pendiente…",
+      "empty": "Ninguna soumission ne correspond à ces filtres.",
+      "successApproved": "Soumission approuvée et intégrée au diccionario.",
+      "successRejected": "Soumission marquée comme rejetée.",
+      "deleted": "La soumission a été supprimée.",
+      "confirmDeleteTitle": "Eliminar cette soumission ?",
+      "confirmDeleteMessage": "Voulez-vous vraiment supprimer cette soumission ? Cette action est définitive.",
+      "unknownUser": "Colaborador inconnu",
+      "count": "{total} soumissions trouvées",
+      "countWords": "{totalWords} mot(s)",
+      "countVerbs": "{totalVerbs} verbe(s)",
+      "actions": {
+        "editWord": "Éditer le mot",
+        "editVerb": "Éditer le verbe",
+        "approve": "Aprobar",
+        "reject": "Rejeter",
+        "delete": "Eliminar"
+      },
+      "search": {
+        "label": "Buscar dans les soumissions",
+        "placeholder": "Búsquedaz par lemme, traducción ou colaborador…"
+      },
+      "pagination": {
+        "prev": "Anterior",
+        "next": "Siguiente",
+        "info": "Página {page} / {pageCount}"
+      },
+      "error": {
+        "generic": "No se pudo obtener les soumissions en pendiente pour le moment."
+      },
+      "errors": {
+        "generic": "No es posible traiter cette soumission.",
+        "delete": "No es posible supprimer cette soumission.",
+        "notPending": "Cette soumission n'est plus en statut « en pendiente »."
+      }
+    },
+    "hero": {
+      "eyebrow": "Espace administrador · Panel",
+      "title": "Panel Lexikongo",
+      "description": "Modérez les contributions, gérez le diccionario et pilotez l'activité de la communauté.",
+      "sideAria": "Résumé des accès administrador et raccourcis vers les sections de gestion Lexikongo",
+      "ctaWords": "Gérer les mots",
+      "ctaVerbs": "Gérer les verbes",
+      "meta": "Panel administrador Lexikongo",
+      "actionsAria": "Raccourcis vers les sections de gestion pour les administradores"
+    },
+    "dashboard": {
+      "hero": {
+        "eyebrow": "Espace administrador · Panel",
+        "title": "Panel Lexikongo",
+        "description": "Modérez les contributions, gérez le diccionario et pilotez l'activité de la communauté.",
+        "sideAria": "Résumé des accès administrador et raccourcis vers les sections de gestion Lexikongo",
+        "ctaWords": "Gérer les mots",
+        "ctaVerbs": "Gérer les verbes",
+        "meta": "Panel administrador Lexikongo",
+        "actionsAria": "Raccourcis vers les sections de gestion pour les administradores"
+      },
+      "access": {
+        "title": "Accès rapides",
+        "intro": "Choisissez une section pour gérer les contenus et les comptes.",
+        "words": {
+          "title": "Palabras du diccionario",
+          "text": "Consulter, rechercher et modifier les entrées de mots en kikongo.",
+          "link": "Abrir la gestion des mots"
+        },
+        "verbs": {
+          "title": "Verbos du diccionario",
+          "text": "Consulter, rechercher et modifier les verbes en kikongo.",
+          "link": "Abrir la gestion des verbes"
+        },
+        "users": {
+          "title": "Usuarios",
+          "text": "Gérer les comptes, roles et accès des usuarios.",
+          "link": "Abrir la gestion des usuarios"
+        },
+        "submissions": {
+          "title": "Soumissions colaboradores",
+          "text": "Parcourir, filtrer et modérer les soumissions de mots et de verbes.",
+          "link": "Abrir la gestion des soumissions"
+        }
+      },
+      "stats": {
+        "title": "Statistiques rapides",
+        "intro": "Un aperçu des chiffres-clés du diccionario et de la communauté.",
+        "usersLabel": "Cuentas usuarios",
+        "usersHint": "Nombre total d'usuarios inscrits sur Lexikongo.",
+        "wordsLabel": "Palabras publiés",
+        "wordsHint": "Nombre total d'entrées de mots actuellement en ligne.",
+        "verbsLabel": "Verbos publiés",
+        "verbsHint": "Nombre total de verbes actuellement en ligne."
+      },
+      "session": {
+        "text": "Connecté en tant qu'administrador.",
+        "logout": "Cerrar sesión"
+      },
+      "seo": {
+        "title": "Panel administrador · Lexikongo",
+        "description": "Accédez au tableau de bord administrador Lexikongo pour modérer les soumissions, gérer les mots, verbes et comptes usuarios."
+      }
+    },
+    "users": {
+      "page": {
+        "eyebrow": "Administración · Usuarios",
+        "title": "Gestion des usuarios",
+        "subtitle": "Consultez les comptes, leurs roles et le statut de vérification des emails.",
+        "meta": "Seuls les administradores autorisés peuvent consulter et modifier ces informations."
+      },
+      "meta": {
+        "title": "Administración · Usuarios",
+        "description": "Liste des comptes enregistrés sur Lexikongo (accès réservé aux administradores)."
+      },
+      "search": {
+        "label": "Filtrer les usuarios",
+        "placeholder": "Buscar par nom, email ou rol…",
+        "count": "{count} usuario·rice·s au total"
+      },
+      "states": {
+        "loading": "Cargando des usuarios…",
+        "error": "No se pudo obtener la liste des usuarios. Por favor réessayer plus tard.",
+        "emptySearch": "Ninguno compte ne correspond à votre recherche.",
+        "emptyAll": "Ninguno usuario n'a encore été enregistré."
+      },
+      "table": {
+        "title": "Liste des comptes",
+        "subtitle": "Vue d'ensemble des usuarios inscrits sur Lexikongo.",
+        "caption": "Tableau d'administration des comptes usuarios Lexikongo.",
+        "columns": {
+          "id": "ID",
+          "username": "Nom d'usuario",
+          "email": "Correo",
+          "role": "Rol(s)",
+          "createdAt": "Fecha de création",
+          "verified": "Correo vérifié"
+        },
+        "rowAria": "Voir la fiche du compte {username}",
+        "role": {
+          "none": "Ninguno rol"
+        },
+        "verified": {
+          "yes": "Vérifié",
+          "no": "No vérifié"
+        }
+      }
+    },
+    "user": {
+      "backToList": "Volver à la liste des usuarios",
+      "page": {
+        "eyebrow": "Administración · Fiche usuario",
+        "subtitle": "Détails du compte, roles et activité récente.",
+        "meta": "Gestion avancée d'un compte usuario (réservée aux administradores)."
+      },
+      "meta": {
+        "title": "Cuenta de {username}",
+        "description": "Détails du compte Lexikongo de {username}."
+      },
+      "sections": {
+        "account": "Informations du compte",
+        "roles": "Roles & permissions",
+        "security": "Sécurité"
       },
       "labels": {
-        "fr": "FR",
-        "en": "EN"
+        "id": "Identifiant interne",
+        "username": "Nom d'usuario",
+        "email": "Adresse email",
+        "createdAt": "Créé le",
+        "updatedAt": "Mis à jour le",
+        "lastSeen": "Dernière connexion",
+        "previousSeen": "Iniciar sesión anterior",
+        "roles": "Roles attribués",
+        "noRoles": "Ninguno rol attribué",
+        "verifiedYes": "Correo vérifié",
+        "verifiedNo": "Correo no vérifié",
+        "unknownUser": "Usuario inconnu",
+        "noEmail": "Correo no renseigné"
       },
-      "noTranslations": "Sin traducción indicada",
-      "wordPlural": "Plural: {plural}",
-      "verbSuffix": "Sufijo: {suffix}",
       "actions": {
-        "edit": "Editar",
+        "edit": "Editar le compte",
+        "delete": "Eliminar le compte",
+        "deleteConfirmTitle": "Eliminar ce compte ?",
+        "deleteConfirmBody": "Vous êtes sur le point de supprimer le compte « {username} ». Cette action est potentiellement définitive.",
+        "deleteConfirmCta": "Sí, supprimer"
+      },
+      "security": {
+        "passwordHint": "Le mot de passe est stocké de manière sécurisée (hash en base de données)."
+      },
+      "states": {
+        "loading": "Cargando des informations du compte…",
+        "error": "No es posible charger les informations de cet usuario.",
+        "notFound": "Cet usuario n'existe pas ou n'est plus disponible.",
+        "deleteError": "Une erreur est survenue lors de la suppression du compte. Por favor réessayer plus tard.",
+        "updated": "Le compte usuario a bien été mis à jour.",
+        "updateError": "No es posible mettre à jour ce compte usuario.",
+        "deleted": "Le compte usuario a bien été supprimé."
+      },
+      "common": {
+        "cancel": "Cancelar"
+      }
+    }
+  },
+  "contributor": {
+    "addVerb": {
+      "eyebrow": "Área de colaborador · Verbos",
+      "title": "Proposer un verbe en kikongo",
+      "cardTitleFallback": "Proposition de verbe en kikongo",
+      "subtitle": "Proposez un verbe en kikongo avec son radical verbal, sa phonétique et ses traducciones.",
+      "meta": {
+        "label": "Colaborador · Ajout de verbe",
+        "title": "Colaborador · Proposer un verbe en kikongo – Lexikongo",
+        "description": "Soumettez un nouveau verbe en kikongo pour revue par l'équipe Lexikongo."
+      },
+      "helpRequired": "Les champs marqués d'une astérisque (*) sont obligatorios. Gracias de donner au moins une traducción.",
+      "reviewNotice": "Votre proposition sera examinée par l'équipe Lexikongo avant une éventuelle publication dans le diccionario.",
+      "sections": {
+        "kikongo": "Forme en kikongo",
+        "translations": "Traducciones",
+        "derived": "Verbo dérivé",
+        "derivedOptional": "optionnel"
+      },
+      "fields": {
+        "infinitive": "Infinitif (sans « ku »)",
+        "root": "Radical verbal",
+        "suffix": "Suffixe",
+        "phonetic": "Fonética",
+        "translationFr": "Traducciones en français",
+        "translationEn": "Traducciones en anglais",
+        "derivedVerb": "Ce verbe est dérivé d'un autre verbe",
+        "derivedFrom": "ID du verbe de base",
+        "derivedVerbType": "Type de verbe dérivé"
+      },
+      "hints": {
+        "infinitive": "Écrivez l'infinitif sans « ku » (ex. longa, bala…).",
+        "root": "Indiquez le radical verbal (ex. long-, bal-…).",
+        "phonetic": "Vous pouvez utiliser des crochets et des accents pour préciser la pronunciación.",
+        "translationFr": "Vous pouvez proposer plusieurs sens en français, séparés par des virgules.",
+        "translationEn": "Vous pouvez proposer plusieurs sens en anglais, séparés par des virgules.",
+        "derivedVerb": "Cochez si ce verbe est construit à partir d'un autre (dérivé morphologique).",
+        "derivedFrom": "ID interne du verbe de base, si vous le connaissez (sinon, laissez vide).",
+        "derivedVerbType": "Sélectionnez le type de dérivation (passive, causative, etc.), si vous le connaissez."
+      },
+      "actions": {
+        "saving": "Envoi de votre proposition…",
+        "submit": "Proposer ce verbe",
+        "reset": "Réinitialiser le formulaire"
+      },
+      "success": "Gracias ! Votre verbe a été soumis et sera vérifié par un administrador.",
+      "errors": {
+        "missingCore": "Gracias de remplir au moins l'infinitif et le radical verbal.",
+        "missingUser": "Vous devez être connecté pour proposer un verbe.",
+        "missingTranslations": "Gracias de proposer au moins une traducción (FR ou EN).",
+        "generic": "Error lors de l'envoi de votre proposition de verbe."
+      }
+    },
+    "errors": {
+      "mustBeLoggedIn": "Vous devez être connecté pour pouvoir proposer un contenu."
+    },
+    "addWord": {
+      "eyebrow": "Área de colaborador · Palabras",
+      "title": "Proposer un mot en kikongo",
+      "cardTitleFallback": "Proposition de mot en kikongo",
+      "subtitle": "Proposez un mot en kikongo avec sa classe nominale, sa phonétique et ses traducciones.",
+      "meta": {
+        "label": "Colaborador · Ajout de mot",
+        "title": "Colaborador · Proposer un mot en kikongo – Lexikongo",
+        "description": "Formulaire colaborador pour proposer un nouveau mot en kikongo avec classe nominale, phonétique et traducciones françaises et anglaises."
+      },
+      "helpRequired": "Les champs marqués d'une astérisque (*) sont obligatorios. Gracias de donner au moins une traducción.",
+      "reviewNotice": "Votre proposition sera examinée par l'équipe Lexikongo avant une éventuelle publication dans le diccionario.",
+      "placeholders": {
+        "singular": "Muana, Kikuku…",
+        "plural": "Bakento, Bikoba…",
+        "classId": "Choisissez une classe nominale…",
+        "phonetic": "[mùnkéntò]…",
+        "translationFr": "Sens FR séparés par des virgules…",
+        "translationEn": "EN meanings separated by commas…",
+        "baseWordSearch": "Buscar un mot de base…",
+        "baseVerbSearch": "Buscar un verbe de base…"
+      },
+      "hints": {
+        "singular": "Le mot au singulier, tel qu'il est utilisé en kikongo (forme de base).",
+        "plural": "Indiquez le pluriel si vous le connaissez. Sinon, vous pouvez laisser ce champ vide.",
+        "classId": "Sélectionnez une classe nominale.",
+        "numberVariability": "Optionnel: précisez si le mot ne s'emploie qu'au singulier, au pluriel, ou s'il est invariable.",
+        "translationFr": "Vous pouvez proposer plusieurs sens en français, séparés par des virgules ou sur plusieurs lignes.",
+        "translationEn": "Vous pouvez proposer plusieurs sens en anglais, séparés par des virgules ou sur plusieurs lignes.",
+        "phonetic": "Vous pouvez utiliser les crochets et les accents pour préciser la pronunciación.",
+        "derivedWord": "Cochez si ce mot est construit à partir d'un autre mot ou d'un verbe (nom d'action, resultado, personne, etc.).",
+        "numberVariabilityShort": "Variable: Singulier/Pluriel différents (Mukento/Bankento). Invariable: mots qui ne changent pas (adverbes, conjonctions, etc.).",
+        "derivedFromVerb": "Búsquedaz le verbe de base dans le diccionario (infinitif en « ku… » ou traducción).",
+        "baseWordSearch": "Tapez quelques lettres du mot (kikongo, français ou anglais) puis choisissez le bon resultado.",
+        "baseVerbSearch": "Tapez quelques lettres du verbe (kikongo, français ou anglais) puis choisissez le bon resultado."
+      },
+      "numberVariability": {
+        "default": "— Laisser par défaut —"
+      },
+      "actions": {
+        "submit": "Proposer ce mot",
+        "saving": "Envoi de votre proposition…",
+        "reset": "Réinitialiser le formulaire",
+        "viewSubmission": "Voir votre soumission"
+      },
+      "errors": {
+        "requiredSingular": "Gracias de remplir au moins le singulier du mot en kikongo.",
+        "requiredClassId": "Gracias d'indiquer la classe nominale (au minimum une estimation).",
+        "translationRequired": "Gracias de proposer au moins une traducción (FR ou EN).",
+        "generic": "Error lors de l'envoi de votre proposition de mot. Gracias de réessayer plus tard."
+      },
+      "success": "Gracias ! Votre mot a été soumis et sera vérifié par un administrador avant publication éventuelle.",
+      "sections": {
+        "kikongo": "Forme en kikongo",
+        "translations": "Traducciones",
+        "derived": "Palabra dérivé",
+        "derivedOptional": "optionnel"
+      },
+      "fields": {
+        "derivedWord": "Ce mot est dérivé d'un autre mot ou d'un verbe",
+        "derivedFromWord": "Palabra de base dans le diccionario",
+        "derivedFromVerb": "Verbo de base (option avancée)"
+      },
+      "details": {
+        "word": {
+          "nominalClass": "Classe nominale",
+          "numberVariability": {
+            "label": "Variabilité du nombre",
+            "variable": "Variable (singulier/pluriel distincts)",
+            "singularOnly": "Singulier uniquement",
+            "pluralOnly": "Pluriel uniquement",
+            "invariable": "Invariable"
+          }
+        },
+        "common": {
+          "phonetic": "Fonética"
+        }
+      },
+      "baseWordNoResults": "Ninguno mot ne correspond à cette recherche pour l'instant.",
+      "baseWordSelected": "Palabra de base sélectionné: {word}",
+      "baseVerbNoResults": "Ninguno verbe ne correspond à cette recherche pour l'instant.",
+      "baseVerbSelected": "Verbo de base sélectionné: {verb}"
+    },
+    "submissions": {
+      "eyebrow": "Área de colaborador · Soumissions",
+      "title": "Vos soumissions en kikongo",
+      "subtitle": "Retrouvez ici l'historique de vos mots et verbes proposés.",
+      "meta": {
+        "label": "Historique des soumissions",
+        "title": "Colaborador · Soumissions – Lexikongo",
+        "description": "Consultez et filtrez vos soumissions de mots et verbes en kikongo (en pendiente, approuvées, rejetées).",
+        "createdAt": "Soumis le ",
+        "decidedAt": "Décision le ",
+        "adminReason": "Commentaire de la modération:",
+        "reviewedBy": "modéré par {admin}"
+      },
+      "help": "Vous pouvez filtrer vos soumissions par type (mot / verbe) et par statut (en pendiente, approuvée, rejetée).",
+      "reviewNotice": "Une fois validées par l'équipe Lexikongo, vos contributions rejoignent le diccionario.",
+      "mustBeLoggedIn": "Vous devez être connecté pour voir vos soumissions.",
+      "loading": "Cargando de vos soumissions…",
+      "empty": "Vous n'avez encore ninguna soumission de mot ou de verbe.",
+      "error": {
+        "generic": "No se pudo obtener vos soumissions pour le moment."
+      },
+      "filters": {
+        "status": "Statut",
+        "type": "Type"
+      },
+      "status": {
+        "all": "Todos les statuts",
+        "pending": "En pendiente",
+        "approved": "Approuvée",
+        "rejected": "Rejetée"
+      },
+      "types": {
+        "all": "Palabras & verbes",
+        "word": "Palabras uniquement",
+        "verb": "Verbos uniquement"
+      },
+      "search": {
+        "label": "Buscar dans vos soumissions",
+        "placeholder": "Búsquedaz par mot, verbe, traducción ou phonétique…"
+      },
+      "badges": {
+        "word": "Palabra proposé",
+        "verb": "Verbo proposé"
+      },
+      "count": "{total} soumissions trouvées",
+      "actions": {
+        "edit": "Voir / modifier",
         "delete": "Eliminar"
       }
     },
-    "status": {
-      "pending": "Pendiente de validación"
+    "editPendingWord": {
+      "eyebrow": "Área de colaborador · Édition",
+      "title": "Editar un mot proposé",
+      "subtitle": "Corrigez ou complétez les informations de votre mot avant validation par l'équipe Lexikongo.",
+      "meta": {
+        "label": "Édition d'un mot en pendiente",
+        "title": "Editar un mot proposé | Lexikongo",
+        "description": "Modifiez un mot en kikongo que vous avez soumis sur Lexikongo (forme, classe nominale, phonétique, lien avec un verbe de base et traducciones).",
+        "submittedAtLabel": "Soumis le"
+      },
+      "confirmTitle": "Eliminar cette soumission ?",
+      "help": "Vous pouvez ajuster la forme en kikongo, la classe nominale, la phonétique, les liens de dérivation et les traducciones.",
+      "reviewNotice": "Les modifications ne sont possibles que tant que la soumission est en pendiente. Une fois approuvée ou rejetée, elle rejoint l'historique de vos contributions.",
+      "cardTitleFallback": "Palabra en kikongo en pendiente",
+      "locked": "Cette soumission a déjà été traitée et n'est plus modifiable.",
+      "loading": "Cargando de votre soumission…",
+      "actions": {
+        "save": "Guardar les modifications",
+        "saving": "Enregistrement en cours…",
+        "reset": "Réinitialiser le formulaire",
+        "delete": "Eliminar cette soumission",
+        "backToSubmissions": "Volver à mes soumissions"
+      },
+      "success": "Les modifications de votre mot ont bien été enregistrées et seront revues par l'équipe Lexikongo.",
+      "deleted": "Votre soumission a bien été supprimée.",
+      "confirmDelete": "Voulez-vous vraiment supprimer cette soumission ? Cette action est définitive.",
+      "error": {
+        "generic": "No es posible charger cette soumission.",
+        "delete": "No es posible supprimer cette soumission."
+      },
+      "errors": {
+        "generic": "Error lors de la mise à jour de votre mot.",
+        "mustBeLoggedIn": "Vous devez être connecté pour modifier ce mot.",
+        "requiredSingular": "Gracias de renseigner au moins le singulier.",
+        "requiredClassId": "Gracias d'indiquer la classe nominale.",
+        "translationRequired": "Gracias de proposer au moins une traducción (FR ou EN).",
+        "notEditable": "Cette soumission n'est plus modifiable (elle a déjà été approuvée ou rejetée)."
+      }
     },
-    "messages": {
-      "deleteConfirmWord": "¿Seguro que quieres eliminar la palabra «{word}»? Esta acción no se puede deshacer.",
-      "deleteConfirmVerb": "¿Seguro que quieres eliminar el verbo «{verb}»? Esta acción no se puede deshacer.",
-      "deleteSuccessWord": "La contribución (palabra) se ha eliminado correctamente.",
-      "deleteSuccessVerb": "La contribución (verbo) se ha eliminado correctamente.",
-      "deleteError": "Se ha producido un error al eliminar la contribución."
+    "editPendingVerb": {
+      "eyebrow": "Área de colaborador · Édition",
+      "title": "Editar un verbe proposé",
+      "subtitle": "Corrigez ou complétez les informations de votre verbe avant validation par l'équipe Lexikongo.",
+      "meta": {
+        "label": "Édition d'un verbe en pendiente",
+        "title": "Editar un verbe proposé | Lexikongo",
+        "description": "Modifiez un verbe en kikongo que vous avez soumis sur Lexikongo (infinitif, radical verbal, phonétique, dérivation et traducciones).",
+        "submittedAtLabel": "Soumis le"
+      },
+      "help": "Vous pouvez ajuster l'infinitif, le radical verbal, la phonétique, les liens de dérivation et les traducciones.",
+      "reviewNotice": "Les modifications ne sont possibles que tant que la soumission est en pendiente. Une fois approuvée ou rejetée, elle rejoint l'historique de vos contributions.",
+      "cardTitleFallback": "Verbo en kikongo en pendiente",
+      "locked": "Cette soumission a déjà été traitée et n'est plus modifiable.",
+      "loading": "Cargando de votre soumission…",
+      "actions": {
+        "save": "Guardar les modifications",
+        "saving": "Enregistrement en cours…",
+        "reset": "Réinitialiser",
+        "delete": "Eliminar cette soumission de verbe",
+        "confirmDelete": "Eliminar la soumission"
+      },
+      "errors": {
+        "generic": "Error lors de la mise à jour de votre verbe.",
+        "notEditable": "Cette soumission n'est plus modifiable (elle a déjà été approuvée ou rejetée).",
+        "missingName": "Gracias d'indiquer l'infinitif du verbe (sans « ku »).",
+        "missingRoot": "Gracias d'indiquer le radical verbal.",
+        "missingTranslations": "Gracias de proposer au moins une traducción (FR ou EN).",
+        "delete": "No es posible supprimer cette soumission."
+      },
+      "success": "Les modifications de votre verbe ont bien été enregistrées et seront revues par l'équipe Lexikongo.",
+      "confirmTitle": "Eliminar cette soumission ?",
+      "confirmDelete": "Voulez-vous vraiment supprimer cette soumission ? Cette action est définitive.",
+      "deleted": "Votre soumission de verbe a été supprimée."
     }
-  }
   },
-  "admin": {
-  "word": {
-    "add": {
-      "meta": "Admin · Añadir palabra",
-      "pageTitle": "Admin · Añadir una palabra",
-      "submit": "Crear esta palabra",
-      "saving": "Guardando…",
-      "reset": "Reiniciar",
-      "success": "Palabra creada correctamente.",
-      "errorRequiredSingular": "El singular es obligatorio.",
-      "errorSave": "Error al crear la palabra.",
-      "seoTitle": "Admin · Añadir palabra – Lexikongo",
-      "seoDescription": "Panel de administración · añadir una palabra en kikongo (forma, clase nominal, fonética, traducciones)."
+  "common": {
+    "actions": {
+      "delete": "Eliminar",
+      "cancel": "Cancelar"
+    }
+  },
+  "pagination": {
+    "ariaLabel": "Pagination des resultados",
+    "prev": "Anterior",
+    "next": "Siguiente",
+    "gotoLabel": "Página",
+    "gotoAriaLabel": "Aller à la página (1 à {total})",
+    "summary": "{start}–{end} sur {total} resultado(s)",
+    "summaryNoPageSize": "{total} resultado(s)",
+    "empty": "Ninguno resultado à afficher"
+  },
+  "layout": {
+    "skipToContent": "Aller au contenu principal",
+    "theme": {
+      "light": "Mode clair",
+      "dark": "Mode sombre"
+    }
+  },
+  "search": {
+    "word": {
+      "eyebrow": "Búsqueda · Palabras",
+      "title": "Buscar un mot en kikongo",
+      "subtitle": "Cherchez un mot par forme, phonétique ou traducción française / anglaise.",
+      "metaKikongo": "Kikongo · Francés · Inglés · Fonética",
+      "formTitle": "Filtrer les mots en base",
+      "formSubtitle": "Tapez au moins une partie du mot ou de sa traducción.",
+      "inputLabel": "Palabra ou traducción à rechercher",
+      "inputPlaceholder": "Ex. nzo, maison, house…",
+      "hint": "La recherche s'applique sur le singulier, le pluriel et les traducciones FR/EN.",
+      "loading": "Cargando des mots…",
+      "idle": "Saisissez un mot pour lancer la recherche.",
+      "emptyForQuery": "Ninguno mot ne correspond à « {query} ».",
+      "resultsCount": "{count} resultado trouvé | {count} resultados trouvés",
+      "resultsCaption": "Resultados de la recherche de mots",
+      "paginationAria": "Pagination des resultados de recherche de mots",
+      "metaTitle": "Buscar des mots en Kikongo | Lexikongo",
+      "metaDescription": "Búsquedaz des mots en Kikongo avec leurs traducciones en français, en anglais et leur phonétique dans le diccionario Lexikongo."
+    },
+    "verb": {
+      "eyebrow": "Búsqueda · Verbos",
+      "title": "Buscar un verbe en kikongo",
+      "subtitle": "Cherchez un verbe par infinitif (ku + racine) ou par traducción française / anglaise.",
+      "metaKikongo": "Verbos en kikongo · FR · EN · Fonética",
+      "formTitle": "Filtrer les verbes en base",
+      "formSubtitle": "Tapez au moins une partie du verbe ou de sa traducción.",
+      "inputLabel": "Verbo ou traducción à rechercher",
+      "inputPlaceholder": "Ex. ku longa, enseigner, to teach…",
+      "hint": "La recherche s'applique sur l'infinitif et les traducciones FR/EN.",
+      "loading": "Cargando des verbes…",
+      "idle": "Saisissez un verbe pour lancer la recherche.",
+      "emptyForQuery": "Ninguno verbe ne correspond à « {query} ».",
+      "resultsCount": "{count} resultado trouvé | {count} resultados trouvés",
+      "resultsCaption": "Resultados de la recherche de verbes",
+      "paginationAria": "Pagination des resultados de recherche de verbes",
+      "metaTitle": "Buscar des verbes en Kikongo | Lexikongo",
+      "metaDescription": "Búsquedaz des verbes en Kikongo (infinitif ku + racine) avec leurs traducciones en français et en anglais dans le diccionario Lexikongo."
+    },
+    "form": {
+      "labelSearch": "Búsqueda",
+      "placeholder": "Buscar en {language}",
+      "aria": {
+        "searchForm": "Formulaire de recherche",
+        "searchInput": "Champ de recherche",
+        "languageSelect": "Sélection de la idioma de recherche",
+        "submit": "Lancer la recherche",
+        "clear": "Effacer la recherche"
+      },
+      "language": {
+        "kikongo": "Kikongo",
+        "fr": "Francés",
+        "en": "Inglés"
+      },
+      "button": {
+        "search": "Buscar",
+        "clear": "Effacer"
+      }
+    }
+  },
+  "privacy": {
+    "page": {
+      "eyebrow": "Lexikongo · Données & vie privada",
+      "title": "Política de privacidad",
+      "subtitle": "Comment Lexikongo collecte, utilise et protège vos données personnelles.",
+      "metaHighlight": "Lexikongo est hébergé en Europe et respecte le RGPD.",
+      "primaryCta": "Buscar dans le diccionario",
+      "secondaryCta": "Nous contacter"
+    },
+    "meta": {
+      "title": "Política de privacidad | Lexikongo",
+      "description": "Découvrez comment Lexikongo collecte, utilise et protège vos données personnelles lors de l'utilisation du diccionario Kikongo – Francés / Inglés & phonétique."
+    },
+    "sections": {
+      "intro": {
+        "title": "Protection de vos données sur Lexikongo",
+        "lead": "La présente politique de confidentialité explique de manière claire et transparente comment le site lexikongo.fr collecte, utilise et protège vos données personnelles, conformément au Règlement Général sur la Protection des Données (RGPD) et au droit français en vigueur."
+      },
+      "responsible": {
+        "title": "Responsable du traitement",
+        "body": "Le responsable du traitement des données collectées via le site lexikongo.fr est Artful Batina Creative Studios (représenté par Cédric Batina), établi à Gradignan (France). Lexikongo est une initiative éditoriale indépendante, dédiée à la préservation et à la valorisation de la idioma Kikongo.\n\nPour toute question relative à vos données personnelles ou à cette politique, vous pouvez écrire à: contact (at) lexikongo.fr."
+      },
+      "hosting": {
+        "title": "Hébergement du site",
+        "body": "L'hébergement du site et des bases de données Lexikongo est assuré par Infomaniak Network SA, prestataire basé en Suisse, dans des centres de données situés sur le territoire suisse. La Suisse bénéficie d'une décision d'adéquation de la Commission européenne, ce qui signifie qu'elle offre un niveau de protection des données personnelles considéré comme équivalent à celui de l'Union européenne.\n\nInfomaniak fournit l'infrastructure matérielle, les sauvegardes et une partie des journaux techniques nécessaires au bon fonctionnement et à la sécurité du service."
+      },
+      "legalBasis": {
+        "title": "Bases légales et finalités du traitement",
+        "body": "Lexikongo traite vos données personnelles pour plusieurs finalités:\n\n• Fournir le service de diccionario en ligne (consultation, recherche, affichage des mots, verbes et expressions).\n• Gérer la création, l'authentification et le suivi des comptes usuarios (connexion, sécurité, roles, historique minimal).\n• Permettre la contribution au lexique (soumission, validation, modération et publication des contenus proposés par la communauté).\n• Assurer la sécurité du site, prévenir les usages frauduleux, lutter contre les abus et améliorer la stabilité technique.\n• Répondre à vos demandes envoyées via les formulaires de contact ou d'assistance.\n\nLes principales bases légales au sens du RGPD sont:\n• L'exécution du contrat (fourniture du service lorsque vous créez un compte et utilisez Lexikongo en tant qu'usuario inscrit).\n• L'intérêt légitime de Lexikongo (sécurisation de la plateforme, amélioration continue, lutte contre la fraude et les abus).\n• Le consentement, lorsque celui-ci est nécessaire pour certaines fonctionnalités optionnelles (par ejemplo, une éventuelle newsletter ou certains cookies no essentiels si nous en ajoutons à l'avenir)."
+      },
+      "data": {
+        "title": "Données personnelles collectées",
+        "items": {
+          "account": "Données de compte: pseudonyme / nom d'usuario, adresse e-mail, mot de passe chiffré, roles (usuario, colaborador, admin), paramètres de idioma, dates de création et de mise à jour du compte.",
+          "usage": "Données d'usage: páginas consultées, recherches effectuées dans le diccionario, préférences d'affichage, ainsi que certaines informations techniques fournies par votre navigateur (type de navigateur, système d'exploitation, horodatages). Des journaux techniques (logs) peuvent contenir votre adresse IP tronquée ou pseudonymisée.",
+          "contributions": "Données de contribution: mots, verbes, expressions et autres contenus que vous proposez, ainsi que leurs métadonnées (fecha de soumission, statut de modération, historique des validations ou rejets).",
+          "technical": "Données techniques et cookies: jetons d'authentification (JWT) stockés dans des cookies sécurisés, identifiants de session, préférences (idioma, vue, filtres), informations liées à la sécurité (tentatives de connexion, blocage d'adresses IP en cas d'abus)."
+        }
+      },
+      "retention": {
+        "title": "Durée de conservation des données",
+        "body": "Lexikongo applique des durées de conservation proportionnées aux finalités poursuivies:\n\n• Cuenta usuario: vos données de compte sont conservées tant que votre compte est actif. En cas d'inactivité prolongée ou de demande de suppression, certaines informations peuvent être archivées pendant une durée limitée (par ejemplo jusqu'à 3 ans) pour des raisons légales ou de preuve.\n• Contribuciones (mots, verbes, expressions): les contenus publiés peuvent être conservés de manière durable afin de préserver la cohérence du diccionario. En cas de retrait, les données peuvent être pseudonymisées ou anonymisées lorsque cela est possible.\n• Journaux techniques et sécurité: les journaux de connexion et de sécurité sont conservés pendant une durée limitée (généralement quelques mois) afin de détecter les incidents, prévenir les abus et améliorer la stabilité du service.\n• Cookies et jetons: le jeton d'accès (JWT) a une durée de vie courte (environ 15 minutes), tandis que le jeton de rafraîchissement peut être valable jusqu'à 14 jours. Au-delà, une nouvelle authentification vous sera demandée."
+      },
+      "recipients": {
+        "title": "Destinataires et sous-traitants",
+        "body": "L'accès à vos données personnelles est limité aux seules personnes et organismes qui en ont besoin pour accomplir leurs missions:\n\n• L'éditeur et mainteneur de Lexikongo (Artful Batina Creative Studios / Cédric Batina), pour le développement, la maintenance, la sécurité et l'administration éditoriale de la plateforme.\n• L'hébergeur Infomaniak Network SA, pour la fourniture de l'infrastructure technique, des sauvegardes et des journaux d'accès.\n• Le cas échéant, certains prestataires spécialisés (par ejemplo, prestataire de paiement pour les contributions financières ou outils d'envoi d'e-mails), soumis à des obligations de confidentialité et de sécurité.\n\nLexikongo ne revend ni ne loue vos données personnelles. Les transmissions à des tiers se font uniquement dans le cadre des finalités décrites dans cette politique ou pour répondre à des obligations légales (requêtes d'une autorité compétente, décisions de justice, etc.)."
+      },
+      "transfers": {
+        "title": "Transferts de données hors Union européenne",
+        "body": "Les données liées à Lexikongo sont principalement hébergées en Suisse, auprès d'Infomaniak Network SA. La Suisse bénéficie d'une décision d'adéquation de la Commission européenne, ce qui signifie qu'elle offre un niveau de protection des données personnelles équivalent à celui de l'Union européenne.\n\nSi certains prestataires techniques (par ejemplo, services de paiement ou d'e-mailing) sont situés en dehors de l'Union européenne ou de pays reconnus comme adéquats, Lexikongo veille à ce que des garanties appropriées soient mises en place (clauses contractuelles types, encadrement contractuel renforcé, mesures techniques complémentaires) afin de protéger vos données."
+      },
+      "security": {
+        "title": "Mesures de sécurité",
+        "body": "Lexikongo met en œuvre des mesures techniques et organisationnelles raisonnables pour protéger vos données contre la perte, l'accès no autorisé, la divulgation ou la destruction:\n\n• Communication chiffrée entre votre navigateur et le site (HTTPS / TLS).\n• Stockage des mots de passe sous forme hachée et no en clair.\n• Gestion de roles (usuario, colaborador, administrador) pour limiter l'accès aux données sensibles.\n• Journalisation des événements techniques importants (erreurs, connexions, actions sensibles) pour détecter les anomalies.\n• Mises à jour régulières des composants techniques utilisés par la plateforme.\n\nNinguna mesure n'offrant une sécurité absolue, nous vous recommandons également d'utiliser un mot de passe robuste et de ne pas le réutiliser sur d'autres sites."
+      },
+      "cookies": {
+        "title": "Cookies, JWT et autres traceurs",
+        "body": "Lexikongo utilise principalement des cookies et des jetons (JWT) strictement nécessaires au fonctionnement du site et à la sécurité des comptes:\n\n• Cookies d'authentification: lors de votre connexion, un jeton d'accès (JWT) est stocké dans un cookie HTTPOnly et sécurisé, valable environ 15 minutes, permettant de vérifier que vous êtes bien connecté.\n• Cookie de rafraîchissement: un jeton de rafraîchissement, également stocké dans un cookie sécurisé, peut prolonger votre session jusqu'à 14 jours pour éviter de ressaisir trop fréquemment vos identifiants.\n• Cookies de préférences: certains cookies peuvent mémoriser vos choix (idioma d'interface, options d'affichage) afin d'améliorer votre confort d'utilisation.\n\nNinguno cookie publicitaire n'est utilisé. Si des outils de mesure d'audience ou d'analyse sont ajoutés à l'avenir, cette section sera mise à jour pour détailler leur fonctionnement et vous permettrait, le cas échéant, de les accepter ou de les rechazar."
+      },
+      "rights": {
+        "title": "Vos droits sur vos données (RGPD)",
+        "body": "Conformément au RGPD et à la loi Informatique et Libertés, vous disposez notamment des droits siguientes:\n\n• Droit d'accès: obtenir la confirmation qu'un traitement de données vous concernant est effectué et en recevoir une copie.\n• Droit de rectification: demander la correction de données inexactes ou incomplètes (par ejemplo, votre pseudonyme ou votre adresse e-mail).\n• Droit à l'effacement: demander la suppression de certaines données vous concernant, dans les limites prévues par la loi (par ejemplo, suppression de votre compte).\n• Droit d'opposition: vous opposer, pour des motifs légitimes, à certains traitements fondés sur l'intérêt légitime.\n• Droit à la limitation du traitement: demander la suspension temporaire de certains traitements lorsque vous contestez l'exactitude des données ou la licéité du traitement.\n• Droit à la portabilité: recevoir, lorsque cela est applicable, les données que vous avez fournies dans un format structuré, couramment utilisé et lisible par machine.\n\nCertaines contributions publiques (mots, verbes, expressions) peuvent être conservées sous une forme pseudonymisée ou anonymisée afin de préserver la cohérence éditoriale du diccionario todo en respectant vos droits."
+      },
+      "contact": {
+        "title": "Exercer vos droits ou poser une question",
+        "body": "Pour toute question relative à vos données personnelles, ou pour exercer vos droits (accès, rectification, suppression, opposition, etc.), vous pouvez nous contacter à l'adresse siguiente: contact (at) lexikongo.fr.\n\nAfin de faciliter le traitement de votre demande, nous vous invitons à préciser les éléments siguientes:\n• L'adresse e-mail utilisée sur Lexikongo.\n• Le ou les droits que vous souhaitez exercer.\n\nNous pouvons être amenés à vous demander des informations complémentaires pour vérifier votre identité. Une réponse vous sera apportée dans un délai indicatif d'un mois. Si vous estimez, après nous avoir contactés, que vos droits ne sont pas respectés, vous pouvez déposer une réclamation auprès de l'autorité de contrôle compétente: la CNIL (cnil.fr) en France."
+      },
+      "law": {
+        "title": "Loi applicable et juridiction compétente",
+        "body": "La présente politique de confidentialité est soumise au droit français et au RGPD. En cas de difficulté persistante relative à la protection de vos données personnelles et après démarche auprès de Lexikongo et, le cas échéant, de la CNIL, les tribunaux français seront seuls compétents. À titre indicatif, le tribunal matériellement et territorialement compétent est celui de Bordeaux, compte tenu de l'établissement du responsable du traitement à Gradignan (France)."
+      },
+      "update": {
+        "title": "Mises à jour de cette politique",
+        "body": "La présente politique de confidentialité peut être amenée à évoluer pour refléter les développements du service Lexikongo, l'évolution de la réglementation ou la mise en place de nouvelles fonctionnalités (par ejemplo, de nouveaux modes de contribution ou de nouveaux partenariats).\n\nNous vous invitons à la consulter régulièrement. En cas de modification importante, une information pourra être affichée de manière visible sur le site. Fecha de dernière mise à jour: 8 décembre 2025."
+      }
+    }
+  },
+  "faq": {
+    "page": {
+      "eyebrow": "Ayuda · Preguntas frecuentes",
+      "title": "Questions fréquentes",
+      "subtitle": "Comprenez en un coup d'œil comment fonctionne Lexikongo: comptes, roles, contributions, modération et confidentialité.",
+      "meta": "Lexikongo est un diccionario collaboratif dédié au Kikongo: voici comment l'utiliser sereinement.",
+      "primaryCta": "Buscar un mot ou un verbe",
+      "secondaryCta": "Découvrir l'espace colaborador"
+    },
+    "meta": {
+      "title": "Preguntas frecuentes Lexikongo – Questions fréquentes",
+      "description": "Todo savoir sur Lexikongo: comptes, roles, contributions, validation des mots et verbes, confidentialité et prochaines évolutions."
+    },
+    "sections": {
+      "general": {
+        "title": "Général",
+        "description": "Les bases pour comprendre ce qu'est Lexikongo et à quoi sert la plateforme.",
+        "items": {
+          "whatIsLexikongo": {
+            "q": "Qu'est-ce que Lexikongo ?",
+            "a": "Lexikongo est un diccionario collaboratif dédié à la idioma Kikongo, avec des traducciones en français et en anglais, et une phonétique simplifiée pour faciliter l'apprentissage."
+          },
+          "whichLanguages": {
+            "q": "Quelles idiomas sont prises en charge ?",
+            "a": "Hoy, Lexikongo se concentre sur le Kikongo avec des traducciones vers le français et l'anglais. D'autres idiomas pourront être ajoutées progressivement."
+          },
+          "whoIsItFor": {
+            "q": "À qui s'adresse Lexikongo ?",
+            "a": "Lexikongo s'adresse aux apprenants, aux locuteurs natifs, aux enseignants, aux chercheurs et à toute personne curieuse de découvrir la idioma Kikongo."
+          },
+          "isItFree": {
+            "q": "L'utilisation de Lexikongo est-elle gratuite ?",
+            "a": "La consultation du lexique et la création d'un compte usuario sont actuellement gratuites. Vous pouvez soutenir le projet via les contributions et dons si vous le souhaitez."
+          }
+        }
+      },
+      "accounts": {
+        "title": "Cuentas & roles",
+        "description": "Comprendre la différence entre usuario, colaborador et administrador.",
+        "items": {
+          "roles": {
+            "q": "Quels sont les roles disponibles sur Lexikongo ?",
+            "a": {
+              "user": "• Usuario: peut consulter les mots, verbes et fiches publiques.",
+              "contributor": "• Colaborador: peut proposer de nouveaux mots et verbes qui seront validés par un administrador.",
+              "admin": "• Administrador: gère les soumissions, valide ou rejette les contenus et supervise la plateforme."
+            }
+          },
+          "needAccount": {
+            "q": "Ai-je besoin d'un compte pour utiliser Lexikongo ?",
+            "a": "Vous pouvez consulter le diccionario sans compte. En revanche, un compte est nécessaire pour proposer de nouveaux mots, verbes ou suivre vos soumissions."
+          },
+          "becomeContributor": {
+            "q": "Comment devenir colaborador ou contributrice ?",
+            "a": "Créez un compte, puis signalez votre intérêt pour contribuer. Selon les besoins du projet, un administrador pourra vous attribuer le rol de colaborador."
+          },
+          "emailVerification": {
+            "q": "Pourquoi dois-je vérifier mon adresse e-mail ?",
+            "a": "La vérification d'e-mail permet de sécuriser votre compte et de limiter les abus. Elle est utilisée uniquement pour l'authentification et la sécurité."
+          }
+        }
+      },
+      "contributions": {
+        "title": "Contribuciones: mots & verbes",
+        "description": "Todo ce qu'il faut savoir pour proposer des mots et des verbes en Kikongo.",
+        "items": {
+          "whatCanISubmit": {
+            "q": "Que puis-je proposer comme contribution ?",
+            "a": {
+              "words": "• Des mots (noms): avec leur forme singulière, plurielle, classe nominale, phonétique et traducciones.",
+              "verbs": "• Des verbes: avec l'infinitif, le radical verbal, le suffixe, la phonétique et les traducciones."
+            }
+          },
+          "wordDetails": {
+            "q": "Quelles informations sont nécessaires pour un mot ?",
+            "a": "Idéalement: le singulier, le pluriel, la classe nominale, la phonétique et au moins une traducción en français ou en anglais."
+          },
+          "verbDetails": {
+            "q": "Quelles informations sont nécessaires pour un verbe ?",
+            "a": "L'infinitif, le radical verbal, le suffixe éventuel, la phonétique et au moins une traducción en français ou en anglais."
+          },
+          "differenceAdminContributor": {
+            "q": "Quelle est la différence entre un ajout admin et une contribution ?",
+            "a": "Les administradores peuvent ajouter des mots et verbes directement dans le diccionario. Les colaboradores, eux, envoient des soumissions qui passent par une étape de validation avant d'être publiées."
+          }
+        }
+      },
+      "moderation": {
+        "title": "Modération & validation",
+        "description": "Comment sont traitées les soumissions envoyées par les colaboradores.",
+        "items": {
+          "statuses": {
+            "q": "Que signifient les statuts « en pendiente », « approuvé », « rejeté » ?",
+            "a": {
+              "pending": "• En pendiente: la soumission a été reçue et doit encore être examinée par un administrador.",
+              "approved": "• Approuvé: le mot ou le verbe a été validé et ajouté au diccionario public.",
+              "rejected": "• Rejeté: la soumission n'a pas été retenue (souvent avec une raison pour vous aider à l'améliorer)."
+            }
+          },
+          "howLong": {
+            "q": "Combien de temps prend la validation d'un mot ou d'un verbe ?",
+            "a": "Le délai dépend de l'activité des administradores et du volume de soumissions. L'objectif est de traiter les contributions dans des délais raisonnables, sans sacrifier la qualité linguistique."
+          },
+          "editSubmission": {
+            "q": "Puis-je modifier une soumission après l'avoir envoyée ?",
+            "a": "Tant qu'une soumission est en pendiente, il est possible de la corriger ou de la compléter via l'interface colaborador. Si elle est rejetée, vous pouvez généralement en proposer une nouvelle version améliorée."
+          },
+          "archiving": {
+            "q": "Que deviennent les soumissions après validation ou rejet ?",
+            "a": "Les soumissions approuvées ou rejetées sont archivées pendant une période limitée afin de garder un historique de modération, puis nettoyées pour alléger la base de données."
+          }
+        }
+      },
+      "privacy": {
+        "title": "Confidentialité & sécurité",
+        "description": "Vos données personnelles et la sécurité des comptes.",
+        "items": {
+          "whatData": {
+            "q": "Quelles données personnelles sont stockées ?",
+            "a": "Lexikongo stocke les informations nécessaires au fonctionnement du compte (nom d'usuario, e-mail, mot de passe chiffré, roles et quelques métadonnées comme les dates de création et de connexion)."
+          },
+          "passwords": {
+            "q": "Comment mes mots de passe sont-ils protégés ?",
+            "a": "Les mots de passe sont chiffrés côté serveur à l'ayuda de bonnes pratiques de sécurité avant d'être enregistrés en base de données. Ils ne sont jamais stockés en clair."
+          },
+          "cookies": {
+            "q": "Comment fonctionne la connexion (cookies, jetons, etc.) ?",
+            "a": "La session utilise un jeton sécurisé (JWT) stocké dans un cookie HttpOnly afin de limiter les risques d'attaque côté navigateur."
+          },
+          "privacyPage": {
+            "q": "Où puis-je consulter la politique de confidentialité complète ?",
+            "a": "Vous pouvez consulter todos les détails sur la página dédiée: Política de privacidad / Confidentialité & données."
+          }
+        }
+      },
+      "future": {
+        "title": "Évolutions du projet",
+        "description": "Ce qui est prévu pour les prochaines versions de Lexikongo.",
+        "items": {
+          "newLanguages": {
+            "q": "De nouvelles idiomas seront-elles ajoutées ?",
+            "a": "Sí, la structure de Lexikongo permet d'ajouter d'autres idiomas de traducción à l'avenir afin de toucher un public encore plus large."
+          },
+          "notifications": {
+            "q": "Y aura-t-il des notifications pour les colaboradores ?",
+            "a": "Un système de notifications (par ejemplo pour signaler qu'une soumission est approuvée ou rejetée) fait partie des pistes d'amélioration prévues."
+          },
+          "statsAndTools": {
+            "q": "D'autres outils sont-ils prévus (statistiques, cours, etc.) ?",
+            "a": "Sí, l'objectif est d'enrichir Lexikongo avec des outils pédagogiques, des statistiques de contribution et, à terme, des fonctionnalités complémentaires pour l'apprentissage du Kikongo."
+          }
+        }
+      }
+    },
+    "cta": {
+      "title": "Envie de participer à l'aventure Lexikongo ?",
+      "subtitle": "Créez un compte, devenez colaborador et aidez-nous à enrichir le diccionario Kikongo pour les générations futures.",
+      "primary": "Crear un compte gratuit",
+      "secondary": "Découvrir l'espace colaborador"
+    }
+  },
+  "documentation": {
+    "page": {
+      "eyebrow": "Lexikongo · Guides",
+      "title": "Documentación de Lexikongo",
+      "subtitle": "Retrouvez todos les guides pour comprendre, utiliser et contribuer au diccionario Kikongo.",
+      "metaHighlight": "Une documentation adaptée à chaque rol: usuario, colaborador, administrador, développeur.",
+      "primaryCta": "Buscar un mot ou un verbe",
+      "secondaryCta": "Devenir colaborador"
+    },
+    "meta": {
+      "title": "Documentación Lexikongo",
+      "description": "Documentación complète de Lexikongo, organisée par profils: usuarios, colaboradores, administradores et développeurs."
+    },
+    "sections": {
+      "intro": {
+        "title": "Bienvenue dans la documentation de Lexikongo",
+        "lead": "Lexikongo est une plateforme collaborative pour la préservation et l'apprentissage du Kikongo.",
+        "body": "Cette documentation présente le fonctionnement du diccionario, les roles des différents profils et la manière de contribuer à l'enrichissement du lexique."
+      },
+      "guides": {
+        "title": "Choisissez votre guide",
+        "lead": "Chaque rol dispose de son propre guide détaillé.",
+        "users": {
+          "title": "Guide des usuarios",
+          "body": "Apprenez à rechercher des mots, consulter les fiches détaillées et profiter au mieux du diccionario.",
+          "link": "Abrir le guide des usuarios"
+        },
+        "contributors": {
+          "title": "Guide des colaboradores",
+          "body": "Découvrez comment proposer de nouveaux mots, verbes et traducciones et suivre vos soumissions.",
+          "link": "Abrir le guide des colaboradores"
+        },
+        "admins": {
+          "title": "Guide des administradores",
+          "body": "Comprenez les outils de modération, de validation des soumissions et de gestion de la base.",
+          "link": "Abrir le guide des administradores"
+        },
+        "devs": {
+          "title": "Documentación développeurs",
+          "body": "Architecture technique, API, schéma de la base et bonnes pratiques pour contribuer au code.",
+          "link": "Abrir la doc développeur"
+        }
+      },
+      "help": {
+        "title": "Besoin d'ayuda supplémentaire ?",
+        "subtitle": "Si vous ne trouvez pas votre réponse dans la documentation, nous sommes là pour vous aider.",
+        "actions": {
+          "faq": "Consulter la Preguntas frecuentes",
+          "contact": "Nous contacter"
+        }
+      }
+    }
+  },
+  "docContrib": {
+    "page": {
+      "eyebrow": "Lexikongo · Colaboradores",
+      "title": "Guide des colaboradores",
+      "subtitle": "Comprenez comment rejoindre la communauté Lexikongo, soumettre des mots et verbes et suivre vos contributions.",
+      "metaHighlight": "Préserver, enrichir et moderniser la idioma Kikongo grâce à vos contributions.",
+      "primaryCta": "Crear un compte colaborador",
+      "secondaryCta": "Soutenir financièrement le projet"
+    },
+    "meta": {
+      "title": "Guide des colaboradores | Lexikongo",
+      "description": "Rejoignez la communauté des colaboradores Lexikongo pour enrichir le lexique Kikongo et participer à un projet culturel et éducatif ambitieux."
+    },
+    "side": {
+      "title": "Área de colaborador",
+      "text": "Accédez rapidement aux outils de soumission, au suivi des statuts et à la documentation associée."
+    }
+  },
+  "docAdmins": {
+    "page": {
+      "eyebrow": "Lexikongo · Administradores",
+      "title": "Guide des administradores",
+      "subtitle": "Comprenez vos responsabilités de modération, les outils disponibles et les bonnes pratiques pour maintenir la qualité du lexique.",
+      "metaHighlight": "Modérer, valider et archiver les contributions pour garantir un diccionario fiable.",
+      "primaryCta": "Accéder au tableau de bord admin",
+      "secondaryCta": "Voir le guide des colaboradores"
+    },
+    "meta": {
+      "title": "Guide des administradores | Lexikongo",
+      "description": "Guide complet pour les administradores de Lexikongo: conditions d'accès, modération des contributions, archivage et outils d'administration."
+    },
+    "side": {
+      "title": "Espace administrador",
+      "text": "Accédez rapidement au tableau de bord, à la liste des soumissions en pendiente et aux outils de gestion.",
+      "actions": {
+        "dashboard": "Panel admin",
+        "pendings": "Soumissions en pendiente"
+      }
+    }
+  },
+  "docUsers": {
+    "page": {
+      "eyebrow": "Lexikongo · Usuarios",
+      "title": "Guide des usuarios",
+      "subtitle": "Découvrez les fonctionnalités accessibles à todos, et ce que vous débloquez en créant un compte sur Lexikongo.",
+      "metaHighlight": "Consulter le lexique Kikongo – Francés – Inglés, avec ou sans compte.",
+      "primaryCta": "Explorer les expressions",
+      "secondaryCta": "Crear un compte"
+    },
+    "meta": {
+      "title": "Guide des usuarios | Lexikongo",
+      "description": "Guide pour les usuarios de Lexikongo: consultation du lexique, recherche d'expressions et avantages d'un compte usuario."
+    },
+    "side": {
+      "title": "Espace usuario",
+      "text": "Accédez rapidement à la recherche du lexique, créez un compte et préparez-vous à rejoindre la communauté.",
+      "actions": {
+        "explore": "Explorer les expressions",
+        "register": "Crear un compte"
+      }
+    }
+  },
+  "footer": {
+    "tagline": "Un lexique kikongo–français–anglais collaboratif, vivant et accessible à todos.",
+    "sections": {
+      "discover": "Découvrir",
+      "community": "Communauté",
+      "legal": "Légal",
+      "social": "Réseaux sociaux"
+    },
+    "links": {
+      "home": "Inicio",
+      "searchWords": "Buscar des mots",
+      "searchVerbs": "Buscar des verbes",
+      "expressions": "Palabras & verbes",
+      "contribute": "Contribuir sur Lexikongo",
+      "memberArea": "Área de miembro",
+      "documentation": "Documentación",
+      "faq": "Preguntas frecuentes",
+      "privacy": "Aviso legal",
+      "terms": "Condiciones de uso",
+      "contact": "Contacto",
+      "admin": "Espace admin"
+    },
+    "socialText": "Suivez Lexikongo sur les réseaux sociaux.",
+    "rights": "Todos droits réservés.",
+    "madeBy": "Site conçu et maintenu par"
+  },
+  "contact": {
+    "page": {
+      "eyebrow": "Support · Contacto",
+      "title": "Contactoez l'équipe Lexikongo",
+      "subtitle": "Une question, une suggestion ou une idée de partenariat ? Envoyez-nous un message, nous lisons chaque demande avec attention.",
+      "ctaFaq": "Consulter la Preguntas frecuentes",
+      "ctaDocs": "Voir la documentation",
+      "meta": "Contacto · Support · Partenariats"
+    },
+    "form": {
+      "title": "Envoyez-nous un message",
+      "subtitle": "Remplissez ce formulaire, nous reviendrons vers vous par e-mail dès que possible.",
+      "fields": {
+        "name": {
+          "label": "Nom complet",
+          "placeholder": "Votre nom ou nom complet"
+        },
+        "email": {
+          "label": "Adresse e-mail",
+          "placeholder": "Ex: kimbangu{'@'}gmail.com"
+        },
+        "message": {
+          "label": "Message",
+          "placeholder": "Expliquez-nous votre question, votre suggestion ou votre projet…"
+        }
+      },
+      "actions": {
+        "submit": "Envoyer le message",
+        "submitting": "Envoi en cours…"
+      },
+      "success": "Gracias, votre message a bien été envoyé. Nous vous répondrons par e-mail.",
+      "errors": {
+        "required": "Gracias de remplir todos les champs obligatorios.",
+        "generic": "Une erreur est survenue lors de l'envoi du message. Por favor réessayer un peu plus tard."
+      }
+    },
+    "why": {
+      "title": "Pourquoi nous contacter ?",
+      "p1": "Lexikongo est une plateforme collaborative dédiée à la préservation et à la transmission de la idioma Kikongo. Vos retours, corrections et suggestions nous aident à améliorer le diccionario au quotidien.",
+      "p2": "Vous pouvez aussi nous écrire pour toute demande de partenariat, de projet pédagogique, d'intégration technique ou d'accompagnement autour de la idioma Kikongo.",
+      "caption": "Lexikongo – un pont vivant entre le Kikongo, le français et l'anglais."
+    }
+  },
+  "contribute": {
+    "page": {
+      "eyebrow": "Soutenir Lexikongo",
+      "title": "Contribuir à Lexikongo",
+      "subtitle": "Vos contributions nous aident à maintenir, enrichir et faire rayonner le diccionario Kikongo.",
+      "meta": "Choisissez le moyen de soutien qui vous convient: carte bancaire, PayPal, virement ou Mobile Money."
+    },
+    "meta": {
+      "title": "Soutenir Lexikongo | Contribuciones & dons",
+      "description": "Soutenez le diccionario Lexikongo (Kikongo – Francés/Inglés & phonétique) via carte bancaire, PayPal, virement bancaire ou Mobile Money."
+    },
+    "payments": {
+      "title": "Soutien en ligne",
+      "subtitle": "Un petit montant régulier ou ponctuel a un impact réel sur l'hébergement, la maintenance et les nouvelles fonctionnalités.",
+      "amountLabel": "Montant de votre soutien",
+      "amountPlaceholder": "Choisissez ou saisissez un montant…",
+      "amountHint": "Vous pouvez ajuster le montant à todo moment. À partir de 1 €.",
+      "methodLabel": "Moyen de paiement",
+      "methodHelp": "Sélectionnez la méthode qui vous convient le mieux.",
+      "notAvailable": "Ce moyen de paiement n'est pas disponible pour le moment.",
+      "emailLabel": "Adresse email (optionnelle)",
+      "emailHint": "Pour envoyer un reçu ou vous contacter si besoin.",
+      "anonymousLabel": "Afficher ce don comme anonyme",
+      "emailPlaceholder": "Ex: kimpa-vita{'@'}gmail.com",
+      "methods": {
+        "stripe": "Carte bancaire (Stripe)",
+        "paypal": "PayPal",
+        "bank": "Virement bancaire",
+        "mobile": "Mobile Money"
+      },
+      "stripe": {
+        "title": "Paiement par carte bancaire",
+        "text": "Réglez votre contribution par carte bancaire via notre partenaire Stripe.",
+        "processing": "Traitement du paiement…",
+        "cta": "Payer {amount} € avec Stripe",
+        "secure": "Paiement 100 % sécurisé via Stripe.",
+        "misconfigured": "Le paiement par carte bancaire n'est pas disponible pour le moment (configuration manquante).",
+        "initError": "Impossible d'initialiser le formulaire de carte bancaire. Por favor réessayer plus tard.",
+        "missing": "Le formulaire de carte n'est pas correctement initialisé. Rafraîchissez la página et réessayez.",
+        "success": "Gracias pour votre soutien ! Votre paiement par carte a été confirmé.",
+        "unknownStatus": "Le paiement a été créé mais son statut est inconnu. Gracias de vérifier votre relevé bancaire.",
+        "serverError": "Une erreur est survenue lors de la création du paiement. Por favor réessayer dans quelques instants.",
+        "invalidAmount": "Gracias d'indiquer un montant valide (au moins 1 €)."
+      },
+      "paypal": {
+        "title": "Paiement avec PayPal",
+        "text": "Utilisez votre compte PayPal pour soutenir Lexikongo en quelques clics.",
+        "misconfigured": "PayPal n'est pas disponible pour le moment (configuration manquante).",
+        "loadError": "No es posible charger les boutons PayPal. Por favor réessayer plus tard.",
+        "success": "Gracias pour votre soutien, {name} ! Votre paiement PayPal a été confirmé.",
+        "error": "Une erreur est survenue avec PayPal. Por favor réessayer."
+      }
+    },
+    "bank": {
+      "title": "Virement bancaire",
+      "subtitle": "Vous pouvez effectuer un virement depuis votre banque vers notre compte dédié aux contributions.",
+      "beneficiaryLabel": " Bénéficiaire ",
+      "ibanLabel": "IBAN",
+      "bicLabel": "BIC",
+      "copyIban": "Copiar l'IBAN",
+      "copyBic": "Copiar le BIC",
+      "referenceLabel": "Référence du virement",
+      "referenceValue": "Votre email ou identifiant usuario Lexikongo",
+      "afterTransfer": "Une fois votre virement effectué, merci de nous envoyer un email avec les détails de votre paiement à",
+      "ibanCopied": "IBAN copié dans le presse-papiers.",
+      "bicCopied": "BIC copié dans le presse-papiers.",
+      "holderLabel": "Titulaire du compte",
+      "copyBeneficiary": "Copiar le bénéficiaire",
+      "copyHolder": "Copiar le titulaire",
+      "copySiret": "Copiar le SIRET",
+      "beneficiaryCopied": "Bénéficiaire copié ✅",
+      "holderCopied": "Titulaire copié ✅",
+      "siretCopied": "SIRET copié ✅",
+      "copied": "Copié ✅"
+    },
+    "mobile": {
+      "title": "Paiement par Mobile Money",
+      "subtitle": "Pour les pays d'Afrique centrale (RDC, Congo, Angola, etc.), vous pouvez nous envoyer une demande de contribution via Mobile Money.",
+      "nameLabel": "Nom / Prénom",
+      "phoneLabel": "Numéro de téléphone Mobile Money",
+      "countryLabel": "Pays",
+      "operatorLabel": "Opérateur (Orange Money, Airtel Money, M-Pesa…)",
+      "amountLabel": "Montant (devise locale ou €)",
+      "noteLabel": "Message (opcional)",
+      "text": "Pour les pays d'Afrique centrale (RDC, Congo, Angola, etc.), vous pouvez nous envoyer une demande de contribution via Mobile Money.",
+      "hint": "Nous vous répondrons par email ou message (WhatsApp / SMS) avec les instructions précises pour finaliser votre contribution.",
+      "cta": "Envoyer une demande Mobile Money",
+      "processing": "Envoi de votre demande…",
+      "missingFields": "Gracias de renseigner au minimum votre nom et votre numéro de téléphone.",
+      "success": "Gracias ! Votre demande Mobile Money a bien été transmise. Nous reviendrons vers vous pour finaliser le paiement.",
+      "error": "Une erreur est survenue lors de l'envoi de la demande Mobile Money. Por favor réessayer plus tard."
+    },
+    "other": {
+      "title": "Autres façons de soutenir",
+      "subtitle": "Même sans contribution financière, vous pouvez beaucoup aider Lexikongo.",
+      "blocks": {
+        "contact": {
+          "title": "Nous contacter",
+          "text": "Vous représentez une institution, une association, une école ou un partenaire potentiel ? Parlons-en.",
+          "cta": "Écrire à l'équipe Lexikongo",
+          "aria": "Contactoer l'équipe Lexikongo pour discuter d'un partenariat ou d'un soutien."
+        },
+        "share": {
+          "title": "Compartir Lexikongo",
+          "text": "Parlez de Lexikongo autour de vous, sur les réseaux sociaux, dans vos groupes et communautés.",
+          "facebookAria": "Compartir Lexikongo sur Facebook",
+          "twitterAria": "Compartir Lexikongo sur X (Twitter)",
+          "linkedinAria": "Compartir Lexikongo sur LinkedIn"
+        },
+        "contributors": {
+          "title": "Rejoindre les colaboradores",
+          "text": "Vous pouvez aussi contribuer en proposant de nouveaux mots, verbes ou ejemplos en Kikongo.",
+          "cta": "Crear un compte colaborador",
+          "aria": "Crear un compte pour contribuer au diccionario Lexikongo."
+        }
+      }
+    }
+  },
+  "userEdit": {
+    "page": {
+      "eyebrow": "Administración · Usuario",
+      "subtitle": "Editar les informations du compte usuario.",
+      "meta": "Veillez à ne modifier les informations que si cela est strictement nécessaire.",
+      "titleFallback": "Editar un compte usuario"
+    },
+    "meta": {
+      "title": "Lexikongo · Editar le compte {username}",
+      "description": "Éditez les informations et les roles du compte {username}."
+    },
+    "sections": {
+      "account": "Informations du compte"
     },
     "placeholders": {
-      "translationFr": "Significados en FR separados por comas",
-      "translationEn": "Significados en EN separados por comas"
+      "username": "Ex.: Tusikila Kinuani Kia Batina",
+      "email": "Ex: kimbangu{'@'}gmail.com"
+    },
+    "hints": {
+      "roles": "L'absence de rol spécifique équivaut à un rol « usuario » classique."
+    },
+    "actions": {
+      "save": "Guardar les modifications"
+    },
+    "errors": {
+      "usernameRequired": "Le nom d'usuario est obligatorio.",
+      "emailRequired": "L'adresse email est obligatorio.",
+      "emailInvalid": "L'adresse email n'est pas valide.",
+      "submit": "No es posible sauvegarder les modifications pour le moment."
     }
   }
-}
-
-
-
-
-
-  
-
-
-
 }
